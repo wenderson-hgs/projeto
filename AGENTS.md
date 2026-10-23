@@ -84,8 +84,8 @@ Mantenha a lógica de química em `src/lib/` **separada da interface**, para tes
 - [x] Testes unitários com os casos da seção 6
 
 ### Fase 4 — Quiz
-- [ ] Modos: símbolo → nome, nome → símbolo e categoria do elemento
-- [ ] Pontuação e recorde salvos no `localStorage`
+- [x] Modos: símbolo → nome, nome → símbolo e categoria do elemento
+- [x] Pontuação e recorde salvos no `localStorage`
 
 ### Fase 5 — Polimento e publicação
 - [ ] Tema claro/escuro e acessibilidade básica (contraste, foco visível, `aria-label`)

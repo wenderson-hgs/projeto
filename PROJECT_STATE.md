@@ -13,15 +13,15 @@
 | Stack | Node.js 24 (LTS) + npm 11, Vite 8 + TypeScript 6 (sem framework), Vitest 5, ESLint 10 + Prettier 3 |
 | Publicação | GitHub Pages via GitHub Actions (planejado para a Fase 5) |
 | Repositório | https://github.com/wenderson-hgs/projeto (nome do repositório: `projeto`) |
-| Branch principal | `main` (Fases 1, 2 e 3 publicadas; Fase 3 mesclada por fast-forward até `806c2e8`, seguida deste commit de documentação) |
-| Branch de trabalho | nenhuma ativa; `feat/phase-3-equation-balancer` mesclada e publicada (Fase 4 a planejar) |
+| Branch principal | `main` (Fases 1, 2 e 3 publicadas; último commit `640e77b`) |
+| Branch de trabalho | `feat/phase-4-quiz` (Fase 4; commits `9b2235c` e `14610d8`; documentação no commit seguinte) |
 | Demo | ainda não publicada |
 
 ## Fase em andamento
 
-**Fase 3 — Balanceador de equações concluída, revisada pelo usuário e mesclada na `main`.**
+**Fase 4 — Quiz concluída na branch `feat/phase-4-quiz`, aguardando revisão do usuário antes do merge na `main`.**
 
-> As Fases 0, 1, 2 e 3 estão publicadas na `main`. A Fase 3 adiciona o balanceador de equações com frações exatas, tratamento de equações impossíveis ou com múltiplas soluções e interface própria abaixo da calculadora. A próxima etapa é a Fase 4 — Quiz, que precisa ser planejada e aprovada antes de qualquer edição.
+> As Fases 0, 1, 2 e 3 estão publicadas na `main`. A Fase 4 adiciona o quiz com três modos, rodadas de 10 perguntas, feedback imediato e pontuação/recorde por modo salvos no `localStorage`.
 
 ## Checklist de fases
 
@@ -51,8 +51,8 @@
 - [x] Testes unitários com os casos da seção 6
 
 ### Fase 4 — Quiz
-- [ ] Modos: símbolo → nome, nome → símbolo e categoria do elemento
-- [ ] Pontuação e recorde salvos no `localStorage`
+- [x] Modos: símbolo → nome, nome → símbolo e categoria do elemento
+- [x] Pontuação e recorde salvos no `localStorage`
 
 ### Fase 5 — Polimento e publicação
 - [ ] Tema claro/escuro e acessibilidade básica (contraste, foco visível, `aria-label`)
@@ -79,11 +79,15 @@
 | 2026-10-23 | Fase 3 — Etapa 2: interface | Criada a seção do balanceador em `src/ui/balancer.ts`, com exemplos clicáveis, resultado, mensagens de erro acessíveis e layout responsivo em `src/styles/balancer.css`. Integrada abaixo da calculadora em `src/main.ts`; subtítulo atualizado. Commit `d5e2547`. |
 | 2026-10-23 | Fase 3 — Etapa 3: validação e documentação | README, `PROJECT_STATE.md`, `docs/CLAUDE_HANDOFF.md` e checklist do `AGENTS.md` atualizados. Checks finais: 87 testes, build e lint sem erros. |
 | 2026-10-23 | Fase 3 — revisão e merge | Usuário aprovou o balanceador. Branch `feat/phase-3-equation-balancer` publicada e mesclada por fast-forward na `main` (até `806c2e8`). Checks repetidos na `main`: 87 testes, build e lint sem erros. |
+| 2026-10-23 | Fase 4 — Etapa 1: lógica | Criados `src/lib/quiz.ts` (três modos, rodadas de 10 perguntas, 4 alternativas, RNG injetável) e `src/lib/quiz-storage.ts` (última pontuação e recorde por modo no `localStorage`, com acesso protegido). Criados 15 testes em `tests/quiz.test.ts`. Commit `9b2235c`. |
+| 2026-10-23 | Fase 4 — Etapa 2: interface | Criada a seção do quiz em `src/ui/quiz.ts`, com escolha de modo, rodada, feedback imediato, resultado, recorde e foco acessível. Estilos em `src/styles/quiz.css`; integrada abaixo do balanceador em `src/main.ts`. Commit `14610d8`. |
+| 2026-10-23 | Fase 4 — Etapa 3: validação e documentação | README, `PROJECT_STATE.md`, `docs/CLAUDE_HANDOFF.md` e checklist do `AGENTS.md` atualizados. Checks finais: 102 testes, build e lint sem erros. |
 
 ## Pendências
 
-- Planejar e aprovar a Fase 4 — Quiz antes de editar arquivos.
-- Remover as branches de trabalho já mescladas (`feat/phase-1-periodic-table`, `feat/phase-2-molar-mass`, `feat/phase-3-equation-balancer` e `test/phase-0-bootstrap`) quando o usuário quiser.
+- Revisar a branch `feat/phase-4-quiz` no GitHub e testar o quiz localmente.
+- Após aprovação, fazer o merge da Fase 4 na `main` e publicar.
+- Remover as branches de trabalho já mescladas (`feat/phase-1-periodic-table`, `feat/phase-2-molar-mass`, `feat/phase-3-equation-balancer`, `feat/phase-4-quiz` e `test/phase-0-bootstrap`) quando o usuário quiser.
 
 ## Decisões importantes
 
@@ -121,6 +125,11 @@
 | 2026-10-23 | `BalanceError` com código e mensagem em português | Consistente com `FormulaError`; permite testar os casos e exibir mensagens diretas na interface. |
 | 2026-10-23 | Fórmulas de cada termo são validadas por `parseFormula()` | Reaproveita grupos, colchetes aninhados e hidratos, além de validar símbolos contra o dataset. |
 | 2026-10-23 | Balanceador fica abaixo da calculadora, na mesma página | Mantém a navegação simples, sem abas ou rotas, seguindo o padrão da Fase 2. |
+| 2026-10-23 | Quiz com rodadas de 10 perguntas e 4 alternativas | Rodada curta, com feedback imediato e resultado claro; quatro opções equilibram dificuldade e leitura no celular. |
+| 2026-10-23 | Distratores vêm do mesmo domínio da pergunta | Nomes, símbolos ou categorias, conforme o modo; evita alternativas fáceis de eliminar por formato. |
+| 2026-10-23 | Gerador de perguntas recebe função aleatória injetável | Permite testes determinísticos sem depender do `Math.random`. |
+| 2026-10-23 | Pontuação e recorde por modo no `localStorage` | Cada modo tem dificuldade própria; separar os recordes é mais justo. Acesso protegido com `try/catch` para navegação privada. |
+| 2026-10-23 | Foco movido para a pergunta e para o resultado | Leitores de tela ouvem a pergunta completa e a pontuação final; o feedback usa `role="status"`. |
 
 ## Resultados de testes e build
 
@@ -139,22 +148,27 @@
 | 2026-10-23 | Fase 3 — Etapa 2 (interface) | 3 arquivos, 87 testes passaram (792 ms) | sucesso: 20 módulos, 249 ms; CSS 10,98 kB / JS 50,68 kB | sem erros |
 | 2026-10-23 | Fase 3 — Etapa 3 (documentação) | 3 arquivos, 87 testes passaram (784 ms) | sucesso: 20 módulos, 237 ms; CSS 10,98 kB / JS 50,68 kB | sem erros |
 | 2026-10-23 | Fase 3 — validação na `main` | 3 arquivos, 87 testes passaram (693 ms) | sucesso: 20 módulos, 302 ms; `index.html` 0,65 kB, CSS 10,98 kB / JS 50,68 kB | sem erros |
+| 2026-10-23 | Fase 4 — Etapa 1 (lógica) | 4 arquivos, 102 testes passaram (783 ms) | não executado nesta etapa (interface ainda não integrada) | não executado nesta etapa |
+| 2026-10-23 | Fase 4 — Etapa 2 (interface) | 4 arquivos, 102 testes passaram (1,12 s) | sucesso: 24 módulos, 332 ms; CSS 14,08 kB / JS 56,91 kB | sem erros |
+| 2026-10-23 | Fase 4 — Etapa 3 (documentação) | 4 arquivos, 102 testes passaram (872 ms) | sucesso: 24 módulos, 332 ms; CSS 14,08 kB / JS 56,91 kB | sem erros |
 
 ## Problemas conhecidos, limitações e dúvidas
 
-- A interface (tabela, calculadora e balanceador) foi validada por `tsc`, build e lint, mas **não tem testes automatizados de navegador** (não há jsdom nem Playwright). A revisão manual no `npm run dev` é necessária.
+- A interface (tabela, calculadora, balanceador e quiz) foi validada por `tsc`, build e lint, mas **não tem testes automatizados de navegador** (não há jsdom nem Playwright). A revisão manual no `npm run dev` é necessária.
 - O parser não aceita coeficientes estequiométricos no início (`2H2O`) nem quantidades decimais. Coeficientes são aceitos apenas em hidratos, depois de `·`, `.` ou `*`.
 - As massas vêm do dataset; por isso `Fe2(SO4)3` resulta em 399,858 g/mol (dentro da tolerância de ±0,05 do `AGENTS.md`, mas diferente do valor arredondado 399,88). Pequenas diferenças em relação a massas convencionais arredondadas são esperadas.
 - `src/data/elements.json` é derivado de dataset CC BY-SA 3.0 e continua sob essa licença; o código do projeto é MIT. A distinção está em `src/data/README.md` e no `README.md`.
 - As massas de elementos sem massa padrão da IUPAC usam o número de massa do isótopo mais estável e aparecem entre colchetes na tabela; na calculadora, o resultado recebe um aviso de valor aproximado.
 - O GitHub Pages ainda não está configurado; o deploy é da Fase 5 e deverá usar `base: '/projeto/'`.
 - A branch `test/phase-0-bootstrap` continua no remoto; pode ser removida depois, se o usuário quiser.
-- A branch `feat/phase-3-equation-balancer` foi mesclada e publicada; a `main` contém a Fase 3.
+- A branch `feat/phase-4-quiz` ainda não foi publicada no momento desta atualização; a `main` contém as Fases 1, 2 e 3.
 - O balanceador não trata cargas iônicas nem equações redox com íons (ex.: `Fe2+`); o escopo atual cobre fórmulas neutras.
 - Coeficientes digitados pelo usuário são ignorados no cálculo; o resultado sempre usa os menores inteiros. Equações com coeficiente zero, múltiplas soluções ou sem solução positiva são rejeitadas com mensagem clara.
+- O quiz usa 10 perguntas por rodada e 4 alternativas; não há níveis de dificuldade nem limite de tempo.
+- A pontuação e o recorde do quiz ficam no `localStorage` do navegador: limpar os dados do site ou trocar de dispositivo zera o histórico. Em navegação privada, o quiz funciona, mas o recorde pode não persistir.
 - A pasta do projeto contém espaços no caminho (`meus projetos\projeto 1`); isso funciona, mas comandos manuais no terminal podem exigir aspas.
-- A tabela usa rolagem horizontal em telas estreitas, com dica visível; a legenda, a barra de filtros, a calculadora e o balanceador se reorganizam em uma coluna.
+- A tabela usa rolagem horizontal em telas estreitas, com dica visível; a legenda, a barra de filtros, a calculadora, o balanceador e o quiz se reorganizam em uma coluna.
 
 ## Próximo passo
 
-Apresentar o plano da Fase 4 — Quiz e aguardar o "ok" do usuário antes de criar a branch e editar arquivos.
+Enviar `feat/phase-4-quiz` ao GitHub e pedir ao usuário para revisar o quiz e o diff. Após aprovação, fazer o merge na `main` e só então planejar a Fase 5 — Polimento e publicação.
