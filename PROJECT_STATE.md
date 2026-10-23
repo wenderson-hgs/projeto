@@ -13,15 +13,15 @@
 | Stack | Node.js 24 (LTS) + npm 11, Vite 8 + TypeScript 6 (sem framework), Vitest 5, ESLint 10 + Prettier 3 |
 | Publicação | GitHub Pages via GitHub Actions (planejado para a Fase 5) |
 | Repositório | https://github.com/wenderson-hgs/projeto (nome do repositório: `projeto`) |
-| Branch principal | `main` (Fase 1 mesclada por fast-forward até `4c72f8a`; documentação no commit seguinte) |
-| Branch de trabalho | `feat/phase-1-periodic-table` (mesclada na `main`; pode ser removida do `origin` depois) |
+| Branch principal | `main` (Fase 1 publicada, commit `9d0def0`) |
+| Branch de trabalho | `feat/phase-2-molar-mass` (Fase 2; commits `fa29aca` e `c3e471e`; documentação no commit seguinte) |
 | Demo | ainda não publicada |
 
 ## Fase em andamento
 
-**Fase 1 — Tabela periódica (MVP) concluída e mesclada na `main`.**
+**Fase 2 — Massa molar concluída na branch `feat/phase-2-molar-mass`, aguardando revisão do usuário antes do merge na `main`.**
 
-> A Fase 0 e a Fase 1 estão concluídas. A próxima etapa é planejar a Fase 2 — Massa molar.
+> As Fases 0 e 1 estão publicadas na `main`. A Fase 2 adiciona o parser de fórmulas, o cálculo de massa molar e a composição percentual.
 
 ## Checklist de fases
 
@@ -39,10 +39,10 @@
 - [x] Navegação por teclado e layout responsivo (celular)
 
 ### Fase 2 — Massa molar
-- [ ] Parser de fórmulas: `H2O`, `Ca(OH)2`, `Fe2(SO4)3`, `K4[Fe(CN)6]` (parênteses e colchetes aninhados) e hidratos como `CuSO4·5H2O` (aceitar `·`, `.` e `*`)
-- [ ] Massa molar total + composição percentual por elemento
-- [ ] Mensagens de erro claras (símbolo desconhecido, parêntese sem fechar, fórmula vazia)
-- [ ] Testes unitários com os casos da seção 6
+- [x] Parser de fórmulas: `H2O`, `Ca(OH)2`, `Fe2(SO4)3`, `K4[Fe(CN)6]` (parênteses e colchetes aninhados) e hidratos como `CuSO4·5H2O` (aceitar `·`, `.` e `*`)
+- [x] Massa molar total + composição percentual por elemento
+- [x] Mensagens de erro claras (símbolo desconhecido, parêntese sem fechar, fórmula vazia)
+- [x] Testes unitários com os casos da seção 6
 
 ### Fase 3 — Balanceador de equações
 - [ ] Entrada como `Fe + O2 -> Fe2O3` (aceitar `->`, `=` e `→`)
@@ -71,11 +71,15 @@
 | 2026-10-23 | Fase 1 — Etapa 2: tabela | Criadas a grade CSS de 18 colunas, as 118 células, os placeholders dos lantanídeos/actinídeos e a legenda de categorias. Substituída a página de exemplo do Vite por `src/main.ts` próprio e removidos os arquivos de demonstração. Criados `src/styles/base.css`, `src/styles/table.css` e `src/ui/periodic-table.ts`. Commit `8415a94`. |
 | 2026-10-23 | Fase 1 — Etapa 3: interação | Criados o painel de detalhes, a barra de busca/filtro, a navegação por setas e os estilos responsivos. A tabela agora marca a célula selecionada, fecha o painel com `Esc`, ignora células filtradas na navegação e exibe contagem de resultados. Testes ampliados para busca combinada e consulta por número atômico. Commit `6c311ad`. |
 | 2026-10-23 | Fase 1 — revisão e merge | Branch revisada pelo usuário e mesclada por fast-forward na `main` (até `4c72f8a`), seguida do commit de documentação. Checks repetidos na `main`: 23 testes, build e lint sem erros. |
+| 2026-10-23 | Fase 2 — Etapa 1: lógica | Criados o parser recursivo de fórmulas e o cálculo de massa molar/composição em `src/lib/molar-mass.ts`. Adicionado `getElementBySymbol()` com `Map` em `src/lib/elements.ts`. Removido o teste temporário `tests/smoke.test.ts`. Testes ampliados para 56 casos. Commit `fa29aca`. |
+| 2026-10-23 | Fase 2 — Etapa 2: interface | Criada a seção da calculadora em `src/ui/molar-mass.ts`, com exemplos clicáveis, resultado, composição percentual, aviso de massa aproximada e mensagens de erro. Integrada abaixo da tabela em `src/main.ts`, com estilos em `src/styles/calculator.css`. Commit `c3e471e`. |
+| 2026-10-23 | Fase 2 — Etapa 3: validação e documentação | README, `PROJECT_STATE.md`, `docs/CLAUDE_HANDOFF.md` e checklist do `AGENTS.md` atualizados. Checks finais: 56 testes, build e lint sem erros. |
 
 ## Pendências
 
-- Apresentar o plano da Fase 2 — Massa molar e aguardar aprovação.
-- Remover as branches de trabalho já mescladas (`feat/phase-1-periodic-table` e `test/phase-0-bootstrap`) quando o usuário quiser.
+- Revisar a branch `feat/phase-2-molar-mass` no GitHub e testar a calculadora localmente.
+- Após aprovação, fazer o merge da Fase 2 na `main` e publicar.
+- Remover as branches de trabalho já mescladas (`feat/phase-1-periodic-table`, `feat/phase-2-molar-mass` e `test/phase-0-bootstrap`) quando o usuário quiser.
 
 ## Decisões importantes
 
@@ -88,7 +92,7 @@
 | 2026-10-23 | Raiz do repositório é a pasta atual (`projeto 1`) | O `AGENTS.md` já está aqui e nada precisa ser movido. |
 | 2026-10-23 | Nome do repositório remoto: `projeto` | Nome escolhido pelo usuário ao criar o repositório no GitHub. Impacto futuro: o `base` do Vite no GitHub Pages deverá ser `/projeto/`. |
 | 2026-10-23 | Template Vite gerado em pasta temporária e copiado para a raiz | Evita que o `create-vite` apague `AGENTS.md`, `PROJECT_STATE.md` e `docs/` em pasta não vazia. |
-| 2026-10-23 | `tests/smoke.test.ts` temporário | Prova que o Vitest funciona; será substituído pelos testes reais na Fase 2. |
+| 2026-10-23 | `tests/smoke.test.ts` temporário | Teste da Fase 0 para validar o Vitest; foi removido na Fase 2, quando os testes reais passaram a cobrir os dados e a calculadora. |
 | 2026-10-23 | `tsconfig.json` inclui `src` e `tests` | Permite que `tsc` (rodado no build) também verifique os tipos dos testes. |
 | 2026-10-23 | Revisão em branch de teste antes da `main` | Permite ao usuário conferir cada fase no GitHub antes de publicar na branch principal. |
 | 2026-10-23 | README remoto inicial substituído pelo nosso | O GitHub criou `# projeto`; o nosso README é completo e é a versão oficial do projeto. |
@@ -99,6 +103,14 @@
 | 2026-10-23 | Filtro esmaece/desabilita células em vez de removê-las do grid | Preserva o layout da tabela e a posição espacial dos elementos; a navegação por setas pula células desabilitadas. |
 | 2026-10-23 | Painel de detalhes fixo no canto inferior direito e bottom sheet no celular | Mantém a tabela visível no desktop e evita cobrir a tela toda em telas pequenas. `Esc` e o botão "Fechar" encerram; clicar de novo no mesmo elemento também fecha. |
 | 2026-10-23 | Busca e filtro são combinados (busca primeiro, categoria depois) | Permite refinar rapidamente, por exemplo, "argônio" dentro de "Gás nobre"; a contagem de resultados é anunciada em `role="status"`. |
+| 2026-10-23 | Parser recursivo descendente em `src/lib/molar-mass.ts`, sem biblioteca de química | Atende ao `AGENTS.md`, é testável sem navegador e cobre parênteses/colchetes aninhados e hidratos. |
+| 2026-10-23 | Espaços internos são ignorados e `·`, `.` e `*` separam hidratos | Facilita colar fórmulas com espaços e aceitar as três grafias de hidrato pedidas. Coeficientes de hidrato são aplicados à molécula inteira (`5H2O` = 5 × H2O). |
+| 2026-10-23 | Coeficiente no início da fórmula é rejeitado | `2H2O` é uma quantidade de matéria, não a fórmula de um composto; a calculadora recebe apenas a fórmula. Quantidades são inteiros positivos, sem decimais. |
+| 2026-10-23 | Erros usam `FormulaError` com `code` e mensagem em português | Permite testar os códigos e exibir mensagens claras diretamente na interface. |
+| 2026-10-23 | Resultado mostra composição percentual e aviso de massa aproximada | Transparência sobre a origem das massas e sobre elementos sem massa padrão da IUPAC. |
+| 2026-10-23 | Calculadora fica abaixo da tabela, na mesma página | Mantém a navegação simples, sem abas ou rotas, e reaproveita o layout existente. |
+| 2026-10-23 | `getElementBySymbol()` usa um `Map` | O parser consulta símbolos com frequência; a busca deixa de ser linear. |
+| 2026-10-23 | Valores exibidos com ponto decimal | Mantém consistência com a tabela periódica e com as massas do dataset. |
 
 ## Resultados de testes e build
 
@@ -110,19 +122,22 @@
 | 2026-10-23 | Fase 1 — Etapa 2 (tabela) | 2 arquivos, 18 testes passaram (425 ms) | sucesso: 9 módulos, 127 ms; CSS 3,66 kB / JS 30,73 kB | sem erros |
 | 2026-10-23 | Fase 1 — Etapa 3 (interação) | 2 arquivos, 23 testes passaram (481 ms) | sucesso: 14 módulos, 242 ms; CSS 6,14 kB / JS 36,23 kB | sem erros |
 | 2026-10-23 | Fase 1 — validação na `main` | 2 arquivos, 23 testes passaram (825 ms) | sucesso: 14 módulos, 327 ms; `index.html` 0,65 kB, CSS 6,14 kB / JS 36,23 kB | sem erros |
+| 2026-10-23 | Fase 2 — Etapa 1 (lógica) | 2 arquivos, 56 testes passaram (879 ms) | sucesso: 14 módulos, 312 ms; CSS 6,14 kB / JS 36,27 kB | sem erros |
+| 2026-10-23 | Fase 2 — Etapa 2 (interface) | 2 arquivos, 56 testes passaram (752 ms) | sucesso: 17 módulos, 307 ms; CSS 8,93 kB / JS 43,69 kB | sem erros |
 
 ## Problemas conhecidos, limitações e dúvidas
 
-- A interface (clique, busca, filtro, teclado) foi validada por `tsc`, build e lint, mas **não tem testes automatizados de navegador** (não há jsdom nem Playwright). A revisão manual no `npm run dev` é necessária.
-- `tests/smoke.test.ts` continua sendo um teste temporário da ferramenta; deve ser removido/substituído na Fase 2.
+- A interface (tabela e calculadora) foi validada por `tsc`, build e lint, mas **não tem testes automatizados de navegador** (não há jsdom nem Playwright). A revisão manual no `npm run dev` é necessária.
+- O parser não aceita coeficientes estequiométricos no início (`2H2O`) nem quantidades decimais. Coeficientes são aceitos apenas em hidratos, depois de `·`, `.` ou `*`.
+- As massas vêm do dataset; por isso `Fe2(SO4)3` resulta em 399,858 g/mol (dentro da tolerância de ±0,05 do `AGENTS.md`, mas diferente do valor arredondado 399,88). Pequenas diferenças em relação a massas convencionais arredondadas são esperadas.
 - `src/data/elements.json` é derivado de dataset CC BY-SA 3.0 e continua sob essa licença; o código do projeto é MIT. A distinção está em `src/data/README.md` e no `README.md`.
-- As massas de elementos sem massa padrão da IUPAC usam o número de massa do isótopo mais estável e aparecem entre colchetes na interface.
+- As massas de elementos sem massa padrão da IUPAC usam o número de massa do isótopo mais estável e aparecem entre colchetes na tabela; na calculadora, o resultado recebe um aviso de valor aproximado.
 - O GitHub Pages ainda não está configurado; o deploy é da Fase 5 e deverá usar `base: '/projeto/'`.
 - A branch `test/phase-0-bootstrap` continua no remoto; pode ser removida depois, se o usuário quiser.
-- A branch `feat/phase-1-periodic-table` foi mesclada na `main` e pode ser removida do remoto depois.
+- A branch `feat/phase-2-molar-mass` será publicada para revisão; a `main` permanece em `9d0def0` até a aprovação.
 - A pasta do projeto contém espaços no caminho (`meus projetos\projeto 1`); isso funciona, mas comandos manuais no terminal podem exigir aspas.
-- A tabela usa rolagem horizontal em telas estreitas, com dica visível; a legenda e a barra de filtros se reorganizam em uma coluna.
+- A tabela usa rolagem horizontal em telas estreitas, com dica visível; a legenda, a barra de filtros e a calculadora se reorganizam em uma coluna.
 
 ## Próximo passo
 
-Apresentar o plano da Fase 2 — Massa molar e aguardar o "ok" do usuário antes de criar ou alterar arquivos.
+Aguardar a revisão da branch `feat/phase-2-molar-mass` (GitHub e teste local em `npm run dev`). Após aprovação, fazer o merge na `main` e só então planejar a Fase 3 — Balanceador de equações.

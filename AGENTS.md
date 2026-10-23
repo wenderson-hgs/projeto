@@ -72,10 +72,10 @@ Mantenha a lógica de química em `src/lib/` **separada da interface**, para tes
 - [x] Navegação por teclado e layout responsivo (celular)
 
 ### Fase 2 — Massa molar
-- [ ] Parser de fórmulas: `H2O`, `Ca(OH)2`, `Fe2(SO4)3`, `K4[Fe(CN)6]` (parênteses e colchetes aninhados) e hidratos como `CuSO4·5H2O` (aceitar `·`, `.` e `*`)
-- [ ] Massa molar total + composição percentual por elemento
-- [ ] Mensagens de erro claras (símbolo desconhecido, parêntese sem fechar, fórmula vazia)
-- [ ] Testes unitários com os casos da seção 6
+- [x] Parser de fórmulas: `H2O`, `Ca(OH)2`, `Fe2(SO4)3`, `K4[Fe(CN)6]` (parênteses e colchetes aninhados) e hidratos como `CuSO4·5H2O` (aceitar `·`, `.` e `*`)
+- [x] Massa molar total + composição percentual por elemento
+- [x] Mensagens de erro claras (símbolo desconhecido, parêntese sem fechar, fórmula vazia)
+- [x] Testes unitários com os casos da seção 6
 
 ### Fase 3 — Balanceador de equações
 - [ ] Entrada como `Fe + O2 -> Fe2O3` (aceitar `->`, `=` e `→`)
