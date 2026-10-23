@@ -6,7 +6,7 @@
 
 ## Situação atual
 
-- **Etapa:** Fase 1 — Tabela periódica (MVP) concluída na branch `feat/phase-1-periodic-table` (commit `6c311ad`), aguardando revisão do usuário antes do merge na `main`.
+- **Etapa:** Fase 1 — Tabela periódica (MVP) concluída e mesclada na `main` por fast-forward até `4c72f8a`, seguida do commit de documentação.
 - **Repositório:** https://github.com/wenderson-hgs/projeto
 - **Projeto:** chem-toolkit, site estático (Vite + TypeScript, sem framework) com tabela periódica interativa, calculadora de massa molar, balanceador de equações e quiz.
 - **Próxima fase:** Fase 2 — Massa molar (ainda não planejada/aprovada).
@@ -159,23 +159,23 @@ function enableGridKeyboardNavigation(table: HTMLElement): void;
 
 ## 5. Resultado real de `npm test`, `npm run build` e `npm run lint`
 
-Executados em 2026-10-23, na pasta do projeto, após a Etapa 3:
+Executados em 2026-10-23, na `main`, após o merge da Fase 1:
 
 ```text
 $ npm test
-RUN  v5.0.5 C:/Users/wende/OneDrive/Desktop/wenderson/projetos/SaaS/read me/projeto 1
+RUN  v5.0.5 C:/Users/wende/OneDrive/Desktop/wenderson/projetos/SaaS/meus projetos/projeto 1
 Test Files  2 passed (2)
      Tests  23 passed (23)
-  Duration  481ms
+  Duration  825ms
 
 $ npm run build
 tsc && vite build
 vite v8.3.5 building client environment for production...
 ✓ 14 modules transformed.
-dist/index.html                  0.63 kB │ gzip: 0.39 kB
+dist/index.html                  0.65 kB │ gzip: 0.40 kB
 dist/assets/index-s8JI_o9c.css   6.14 kB │ gzip: 1.97 kB
 dist/assets/index-CAHkaCQS.js   36.23 kB │ gzip: 7.34 kB
-✓ built in 242ms
+✓ built in 327ms
 
 $ npm run lint
 eslint .
@@ -193,7 +193,7 @@ Etapas anteriores: Etapa 1 com 18 testes e build de 194 ms; Etapa 2 com 18 teste
 - **Licença dos dados:** `elements.json` é CC BY-SA 3.0 e o código é MIT. A atribuição está no README, no rodapé e em `src/data/README.md`. Há algo a melhorar nessa separação?
 - **`tests/smoke.test.ts`** ainda é temporário e deve ser removido/substituído na Fase 2.
 - **GitHub Pages** ainda não configurado; na Fase 5 o `base` do Vite deve ser `/projeto/`.
-- **Branch publicada:** `feat/phase-1-periodic-table` está no `origin` e aguarda revisão; a `main` continua em `d4eed51`.
+- **Branch mesclada:** `feat/phase-1-periodic-table` foi integrada à `main`; pode ser removida do `origin` depois.
 
 ## 7. Como usar este documento
 

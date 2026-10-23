@@ -59,10 +59,10 @@ Mantenha a lógica de química em `src/lib/` **separada da interface**, para tes
 ## 5. Fases (marque [x] ao concluir)
 
 ### Fase 0 — Preparação
-- [ ] Verificar pré-requisitos (seção 3)
-- [ ] Criar o projeto Vite + TypeScript (template vanilla) e configurar Vitest, ESLint e Prettier
-- [ ] Criar `.gitignore` (inclua `node_modules` e `dist`), `LICENSE` (MIT) e um `README.md` inicial
-- [ ] `git init`, primeiro commit, criar o repositório no GitHub e fazer o primeiro push (com a minha confirmação)
+- [x] Verificar pré-requisitos (seção 3)
+- [x] Criar o projeto Vite + TypeScript (template vanilla) e configurar Vitest, ESLint e Prettier
+- [x] Criar `.gitignore` (inclua `node_modules` e `dist`), `LICENSE` (MIT) e um `README.md` inicial
+- [x] `git init`, primeiro commit, criar o repositório no GitHub e fazer o primeiro push (com a minha confirmação)
 
 ### Fase 1 — Tabela periódica (MVP)
 - [x] `src/data/elements.json` com os 118 elementos: número atômico, símbolo, nome em português e em inglês, massa atômica, categoria, grupo, período e posição (linha/coluna) no layout

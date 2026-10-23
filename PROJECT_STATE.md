@@ -13,15 +13,15 @@
 | Stack | Node.js 24 (LTS) + npm 11, Vite 8 + TypeScript 6 (sem framework), Vitest 5, ESLint 10 + Prettier 3 |
 | Publicação | GitHub Pages via GitHub Actions (planejado para a Fase 5) |
 | Repositório | https://github.com/wenderson-hgs/projeto (nome do repositório: `projeto`) |
-| Branch principal | `main` (Fase 0 publicada, commit `d4eed51`) |
-| Branch de trabalho | `feat/phase-1-periodic-table` (Fase 1, publicada no `origin`, commit final `a5462b8`) |
+| Branch principal | `main` (Fase 1 mesclada por fast-forward até `4c72f8a`; documentação no commit seguinte) |
+| Branch de trabalho | `feat/phase-1-periodic-table` (mesclada na `main`; pode ser removida do `origin` depois) |
 | Demo | ainda não publicada |
 
 ## Fase em andamento
 
-**Fase 1 — Tabela periódica (MVP) concluída na branch `feat/phase-1-periodic-table`, aguardando revisão do usuário antes do merge na `main`.**
+**Fase 1 — Tabela periódica (MVP) concluída e mesclada na `main`.**
 
-> A Fase 0 está concluída e publicada. A Fase 1 foi implementada em três etapas testáveis e ainda não foi mesclada.
+> A Fase 0 e a Fase 1 estão concluídas. A próxima etapa é planejar a Fase 2 — Massa molar.
 
 ## Checklist de fases
 
@@ -70,12 +70,12 @@
 | 2026-10-23 | Fase 1 — Etapa 1: dados | Dataset original (119 entradas) filtrado para 118 elementos. Licença CC BY-SA 3.0 confirmada no repositório de origem. Nomes `pt-br` obtidos do Wikidata (CC0), com fallback para `pt`. Categorias normalizadas em 9 grupos; massas aproximadas marcadas. Criados `src/data/elements.json`, `src/data/README.md`, `src/lib/elements.ts` e `tests/elements.test.ts`. Commit `c87e66a`. |
 | 2026-10-23 | Fase 1 — Etapa 2: tabela | Criadas a grade CSS de 18 colunas, as 118 células, os placeholders dos lantanídeos/actinídeos e a legenda de categorias. Substituída a página de exemplo do Vite por `src/main.ts` próprio e removidos os arquivos de demonstração. Criados `src/styles/base.css`, `src/styles/table.css` e `src/ui/periodic-table.ts`. Commit `8415a94`. |
 | 2026-10-23 | Fase 1 — Etapa 3: interação | Criados o painel de detalhes, a barra de busca/filtro, a navegação por setas e os estilos responsivos. A tabela agora marca a célula selecionada, fecha o painel com `Esc`, ignora células filtradas na navegação e exibe contagem de resultados. Testes ampliados para busca combinada e consulta por número atômico. Commit `6c311ad`. |
+| 2026-10-23 | Fase 1 — revisão e merge | Branch revisada pelo usuário e mesclada por fast-forward na `main` (até `4c72f8a`), seguida do commit de documentação. Checks repetidos na `main`: 23 testes, build e lint sem erros. |
 
 ## Pendências
 
-- Aguardar a revisão do usuário na branch `feat/phase-1-periodic-table` (GitHub e teste local).
-- Após aprovação, fazer merge da Fase 1 na `main` e publicar.
 - Apresentar o plano da Fase 2 — Massa molar e aguardar aprovação.
+- Remover as branches de trabalho já mescladas (`feat/phase-1-periodic-table` e `test/phase-0-bootstrap`) quando o usuário quiser.
 
 ## Decisões importantes
 
@@ -109,6 +109,7 @@
 | 2026-10-23 | Fase 1 — Etapa 1 (dados) | 2 arquivos, 18 testes passaram (515 ms) | sucesso: 9 módulos, 194 ms; CSS 4,10 kB / JS 4,49 kB | sem erros |
 | 2026-10-23 | Fase 1 — Etapa 2 (tabela) | 2 arquivos, 18 testes passaram (425 ms) | sucesso: 9 módulos, 127 ms; CSS 3,66 kB / JS 30,73 kB | sem erros |
 | 2026-10-23 | Fase 1 — Etapa 3 (interação) | 2 arquivos, 23 testes passaram (481 ms) | sucesso: 14 módulos, 242 ms; CSS 6,14 kB / JS 36,23 kB | sem erros |
+| 2026-10-23 | Fase 1 — validação na `main` | 2 arquivos, 23 testes passaram (825 ms) | sucesso: 14 módulos, 327 ms; `index.html` 0,65 kB, CSS 6,14 kB / JS 36,23 kB | sem erros |
 
 ## Problemas conhecidos, limitações e dúvidas
 
@@ -118,10 +119,10 @@
 - As massas de elementos sem massa padrão da IUPAC usam o número de massa do isótopo mais estável e aparecem entre colchetes na interface.
 - O GitHub Pages ainda não está configurado; o deploy é da Fase 5 e deverá usar `base: '/projeto/'`.
 - A branch `test/phase-0-bootstrap` continua no remoto; pode ser removida depois, se o usuário quiser.
-- A branch `feat/phase-1-periodic-table` foi publicada no `origin` e aguarda revisão; a `main` continua em `d4eed51`.
-- A pasta do projeto contém espaços no caminho (`read me\projeto 1`); isso funciona, mas comandos manuais no terminal podem exigir aspas.
+- A branch `feat/phase-1-periodic-table` foi mesclada na `main` e pode ser removida do remoto depois.
+- A pasta do projeto contém espaços no caminho (`meus projetos\projeto 1`); isso funciona, mas comandos manuais no terminal podem exigir aspas.
 - A tabela usa rolagem horizontal em telas estreitas, com dica visível; a legenda e a barra de filtros se reorganizam em uma coluna.
 
 ## Próximo passo
 
-Aguardar a revisão do usuário na branch `feat/phase-1-periodic-table` (GitHub e teste local em `npm run dev`). Após aprovação, fazer o merge na `main` e só então planejar a Fase 2.
+Apresentar o plano da Fase 2 — Massa molar e aguardar o "ok" do usuário antes de criar ou alterar arquivos.
