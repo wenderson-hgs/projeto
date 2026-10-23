@@ -6,8 +6,9 @@
 
 ## Situação atual
 
-- **Etapa:** Fase 0 — Preparação concluída localmente (falta criar o repositório no GitHub e fazer o push).
-- **Próxima fase:** Fase 1 — Tabela periódica (MVP).
+- **Etapa:** Fase 0 — Preparação concluída localmente e publicada na branch de teste `test/phase-0-bootstrap`.
+- **Repositório:** https://github.com/wenderson-hgs/projeto (a `main` remota ainda está no `Initial commit` do GitHub).
+- **Próxima fase:** após revisão/aprovação da branch de teste, merge na `main`; depois Fase 1 — Tabela periódica (MVP).
 - **Projeto:** chem-toolkit, site estático (Vite + TypeScript, sem framework) com tabela periódica interativa, calculadora de massa molar, balanceador de equações e quiz.
 
 ## 1. Objetivo da etapa e o que foi implementado
@@ -90,6 +91,8 @@ O restante de `src/` é o exemplo padrão do Vite (`setupCounter` em `src/counte
 | `tests/smoke.test.ts` temporário | Valida a ferramenta de testes; será substituído na Fase 2. |
 | Lógica de química ficará em `src/lib/`, separada da UI | Permite testar sem navegador, conforme `AGENTS.md`. |
 | Nenhuma sugestão do Claude é aplicada automaticamente | O OpenCode compara com o código e com o `AGENTS.md`, explica benefícios e riscos e pede aprovação. |
+| Nome do repositório remoto: `projeto` | Escolha do usuário; o `base` do Vite no GitHub Pages deverá ser `/projeto/`. |
+| Revisão em branch de teste antes da `main` | Permite ao usuário conferir a Fase 0 no GitHub antes de publicar na branch principal. |
 
 ## 6. Resultado real de `npm test` e `npm run build`
 
@@ -115,11 +118,28 @@ eslint .
 
 O `build` gerou `dist/` com `index.html`, CSS e JS. Nenhum resultado foi declarado sem execução real.
 
+Após integrar o `Initial commit` remoto (merge que só envolveu o `README.md`), os checks foram repetidos:
+
+```text
+$ npm test
+Test Files  1 passed (1)
+Tests       1 passed (1)
+Duration    432ms
+
+$ npm run build
+✓ 9 modules transformed.
+✓ built in 268ms
+
+$ npm run lint
+(sem erros)
+```
+
 ## 7. Problemas conhecidos, limitações e dúvidas para revisão
 
 - `index.html`/`src/main.ts` ainda exibem a página de exemplo do Vite; serão substituídos na Fase 1.
 - `tests/smoke.test.ts` é temporário.
-- O repositório no GitHub ainda não foi criado; o push depende da confirmação do usuário.
+- A `main` remota ainda está no `Initial commit`; o projeto está na branch `test/phase-0-bootstrap`, aguardando revisão do usuário.
+- O nome do repositório é `projeto` (não `chem-toolkit`); na Fase 5, o `base` do Vite para o GitHub Pages deverá ser `/projeto/`.
 - O caminho local contém espaços (`read me\projeto 1`); funciona, mas comandos manuais podem exigir aspas.
 - **Dúvidas para o Claude:**
   1. A organização planejada (`src/data`, `src/lib`, `src/ui`, `src/styles`) é adequada para um projeto vanilla TS desse tamanho, ou há sugestão mais simples?
