@@ -33,7 +33,9 @@ npm run format   # formata o código com Prettier
 
 ## Dados
 
-Os dados dos elementos serão obtidos de um dataset aberto. A fonte e a licença serão registradas aqui na Fase 1.
+Os dados dos 118 elementos estão em [`src/data/elements.json`](src/data/elements.json). A fonte, a licença e as alterações estão documentadas em [`src/data/README.md`](src/data/README.md).
+
+Resumo: estrutura, massas, categorias e posições derivadas do [Periodic-Table-JSON](https://github.com/Bowserinator/Periodic-Table-JSON) (CC BY-SA 3.0); nomes em português do Brasil obtidos do [Wikidata](https://www.wikidata.org/) (CC0). O arquivo de dados é distribuído sob CC BY-SA 3.0; o código do projeto permanece MIT.
 
 ## Licença
 
