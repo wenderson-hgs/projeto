@@ -13,12 +13,14 @@
 | Stack | Node.js 24 (LTS) + npm 11, Vite 8 + TypeScript 6 (sem framework), Vitest 5, ESLint 10 + Prettier 3 |
 | Publicação | GitHub Pages via GitHub Actions (planejado) |
 | Repositório | https://github.com/wenderson-hgs/projeto (nome do repositório: `projeto`) |
-| Branch em revisão | `test/phase-0-bootstrap` |
+| Branch principal | `main` (Fase 0 publicada) |
 | Demo | ainda não publicada |
 
 ## Fase em andamento
 
-**Fase 0 — Preparação** (concluída localmente e enviada para a branch de teste `test/phase-0-bootstrap`; falta a revisão do usuário e o merge/push da `main`)
+**Fase 1 — Tabela periódica (MVP)** (não iniciada)
+
+> Fase 0 concluída e publicada na `main`.
 
 ## Checklist de fases
 
@@ -26,7 +28,7 @@
 - [x] Verificar pré-requisitos (seção 3) — Node v24.21.0, npm 11.19.0, Git 2.55.0; `user.name` e `user.email` configurados
 - [x] Criar o projeto Vite + TypeScript (template vanilla) e configurar Vitest, ESLint e Prettier
 - [x] Criar `.gitignore` (inclui `node_modules` e `dist`), `LICENSE` (MIT) e um `README.md` inicial
-- [ ] `git init`, primeiro commit, criar o repositório no GitHub e fazer o primeiro push (com a minha confirmação) — `git init`, commits (`8026282`, `dce96eb`) e repositório criado; push feito apenas na branch de teste `test/phase-0-bootstrap`; merge/push da `main` pendente de confirmação
+- [x] `git init`, primeiro commit, criar o repositório no GitHub e fazer o primeiro push (com a minha confirmação) — repositório criado, branch de teste revisada e `main` publicada
 
 ### Fase 1 — Tabela periódica (MVP)
 - [ ] `src/data/elements.json` com os 118 elementos: número atômico, símbolo, nome em português e em inglês, massa atômica, categoria, grupo, período e posição (linha/coluna) no layout
@@ -63,12 +65,10 @@
 |---|---|---|
 | 2026-10-23 | Fluxo de trabalho | Criados `PROJECT_STATE.md` e `docs/CLAUDE_HANDOFF.md` para documentar estado e handoff com o Claude. Nenhum código de aplicação criado. |
 | 2026-10-23 | Fase 0 — Preparação | Pré-requisitos verificados. Template Vite 8 + TypeScript 6 (vanilla) criado. Instalados Vitest 5, ESLint 10, Prettier 3 e dependências auxiliares. Configurados scripts (`test`, `test:watch`, `lint`, `format`), `vitest.config.ts`, `eslint.config.js`, `.prettierrc.json`, `.prettierignore`, `.gitignore`, `LICENSE` (MIT) e `README.md` inicial. Criado `tests/smoke.test.ts`. Repositório Git inicializado e commits `8026282` e `dce96eb` criados. |
-| 2026-10-23 | Publicação da branch de teste | Repositório `https://github.com/wenderson-hgs/projeto` conectado como `origin`. Histórico remoto (`Initial commit` com README mínimo) integrado à branch `test/phase-0-bootstrap`, mantendo o nosso `README.md`. Branch enviada ao GitHub para revisão. `main` remota ainda não alterada. |
+| 2026-10-23 | Publicação e merge da Fase 0 | Repositório `https://github.com/wenderson-hgs/projeto` conectado como `origin`. Histórico remoto (`Initial commit` com README mínimo) integrado à branch `test/phase-0-bootstrap`, mantendo o nosso `README.md`. Branch revisada pelo usuário e merge fast-forward na `main` (`3d6e034`), seguido do commit `5790db8` (nome do projeto no `package-lock.json`). `main` enviada ao GitHub. |
 
 ## Pendências
 
-- Revisar a branch `test/phase-0-bootstrap` no GitHub.
-- Após aprovação, fazer merge da branch de teste na `main` e enviar a `main` ao GitHub.
 - Iniciar a Fase 1 — Tabela periódica (MVP).
 
 ## Decisões importantes
@@ -84,7 +84,7 @@
 | 2026-10-23 | Template Vite gerado em pasta temporária e copiado para a raiz | Evita que o `create-vite` apague `AGENTS.md`, `PROJECT_STATE.md` e `docs/` em pasta não vazia. |
 | 2026-10-23 | `tests/smoke.test.ts` temporário | Prova que o Vitest funciona; será substituído pelos testes reais na Fase 2. |
 | 2026-10-23 | `tsconfig.json` inclui `src` e `tests` | Permite que `tsc` (rodado no build) também verifique os tipos dos testes. |
-| 2026-10-23 | Revisão em branch de teste antes da `main` | Permite ao usuário conferir a Fase 0 no GitHub antes de publicar na branch principal. |
+| 2026-10-23 | Revisão em branch de teste antes da `main` | Permite ao usuário conferir cada fase no GitHub antes de publicar na branch principal. |
 | 2026-10-23 | README remoto inicial substituído pelo nosso | O GitHub criou `# projeto`; o nosso README é completo e é a versão oficial do projeto. |
 
 ## Resultados de testes e build
@@ -98,10 +98,10 @@
 
 - O `index.html` e `src/main.ts` ainda mostram a página de exemplo do Vite; serão substituídos na Fase 1.
 - O teste `tests/smoke.test.ts` é apenas uma verificação da ferramenta e será removido/substituído na Fase 2.
-- A `main` remota ainda contém apenas o `Initial commit` do GitHub; o projeto está na branch `test/phase-0-bootstrap` até a revisão do usuário.
 - O GitHub Pages ainda não está configurado; o deploy é da Fase 5 e deverá usar `base: '/projeto/'`.
+- A branch `test/phase-0-bootstrap` continua no remoto; pode ser removida depois, se o usuário quiser.
 - A pasta do projeto contém espaços no caminho (`read me\projeto 1`); isso funciona, mas comandos manuais no terminal podem exigir aspas.
 
 ## Próximo passo
 
-Usuário revisa a branch `test/phase-0-bootstrap` no GitHub. Após aprovação, fazer o merge na `main` e o push da `main`. Depois, iniciar a Fase 1 — Tabela periódica (MVP).
+Apresentar o plano da Fase 1 — Tabela periódica (MVP) e aguardar aprovação antes de criar ou alterar arquivos.

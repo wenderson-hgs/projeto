@@ -6,9 +6,9 @@
 
 ## Situação atual
 
-- **Etapa:** Fase 0 — Preparação concluída localmente e publicada na branch de teste `test/phase-0-bootstrap`.
-- **Repositório:** https://github.com/wenderson-hgs/projeto (a `main` remota ainda está no `Initial commit` do GitHub).
-- **Próxima fase:** após revisão/aprovação da branch de teste, merge na `main`; depois Fase 1 — Tabela periódica (MVP).
+- **Etapa:** Fase 0 — Preparação concluída e publicada na `main`.
+- **Repositório:** https://github.com/wenderson-hgs/projeto
+- **Próxima fase:** Fase 1 — Tabela periódica (MVP), aguardando aprovação do plano.
 - **Projeto:** chem-toolkit, site estático (Vite + TypeScript, sem framework) com tabela periódica interativa, calculadora de massa molar, balanceador de equações e quiz.
 
 ## 1. Objetivo da etapa e o que foi implementado
@@ -85,14 +85,14 @@ O restante de `src/` é o exemplo padrão do Vite (`setupCounter` em `src/counte
 
 | Decisão | Justificativa |
 |---|---|
-| Raiz do repositório é a pasta atual (`projeto 1`), e não uma subpasta `chem-toolkit/` | O `AGENTS.md` já está aqui; o nome do repositório no GitHub será `chem-toolkit`. |
+| Raiz do repositório é a pasta atual (`projeto 1`), e não uma subpasta `chem-toolkit/` | O `AGENTS.md` já está aqui; o nome do repositório no GitHub é `projeto`. |
 | Template gerado em pasta temporária e copiado para a raiz | Evita que o `create-vite` apague arquivos existentes em pasta não vazia. |
 | `tsc` roda no `build` e inclui `tests` | Verifica tipos do código e dos testes no mesmo comando. |
 | `tests/smoke.test.ts` temporário | Valida a ferramenta de testes; será substituído na Fase 2. |
 | Lógica de química ficará em `src/lib/`, separada da UI | Permite testar sem navegador, conforme `AGENTS.md`. |
 | Nenhuma sugestão do Claude é aplicada automaticamente | O OpenCode compara com o código e com o `AGENTS.md`, explica benefícios e riscos e pede aprovação. |
 | Nome do repositório remoto: `projeto` | Escolha do usuário; o `base` do Vite no GitHub Pages deverá ser `/projeto/`. |
-| Revisão em branch de teste antes da `main` | Permite ao usuário conferir a Fase 0 no GitHub antes de publicar na branch principal. |
+| Revisão em branch de teste antes da `main` | Permite ao usuário conferir cada fase no GitHub antes de publicar na branch principal. |
 
 ## 6. Resultado real de `npm test` e `npm run build`
 
@@ -138,7 +138,7 @@ $ npm run lint
 
 - `index.html`/`src/main.ts` ainda exibem a página de exemplo do Vite; serão substituídos na Fase 1.
 - `tests/smoke.test.ts` é temporário.
-- A `main` remota ainda está no `Initial commit`; o projeto está na branch `test/phase-0-bootstrap`, aguardando revisão do usuário.
+- A branch `test/phase-0-bootstrap` continua no remoto; pode ser removida depois, se o usuário quiser.
 - O nome do repositório é `projeto` (não `chem-toolkit`); na Fase 5, o `base` do Vite para o GitHub Pages deverá ser `/projeto/`.
 - O caminho local contém espaços (`read me\projeto 1`); funciona, mas comandos manuais podem exigir aspas.
 - **Dúvidas para o Claude:**
