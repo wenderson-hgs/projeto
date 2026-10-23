@@ -28,6 +28,8 @@ export interface Element {
 
 export const elements = rawElements as Element[];
 
+const elementsBySymbol = new Map(elements.map((element) => [element.symbol, element]));
+
 export const CATEGORY_ORDER: ElementCategory[] = [
   'alkali-metal',
   'alkaline-earth-metal',
@@ -89,6 +91,10 @@ export function filterByCategory(
 
 export function getElementByAtomicNumber(atomicNumber: number): Element | undefined {
   return elements.find((element) => element.atomicNumber === atomicNumber);
+}
+
+export function getElementBySymbol(symbol: string): Element | undefined {
+  return elementsBySymbol.get(symbol);
 }
 
 export function formatAtomicMass(element: Element): string {

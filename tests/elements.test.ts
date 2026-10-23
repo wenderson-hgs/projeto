@@ -5,6 +5,7 @@ import {
   filterByCategory,
   formatAtomicMass,
   getElementByAtomicNumber,
+  getElementBySymbol,
   searchElements,
 } from '../src/lib/elements';
 
@@ -151,6 +152,20 @@ describe('getElementByAtomicNumber', () => {
     expect(getElementByAtomicNumber(0)).toBeUndefined();
     expect(getElementByAtomicNumber(119)).toBeUndefined();
     expect(getElementByAtomicNumber(-1)).toBeUndefined();
+  });
+});
+
+describe('getElementBySymbol', () => {
+  it('finds elements by symbol', () => {
+    expect(getElementBySymbol('H')?.atomicNumber).toBe(1);
+    expect(getElementBySymbol('Fe')?.namePt).toBe('Ferro');
+    expect(getElementBySymbol('Og')?.atomicNumber).toBe(118);
+  });
+
+  it('returns undefined for unknown symbols and wrong case', () => {
+    expect(getElementBySymbol('Xx')).toBeUndefined();
+    expect(getElementBySymbol('fe')).toBeUndefined();
+    expect(getElementBySymbol('')).toBeUndefined();
   });
 });
 
