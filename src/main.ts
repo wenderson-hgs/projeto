@@ -1,60 +1,67 @@
-import './style.css'
-import heroImg from './assets/hero.png'
-import typescriptLogo from './assets/typescript.svg'
-import viteLogo from './assets/vite.svg'
-import { setupCounter } from './counter.ts'
+import './styles/base.css';
+import './styles/table.css';
+import { elements } from './lib/elements';
+import { createLegend, createPeriodicTable } from './ui/periodic-table';
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-<section id="center">
-  <div class="hero">
-    <img src="${heroImg}" class="base" width="170" height="179">
-    <img src="${typescriptLogo}" class="framework" alt="TypeScript logo"/>
-    <img src="${viteLogo}" class="vite" alt="Vite logo" />
-  </div>
-  <div>
-    <h1>Get started</h1>
-    <p>Edit <code>src/main.ts</code> and save to test <code>HMR</code></p>
-  </div>
-  <button id="counter" type="button" class="counter"></button>
-</section>
+const app = document.querySelector<HTMLDivElement>('#app');
 
-<div class="ticks"></div>
+if (!app) {
+  throw new Error('Elemento #app não encontrado');
+}
 
-<section id="next-steps">
-  <div id="docs">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#documentation-icon"></use></svg>
-    <h2>Documentation</h2>
-    <p>Your questions, answered</p>
-    <ul>
-      <li>
-        <a href="https://vite.dev/" target="_blank">
-          <img class="logo" src="${viteLogo}" alt="" />
-          Explore Vite
-        </a>
-      </li>
-      <li>
-        <a href="https://www.typescriptlang.org" target="_blank">
-          <img class="button-icon" src="${typescriptLogo}" alt="">
-          Learn more
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div id="social">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#social-icon"></use></svg>
-    <h2>Connect with us</h2>
-    <p>Join the Vite community</p>
-    <ul>
-      <li><a href="https://github.com/vitejs/vite" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#github-icon"></use></svg>GitHub</a></li>
-      <li><a href="https://chat.vite.dev/" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#discord-icon"></use></svg>Discord</a></li>
-      <li><a href="https://x.com/vite_js" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#x-icon"></use></svg>X.com</a></li>
-      <li><a href="https://bsky.app/profile/vite.dev" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#bluesky-icon"></use></svg>Bluesky</a></li>
-    </ul>
-  </div>
-</section>
+app.replaceChildren();
 
-<div class="ticks"></div>
-<section id="spacer"></section>
-`
+const header = document.createElement('header');
+header.className = 'site-header';
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+const title = document.createElement('h1');
+title.textContent = 'chem-toolkit';
+
+const subtitle = document.createElement('p');
+subtitle.textContent = 'Tabela periódica interativa com os 118 elementos químicos.';
+
+header.append(title, subtitle);
+
+const main = document.createElement('main');
+
+const section = document.createElement('section');
+section.className = 'table-section';
+section.setAttribute('aria-labelledby', 'table-title');
+
+const sectionTitle = document.createElement('h2');
+sectionTitle.id = 'table-title';
+sectionTitle.textContent = 'Tabela periódica';
+sectionTitle.className = 'sr-only';
+
+const scrollHint = document.createElement('p');
+scrollHint.className = 'scroll-hint';
+scrollHint.textContent = 'Deslize para os lados para ver a tabela completa.';
+
+const tableWrapper = document.createElement('div');
+tableWrapper.className = 'table-wrapper';
+tableWrapper.append(createPeriodicTable(elements));
+
+section.append(sectionTitle, scrollHint, tableWrapper, createLegend());
+main.append(section);
+
+const footer = document.createElement('footer');
+footer.className = 'site-footer';
+footer.append(
+  document.createTextNode('Dados: '),
+  createLink('https://github.com/Bowserinator/Periodic-Table-JSON', 'Periodic-Table-JSON'),
+  document.createTextNode(' (CC BY-SA 3.0) · Nomes: '),
+  createLink('https://www.wikidata.org/', 'Wikidata'),
+  document.createTextNode(' (CC0) · '),
+  createLink('https://github.com/wenderson-hgs/projeto', 'Código no GitHub'),
+);
+
+app.append(header, main, footer);
+
+function createLink(href: string, text: string): HTMLAnchorElement {
+  const link = document.createElement('a');
+  link.href = href;
+  link.textContent = text;
+  link.target = '_blank';
+  link.rel = 'noreferrer';
+  return link;
+}

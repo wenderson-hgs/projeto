@@ -1,0 +1,150 @@
+:root {
+  color-scheme: light;
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  --page-bg: #f8fafc;
+  --text: #0f172a;
+  --muted: #64748b;
+  --border: #cbd5e1;
+  --focus: #1d4ed8;
+  --cell-text: #0f172a;
+
+  --color-alkali-metal: #fecaca;
+  --color-alkaline-earth-metal: #fed7aa;
+  --color-transition-metal: #fef08a;
+  --color-post-transition-metal: #d9f99d;
+  --color-metalloid: #bbf7d0;
+  --color-nonmetal: #bae6fd;
+  --color-noble-gas: #ddd6fe;
+  --color-lanthanide: #fbcfe8;
+  --color-actinide: #e9d5ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--page-bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+#app {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+}
+
+.site-header {
+  margin-bottom: 20px;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 1.7rem;
+  letter-spacing: -0.02em;
+}
+
+.site-header p {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+
+.table-section h2 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+}
+
+.scroll-hint {
+  display: none;
+  margin: 0 0 6px;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.legend-container {
+  margin-top: 14px;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.legend-swatch {
+  width: 14px;
+  height: 14px;
+  border: 1px solid rgb(15 23 42 / 15%);
+  border-radius: 3px;
+}
+
+.legend-note {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.site-footer {
+  margin-top: 28px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.site-footer a {
+  color: inherit;
+}
+
+.site-footer a:hover {
+  color: var(--text);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 720px) {
+  #app {
+    padding: 16px 10px 28px;
+  }
+
+  .site-header h1 {
+    font-size: 1.35rem;
+  }
+
+  .site-header p {
+    font-size: 0.9rem;
+  }
+
+  .scroll-hint {
+    display: block;
+  }
+}
