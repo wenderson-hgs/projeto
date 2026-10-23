@@ -19,6 +19,7 @@ import { createMolarMassCalculator } from './ui/molar-mass';
 import { createLegend, createPeriodicTable } from './ui/periodic-table';
 import { createSearchFilter, type CategoryFilter } from './ui/search-filter';
 import { createQuiz } from './ui/quiz';
+import { createThemeToggle } from './ui/theme-toggle';
 
 const app = document.querySelector<HTMLDivElement>('#app');
 
@@ -28,8 +29,19 @@ if (!app) {
 
 app.replaceChildren();
 
+const skipLink = document.createElement('a');
+skipLink.className = 'skip-link';
+skipLink.href = '#conteudo';
+skipLink.textContent = 'Pular para o conteúdo';
+
 const header = document.createElement('header');
 header.className = 'site-header';
+
+const headerTop = document.createElement('div');
+headerTop.className = 'site-header-top';
+
+const titleBlock = document.createElement('div');
+titleBlock.className = 'site-header-titles';
 
 const title = document.createElement('h1');
 title.textContent = 'chem-toolkit';
@@ -37,9 +49,13 @@ title.textContent = 'chem-toolkit';
 const subtitle = document.createElement('p');
 subtitle.textContent = 'Tabela periódica interativa e ferramentas de química com os 118 elementos.';
 
-header.append(title, subtitle);
+titleBlock.append(title, subtitle);
+headerTop.append(titleBlock, createThemeToggle());
+header.append(headerTop);
 
 const main = document.createElement('main');
+main.id = 'conteudo';
+main.tabIndex = -1;
 
 const section = document.createElement('section');
 section.className = 'table-section';
@@ -84,7 +100,7 @@ footer.append(
   createLink('https://github.com/wenderson-hgs/projeto', 'Código no GitHub'),
 );
 
-app.append(header, main, detailsPanel.element, footer);
+app.append(skipLink, header, main, detailsPanel.element, footer);
 
 table.addEventListener('click', handleTableClick);
 enableGridKeyboardNavigation(table);

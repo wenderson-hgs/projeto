@@ -20,7 +20,7 @@
   justify-content: center;
   aspect-ratio: 1;
   padding: 4px;
-  border: 1px solid rgb(15 23 42 / 15%);
+  border: 1px solid var(--cell-border);
   border-radius: 6px;
   color: var(--cell-text);
   font: inherit;
@@ -40,7 +40,11 @@
   z-index: 1;
   filter: brightness(0.96);
   transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgb(15 23 42 / 18%);
+  box-shadow: 0 4px 10px var(--shadow);
+}
+
+:root[data-theme='dark'] .element-cell:not(:disabled):hover {
+  filter: brightness(1.12);
 }
 
 .element-cell:disabled {
@@ -65,7 +69,7 @@
   position: absolute;
   top: 3px;
   left: 5px;
-  color: var(--muted);
+  color: var(--cell-muted);
   font-size: 0.55rem;
   line-height: 1;
 }

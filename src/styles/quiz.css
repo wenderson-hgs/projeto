@@ -5,7 +5,7 @@
 
 .quiz-card {
   padding: 20px;
-  background: #ffffff;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 12px;
 }
@@ -46,14 +46,14 @@
   padding: 8px 10px;
   border: 1px solid var(--border);
   border-radius: 8px;
-  background: #f8fafc;
+  background: var(--surface-soft);
   font-size: 0.85rem;
   cursor: pointer;
 }
 
 .quiz-mode:has(input:checked) {
-  border-color: #1d4ed8;
-  background: #eff6ff;
+  border-color: var(--accent);
+  background: var(--accent-soft);
 }
 
 .quiz-mode:focus-within {
@@ -62,7 +62,7 @@
 }
 
 .quiz-mode input {
-  accent-color: #1d4ed8;
+  accent-color: var(--accent);
 }
 
 .quiz-mode:has(input:disabled) {
@@ -89,9 +89,9 @@
 .quiz-next,
 .quiz-again {
   padding: 10px 18px;
-  border: 1px solid #1d4ed8;
+  border: 1px solid var(--accent);
   border-radius: 8px;
-  background: #1d4ed8;
+  background: var(--accent);
   color: #ffffff;
   font: inherit;
   font-weight: 600;
@@ -101,7 +101,7 @@
 .quiz-start:hover,
 .quiz-next:hover,
 .quiz-again:hover {
-  background: #1e40af;
+  background: var(--accent-hover);
 }
 
 .quiz-start:focus-visible,
@@ -159,7 +159,7 @@
   padding: 12px 14px;
   border: 1px solid var(--border);
   border-radius: 8px;
-  background: #ffffff;
+  background: var(--surface);
   color: var(--text);
   font: inherit;
   font-size: 0.9rem;
@@ -168,8 +168,8 @@
 }
 
 .quiz-option:hover:not(:disabled) {
-  border-color: #93c5fd;
-  background: #f8fafc;
+  border-color: var(--accent-border-soft);
+  background: var(--surface-soft);
 }
 
 .quiz-option:disabled {
@@ -177,16 +177,16 @@
 }
 
 .quiz-option.is-correct {
-  border-color: #16a34a;
-  background: #f0fdf4;
-  color: #14532d;
+  border-color: var(--success-strong);
+  background: var(--success-bg);
+  color: var(--success-text);
   font-weight: 600;
 }
 
 .quiz-option.is-incorrect {
-  border-color: #dc2626;
-  background: #fef2f2;
-  color: #991b1b;
+  border-color: var(--danger-strong);
+  background: var(--danger-bg);
+  color: var(--danger-text);
 }
 
 .quiz-feedback {
@@ -197,15 +197,15 @@
 }
 
 .quiz-feedback.is-correct {
-  border: 1px solid #bbf7d0;
-  background: #f0fdf4;
-  color: #14532d;
+  border: 1px solid var(--success-border);
+  background: var(--success-bg);
+  color: var(--success-text);
 }
 
 .quiz-feedback.is-incorrect {
-  border: 1px solid #fca5a5;
-  background: #fef2f2;
-  color: #991b1b;
+  border: 1px solid var(--danger-border);
+  background: var(--danger-bg);
+  color: var(--danger-text);
 }
 
 .quiz-next,

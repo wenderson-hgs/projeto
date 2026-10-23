@@ -8,6 +8,29 @@
       name="description"
       content="Tabela periódica interativa com os 118 elementos químicos e ferramentas de química."
     />
+    <meta name="theme-color" content="#f8fafc" />
+    <script>
+      // Aplica o tema antes da primeira pintura. Mantenha a chave sincronizada com src/lib/theme.ts.
+      (() => {
+        let stored = null;
+
+        try {
+          stored = localStorage.getItem('chem-toolkit.theme');
+        } catch {
+          stored = null;
+        }
+
+        const theme =
+          stored === 'light' || stored === 'dark'
+            ? stored
+            : window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light';
+
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
     <title>chem-toolkit — Ferramentas de Química</title>
   </head>
   <body>
