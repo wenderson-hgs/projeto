@@ -4,6 +4,7 @@ import './styles/controls.css';
 import './styles/details.css';
 import './styles/calculator.css';
 import './styles/balancer.css';
+import './styles/quiz.css';
 import {
   elements,
   filterByCategory,
@@ -17,6 +18,7 @@ import { enableGridKeyboardNavigation } from './ui/keyboard-navigation';
 import { createMolarMassCalculator } from './ui/molar-mass';
 import { createLegend, createPeriodicTable } from './ui/periodic-table';
 import { createSearchFilter, type CategoryFilter } from './ui/search-filter';
+import { createQuiz } from './ui/quiz';
 
 const app = document.querySelector<HTMLDivElement>('#app');
 
@@ -33,8 +35,7 @@ const title = document.createElement('h1');
 title.textContent = 'chem-toolkit';
 
 const subtitle = document.createElement('p');
-subtitle.textContent =
-  'Tabela periódica interativa, calculadora de massa molar e balanceador de equações com os 118 elementos químicos.';
+subtitle.textContent = 'Tabela periódica interativa e ferramentas de química com os 118 elementos.';
 
 header.append(title, subtitle);
 
@@ -70,7 +71,7 @@ const detailsPanel = createDetailsPanel(closeDetails);
 let selectedAtomicNumber: number | null = null;
 
 section.append(sectionTitle, scrollHint, filterBar, status, tableWrapper, createLegend());
-main.append(section, createMolarMassCalculator(), createEquationBalancer());
+main.append(section, createMolarMassCalculator(), createEquationBalancer(), createQuiz());
 
 const footer = document.createElement('footer');
 footer.className = 'site-footer';

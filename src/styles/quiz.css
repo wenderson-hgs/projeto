@@ -1,0 +1,250 @@
+.quiz-section {
+  margin-top: 28px;
+  margin-bottom: 28px;
+}
+
+.quiz-card {
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.quiz-card h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  letter-spacing: -0.01em;
+}
+
+.quiz-description {
+  margin: 6px 0 16px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.quiz-modes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.quiz-modes legend {
+  padding: 0 6px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.quiz-mode {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #f8fafc;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.quiz-mode:has(input:checked) {
+  border-color: #1d4ed8;
+  background: #eff6ff;
+}
+
+.quiz-mode:focus-within {
+  outline: 3px solid var(--focus);
+  outline-offset: 1px;
+}
+
+.quiz-mode input {
+  accent-color: #1d4ed8;
+}
+
+.quiz-mode:has(input:disabled) {
+  cursor: default;
+  opacity: 0.65;
+}
+
+.quiz-setup-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.quiz-best {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.quiz-start,
+.quiz-next,
+.quiz-again {
+  padding: 10px 18px;
+  border: 1px solid #1d4ed8;
+  border-radius: 8px;
+  background: #1d4ed8;
+  color: #ffffff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.quiz-start:hover,
+.quiz-next:hover,
+.quiz-again:hover {
+  background: #1e40af;
+}
+
+.quiz-start:focus-visible,
+.quiz-next:focus-visible,
+.quiz-again:focus-visible,
+.quiz-option:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 1px;
+}
+
+.quiz-play {
+  margin-top: 18px;
+}
+
+.quiz-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.quiz-meta p {
+  margin: 0;
+}
+
+.quiz-question {
+  margin: 16px 0 4px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.quiz-prompt-block:focus-visible,
+.quiz-result-text:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.quiz-prompt {
+  margin: 0 0 14px;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+}
+
+.quiz-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.quiz-option {
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.9rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.quiz-option:hover:not(:disabled) {
+  border-color: #93c5fd;
+  background: #f8fafc;
+}
+
+.quiz-option:disabled {
+  cursor: default;
+}
+
+.quiz-option.is-correct {
+  border-color: #16a34a;
+  background: #f0fdf4;
+  color: #14532d;
+  font-weight: 600;
+}
+
+.quiz-option.is-incorrect {
+  border-color: #dc2626;
+  background: #fef2f2;
+  color: #991b1b;
+}
+
+.quiz-feedback {
+  margin: 14px 0 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+}
+
+.quiz-feedback.is-correct {
+  border: 1px solid #bbf7d0;
+  background: #f0fdf4;
+  color: #14532d;
+}
+
+.quiz-feedback.is-incorrect {
+  border: 1px solid #fca5a5;
+  background: #fef2f2;
+  color: #991b1b;
+}
+
+.quiz-next,
+.quiz-again {
+  margin-top: 14px;
+}
+
+.quiz-result {
+  padding-top: 8px;
+}
+
+.quiz-result-title {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.quiz-result-text {
+  margin: 6px 0 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.quiz-result-record {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 720px) {
+  .quiz-card {
+    padding: 16px;
+  }
+
+  .quiz-modes,
+  .quiz-options {
+    grid-template-columns: 1fr;
+  }
+
+  .quiz-start {
+    width: 100%;
+  }
+}
