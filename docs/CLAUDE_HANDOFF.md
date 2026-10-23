@@ -6,39 +6,46 @@
 
 ## Situação atual
 
-- **Etapa:** Fase 4 — Quiz concluída, revisada pelo usuário e mesclada na `main` por fast-forward até `a75252d`.
+- **Etapa:** Fase 5 — Polimento e publicação implementada na branch `feat/phase-5-polish-and-deploy` (commits `4cdc1f7`, `af49d50`, `dcb2d8d` e a preparação da v1.0.0), aguardando revisão e deploy.
 - **Repositório:** https://github.com/wenderson-hgs/projeto
-- **`main`:** contém as Fases 0, 1, 2, 3 e 4.
-- **Projeto:** chem-toolkit, site estático (Vite + TypeScript, sem framework) com tabela periódica interativa, calculadora de massa molar, balanceador de equações e quiz.
-- **Próxima fase:** Fase 5 — Polimento e publicação (plano a ser apresentado e aprovado antes de editar arquivos).
+- **`main`:** commit `00020b7` (Fases 0, 1, 2, 3 e 4 publicadas).
+- **Versão:** 1.0.0 no `package.json`; tag e release pendentes do merge e do primeiro deploy.
+- **Projeto:** chem-toolkit, site estático (Vite + TypeScript, sem framework) com tabela periódica interativa, calculadora de massa molar, balanceador de equações, quiz e tema claro/escuro.
+- **Próximo passo:** revisar a branch, configurar **Settings → Pages → Source: GitHub Actions**, fazer o merge, confirmar a demo em `https://wenderson-hgs.github.io/projeto/` e criar a tag/release `v1.0.0`.
 
 ## 1. Objetivo da etapa e o que foi implementado
 
-A Fase 4 adicionou o quiz. Há três modos: símbolo → nome, nome → símbolo e categoria do elemento. Cada rodada tem 10 perguntas, sem repetir elementos, com 4 alternativas e feedback imediato. O resultado mostra a pontuação, a última pontuação e o recorde do modo. A última pontuação e o recorde de cada modo ficam no `localStorage`, com leitura/gravação protegidas por `try/catch` (navegação privada não quebra o quiz). A interface fica abaixo do balanceador, com foco movido para a pergunta e para o resultado para melhorar a leitura por leitores de tela. Foram adicionados 15 testes, totalizando 102 no projeto.
+A Fase 5 prepara a versão 1.0. Foram adicionados tema claro/escuro com preferência salva no `localStorage` e fallback para `prefers-color-scheme`; script inline no `<head>` para aplicar o tema antes da primeira pintura; variáveis CSS semânticas em todos os componentes; link "Pular para o conteúdo", foco visível global e suporte a `prefers-reduced-motion`. O README foi reescrito com descrição, capturas reais, instruções, estrutura, fonte dos dados, licenças e limitações. A publicação usa `base: '/projeto/'` e um workflow do GitHub Actions que roda lint, testes e build antes de publicar `dist`. A versão foi atualizada para `1.0.0` e há um `CHANGELOG.md`. Foram adicionados 13 testes de tema, totalizando 115 no projeto. Nenhuma dependência nova foi instalada.
 
 ## 2. Arquivos principais
 
 ```text
 projeto 1/
+├─ .github/
+│  └─ workflows/
+│     └─ deploy.yml               (lint + testes + build + GitHub Pages)
 ├─ AGENTS.md
+├─ CHANGELOG.md
 ├─ PROJECT_STATE.md
 ├─ README.md
 ├─ LICENSE                         (MIT — código)
-├─ index.html
-├─ package.json
+├─ index.html                      (script inline do tema)
+├─ package.json                    (versão 1.0.0)
 ├─ package-lock.json
 ├─ tsconfig.json
+├─ vite.config.ts                  (base '/projeto/')
 ├─ vitest.config.ts
 ├─ eslint.config.js
 ├─ .prettierrc.json
 ├─ .prettierignore
 ├─ .gitignore
 ├─ docs/
-│  └─ CLAUDE_HANDOFF.md
+│  ├─ CLAUDE_HANDOFF.md
+│  └─ screenshots/                 (capturas reais usadas no README)
 ├─ public/
 │  └─ favicon.svg
 ├─ src/
-│  ├─ main.ts                     (composição da aplicação)
+│  ├─ main.ts                     (composição da aplicação, cabeçalho e skip link)
 │  ├─ data/
 │  │  ├─ elements.json            (118 elementos — CC BY-SA 3.0)
 │  │  └─ README.md                (fonte, licença e alterações)
@@ -47,7 +54,8 @@ projeto 1/
 │  │  ├─ molar-mass.ts            (parser + massa molar)
 │  │  ├─ balancer.ts              (parser de equações + balanceador exato)
 │  │  ├─ quiz.ts                  (geração de perguntas)
-│  │  └─ quiz-storage.ts          (pontuação no localStorage)
+│  │  ├─ quiz-storage.ts          (pontuação no localStorage)
+│  │  └─ theme.ts                 (preferência e alternância do tema)
 │  ├─ ui/
 │  │  ├─ periodic-table.ts        (grade + legenda)
 │  │  ├─ details-panel.ts         (painel de detalhes)
@@ -55,9 +63,10 @@ projeto 1/
 │  │  ├─ keyboard-navigation.ts   (setas entre células)
 │  │  ├─ molar-mass.ts            (seção da calculadora)
 │  │  ├─ balancer.ts              (seção do balanceador)
-│  │  └─ quiz.ts                  (seção do quiz)
+│  │  ├─ quiz.ts                  (seção do quiz)
+│  │  └─ theme-toggle.ts          (botão de tema e aplicação no <html>)
 │  └─ styles/
-│     ├─ base.css                 (tema claro, layout, legenda, rodapé)
+│     ├─ base.css                 (variáveis dos temas claro/escuro, layout e skip link)
 │     ├─ table.css                (CSS Grid, cores, seleção, filtro)
 │     ├─ controls.css             (barra de busca/filtro)
 │     ├─ details.css              (painel e bottom sheet)
@@ -68,7 +77,8 @@ projeto 1/
    ├─ elements.test.ts            (24 testes)
    ├─ molar-mass.test.ts          (32 testes)
    ├─ balancer.test.ts            (31 testes)
-   └─ quiz.test.ts                (15 testes)
+   ├─ quiz.test.ts                (15 testes)
+   └─ theme.test.ts               (13 testes)
 ```
 
 ## 3. Implementações e assinaturas
@@ -87,9 +97,15 @@ function getElementBySymbol(symbol: string): Element | undefined;
 
 ```ts
 type FormulaErrorCode =
-  | 'empty-formula' | 'unknown-symbol' | 'unbalanced-brackets'
-  | 'unexpected-token' | 'invalid-count' | 'invalid-character'
-  | 'empty-hydrate' | 'leading-coefficient' | 'empty-group';
+  | 'empty-formula'
+  | 'unknown-symbol'
+  | 'unbalanced-brackets'
+  | 'unexpected-token'
+  | 'invalid-count'
+  | 'invalid-character'
+  | 'empty-hydrate'
+  | 'leading-coefficient'
+  | 'empty-group';
 
 class FormulaError extends Error {
   readonly code: FormulaErrorCode;
@@ -117,10 +133,17 @@ O parser remove espaços, separa hidratos de nível superior (`·`, `.`, `*`), a
 
 ```ts
 type BalanceErrorCode =
-  | 'empty-equation' | 'missing-arrow' | 'multiple-arrows'
-  | 'empty-side' | 'empty-term' | 'invalid-coefficient'
-  | 'invalid-formula' | 'no-solution' | 'multiple-solutions'
-  | 'zero-coefficient' | 'no-positive-solution'
+  | 'empty-equation'
+  | 'missing-arrow'
+  | 'multiple-arrows'
+  | 'empty-side'
+  | 'empty-term'
+  | 'invalid-coefficient'
+  | 'invalid-formula'
+  | 'no-solution'
+  | 'multiple-solutions'
+  | 'zero-coefficient'
+  | 'no-positive-solution'
   | 'coefficient-too-large';
 
 class BalanceError extends Error {
@@ -179,11 +202,7 @@ const QUIZ_STORAGE_KEY = 'chem-toolkit.quiz.scores';
 
 function createEmptyScores(): QuizScores;
 function readQuizScores(storage: ScoreStorage | undefined): QuizScores;
-function saveQuizScore(
-  storage: ScoreStorage | undefined,
-  mode: QuizMode,
-  score: number,
-): QuizScore;
+function saveQuizScore(storage: ScoreStorage | undefined, mode: QuizMode, score: number): QuizScore;
 ```
 
 **Geração da rodada:**
@@ -216,66 +235,99 @@ function createQuiz(): HTMLElement;
 - Resultado com acertos, última pontuação e recorde; **Jogar novamente** inicia outra rodada no modo selecionado.
 - O foco vai para o bloco da pergunta ao renderizar e para o texto do resultado ao terminar.
 
+### Tema e acessibilidade (`src/lib/theme.ts`, `src/ui/theme-toggle.ts`)
+
+```ts
+type Theme = 'light' | 'dark';
+type ThemeStorage = Pick<Storage, 'getItem' | 'setItem'>;
+
+const THEME_STORAGE_KEY = 'chem-toolkit.theme';
+const THEME_COLORS: Record<Theme, string>;
+
+function isTheme(value: unknown): value is Theme;
+function readStoredTheme(storage: ThemeStorage | undefined): Theme | null;
+function saveTheme(storage: ThemeStorage | undefined, theme: Theme): void;
+function resolveInitialTheme(stored: Theme | null, prefersDark: boolean): Theme;
+function toggleTheme(theme: Theme): Theme;
+
+// src/ui/theme-toggle.ts
+function createThemeToggle(): HTMLButtonElement;
+```
+
+- O tema é aplicado em `<html data-theme="light|dark">`; o CSS define as variáveis semânticas em `:root` e `:root[data-theme='dark']`.
+- Um script inline no `<head>` lê `chem-toolkit.theme` e `prefers-color-scheme` antes da primeira pintura, evitando flash do tema errado.
+- `createThemeToggle()` lê a preferência salva, aplica o tema, cria o botão com rótulo de ação ("Tema escuro"/"Tema claro") e `aria-label`, salva a escolha ao clicar e acompanha mudanças do sistema somente quando não há preferência salva.
+- `readStoredTheme`/`saveTheme` usam `try/catch`; sem `localStorage`, o tema funciona na sessão, mas não persiste.
+- `src/main.ts` adiciona o link "Pular para o conteúdo" (`#conteudo`), `main` com `tabindex="-1"`, o botão de tema no cabeçalho e o rodapé existente.
+- `base.css` concentra as variáveis de superfície, texto, foco, estados de sucesso/erro/aviso, sombras e as 9 cores de categoria nos dois temas. Também inclui foco global, `input::placeholder`, skip link e `prefers-reduced-motion`.
+
 ## 4. Decisões de arquitetura e justificativas
 
-| Decisão | Justificativa |
-|---|---|
-| Parser recursivo descendente em `src/lib/molar-mass.ts` | Mantém a lógica de química separada da UI, testável sem navegador, e cobre grupos aninhados sem biblioteca externa. |
-| Balanceador com frações exatas (`bigint`) e RREF | Evita erros de arredondamento e garante os menores coeficientes inteiros; a matriz é pequena. |
-| Equações com coeficiente zero ou múltiplas soluções geram erro | Evita resultados ambíguos ou compostos que não participam da reação. |
-| `FormulaError` e `BalanceError` com `code` e mensagem em português | Permite testar os códigos e exibir mensagens claras diretamente na interface. |
-| Quiz com 10 perguntas e 4 alternativas | Rodada curta, com feedback imediato e boa leitura no celular. |
-| Distratores do mesmo domínio da pergunta | Evita alternativas elimináveis pelo formato (por exemplo, números entre nomes). |
-| Função aleatória injetável | Testes determinísticos sem depender de `Math.random`. |
-| Pontuação e recorde por modo no `localStorage` | Cada modo tem dificuldade própria; separar os recordes é mais justo. Acesso protegido para navegação privada. |
-| Foco na pergunta e no resultado | Leitores de tela ouvem a pergunta completa e a pontuação final; feedback em `role="status"`. |
-| Calculadora, balanceador e quiz na mesma página | Mantém a navegação simples, sem abas ou rotas. |
-| Nenhuma dependência nova | Requisito do `AGENTS.md`; toda a lógica foi implementada do zero. |
+| Decisão                                                            | Justificativa                                                                                                                                     |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Parser recursivo descendente em `src/lib/molar-mass.ts`            | Mantém a lógica de química separada da UI, testável sem navegador, e cobre grupos aninhados sem biblioteca externa.                               |
+| Balanceador com frações exatas (`bigint`) e RREF                   | Evita erros de arredondamento e garante os menores coeficientes inteiros; a matriz é pequena.                                                     |
+| Equações com coeficiente zero ou múltiplas soluções geram erro     | Evita resultados ambíguos ou compostos que não participam da reação.                                                                              |
+| `FormulaError` e `BalanceError` com `code` e mensagem em português | Permite testar os códigos e exibir mensagens claras diretamente na interface.                                                                     |
+| Quiz com 10 perguntas e 4 alternativas                             | Rodada curta, com feedback imediato e boa leitura no celular.                                                                                     |
+| Distratores do mesmo domínio da pergunta                           | Evita alternativas elimináveis pelo formato (por exemplo, números entre nomes).                                                                   |
+| Função aleatória injetável                                         | Testes determinísticos sem depender de `Math.random`.                                                                                             |
+| Pontuação e recorde por modo no `localStorage`                     | Cada modo tem dificuldade própria; separar os recordes é mais justo. Acesso protegido para navegação privada.                                     |
+| Foco na pergunta e no resultado                                    | Leitores de tela ouvem a pergunta completa e a pontuação final; feedback em `role="status"`.                                                      |
+| Tema em `data-theme` + variáveis CSS                               | Um único conjunto de componentes atende aos dois temas; as cores de categoria e os estados também são variáveis.                                  |
+| Script inline antes da primeira pintura                            | Evita flash de tema claro ao carregar no escuro; a chave é sincronizada com `src/lib/theme.ts`.                                                   |
+| Preferência salva tem prioridade sobre o sistema                   | O usuário controla a escolha; `prefers-color-scheme` serve de padrão inicial e fallback.                                                          |
+| `base: '/projeto/'` no `vite.config.ts`                            | O repositório se chama `projeto`; dev, preview e produção usam o mesmo caminho, evitando surpresas no Pages.                                      |
+| Workflow com actions oficiais e Node 24                            | `checkout@v7`, `setup-node@v7`, `configure-pages@v6`, `upload-pages-artifact@v5` e `deploy-pages@v5` eram as versões estáveis em outubro de 2026. |
+| Capturas reais em PNG no README                                    | Mostram a interface verdadeira nos dois temas; foram geradas com Edge headless e verificadas antes do commit.                                     |
+| Calculadora, balanceador e quiz na mesma página                    | Mantém a navegação simples, sem abas ou rotas.                                                                                                    |
+| Nenhuma dependência nova                                           | Requisito do `AGENTS.md`; toda a lógica foi implementada do zero.                                                                                 |
 
 ## 5. Resultado real de `npm test`, `npm run build` e `npm run lint`
 
-Executados em 2026-10-23, na `main`, após o merge da Fase 4:
+Executados em 2026-10-23, na branch `feat/phase-5-polish-and-deploy`, após a configuração do GitHub Pages:
 
 ```text
 $ npm test
 RUN  v5.0.5 C:/Users/wende/OneDrive/Desktop/wenderson/projetos/SaaS/meus projetos/projeto 1
-Test Files  4 passed (4)
-     Tests  102 passed (102)
-  Duration  970ms
+Test Files  5 passed (5)
+     Tests  115 passed (115)
+  Duration  926ms
 
 $ npm run build
 tsc && vite build
 vite v8.3.5 building client environment for production...
-✓ 24 modules transformed.
-dist/index.html                  0.65 kB │ gzip:  0.40 kB
-dist/assets/index-BlDbAV9F.css  14.08 kB │ gzip:  3.28 kB
-dist/assets/index-D7SDOidd.js   56.91 kB │ gzip: 13.55 kB
-✓ built in 336ms
+✓ 26 modules transformed.
+dist/index.html                  1.35 kB │ gzip:  0.67 kB
+dist/assets/index-t4n3gPG3.css  17.38 kB │ gzip:  4.00 kB
+dist/assets/index-DM-G0T3H.js   58.56 kB │ gzip: 14.08 kB
+✓ built in 306ms
 
 $ npm run lint
 eslint .
 (sem erros)
 ```
 
-Na branch, após a interface: 102 testes em 1,12 s e build de 332 ms. Nenhum resultado foi declarado sem execução real.
+Na Etapa 1 (tema), os mesmos 115 testes passaram em 1,12 s e o build de 26 módulos levou 741 ms. O `dist/index.html` foi conferido: favicon e assets apontam para `/projeto/`. O `npm run preview` serviu a aplicação em `http://localhost:4173/projeto/`, e uma captura com Edge headless confirmou o carregamento dos assets e o tema escuro. Nenhum resultado foi declarado sem execução real.
 
 ## 6. Problemas conhecidos, limitações e dúvidas para revisão
 
-- **Sem testes de navegador:** tabela, calculadora, balanceador e quiz foram validados por `tsc`, build, lint e testes unitários; não há jsdom/Playwright. O usuário precisa testar o quiz no `npm run dev`.
-- **`localStorage` é local ao navegador:** limpar os dados do site ou trocar de dispositivo zera o histórico. Em navegação privada, o recorde pode não persistir.
-- **Rodada fixa:** 10 perguntas e 4 alternativas, sem níveis de dificuldade, limite de tempo ou modo de resposta digitada.
-- **Categorias previstas:** o quiz usa a categoria normalizada de cada elemento, inclusive para superpesados cuja categoria é prevista (`categoryIsPredicted`). O quiz não avisa sobre isso; vale excluir esses elementos ou mostrar a ressalva?
-- **Nomes em inglês:** o quiz usa apenas `namePt`; `nameEn` não é usado.
-- **Aleatoriedade:** em produção usa `Math.random`; não há seed persistida nem repetição controlada entre rodadas.
-- **Precisão dos dados:** `Fe2(SO4)3` resulta em 399,858 g/mol com as massas do dataset, dentro da tolerância de ±0,05 do `AGENTS.md`.
-- **Massas aproximadas:** elementos sem padrão IUPAC usam o número de massa do isótopo mais estável; a calculadora avisa.
-- **Branch mesclada:** `feat/phase-4-quiz` foi revisada pelo usuário, mesclada por fast-forward na `main` e publicada.
-- **GitHub Pages** ainda não configurado; na Fase 5 o `base` do Vite deve ser `/projeto/`.
+- **Sem testes de navegador automatizados:** a interface foi validada por `tsc`, build, lint, testes unitários e capturas com Edge headless, mas não há jsdom/Playwright. Ainda é necessário revisar manualmente o tema, o layout responsivo e o quiz no `npm run dev`.
+- **Deploy ainda não executado:** o workflow está pronto, mas o primeiro deploy depende do merge na `main` e de **Settings → Pages → Source: GitHub Actions**. Se essa opção estiver em "Deploy from a branch", o workflow não publica.
+- **Link da demo:** o README aponta para `https://wenderson-hgs.github.io/projeto/`, que só responderá depois do primeiro deploy.
+- **`base` fixo:** `base: '/projeto/'` atende ao nome atual do repositório; se o repositório for renomeado, o caminho precisa ser atualizado.
+- **Tema persistido:** a preferência fica no `localStorage`; em navegação privada ou com armazenamento bloqueado, o tema funciona, mas não persiste. Mudanças do sistema só são seguidas enquanto não houver escolha salva.
+- **Custo do script inline:** a lógica de tema aparece duplicada no `index.html` (antes da pintura) e em `src/lib/theme.ts`; a chave `chem-toolkit.theme` precisa ser mantida em sincronia.
+- **Capturas:** são PNGs gerados em 1280 px, sem versão mobile e sem GIF. O README não tem teste automatizado que detecte imagens desatualizadas.
+- **Acessibilidade:** contraste e foco foram revisados manualmente, mas não houve auditoria automatizada (axe/Lighthouse) nem teste com leitor de tela real.
+- **Versão/tag:** `package.json` já está em `1.0.0` e há `CHANGELOG.md`; a tag anotada `v1.0.0` e a release no GitHub ainda não foram criadas.
 - **Dúvidas para o Claude:**
-  1. Rodadas de 10 perguntas com 4 alternativas são adequadas para o público iniciante, ou vale um modo sem limite?
-  2. O quiz deve excluir elementos com categoria prevista ou apenas sinalizar a ressalva?
-  3. O formato `{ last, best }` por modo no `localStorage` é suficiente, ou vale versionar a chave para evoluções futuras?
-  4. Alguma sugestão de acessibilidade para o feedback imediato e a troca de foco entre perguntas?
+  1. O botão de tema com rótulo de ação ("Tema escuro"/"Tema claro") e `aria-label` é suficientemente claro, ou vale usar `aria-pressed`/um switch?
+  2. `base: '/projeto/'` fixo é aceitável para este projeto, ou vale ler uma variável de ambiente para permitir outros repositórios?
+  3. Vale rodar Lighthouse/axe antes da release, mesmo sem adicionar dependências ao projeto (por exemplo, usando o Edge/Chrome instalado)?
+  4. As capturas em PNG são suficientes para o README, ou vale a pena gerar um GIF curto da interação?
+  5. Criar a tag `v1.0.0` somente depois de confirmar o deploy é o fluxo mais seguro, ou há vantagem em taggear antes?
+- **Dúvidas da Fase 4 ainda em aberto:** excluir elementos com categoria prevista do quiz ou apenas sinalizar a ressalva; e se o formato `{ last, best }` por modo deve ser versionado para evoluções futuras.
 
 ## 7. Como usar este documento
 

@@ -6,32 +6,34 @@
 
 ## Visão geral
 
-| Campo | Valor |
-|---|---|
-| Projeto | chem-toolkit — Tabela Periódica Interativa e Ferramentas de Química |
-| Versão | 0.0.0 (pré-v1.0) |
-| Stack | Node.js 24 (LTS) + npm 11, Vite 8 + TypeScript 6 (sem framework), Vitest 5, ESLint 10 + Prettier 3 |
-| Publicação | GitHub Pages via GitHub Actions (planejado para a Fase 5) |
-| Repositório | https://github.com/wenderson-hgs/projeto (nome do repositório: `projeto`) |
-| Branch principal | `main` (Fases 1, 2, 3 e 4 publicadas; Fase 4 mesclada por fast-forward até `a75252d`, seguida deste commit de documentação) |
-| Branch de trabalho | nenhuma ativa; `feat/phase-4-quiz` mesclada e publicada (Fase 5 a planejar) |
-| Demo | ainda não publicada |
+| Campo              | Valor                                                                                                                 |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------- |
+| Projeto            | chem-toolkit — Tabela Periódica Interativa e Ferramentas de Química                                                   |
+| Versão             | 1.0.0                                                                                                                 |
+| Stack              | Node.js 24 (LTS) + npm 11, Vite 8 + TypeScript 6 (sem framework), Vitest 5, ESLint 10 + Prettier 3                    |
+| Publicação         | GitHub Pages via GitHub Actions (workflow pronto; primeiro deploy pendente)                                           |
+| Repositório        | https://github.com/wenderson-hgs/projeto (nome do repositório: `projeto`)                                             |
+| Branch principal   | `main` (Fases 1, 2, 3 e 4 publicadas; último commit `00020b7`)                                                        |
+| Branch de trabalho | `feat/phase-5-polish-and-deploy` (Fase 5; commits `4cdc1f7`, `af49d50` e `dcb2d8d`, seguidos da preparação da v1.0.0) |
+| Demo               | https://wenderson-hgs.github.io/projeto/ (disponível após o primeiro deploy)                                          |
 
 ## Fase em andamento
 
-**Fase 4 — Quiz concluída, revisada pelo usuário e mesclada na `main`.**
+**Fase 5 — Polimento e publicação implementada na branch `feat/phase-5-polish-and-deploy`, aguardando revisão e deploy.**
 
-> As Fases 0, 1, 2, 3 e 4 estão publicadas na `main`. A Fase 4 adiciona o quiz com três modos, rodadas de 10 perguntas, feedback imediato e pontuação/recorde por modo salvos no `localStorage`. A próxima etapa é a Fase 5 — Polimento e publicação, que precisa ser planejada e aprovada antes de qualquer edição.
+> A Fase 5 adiciona tema claro/escuro com preferência salva, melhorias de acessibilidade, README completo com capturas reais, configuração do GitHub Pages com `base: '/projeto/'`, workflow de deploy e versão `1.0.0` com changelog. O deploy e a tag `v1.0.0` só acontecem depois da revisão e do merge na `main`.
 
 ## Checklist de fases
 
 ### Fase 0 — Preparação
+
 - [x] Verificar pré-requisitos (seção 3) — Node v24.21.0, npm 11.19.0, Git 2.55.0; `user.name` e `user.email` configurados
 - [x] Criar o projeto Vite + TypeScript (template vanilla) e configurar Vitest, ESLint e Prettier
 - [x] Criar `.gitignore` (inclui `node_modules` e `dist`), `LICENSE` (MIT) e um `README.md` inicial
 - [x] `git init`, primeiro commit, criar o repositório no GitHub e fazer o primeiro push (com a minha confirmação) — repositório criado, branch de teste revisada e `main` publicada
 
 ### Fase 1 — Tabela periódica (MVP)
+
 - [x] `src/data/elements.json` com os 118 elementos: número atômico, símbolo, nome em português e em inglês, massa atômica, categoria, grupo, período e posição (linha/coluna) no layout
 - [x] Renderizar a tabela em CSS Grid, com cores por categoria e legenda
 - [x] Clicar em um elemento abre um painel com os detalhes
@@ -39,119 +41,139 @@
 - [x] Navegação por teclado e layout responsivo (celular)
 
 ### Fase 2 — Massa molar
+
 - [x] Parser de fórmulas: `H2O`, `Ca(OH)2`, `Fe2(SO4)3`, `K4[Fe(CN)6]` (parênteses e colchetes aninhados) e hidratos como `CuSO4·5H2O` (aceitar `·`, `.` e `*`)
 - [x] Massa molar total + composição percentual por elemento
 - [x] Mensagens de erro claras (símbolo desconhecido, parêntese sem fechar, fórmula vazia)
 - [x] Testes unitários com os casos da seção 6
 
 ### Fase 3 — Balanceador de equações
+
 - [x] Entrada como `Fe + O2 -> Fe2O3` (aceitar `->`, `=` e `→`)
 - [x] Algoritmo: montar a matriz de composição e achar o espaço nulo com **frações exatas** (sem ponto flutuante), depois escalar para os menores inteiros
 - [x] Tratar casos sem solução ou com infinitas soluções, com mensagem clara
 - [x] Testes unitários com os casos da seção 6
 
 ### Fase 4 — Quiz
+
 - [x] Modos: símbolo → nome, nome → símbolo e categoria do elemento
 - [x] Pontuação e recorde salvos no `localStorage`
 
 ### Fase 5 — Polimento e publicação
-- [ ] Tema claro/escuro e acessibilidade básica (contraste, foco visível, `aria-label`)
-- [ ] README completo: descrição, prints ou GIF, como rodar, fonte e licença dos dados
+
+- [x] Tema claro/escuro e acessibilidade básica (contraste, foco visível, `aria-label`)
+- [x] README completo: descrição, prints ou GIF, como rodar, fonte e licença dos dados
 - [ ] Deploy no GitHub Pages com GitHub Actions (atenção: o `base` do Vite precisa ser `/projeto/`, pois esse é o nome do repositório)
 - [ ] Tag e release `v1.0.0`
 
 ## Histórico de etapas concluídas
 
-| Data | Etapa | O que foi feito |
-|---|---|---|
-| 2026-10-23 | Fluxo de trabalho | Criados `PROJECT_STATE.md` e `docs/CLAUDE_HANDOFF.md` para documentar estado e handoff com o Claude. Nenhum código de aplicação criado. |
-| 2026-10-23 | Fase 0 — Preparação | Pré-requisitos verificados. Template Vite 8 + TypeScript 6 (vanilla) criado. Instalados Vitest 5, ESLint 10, Prettier 3 e dependências auxiliares. Configurados scripts (`test`, `test:watch`, `lint`, `format`), `vitest.config.ts`, `eslint.config.js`, `.prettierrc.json`, `.prettierignore`, `.gitignore`, `LICENSE` (MIT) e `README.md` inicial. Criado `tests/smoke.test.ts`. Repositório Git inicializado e commits `8026282` e `dce96eb` criados. |
-| 2026-10-23 | Publicação e merge da Fase 0 | Repositório `https://github.com/wenderson-hgs/projeto` conectado como `origin`. Histórico remoto (`Initial commit` com README mínimo) integrado à branch `test/phase-0-bootstrap`, mantendo o nosso `README.md`. Branch revisada pelo usuário e merge fast-forward na `main` (`3d6e034`), seguido do commit `5790db8` (nome do projeto no `package-lock.json`). `main` enviada ao GitHub. |
-| 2026-10-23 | Fase 1 — Etapa 1: dados | Dataset original (119 entradas) filtrado para 118 elementos. Licença CC BY-SA 3.0 confirmada no repositório de origem. Nomes `pt-br` obtidos do Wikidata (CC0), com fallback para `pt`. Categorias normalizadas em 9 grupos; massas aproximadas marcadas. Criados `src/data/elements.json`, `src/data/README.md`, `src/lib/elements.ts` e `tests/elements.test.ts`. Commit `c87e66a`. |
-| 2026-10-23 | Fase 1 — Etapa 2: tabela | Criadas a grade CSS de 18 colunas, as 118 células, os placeholders dos lantanídeos/actinídeos e a legenda de categorias. Substituída a página de exemplo do Vite por `src/main.ts` próprio e removidos os arquivos de demonstração. Criados `src/styles/base.css`, `src/styles/table.css` e `src/ui/periodic-table.ts`. Commit `8415a94`. |
-| 2026-10-23 | Fase 1 — Etapa 3: interação | Criados o painel de detalhes, a barra de busca/filtro, a navegação por setas e os estilos responsivos. A tabela agora marca a célula selecionada, fecha o painel com `Esc`, ignora células filtradas na navegação e exibe contagem de resultados. Testes ampliados para busca combinada e consulta por número atômico. Commit `6c311ad`. |
-| 2026-10-23 | Fase 1 — revisão e merge | Branch revisada pelo usuário e mesclada por fast-forward na `main` (até `4c72f8a`), seguida do commit de documentação. Checks repetidos na `main`: 23 testes, build e lint sem erros. |
-| 2026-10-23 | Fase 2 — Etapa 1: lógica | Criados o parser recursivo de fórmulas e o cálculo de massa molar/composição em `src/lib/molar-mass.ts`. Adicionado `getElementBySymbol()` com `Map` em `src/lib/elements.ts`. Removido o teste temporário `tests/smoke.test.ts`. Testes ampliados para 56 casos. Commit `fa29aca`. |
-| 2026-10-23 | Fase 2 — Etapa 2: interface | Criada a seção da calculadora em `src/ui/molar-mass.ts`, com exemplos clicáveis, resultado, composição percentual, aviso de massa aproximada e mensagens de erro. Integrada abaixo da tabela em `src/main.ts`, com estilos em `src/styles/calculator.css`. Commit `c3e471e`. |
-| 2026-10-23 | Fase 2 — Etapa 3: validação e documentação | README, `PROJECT_STATE.md`, `docs/CLAUDE_HANDOFF.md` e checklist do `AGENTS.md` atualizados. Checks finais: 56 testes, build e lint sem erros. |
-| 2026-10-23 | Fase 2 — revisão e merge | Usuário testou e aprovou a calculadora. Branch `feat/phase-2-molar-mass` publicada e mesclada por fast-forward na `main` (até `f195c1f`). Checks repetidos na `main`: 56 testes, build e lint sem erros. |
-| 2026-10-23 | Fase 3 — Etapa 1: lógica | Criados o parser de equações e o balanceador em `src/lib/balancer.ts`. A matriz de composição é reduzida por eliminação de Gauss com frações exatas (`bigint`); o espaço nulo é escalado para os menores inteiros com MMC/MDC. Erros com código para equação vazia, seta ausente/múltipla, lado vazio, coeficiente inválido, fórmula inválida, equação impossível, múltiplas soluções, coeficiente zero e solução sem coeficientes positivos. Criados 31 testes em `tests/balancer.test.ts`. Commit `a33db2d`. |
-| 2026-10-23 | Fase 3 — Etapa 2: interface | Criada a seção do balanceador em `src/ui/balancer.ts`, com exemplos clicáveis, resultado, mensagens de erro acessíveis e layout responsivo em `src/styles/balancer.css`. Integrada abaixo da calculadora em `src/main.ts`; subtítulo atualizado. Commit `d5e2547`. |
-| 2026-10-23 | Fase 3 — Etapa 3: validação e documentação | README, `PROJECT_STATE.md`, `docs/CLAUDE_HANDOFF.md` e checklist do `AGENTS.md` atualizados. Checks finais: 87 testes, build e lint sem erros. |
-| 2026-10-23 | Fase 3 — revisão e merge | Usuário aprovou o balanceador. Branch `feat/phase-3-equation-balancer` publicada e mesclada por fast-forward na `main` (até `806c2e8`). Checks repetidos na `main`: 87 testes, build e lint sem erros. |
-| 2026-10-23 | Fase 4 — Etapa 1: lógica | Criados `src/lib/quiz.ts` (três modos, rodadas de 10 perguntas, 4 alternativas, RNG injetável) e `src/lib/quiz-storage.ts` (última pontuação e recorde por modo no `localStorage`, com acesso protegido). Criados 15 testes em `tests/quiz.test.ts`. Commit `9b2235c`. |
-| 2026-10-23 | Fase 4 — Etapa 2: interface | Criada a seção do quiz em `src/ui/quiz.ts`, com escolha de modo, rodada, feedback imediato, resultado, recorde e foco acessível. Estilos em `src/styles/quiz.css`; integrada abaixo do balanceador em `src/main.ts`. Commit `14610d8`. |
-| 2026-10-23 | Fase 4 — Etapa 3: validação e documentação | README, `PROJECT_STATE.md`, `docs/CLAUDE_HANDOFF.md` e checklist do `AGENTS.md` atualizados. Checks finais: 102 testes, build e lint sem erros. |
-| 2026-10-23 | Fase 4 — revisão e merge | Usuário aprovou o quiz. Branch `feat/phase-4-quiz` publicada e mesclada por fast-forward na `main` (até `a75252d`). Checks repetidos na `main`: 102 testes, build e lint sem erros. |
+| Data       | Etapa                                      | O que foi feito                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| ---------- | ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2026-10-23 | Fluxo de trabalho                          | Criados `PROJECT_STATE.md` e `docs/CLAUDE_HANDOFF.md` para documentar estado e handoff com o Claude. Nenhum código de aplicação criado.                                                                                                                                                                                                                                                                                                                                                                        |
+| 2026-10-23 | Fase 0 — Preparação                        | Pré-requisitos verificados. Template Vite 8 + TypeScript 6 (vanilla) criado. Instalados Vitest 5, ESLint 10, Prettier 3 e dependências auxiliares. Configurados scripts (`test`, `test:watch`, `lint`, `format`), `vitest.config.ts`, `eslint.config.js`, `.prettierrc.json`, `.prettierignore`, `.gitignore`, `LICENSE` (MIT) e `README.md` inicial. Criado `tests/smoke.test.ts`. Repositório Git inicializado e commits `8026282` e `dce96eb` criados.                                                      |
+| 2026-10-23 | Publicação e merge da Fase 0               | Repositório `https://github.com/wenderson-hgs/projeto` conectado como `origin`. Histórico remoto (`Initial commit` com README mínimo) integrado à branch `test/phase-0-bootstrap`, mantendo o nosso `README.md`. Branch revisada pelo usuário e merge fast-forward na `main` (`3d6e034`), seguido do commit `5790db8` (nome do projeto no `package-lock.json`). `main` enviada ao GitHub.                                                                                                                      |
+| 2026-10-23 | Fase 1 — Etapa 1: dados                    | Dataset original (119 entradas) filtrado para 118 elementos. Licença CC BY-SA 3.0 confirmada no repositório de origem. Nomes `pt-br` obtidos do Wikidata (CC0), com fallback para `pt`. Categorias normalizadas em 9 grupos; massas aproximadas marcadas. Criados `src/data/elements.json`, `src/data/README.md`, `src/lib/elements.ts` e `tests/elements.test.ts`. Commit `c87e66a`.                                                                                                                          |
+| 2026-10-23 | Fase 1 — Etapa 2: tabela                   | Criadas a grade CSS de 18 colunas, as 118 células, os placeholders dos lantanídeos/actinídeos e a legenda de categorias. Substituída a página de exemplo do Vite por `src/main.ts` próprio e removidos os arquivos de demonstração. Criados `src/styles/base.css`, `src/styles/table.css` e `src/ui/periodic-table.ts`. Commit `8415a94`.                                                                                                                                                                      |
+| 2026-10-23 | Fase 1 — Etapa 3: interação                | Criados o painel de detalhes, a barra de busca/filtro, a navegação por setas e os estilos responsivos. A tabela agora marca a célula selecionada, fecha o painel com `Esc`, ignora células filtradas na navegação e exibe contagem de resultados. Testes ampliados para busca combinada e consulta por número atômico. Commit `6c311ad`.                                                                                                                                                                       |
+| 2026-10-23 | Fase 1 — revisão e merge                   | Branch revisada pelo usuário e mesclada por fast-forward na `main` (até `4c72f8a`), seguida do commit de documentação. Checks repetidos na `main`: 23 testes, build e lint sem erros.                                                                                                                                                                                                                                                                                                                          |
+| 2026-10-23 | Fase 2 — Etapa 1: lógica                   | Criados o parser recursivo de fórmulas e o cálculo de massa molar/composição em `src/lib/molar-mass.ts`. Adicionado `getElementBySymbol()` com `Map` em `src/lib/elements.ts`. Removido o teste temporário `tests/smoke.test.ts`. Testes ampliados para 56 casos. Commit `fa29aca`.                                                                                                                                                                                                                            |
+| 2026-10-23 | Fase 2 — Etapa 2: interface                | Criada a seção da calculadora em `src/ui/molar-mass.ts`, com exemplos clicáveis, resultado, composição percentual, aviso de massa aproximada e mensagens de erro. Integrada abaixo da tabela em `src/main.ts`, com estilos em `src/styles/calculator.css`. Commit `c3e471e`.                                                                                                                                                                                                                                   |
+| 2026-10-23 | Fase 2 — Etapa 3: validação e documentação | README, `PROJECT_STATE.md`, `docs/CLAUDE_HANDOFF.md` e checklist do `AGENTS.md` atualizados. Checks finais: 56 testes, build e lint sem erros.                                                                                                                                                                                                                                                                                                                                                                 |
+| 2026-10-23 | Fase 2 — revisão e merge                   | Usuário testou e aprovou a calculadora. Branch `feat/phase-2-molar-mass` publicada e mesclada por fast-forward na `main` (até `f195c1f`). Checks repetidos na `main`: 56 testes, build e lint sem erros.                                                                                                                                                                                                                                                                                                       |
+| 2026-10-23 | Fase 3 — Etapa 1: lógica                   | Criados o parser de equações e o balanceador em `src/lib/balancer.ts`. A matriz de composição é reduzida por eliminação de Gauss com frações exatas (`bigint`); o espaço nulo é escalado para os menores inteiros com MMC/MDC. Erros com código para equação vazia, seta ausente/múltipla, lado vazio, coeficiente inválido, fórmula inválida, equação impossível, múltiplas soluções, coeficiente zero e solução sem coeficientes positivos. Criados 31 testes em `tests/balancer.test.ts`. Commit `a33db2d`. |
+| 2026-10-23 | Fase 3 — Etapa 2: interface                | Criada a seção do balanceador em `src/ui/balancer.ts`, com exemplos clicáveis, resultado, mensagens de erro acessíveis e layout responsivo em `src/styles/balancer.css`. Integrada abaixo da calculadora em `src/main.ts`; subtítulo atualizado. Commit `d5e2547`.                                                                                                                                                                                                                                             |
+| 2026-10-23 | Fase 3 — Etapa 3: validação e documentação | README, `PROJECT_STATE.md`, `docs/CLAUDE_HANDOFF.md` e checklist do `AGENTS.md` atualizados. Checks finais: 87 testes, build e lint sem erros.                                                                                                                                                                                                                                                                                                                                                                 |
+| 2026-10-23 | Fase 3 — revisão e merge                   | Usuário aprovou o balanceador. Branch `feat/phase-3-equation-balancer` publicada e mesclada por fast-forward na `main` (até `806c2e8`). Checks repetidos na `main`: 87 testes, build e lint sem erros.                                                                                                                                                                                                                                                                                                         |
+| 2026-10-23 | Fase 4 — Etapa 1: lógica                   | Criados `src/lib/quiz.ts` (três modos, rodadas de 10 perguntas, 4 alternativas, RNG injetável) e `src/lib/quiz-storage.ts` (última pontuação e recorde por modo no `localStorage`, com acesso protegido). Criados 15 testes em `tests/quiz.test.ts`. Commit `9b2235c`.                                                                                                                                                                                                                                         |
+| 2026-10-23 | Fase 4 — Etapa 2: interface                | Criada a seção do quiz em `src/ui/quiz.ts`, com escolha de modo, rodada, feedback imediato, resultado, recorde e foco acessível. Estilos em `src/styles/quiz.css`; integrada abaixo do balanceador em `src/main.ts`. Commit `14610d8`.                                                                                                                                                                                                                                                                         |
+| 2026-10-23 | Fase 4 — Etapa 3: validação e documentação | README, `PROJECT_STATE.md`, `docs/CLAUDE_HANDOFF.md` e checklist do `AGENTS.md` atualizados. Checks finais: 102 testes, build e lint sem erros.                                                                                                                                                                                                                                                                                                                                                                |
+| 2026-10-23 | Fase 4 — revisão e merge                   | Usuário aprovou o quiz. Branch `feat/phase-4-quiz` publicada e mesclada por fast-forward na `main` (até `a75252d`). Checks repetidos na `main`: 102 testes, build e lint sem erros.                                                                                                                                                                                                                                                                                                                            |
+| 2026-10-23 | Fase 5 — Etapa 1: tema e acessibilidade    | Criados `src/lib/theme.ts` e `src/ui/theme-toggle.ts`, com tema claro/escuro, preferência salva no `localStorage`, fallback para `prefers-color-scheme` e script inline no `index.html` para evitar flash de tema. Todos os CSS passaram a usar variáveis semânticas; adicionados link "Pular para o conteúdo", foco global, `input::placeholder`, `prefers-reduced-motion` e contraste revisado. Criados 13 testes em `tests/theme.test.ts`. Commit `4cdc1f7`.                                                |
+| 2026-10-23 | Fase 5 — Etapa 2: README e capturas        | README reescrito com descrição, funcionalidades, capturas reais (claro/escuro, calculadora, balanceador e quiz), instruções, estrutura, deploy, dados, licenças e limitações. Capturas geradas com Microsoft Edge em modo headless e salvas em `docs/screenshots/`. Commit `af49d50`.                                                                                                                                                                                                                          |
+| 2026-10-23 | Fase 5 — Etapa 3: GitHub Pages             | Criado `vite.config.ts` com `base: '/projeto/'` e `.github/workflows/deploy.yml` com `npm ci`, lint, testes, build e deploy usando as actions oficiais do Pages. Build de produção validado com `npm run preview` em `/projeto/`; favicon e assets reescritos corretamente. Commit `dcb2d8d`.                                                                                                                                                                                                                  |
+| 2026-10-23 | Fase 5 — Etapa 4: versão 1.0.0             | `package.json` e `package-lock.json` atualizados para `1.0.0`; criado `CHANGELOG.md`; checklist da Fase 5 e documentos de estado atualizados. Tag e release ficam pendentes do merge e do primeiro deploy.                                                                                                                                                                                                                                                                                                     |
 
 ## Pendências
 
-- Planejar e aprovar a Fase 5 — Polimento e publicação antes de editar arquivos.
-- Remover as branches de trabalho já mescladas (`feat/phase-1-periodic-table`, `feat/phase-2-molar-mass`, `feat/phase-3-equation-balancer`, `feat/phase-4-quiz` e `test/phase-0-bootstrap`) quando o usuário quiser.
+- Revisar a branch `feat/phase-5-polish-and-deploy`, testar o tema e o layout no navegador e aprovar o README.
+- Após aprovação: fazer o merge na `main`, configurar **Settings → Pages → Source: GitHub Actions**, publicar e acompanhar o primeiro deploy.
+- Confirmar a demo em `https://wenderson-hgs.github.io/projeto/` e criar a tag/release `v1.0.0`.
+- Remover as branches de trabalho já mescladas (`feat/phase-1-periodic-table`, `feat/phase-2-molar-mass`, `feat/phase-3-equation-balancer`, `feat/phase-4-quiz`, `feat/phase-5-polish-and-deploy` e `test/phase-0-bootstrap`) quando o usuário quiser.
 
 ## Decisões importantes
 
-| Data | Decisão | Justificativa |
-|---|---|---|
-| 2026-10-23 | `AGENTS.md` permanece como fonte principal de regras e planejamento | Evita duplicação e divergência entre documentos. |
-| 2026-10-23 | `PROJECT_STATE.md` centraliza o estado real (fases, decisões, testes) | Permite saber rapidamente onde o projeto está. |
-| 2026-10-23 | `docs/CLAUDE_HANDOFF.md` é o único documento colado no chat com o Claude | O Claude não tem acesso aos arquivos locais; o resumo precisa ser autocontido. |
-| 2026-10-23 | Sugestões do Claude não são aplicadas automaticamente | Antes de implementar, o OpenCode compara com o código existente e com o `AGENTS.md`, explica benefícios e riscos e pede aprovação. |
-| 2026-10-23 | Raiz do repositório é a pasta atual (`projeto 1`) | O `AGENTS.md` já está aqui e nada precisa ser movido. |
-| 2026-10-23 | Nome do repositório remoto: `projeto` | Nome escolhido pelo usuário ao criar o repositório no GitHub. Impacto futuro: o `base` do Vite no GitHub Pages deverá ser `/projeto/`. |
-| 2026-10-23 | Template Vite gerado em pasta temporária e copiado para a raiz | Evita que o `create-vite` apague `AGENTS.md`, `PROJECT_STATE.md` e `docs/` em pasta não vazia. |
-| 2026-10-23 | `tests/smoke.test.ts` temporário | Teste da Fase 0 para validar o Vitest; foi removido na Fase 2, quando os testes reais passaram a cobrir os dados e a calculadora. |
-| 2026-10-23 | `tsconfig.json` inclui `src` e `tests` | Permite que `tsc` (rodado no build) também verifique os tipos dos testes. |
-| 2026-10-23 | Revisão em branch de teste antes da `main` | Permite ao usuário conferir cada fase no GitHub antes de publicar na branch principal. |
-| 2026-10-23 | README remoto inicial substituído pelo nosso | O GitHub criou `# projeto`; o nosso README é completo e é a versão oficial do projeto. |
-| 2026-10-23 | Dataset de origem: Bowserinator/Periodic-Table-JSON (CC BY-SA 3.0) | Era o conjunto mais completo e com licença localizável; `elements.json` é derivado e distribuído sob CC BY-SA 3.0, enquanto o código permanece MIT. O elemento hipotético 119 foi excluído. |
-| 2026-10-23 | Nomes em português do Brasil via rótulos `pt-br` do Wikidata (CC0) | Os rótulos `pt` do Wikidata usam português europeu (`azoto`, `hidrogénio`); `pt-br` entrega a grafia brasileira (`nitrogênio`, `hidrogênio`). |
-| 2026-10-23 | Categorias normalizadas em 9 grupos, com `categoryIsPredicted` | O dataset original tem 14 rótulos, incluindo categorias incertas de elementos superpesados. A UI usa 9 grupos e marca os previstos com `*`. |
-| 2026-10-23 | Massas aproximadas usam o isótopo mais estável e aparecem entre colchetes | Elementos sem massa padrão da IUPAC não devem ser exibidos como se tivessem massa exata; `atomicMassIsApproximate` documenta o caso. |
-| 2026-10-23 | Filtro esmaece/desabilita células em vez de removê-las do grid | Preserva o layout da tabela e a posição espacial dos elementos; a navegação por setas pula células desabilitadas. |
-| 2026-10-23 | Painel de detalhes fixo no canto inferior direito e bottom sheet no celular | Mantém a tabela visível no desktop e evita cobrir a tela toda em telas pequenas. `Esc` e o botão "Fechar" encerram; clicar de novo no mesmo elemento também fecha. |
-| 2026-10-23 | Busca e filtro são combinados (busca primeiro, categoria depois) | Permite refinar rapidamente, por exemplo, "argônio" dentro de "Gás nobre"; a contagem de resultados é anunciada em `role="status"`. |
-| 2026-10-23 | Parser recursivo descendente em `src/lib/molar-mass.ts`, sem biblioteca de química | Atende ao `AGENTS.md`, é testável sem navegador e cobre parênteses/colchetes aninhados e hidratos. |
-| 2026-10-23 | Espaços internos são ignorados e `·`, `.` e `*` separam hidratos | Facilita colar fórmulas com espaços e aceitar as três grafias de hidrato pedidas. Coeficientes de hidrato são aplicados à molécula inteira (`5H2O` = 5 × H2O). |
-| 2026-10-23 | Coeficiente no início da fórmula é rejeitado | `2H2O` é uma quantidade de matéria, não a fórmula de um composto; a calculadora recebe apenas a fórmula. Quantidades são inteiros positivos, sem decimais. |
-| 2026-10-23 | Erros usam `FormulaError` com `code` e mensagem em português | Permite testar os códigos e exibir mensagens claras diretamente na interface. |
-| 2026-10-23 | Resultado mostra composição percentual e aviso de massa aproximada | Transparência sobre a origem das massas e sobre elementos sem massa padrão da IUPAC. |
-| 2026-10-23 | Calculadora fica abaixo da tabela, na mesma página | Mantém a navegação simples, sem abas ou rotas, e reaproveita o layout existente. |
-| 2026-10-23 | `getElementBySymbol()` usa um `Map` | O parser consulta símbolos com frequência; a busca deixa de ser linear. |
-| 2026-10-23 | Valores exibidos com ponto decimal | Mantém consistência com a tabela periódica e com as massas do dataset. |
-| 2026-10-23 | Balanceador usa frações exatas com `bigint` e eliminação de Gauss | Evita erros de arredondamento de ponto flutuante e garante os menores coeficientes inteiros. A matriz é pequena, então o custo é irrelevante. |
-| 2026-10-23 | Coeficientes digitados na equação são validados, mas ignorados | O balanceador sempre recalcula os menores inteiros; isso corrige coeficientes errados e mantém a entrada simples. |
-| 2026-10-23 | Equações com coeficiente zero ou com múltiplas soluções geram erro | Um coeficiente zero indica composto que não participa; múltiplas soluções tornam o resultado ambíguo. Mensagens claras evitam resultados enganosos. |
-| 2026-10-23 | `BalanceError` com código e mensagem em português | Consistente com `FormulaError`; permite testar os casos e exibir mensagens diretas na interface. |
-| 2026-10-23 | Fórmulas de cada termo são validadas por `parseFormula()` | Reaproveita grupos, colchetes aninhados e hidratos, além de validar símbolos contra o dataset. |
-| 2026-10-23 | Balanceador fica abaixo da calculadora, na mesma página | Mantém a navegação simples, sem abas ou rotas, seguindo o padrão da Fase 2. |
-| 2026-10-23 | Quiz com rodadas de 10 perguntas e 4 alternativas | Rodada curta, com feedback imediato e resultado claro; quatro opções equilibram dificuldade e leitura no celular. |
-| 2026-10-23 | Distratores vêm do mesmo domínio da pergunta | Nomes, símbolos ou categorias, conforme o modo; evita alternativas fáceis de eliminar por formato. |
-| 2026-10-23 | Gerador de perguntas recebe função aleatória injetável | Permite testes determinísticos sem depender do `Math.random`. |
-| 2026-10-23 | Pontuação e recorde por modo no `localStorage` | Cada modo tem dificuldade própria; separar os recordes é mais justo. Acesso protegido com `try/catch` para navegação privada. |
-| 2026-10-23 | Foco movido para a pergunta e para o resultado | Leitores de tela ouvem a pergunta completa e a pontuação final; o feedback usa `role="status"`. |
+| Data       | Decisão                                                                            | Justificativa                                                                                                                                                                               |
+| ---------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2026-10-23 | `AGENTS.md` permanece como fonte principal de regras e planejamento                | Evita duplicação e divergência entre documentos.                                                                                                                                            |
+| 2026-10-23 | `PROJECT_STATE.md` centraliza o estado real (fases, decisões, testes)              | Permite saber rapidamente onde o projeto está.                                                                                                                                              |
+| 2026-10-23 | `docs/CLAUDE_HANDOFF.md` é o único documento colado no chat com o Claude           | O Claude não tem acesso aos arquivos locais; o resumo precisa ser autocontido.                                                                                                              |
+| 2026-10-23 | Sugestões do Claude não são aplicadas automaticamente                              | Antes de implementar, o OpenCode compara com o código existente e com o `AGENTS.md`, explica benefícios e riscos e pede aprovação.                                                          |
+| 2026-10-23 | Raiz do repositório é a pasta atual (`projeto 1`)                                  | O `AGENTS.md` já está aqui e nada precisa ser movido.                                                                                                                                       |
+| 2026-10-23 | Nome do repositório remoto: `projeto`                                              | Nome escolhido pelo usuário ao criar o repositório no GitHub. Impacto futuro: o `base` do Vite no GitHub Pages deverá ser `/projeto/`.                                                      |
+| 2026-10-23 | Template Vite gerado em pasta temporária e copiado para a raiz                     | Evita que o `create-vite` apague `AGENTS.md`, `PROJECT_STATE.md` e `docs/` em pasta não vazia.                                                                                              |
+| 2026-10-23 | `tests/smoke.test.ts` temporário                                                   | Teste da Fase 0 para validar o Vitest; foi removido na Fase 2, quando os testes reais passaram a cobrir os dados e a calculadora.                                                           |
+| 2026-10-23 | `tsconfig.json` inclui `src` e `tests`                                             | Permite que `tsc` (rodado no build) também verifique os tipos dos testes.                                                                                                                   |
+| 2026-10-23 | Revisão em branch de teste antes da `main`                                         | Permite ao usuário conferir cada fase no GitHub antes de publicar na branch principal.                                                                                                      |
+| 2026-10-23 | README remoto inicial substituído pelo nosso                                       | O GitHub criou `# projeto`; o nosso README é completo e é a versão oficial do projeto.                                                                                                      |
+| 2026-10-23 | Dataset de origem: Bowserinator/Periodic-Table-JSON (CC BY-SA 3.0)                 | Era o conjunto mais completo e com licença localizável; `elements.json` é derivado e distribuído sob CC BY-SA 3.0, enquanto o código permanece MIT. O elemento hipotético 119 foi excluído. |
+| 2026-10-23 | Nomes em português do Brasil via rótulos `pt-br` do Wikidata (CC0)                 | Os rótulos `pt` do Wikidata usam português europeu (`azoto`, `hidrogénio`); `pt-br` entrega a grafia brasileira (`nitrogênio`, `hidrogênio`).                                               |
+| 2026-10-23 | Categorias normalizadas em 9 grupos, com `categoryIsPredicted`                     | O dataset original tem 14 rótulos, incluindo categorias incertas de elementos superpesados. A UI usa 9 grupos e marca os previstos com `*`.                                                 |
+| 2026-10-23 | Massas aproximadas usam o isótopo mais estável e aparecem entre colchetes          | Elementos sem massa padrão da IUPAC não devem ser exibidos como se tivessem massa exata; `atomicMassIsApproximate` documenta o caso.                                                        |
+| 2026-10-23 | Filtro esmaece/desabilita células em vez de removê-las do grid                     | Preserva o layout da tabela e a posição espacial dos elementos; a navegação por setas pula células desabilitadas.                                                                           |
+| 2026-10-23 | Painel de detalhes fixo no canto inferior direito e bottom sheet no celular        | Mantém a tabela visível no desktop e evita cobrir a tela toda em telas pequenas. `Esc` e o botão "Fechar" encerram; clicar de novo no mesmo elemento também fecha.                          |
+| 2026-10-23 | Busca e filtro são combinados (busca primeiro, categoria depois)                   | Permite refinar rapidamente, por exemplo, "argônio" dentro de "Gás nobre"; a contagem de resultados é anunciada em `role="status"`.                                                         |
+| 2026-10-23 | Parser recursivo descendente em `src/lib/molar-mass.ts`, sem biblioteca de química | Atende ao `AGENTS.md`, é testável sem navegador e cobre parênteses/colchetes aninhados e hidratos.                                                                                          |
+| 2026-10-23 | Espaços internos são ignorados e `·`, `.` e `*` separam hidratos                   | Facilita colar fórmulas com espaços e aceitar as três grafias de hidrato pedidas. Coeficientes de hidrato são aplicados à molécula inteira (`5H2O` = 5 × H2O).                              |
+| 2026-10-23 | Coeficiente no início da fórmula é rejeitado                                       | `2H2O` é uma quantidade de matéria, não a fórmula de um composto; a calculadora recebe apenas a fórmula. Quantidades são inteiros positivos, sem decimais.                                  |
+| 2026-10-23 | Erros usam `FormulaError` com `code` e mensagem em português                       | Permite testar os códigos e exibir mensagens claras diretamente na interface.                                                                                                               |
+| 2026-10-23 | Resultado mostra composição percentual e aviso de massa aproximada                 | Transparência sobre a origem das massas e sobre elementos sem massa padrão da IUPAC.                                                                                                        |
+| 2026-10-23 | Calculadora fica abaixo da tabela, na mesma página                                 | Mantém a navegação simples, sem abas ou rotas, e reaproveita o layout existente.                                                                                                            |
+| 2026-10-23 | `getElementBySymbol()` usa um `Map`                                                | O parser consulta símbolos com frequência; a busca deixa de ser linear.                                                                                                                     |
+| 2026-10-23 | Valores exibidos com ponto decimal                                                 | Mantém consistência com a tabela periódica e com as massas do dataset.                                                                                                                      |
+| 2026-10-23 | Balanceador usa frações exatas com `bigint` e eliminação de Gauss                  | Evita erros de arredondamento de ponto flutuante e garante os menores coeficientes inteiros. A matriz é pequena, então o custo é irrelevante.                                               |
+| 2026-10-23 | Coeficientes digitados na equação são validados, mas ignorados                     | O balanceador sempre recalcula os menores inteiros; isso corrige coeficientes errados e mantém a entrada simples.                                                                           |
+| 2026-10-23 | Equações com coeficiente zero ou com múltiplas soluções geram erro                 | Um coeficiente zero indica composto que não participa; múltiplas soluções tornam o resultado ambíguo. Mensagens claras evitam resultados enganosos.                                         |
+| 2026-10-23 | `BalanceError` com código e mensagem em português                                  | Consistente com `FormulaError`; permite testar os casos e exibir mensagens diretas na interface.                                                                                            |
+| 2026-10-23 | Fórmulas de cada termo são validadas por `parseFormula()`                          | Reaproveita grupos, colchetes aninhados e hidratos, além de validar símbolos contra o dataset.                                                                                              |
+| 2026-10-23 | Balanceador fica abaixo da calculadora, na mesma página                            | Mantém a navegação simples, sem abas ou rotas, seguindo o padrão da Fase 2.                                                                                                                 |
+| 2026-10-23 | Quiz com rodadas de 10 perguntas e 4 alternativas                                  | Rodada curta, com feedback imediato e resultado claro; quatro opções equilibram dificuldade e leitura no celular.                                                                           |
+| 2026-10-23 | Distratores vêm do mesmo domínio da pergunta                                       | Nomes, símbolos ou categorias, conforme o modo; evita alternativas fáceis de eliminar por formato.                                                                                          |
+| 2026-10-23 | Gerador de perguntas recebe função aleatória injetável                             | Permite testes determinísticos sem depender do `Math.random`.                                                                                                                               |
+| 2026-10-23 | Pontuação e recorde por modo no `localStorage`                                     | Cada modo tem dificuldade própria; separar os recordes é mais justo. Acesso protegido com `try/catch` para navegação privada.                                                               |
+| 2026-10-23 | Foco movido para a pergunta e para o resultado                                     | Leitores de tela ouvem a pergunta completa e a pontuação final; o feedback usa `role="status"`.                                                                                             |
+| 2026-10-23 | Tema via `data-theme` no `<html>` e variáveis CSS semânticas                       | Mantém um único conjunto de componentes e permite trocar todas as superfícies, bordas, cores de estado e categorias sem duplicar CSS.                                                       |
+| 2026-10-23 | Script inline no `<head>` aplica o tema antes da primeira pintura                  | Evita o flash de tema claro ao abrir o site no escuro; a chave usada é a mesma de `src/lib/theme.ts`.                                                                                       |
+| 2026-10-23 | Preferência salva tem prioridade sobre `prefers-color-scheme`                      | O usuário controla a escolha; o sistema serve apenas como padrão inicial e como fallback quando não há preferência salva.                                                                   |
+| 2026-10-23 | Botão de tema com rótulo de ação ("Tema escuro"/"Tema claro")                      | O texto e o `aria-label` dizem o que o clique fará, o que é mais claro do que um estado ambíguo.                                                                                            |
+| 2026-10-23 | `base: '/projeto/'` fixo no `vite.config.ts`                                       | O nome do repositório é `projeto` e o GitHub Pages publica em `/projeto/`; o build e o preview locais usam o mesmo caminho da produção.                                                     |
+| 2026-10-23 | Workflow usa as actions oficiais do Pages e Node 24                                | `checkout@v7`, `setup-node@v7`, `configure-pages@v6`, `upload-pages-artifact@v5` e `deploy-pages@v5` eram as versões estáveis em outubro de 2026.                                           |
+| 2026-10-23 | Capturas reais em `docs/screenshots/` com Edge headless                            | Evita imagens falsas ou desatualizadas; as capturas mostram a interface real nos dois temas e foram verificadas antes do commit.                                                            |
+| 2026-10-23 | Versão `1.0.0` preparada na branch, com tag só após o deploy                       | A tag deve apontar para o commit já publicado e com a demo funcionando.                                                                                                                     |
 
 ## Resultados de testes e build
 
-| Data | Etapa | `npm test` | `npm run build` | `npm run lint` |
-|---|---|---|---|---|
-| 2026-10-23 | Fase 0 (antes do merge) | 1 arquivo, 1 teste passou (Vitest 5.0.5, 575 ms) | sucesso: `tsc` + Vite 8.3.5, 9 módulos, `dist/` gerado em 2,64 s | sem erros |
-| 2026-10-23 | Fase 0 (após merge do README remoto) | 1 arquivo, 1 teste passou (Vitest 5.0.5, 432 ms) | sucesso: `tsc` + Vite 8.3.5, 9 módulos, `dist/` gerado em 268 ms | sem erros |
-| 2026-10-23 | Fase 1 — Etapa 1 (dados) | 2 arquivos, 18 testes passaram (515 ms) | sucesso: 9 módulos, 194 ms; CSS 4,10 kB / JS 4,49 kB | sem erros |
-| 2026-10-23 | Fase 1 — Etapa 2 (tabela) | 2 arquivos, 18 testes passaram (425 ms) | sucesso: 9 módulos, 127 ms; CSS 3,66 kB / JS 30,73 kB | sem erros |
-| 2026-10-23 | Fase 1 — Etapa 3 (interação) | 2 arquivos, 23 testes passaram (481 ms) | sucesso: 14 módulos, 242 ms; CSS 6,14 kB / JS 36,23 kB | sem erros |
-| 2026-10-23 | Fase 1 — validação na `main` | 2 arquivos, 23 testes passaram (825 ms) | sucesso: 14 módulos, 327 ms; `index.html` 0,65 kB, CSS 6,14 kB / JS 36,23 kB | sem erros |
-| 2026-10-23 | Fase 2 — Etapa 1 (lógica) | 2 arquivos, 56 testes passaram (879 ms) | sucesso: 14 módulos, 312 ms; CSS 6,14 kB / JS 36,27 kB | sem erros |
-| 2026-10-23 | Fase 2 — Etapa 2 (interface) | 2 arquivos, 56 testes passaram (752 ms) | sucesso: 17 módulos, 307 ms; CSS 8,93 kB / JS 43,69 kB | sem erros |
-| 2026-10-23 | Fase 2 — validação na `main` | 2 arquivos, 56 testes passaram (763 ms) | sucesso: 17 módulos, 293 ms; `index.html` 0,65 kB, CSS 8,93 kB / JS 43,69 kB | sem erros |
-| 2026-10-23 | Fase 3 — Etapa 1 (lógica) | 3 arquivos, 87 testes passaram (1,18 s) | sucesso: 17 módulos, 335 ms; CSS 8,93 kB / JS 43,69 kB | sem erros |
-| 2026-10-23 | Fase 3 — Etapa 2 (interface) | 3 arquivos, 87 testes passaram (792 ms) | sucesso: 20 módulos, 249 ms; CSS 10,98 kB / JS 50,68 kB | sem erros |
-| 2026-10-23 | Fase 3 — Etapa 3 (documentação) | 3 arquivos, 87 testes passaram (784 ms) | sucesso: 20 módulos, 237 ms; CSS 10,98 kB / JS 50,68 kB | sem erros |
-| 2026-10-23 | Fase 3 — validação na `main` | 3 arquivos, 87 testes passaram (693 ms) | sucesso: 20 módulos, 302 ms; `index.html` 0,65 kB, CSS 10,98 kB / JS 50,68 kB | sem erros |
-| 2026-10-23 | Fase 4 — Etapa 1 (lógica) | 4 arquivos, 102 testes passaram (783 ms) | não executado nesta etapa (interface ainda não integrada) | não executado nesta etapa |
-| 2026-10-23 | Fase 4 — Etapa 2 (interface) | 4 arquivos, 102 testes passaram (1,12 s) | sucesso: 24 módulos, 332 ms; CSS 14,08 kB / JS 56,91 kB | sem erros |
-| 2026-10-23 | Fase 4 — Etapa 3 (documentação) | 4 arquivos, 102 testes passaram (872 ms) | sucesso: 24 módulos, 332 ms; CSS 14,08 kB / JS 56,91 kB | sem erros |
-| 2026-10-23 | Fase 4 — validação na `main` | 4 arquivos, 102 testes passaram (970 ms) | sucesso: 24 módulos, 336 ms; `index.html` 0,65 kB, CSS 14,08 kB / JS 56,91 kB | sem erros |
+| Data       | Etapa                                | `npm test`                                       | `npm run build`                                                               | `npm run lint`            |
+| ---------- | ------------------------------------ | ------------------------------------------------ | ----------------------------------------------------------------------------- | ------------------------- |
+| 2026-10-23 | Fase 0 (antes do merge)              | 1 arquivo, 1 teste passou (Vitest 5.0.5, 575 ms) | sucesso: `tsc` + Vite 8.3.5, 9 módulos, `dist/` gerado em 2,64 s              | sem erros                 |
+| 2026-10-23 | Fase 0 (após merge do README remoto) | 1 arquivo, 1 teste passou (Vitest 5.0.5, 432 ms) | sucesso: `tsc` + Vite 8.3.5, 9 módulos, `dist/` gerado em 268 ms              | sem erros                 |
+| 2026-10-23 | Fase 1 — Etapa 1 (dados)             | 2 arquivos, 18 testes passaram (515 ms)          | sucesso: 9 módulos, 194 ms; CSS 4,10 kB / JS 4,49 kB                          | sem erros                 |
+| 2026-10-23 | Fase 1 — Etapa 2 (tabela)            | 2 arquivos, 18 testes passaram (425 ms)          | sucesso: 9 módulos, 127 ms; CSS 3,66 kB / JS 30,73 kB                         | sem erros                 |
+| 2026-10-23 | Fase 1 — Etapa 3 (interação)         | 2 arquivos, 23 testes passaram (481 ms)          | sucesso: 14 módulos, 242 ms; CSS 6,14 kB / JS 36,23 kB                        | sem erros                 |
+| 2026-10-23 | Fase 1 — validação na `main`         | 2 arquivos, 23 testes passaram (825 ms)          | sucesso: 14 módulos, 327 ms; `index.html` 0,65 kB, CSS 6,14 kB / JS 36,23 kB  | sem erros                 |
+| 2026-10-23 | Fase 2 — Etapa 1 (lógica)            | 2 arquivos, 56 testes passaram (879 ms)          | sucesso: 14 módulos, 312 ms; CSS 6,14 kB / JS 36,27 kB                        | sem erros                 |
+| 2026-10-23 | Fase 2 — Etapa 2 (interface)         | 2 arquivos, 56 testes passaram (752 ms)          | sucesso: 17 módulos, 307 ms; CSS 8,93 kB / JS 43,69 kB                        | sem erros                 |
+| 2026-10-23 | Fase 2 — validação na `main`         | 2 arquivos, 56 testes passaram (763 ms)          | sucesso: 17 módulos, 293 ms; `index.html` 0,65 kB, CSS 8,93 kB / JS 43,69 kB  | sem erros                 |
+| 2026-10-23 | Fase 3 — Etapa 1 (lógica)            | 3 arquivos, 87 testes passaram (1,18 s)          | sucesso: 17 módulos, 335 ms; CSS 8,93 kB / JS 43,69 kB                        | sem erros                 |
+| 2026-10-23 | Fase 3 — Etapa 2 (interface)         | 3 arquivos, 87 testes passaram (792 ms)          | sucesso: 20 módulos, 249 ms; CSS 10,98 kB / JS 50,68 kB                       | sem erros                 |
+| 2026-10-23 | Fase 3 — Etapa 3 (documentação)      | 3 arquivos, 87 testes passaram (784 ms)          | sucesso: 20 módulos, 237 ms; CSS 10,98 kB / JS 50,68 kB                       | sem erros                 |
+| 2026-10-23 | Fase 3 — validação na `main`         | 3 arquivos, 87 testes passaram (693 ms)          | sucesso: 20 módulos, 302 ms; `index.html` 0,65 kB, CSS 10,98 kB / JS 50,68 kB | sem erros                 |
+| 2026-10-23 | Fase 4 — Etapa 1 (lógica)            | 4 arquivos, 102 testes passaram (783 ms)         | não executado nesta etapa (interface ainda não integrada)                     | não executado nesta etapa |
+| 2026-10-23 | Fase 4 — Etapa 2 (interface)         | 4 arquivos, 102 testes passaram (1,12 s)         | sucesso: 24 módulos, 332 ms; CSS 14,08 kB / JS 56,91 kB                       | sem erros                 |
+| 2026-10-23 | Fase 4 — Etapa 3 (documentação)      | 4 arquivos, 102 testes passaram (872 ms)         | sucesso: 24 módulos, 332 ms; CSS 14,08 kB / JS 56,91 kB                       | sem erros                 |
+| 2026-10-23 | Fase 4 — validação na `main`         | 4 arquivos, 102 testes passaram (970 ms)         | sucesso: 24 módulos, 336 ms; `index.html` 0,65 kB, CSS 14,08 kB / JS 56,91 kB | sem erros                 |
+| 2026-10-23 | Fase 5 — Etapa 1 (tema)              | 5 arquivos, 115 testes passaram (1,12 s)         | sucesso: 26 módulos, 741 ms; CSS 17,38 kB / JS 58,56 kB                       | sem erros                 |
+| 2026-10-23 | Fase 5 — Etapa 3 (Pages)             | 5 arquivos, 115 testes passaram (926 ms)         | sucesso: 26 módulos, 306 ms; `index.html` 1,35 kB, CSS 17,38 kB / JS 58,56 kB | sem erros                 |
 
 ## Problemas conhecidos, limitações e dúvidas
 
@@ -160,9 +182,14 @@
 - As massas vêm do dataset; por isso `Fe2(SO4)3` resulta em 399,858 g/mol (dentro da tolerância de ±0,05 do `AGENTS.md`, mas diferente do valor arredondado 399,88). Pequenas diferenças em relação a massas convencionais arredondadas são esperadas.
 - `src/data/elements.json` é derivado de dataset CC BY-SA 3.0 e continua sob essa licença; o código do projeto é MIT. A distinção está em `src/data/README.md` e no `README.md`.
 - As massas de elementos sem massa padrão da IUPAC usam o número de massa do isótopo mais estável e aparecem entre colchetes na tabela; na calculadora, o resultado recebe um aviso de valor aproximado.
-- O GitHub Pages ainda não está configurado; o deploy é da Fase 5 e deverá usar `base: '/projeto/'`.
+- O GitHub Pages ainda não foi publicado: o workflow está pronto, mas o primeiro deploy depende do merge na `main` e de **Settings → Pages → Source: GitHub Actions**.
 - A branch `test/phase-0-bootstrap` continua no remoto; pode ser removida depois, se o usuário quiser.
 - A branch `feat/phase-4-quiz` foi mesclada e publicada; a `main` contém a Fase 4.
+- A branch `feat/phase-5-polish-and-deploy` contém a Fase 5 e aguarda revisão; a `main` ainda está em `00020b7`.
+- A preferência de tema fica no `localStorage`; em navegação privada ou com armazenamento bloqueado, o tema funciona, mas volta ao padrão do sistema na próxima visita.
+- As capturas do README foram geradas com Edge headless em 1280 px; telas muito estreitas ainda precisam de revisão manual.
+- A demo em `https://wenderson-hgs.github.io/projeto/` só responderá depois do primeiro deploy; até lá, o link do README fica pendente.
+- A tag `v1.0.0` ainda não foi criada; ela deve ser anotada depois que o deploy estiver confirmado.
 - O balanceador não trata cargas iônicas nem equações redox com íons (ex.: `Fe2+`); o escopo atual cobre fórmulas neutras.
 - Coeficientes digitados pelo usuário são ignorados no cálculo; o resultado sempre usa os menores inteiros. Equações com coeficiente zero, múltiplas soluções ou sem solução positiva são rejeitadas com mensagem clara.
 - O quiz usa 10 perguntas por rodada e 4 alternativas; não há níveis de dificuldade nem limite de tempo.
@@ -172,4 +199,4 @@
 
 ## Próximo passo
 
-Apresentar o plano da Fase 5 — Polimento e publicação e aguardar o "ok" do usuário antes de criar a branch e editar arquivos.
+Enviar `feat/phase-5-polish-and-deploy` para revisão, testar o tema e o layout no navegador e, após aprovação, fazer o merge na `main`, configurar o GitHub Pages, confirmar a demo e criar a tag/release `v1.0.0`.

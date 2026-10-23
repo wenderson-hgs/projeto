@@ -15,7 +15,7 @@ Este é o meu **primeiro projeto publicado no GitHub**, com demo online no GitHu
 
 ## 2. Como quero trabalhar com você
 
-- Responda em **português do Brasil**. Explique *o que* está fazendo e *por quê*, em linguagem simples. Estou aprendendo.
+- Responda em **português do Brasil**. Explique _o que_ está fazendo e _por quê_, em linguagem simples. Estou aprendendo.
 - Código, nomes de arquivos/variáveis e mensagens de commit em **inglês**. Interface do site e README em **português**. Comentários no código em português, só onde o motivo não for óbvio.
 - Trabalhe **uma fase por vez**. Antes de editar arquivos, mostre um plano curto (arquivos que vai criar/alterar e comandos que vai rodar) e espere o meu "ok".
 - Passos pequenos e testáveis. Depois de cada etapa, rode `npm run build` e `npm test` e me diga o resultado.
@@ -59,12 +59,14 @@ Mantenha a lógica de química em `src/lib/` **separada da interface**, para tes
 ## 5. Fases (marque [x] ao concluir)
 
 ### Fase 0 — Preparação
+
 - [x] Verificar pré-requisitos (seção 3)
 - [x] Criar o projeto Vite + TypeScript (template vanilla) e configurar Vitest, ESLint e Prettier
 - [x] Criar `.gitignore` (inclua `node_modules` e `dist`), `LICENSE` (MIT) e um `README.md` inicial
 - [x] `git init`, primeiro commit, criar o repositório no GitHub e fazer o primeiro push (com a minha confirmação)
 
 ### Fase 1 — Tabela periódica (MVP)
+
 - [x] `src/data/elements.json` com os 118 elementos: número atômico, símbolo, nome em português e em inglês, massa atômica, categoria, grupo, período e posição (linha/coluna) no layout
 - [x] Renderizar a tabela em CSS Grid, com cores por categoria e legenda
 - [x] Clicar em um elemento abre um painel com os detalhes
@@ -72,30 +74,35 @@ Mantenha a lógica de química em `src/lib/` **separada da interface**, para tes
 - [x] Navegação por teclado e layout responsivo (celular)
 
 ### Fase 2 — Massa molar
+
 - [x] Parser de fórmulas: `H2O`, `Ca(OH)2`, `Fe2(SO4)3`, `K4[Fe(CN)6]` (parênteses e colchetes aninhados) e hidratos como `CuSO4·5H2O` (aceitar `·`, `.` e `*`)
 - [x] Massa molar total + composição percentual por elemento
 - [x] Mensagens de erro claras (símbolo desconhecido, parêntese sem fechar, fórmula vazia)
 - [x] Testes unitários com os casos da seção 6
 
 ### Fase 3 — Balanceador de equações
+
 - [x] Entrada como `Fe + O2 -> Fe2O3` (aceitar `->`, `=` e `→`)
 - [x] Algoritmo: montar a matriz de composição e achar o espaço nulo com **frações exatas** (sem ponto flutuante), depois escalar para os menores inteiros
 - [x] Tratar casos sem solução ou com infinitas soluções, com mensagem clara
 - [x] Testes unitários com os casos da seção 6
 
 ### Fase 4 — Quiz
+
 - [x] Modos: símbolo → nome, nome → símbolo e categoria do elemento
 - [x] Pontuação e recorde salvos no `localStorage`
 
 ### Fase 5 — Polimento e publicação
-- [ ] Tema claro/escuro e acessibilidade básica (contraste, foco visível, `aria-label`)
-- [ ] README completo: descrição, prints ou GIF, como rodar, fonte e licença dos dados
-- [ ] Deploy no GitHub Pages com GitHub Actions (atenção: o `base` do Vite precisa ser `/nome-do-repositorio/`)
+
+- [x] Tema claro/escuro e acessibilidade básica (contraste, foco visível, `aria-label`)
+- [x] README completo: descrição, prints ou GIF, como rodar, fonte e licença dos dados
+- [ ] Deploy no GitHub Pages com GitHub Actions (atenção: o `base` do Vite precisa ser `/projeto/`, pois esse é o nome do repositório)
 - [ ] Tag e release `v1.0.0`
 
 ## 6. Dados e casos de teste
 
 **Dados dos elementos**
+
 - Não invente valores. Use um dataset aberto (por exemplo, o repositório Periodic-Table-JSON no GitHub; confirme a licença antes) e cite a fonte e a licença no README.
 - Use massas atômicas convencionais (IUPAC), exibidas com 3 casas decimais.
 - Depois de montar o JSON, confira manualmente alguns elementos (H, C, O, Fe, Au) e me avise sobre qualquer dúvida.
@@ -103,25 +110,25 @@ Mantenha a lógica de química em `src/lib/` **separada da interface**, para tes
 
 **Massa molar** (tolerância de ±0,05 g/mol; no código, use ponto decimal)
 
-| Fórmula | Massa molar esperada |
-|---|---|
-| H2O | ≈ 18,015 |
-| NaCl | ≈ 58,44 |
-| Ca(OH)2 | ≈ 74,09 |
-| C6H12O6 | ≈ 180,16 |
-| Fe2(SO4)3 | ≈ 399,88 |
-| CuSO4·5H2O | ≈ 249,68 |
+| Fórmula    | Massa molar esperada |
+| ---------- | -------------------- |
+| H2O        | ≈ 18,015             |
+| NaCl       | ≈ 58,44              |
+| Ca(OH)2    | ≈ 74,09              |
+| C6H12O6    | ≈ 180,16             |
+| Fe2(SO4)3  | ≈ 399,88             |
+| CuSO4·5H2O | ≈ 249,68             |
 
 **Balanceamento**
 
-| Entrada | Resultado esperado |
-|---|---|
-| H2 + O2 -> H2O | 2 H2 + O2 -> 2 H2O |
-| Fe + O2 -> Fe2O3 | 4 Fe + 3 O2 -> 2 Fe2O3 |
-| C3H8 + O2 -> CO2 + H2O | C3H8 + 5 O2 -> 3 CO2 + 4 H2O |
-| Al + HCl -> AlCl3 + H2 | 2 Al + 6 HCl -> 2 AlCl3 + 3 H2 |
+| Entrada                                | Resultado esperado                                  |
+| -------------------------------------- | --------------------------------------------------- |
+| H2 + O2 -> H2O                         | 2 H2 + O2 -> 2 H2O                                  |
+| Fe + O2 -> Fe2O3                       | 4 Fe + 3 O2 -> 2 Fe2O3                              |
+| C3H8 + O2 -> CO2 + H2O                 | C3H8 + 5 O2 -> 3 CO2 + 4 H2O                        |
+| Al + HCl -> AlCl3 + H2                 | 2 Al + 6 HCl -> 2 AlCl3 + 3 H2                      |
 | KMnO4 + HCl -> KCl + MnCl2 + H2O + Cl2 | 2 KMnO4 + 16 HCl -> 2 KCl + 2 MnCl2 + 8 H2O + 5 Cl2 |
-| H2 -> O2 | erro claro (equação impossível) |
+| H2 -> O2                               | erro claro (equação impossível)                     |
 
 ## 7. Publicar no GitHub
 
