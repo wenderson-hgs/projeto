@@ -2,6 +2,7 @@ import './styles/base.css';
 import './styles/table.css';
 import './styles/controls.css';
 import './styles/details.css';
+import './styles/calculator.css';
 import {
   elements,
   filterByCategory,
@@ -11,6 +12,7 @@ import {
 } from './lib/elements';
 import { createDetailsPanel } from './ui/details-panel';
 import { enableGridKeyboardNavigation } from './ui/keyboard-navigation';
+import { createMolarMassCalculator } from './ui/molar-mass';
 import { createLegend, createPeriodicTable } from './ui/periodic-table';
 import { createSearchFilter, type CategoryFilter } from './ui/search-filter';
 
@@ -29,7 +31,8 @@ const title = document.createElement('h1');
 title.textContent = 'chem-toolkit';
 
 const subtitle = document.createElement('p');
-subtitle.textContent = 'Tabela periódica interativa com os 118 elementos químicos.';
+subtitle.textContent =
+  'Tabela periódica interativa e calculadora de massa molar com os 118 elementos químicos.';
 
 header.append(title, subtitle);
 
@@ -65,7 +68,7 @@ const detailsPanel = createDetailsPanel(closeDetails);
 let selectedAtomicNumber: number | null = null;
 
 section.append(sectionTitle, scrollHint, filterBar, status, tableWrapper, createLegend());
-main.append(section);
+main.append(section, createMolarMassCalculator());
 
 const footer = document.createElement('footer');
 footer.className = 'site-footer';
