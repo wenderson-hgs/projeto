@@ -6,11 +6,11 @@
 
 ## Situação atual
 
-- **Etapa:** Fase 4 — Quiz concluída na branch `feat/phase-4-quiz` (commits `9b2235c` e `14610d8`), aguardando revisão do usuário antes do merge na `main`.
+- **Etapa:** Fase 4 — Quiz concluída, revisada pelo usuário e mesclada na `main` por fast-forward até `a75252d`.
 - **Repositório:** https://github.com/wenderson-hgs/projeto
-- **`main`:** commit `640e77b` (Fases 0, 1, 2 e 3 publicadas).
+- **`main`:** contém as Fases 0, 1, 2, 3 e 4.
 - **Projeto:** chem-toolkit, site estático (Vite + TypeScript, sem framework) com tabela periódica interativa, calculadora de massa molar, balanceador de equações e quiz.
-- **Próxima fase:** Fase 5 — Polimento e publicação (ainda não planejada/aprovada).
+- **Próxima fase:** Fase 5 — Polimento e publicação (plano a ser apresentado e aprovado antes de editar arquivos).
 
 ## 1. Objetivo da etapa e o que foi implementado
 
@@ -234,14 +234,14 @@ function createQuiz(): HTMLElement;
 
 ## 5. Resultado real de `npm test`, `npm run build` e `npm run lint`
 
-Executados em 2026-10-23, na branch `feat/phase-4-quiz`, após a interface:
+Executados em 2026-10-23, na `main`, após o merge da Fase 4:
 
 ```text
 $ npm test
 RUN  v5.0.5 C:/Users/wende/OneDrive/Desktop/wenderson/projetos/SaaS/meus projetos/projeto 1
 Test Files  4 passed (4)
      Tests  102 passed (102)
-  Duration  872ms
+  Duration  970ms
 
 $ npm run build
 tsc && vite build
@@ -250,14 +250,14 @@ vite v8.3.5 building client environment for production...
 dist/index.html                  0.65 kB │ gzip:  0.40 kB
 dist/assets/index-BlDbAV9F.css  14.08 kB │ gzip:  3.28 kB
 dist/assets/index-D7SDOidd.js   56.91 kB │ gzip: 13.55 kB
-✓ built in 332ms
+✓ built in 336ms
 
 $ npm run lint
 eslint .
 (sem erros)
 ```
 
-Na Etapa 1 (somente lógica, sem a interface integrada), os 102 testes passaram em 783 ms; build e lint foram executados depois da interface. Nenhum resultado foi declarado sem execução real.
+Na branch, após a interface: 102 testes em 1,12 s e build de 332 ms. Nenhum resultado foi declarado sem execução real.
 
 ## 6. Problemas conhecidos, limitações e dúvidas para revisão
 
@@ -269,7 +269,7 @@ Na Etapa 1 (somente lógica, sem a interface integrada), os 102 testes passaram 
 - **Aleatoriedade:** em produção usa `Math.random`; não há seed persistida nem repetição controlada entre rodadas.
 - **Precisão dos dados:** `Fe2(SO4)3` resulta em 399,858 g/mol com as massas do dataset, dentro da tolerância de ±0,05 do `AGENTS.md`.
 - **Massas aproximadas:** elementos sem padrão IUPAC usam o número de massa do isótopo mais estável; a calculadora avisa.
-- **Branch ainda não mesclada:** `feat/phase-4-quiz` aguarda revisão; a `main` continua em `640e77b`.
+- **Branch mesclada:** `feat/phase-4-quiz` foi revisada pelo usuário, mesclada por fast-forward na `main` e publicada.
 - **GitHub Pages** ainda não configurado; na Fase 5 o `base` do Vite deve ser `/projeto/`.
 - **Dúvidas para o Claude:**
   1. Rodadas de 10 perguntas com 4 alternativas são adequadas para o público iniciante, ou vale um modo sem limite?

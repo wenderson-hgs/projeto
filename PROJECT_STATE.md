@@ -13,15 +13,15 @@
 | Stack | Node.js 24 (LTS) + npm 11, Vite 8 + TypeScript 6 (sem framework), Vitest 5, ESLint 10 + Prettier 3 |
 | Publicação | GitHub Pages via GitHub Actions (planejado para a Fase 5) |
 | Repositório | https://github.com/wenderson-hgs/projeto (nome do repositório: `projeto`) |
-| Branch principal | `main` (Fases 1, 2 e 3 publicadas; último commit `640e77b`) |
-| Branch de trabalho | `feat/phase-4-quiz` (Fase 4; commits `9b2235c` e `14610d8`; documentação no commit seguinte) |
+| Branch principal | `main` (Fases 1, 2, 3 e 4 publicadas; Fase 4 mesclada por fast-forward até `a75252d`, seguida deste commit de documentação) |
+| Branch de trabalho | nenhuma ativa; `feat/phase-4-quiz` mesclada e publicada (Fase 5 a planejar) |
 | Demo | ainda não publicada |
 
 ## Fase em andamento
 
-**Fase 4 — Quiz concluída na branch `feat/phase-4-quiz`, aguardando revisão do usuário antes do merge na `main`.**
+**Fase 4 — Quiz concluída, revisada pelo usuário e mesclada na `main`.**
 
-> As Fases 0, 1, 2 e 3 estão publicadas na `main`. A Fase 4 adiciona o quiz com três modos, rodadas de 10 perguntas, feedback imediato e pontuação/recorde por modo salvos no `localStorage`.
+> As Fases 0, 1, 2, 3 e 4 estão publicadas na `main`. A Fase 4 adiciona o quiz com três modos, rodadas de 10 perguntas, feedback imediato e pontuação/recorde por modo salvos no `localStorage`. A próxima etapa é a Fase 5 — Polimento e publicação, que precisa ser planejada e aprovada antes de qualquer edição.
 
 ## Checklist de fases
 
@@ -82,11 +82,11 @@
 | 2026-10-23 | Fase 4 — Etapa 1: lógica | Criados `src/lib/quiz.ts` (três modos, rodadas de 10 perguntas, 4 alternativas, RNG injetável) e `src/lib/quiz-storage.ts` (última pontuação e recorde por modo no `localStorage`, com acesso protegido). Criados 15 testes em `tests/quiz.test.ts`. Commit `9b2235c`. |
 | 2026-10-23 | Fase 4 — Etapa 2: interface | Criada a seção do quiz em `src/ui/quiz.ts`, com escolha de modo, rodada, feedback imediato, resultado, recorde e foco acessível. Estilos em `src/styles/quiz.css`; integrada abaixo do balanceador em `src/main.ts`. Commit `14610d8`. |
 | 2026-10-23 | Fase 4 — Etapa 3: validação e documentação | README, `PROJECT_STATE.md`, `docs/CLAUDE_HANDOFF.md` e checklist do `AGENTS.md` atualizados. Checks finais: 102 testes, build e lint sem erros. |
+| 2026-10-23 | Fase 4 — revisão e merge | Usuário aprovou o quiz. Branch `feat/phase-4-quiz` publicada e mesclada por fast-forward na `main` (até `a75252d`). Checks repetidos na `main`: 102 testes, build e lint sem erros. |
 
 ## Pendências
 
-- Revisar a branch `feat/phase-4-quiz` no GitHub e testar o quiz localmente.
-- Após aprovação, fazer o merge da Fase 4 na `main` e publicar.
+- Planejar e aprovar a Fase 5 — Polimento e publicação antes de editar arquivos.
 - Remover as branches de trabalho já mescladas (`feat/phase-1-periodic-table`, `feat/phase-2-molar-mass`, `feat/phase-3-equation-balancer`, `feat/phase-4-quiz` e `test/phase-0-bootstrap`) quando o usuário quiser.
 
 ## Decisões importantes
@@ -151,6 +151,7 @@
 | 2026-10-23 | Fase 4 — Etapa 1 (lógica) | 4 arquivos, 102 testes passaram (783 ms) | não executado nesta etapa (interface ainda não integrada) | não executado nesta etapa |
 | 2026-10-23 | Fase 4 — Etapa 2 (interface) | 4 arquivos, 102 testes passaram (1,12 s) | sucesso: 24 módulos, 332 ms; CSS 14,08 kB / JS 56,91 kB | sem erros |
 | 2026-10-23 | Fase 4 — Etapa 3 (documentação) | 4 arquivos, 102 testes passaram (872 ms) | sucesso: 24 módulos, 332 ms; CSS 14,08 kB / JS 56,91 kB | sem erros |
+| 2026-10-23 | Fase 4 — validação na `main` | 4 arquivos, 102 testes passaram (970 ms) | sucesso: 24 módulos, 336 ms; `index.html` 0,65 kB, CSS 14,08 kB / JS 56,91 kB | sem erros |
 
 ## Problemas conhecidos, limitações e dúvidas
 
@@ -161,7 +162,7 @@
 - As massas de elementos sem massa padrão da IUPAC usam o número de massa do isótopo mais estável e aparecem entre colchetes na tabela; na calculadora, o resultado recebe um aviso de valor aproximado.
 - O GitHub Pages ainda não está configurado; o deploy é da Fase 5 e deverá usar `base: '/projeto/'`.
 - A branch `test/phase-0-bootstrap` continua no remoto; pode ser removida depois, se o usuário quiser.
-- A branch `feat/phase-4-quiz` ainda não foi publicada no momento desta atualização; a `main` contém as Fases 1, 2 e 3.
+- A branch `feat/phase-4-quiz` foi mesclada e publicada; a `main` contém a Fase 4.
 - O balanceador não trata cargas iônicas nem equações redox com íons (ex.: `Fe2+`); o escopo atual cobre fórmulas neutras.
 - Coeficientes digitados pelo usuário são ignorados no cálculo; o resultado sempre usa os menores inteiros. Equações com coeficiente zero, múltiplas soluções ou sem solução positiva são rejeitadas com mensagem clara.
 - O quiz usa 10 perguntas por rodada e 4 alternativas; não há níveis de dificuldade nem limite de tempo.
@@ -171,4 +172,4 @@
 
 ## Próximo passo
 
-Enviar `feat/phase-4-quiz` ao GitHub e pedir ao usuário para revisar o quiz e o diff. Após aprovação, fazer o merge na `main` e só então planejar a Fase 5 — Polimento e publicação.
+Apresentar o plano da Fase 5 — Polimento e publicação e aguardar o "ok" do usuário antes de criar a branch e editar arquivos.
