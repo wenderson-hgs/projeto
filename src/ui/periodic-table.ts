@@ -50,6 +50,8 @@ function createElementCell(element: Element): HTMLButtonElement {
   button.dataset.predicted = String(element.categoryIsPredicted);
   button.style.setProperty('--x', String(element.xpos));
   button.style.setProperty('--y', String(element.ypos));
+  button.setAttribute('aria-controls', 'element-details');
+  button.setAttribute('aria-expanded', 'false');
 
   const categoryLabel = CATEGORY_LABELS[element.category];
   const predictedNote = element.categoryIsPredicted ? ' (categoria prevista)' : '';

@@ -4,6 +4,7 @@ import {
   elements,
   filterByCategory,
   formatAtomicMass,
+  getElementByAtomicNumber,
   searchElements,
 } from '../src/lib/elements';
 
@@ -119,6 +120,37 @@ describe('filterByCategory', () => {
   it('keeps only the requested category in a custom source', () => {
     const result = filterByCategory('nonmetal', elements.slice(0, 10));
     expect(result.every((element) => element.category === 'nonmetal')).toBe(true);
+  });
+});
+
+describe('combined search and category filter', () => {
+  it('finds a noble gas by Portuguese name', () => {
+    const result = filterByCategory('noble-gas', searchElements('argonio'));
+    expect(result.map((element) => element.symbol)).toEqual(['Ar']);
+  });
+
+  it('excludes results from other categories', () => {
+    expect(filterByCategory('noble-gas', searchElements('ferro'))).toHaveLength(0);
+  });
+
+  it('combines a symbol search with a category', () => {
+    const result = filterByCategory('nonmetal', searchElements('n'));
+    expect(result.every((element) => element.category === 'nonmetal')).toBe(true);
+    expect(result.map((element) => element.symbol)).toContain('N');
+  });
+});
+
+describe('getElementByAtomicNumber', () => {
+  it('finds elements by atomic number', () => {
+    expect(getElementByAtomicNumber(1)?.symbol).toBe('H');
+    expect(getElementByAtomicNumber(26)?.symbol).toBe('Fe');
+    expect(getElementByAtomicNumber(118)?.symbol).toBe('Og');
+  });
+
+  it('returns undefined for unknown atomic numbers', () => {
+    expect(getElementByAtomicNumber(0)).toBeUndefined();
+    expect(getElementByAtomicNumber(119)).toBeUndefined();
+    expect(getElementByAtomicNumber(-1)).toBeUndefined();
   });
 });
 
