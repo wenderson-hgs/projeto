@@ -6,11 +6,11 @@
 
 ## Situação atual
 
-- **Etapa:** Fase 3 — Balanceador de equações concluída na branch `feat/phase-3-equation-balancer` (commits `a33db2d` e `d5e2547`), aguardando revisão do usuário antes do merge na `main`.
+- **Etapa:** Fase 3 — Balanceador de equações concluída, revisada pelo usuário e mesclada na `main` por fast-forward até `806c2e8`.
 - **Repositório:** https://github.com/wenderson-hgs/projeto
-- **`main`:** commit `5516132` (Fases 0, 1 e 2 publicadas).
+- **`main`:** contém as Fases 0, 1, 2 e 3.
 - **Projeto:** chem-toolkit, site estático (Vite + TypeScript, sem framework) com tabela periódica interativa, calculadora de massa molar, balanceador de equações e quiz.
-- **Próxima fase:** Fase 4 — Quiz (ainda não planejada/aprovada).
+- **Próxima fase:** Fase 4 — Quiz (plano a ser apresentado e aprovado antes de editar arquivos).
 
 ## 1. Objetivo da etapa e o que foi implementado
 
@@ -203,14 +203,14 @@ function createEquationBalancer(): HTMLElement;
 
 ## 5. Resultado real de `npm test`, `npm run build` e `npm run lint`
 
-Executados em 2026-10-23, na branch `feat/phase-3-equation-balancer`, após a interface:
+Executados em 2026-10-23, na `main`, após o merge da Fase 3:
 
 ```text
 $ npm test
 RUN  v5.0.5 C:/Users/wende/OneDrive/Desktop/wenderson/projetos/SaaS/meus projetos/projeto 1
 Test Files  3 passed (3)
      Tests  87 passed (87)
-  Duration  792ms
+  Duration  693ms
 
 $ npm run build
 tsc && vite build
@@ -219,14 +219,14 @@ vite v8.3.5 building client environment for production...
 dist/index.html                  0.65 kB │ gzip:  0.40 kB
 dist/assets/index-CWb9NivL.css  10.98 kB │ gzip:  2.76 kB
 dist/assets/index-I2_NsqV6.js   50.68 kB │ gzip: 11.73 kB
-✓ built in 249ms
+✓ built in 302ms
 
 $ npm run lint
 eslint .
 (sem erros)
 ```
 
-Na Etapa 1 (somente lógica, ainda sem a interface integrada): 87 testes em 1,18 s, build de 335 ms com 17 módulos e lint sem erros. Nenhum resultado foi declarado sem execução real.
+Na branch, após a interface: 87 testes em 792 ms e build de 249 ms. Nenhum resultado foi declarado sem execução real.
 
 ## 6. Problemas conhecidos, limitações e dúvidas para revisão
 
@@ -238,7 +238,7 @@ Na Etapa 1 (somente lógica, ainda sem a interface integrada): 87 testes em 1,18
 - **Precisão dos dados:** `Fe2(SO4)3` resulta em 399,858 g/mol com as massas do dataset. Está dentro da tolerância de ±0,05 do `AGENTS.md` (399,88), mas difere do valor convencional arredondado.
 - **Massas aproximadas:** elementos sem padrão IUPAC usam o número de massa do isótopo mais estável; a UI avisa, mas o valor não é uma massa atômica padrão.
 - **`aria-live` no resultado da calculadora:** a região inclui a tabela de composição. Isso pode ser verboso em leitores de tela; vale anunciar só a massa total?
-- **Branch ainda não mesclada:** `feat/phase-3-equation-balancer` aguarda revisão; a `main` continua em `5516132`.
+- **Branch mesclada:** `feat/phase-3-equation-balancer` foi revisada pelo usuário, mesclada por fast-forward na `main` e publicada.
 - **GitHub Pages** ainda não configurado; na Fase 5 o `base` do Vite deve ser `/projeto/`.
 - **Dúvidas para o Claude:**
   1. O uso de RREF com `bigint` e espaço nulo é adequado para o escopo, ou há uma abordagem mais simples e igualmente exata para equações químicas?

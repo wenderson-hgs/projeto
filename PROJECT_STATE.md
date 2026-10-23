@@ -13,15 +13,15 @@
 | Stack | Node.js 24 (LTS) + npm 11, Vite 8 + TypeScript 6 (sem framework), Vitest 5, ESLint 10 + Prettier 3 |
 | Publicação | GitHub Pages via GitHub Actions (planejado para a Fase 5) |
 | Repositório | https://github.com/wenderson-hgs/projeto (nome do repositório: `projeto`) |
-| Branch principal | `main` (Fases 1 e 2 publicadas; último commit `5516132`) |
-| Branch de trabalho | `feat/phase-3-equation-balancer` (Fase 3; commits `a33db2d` e `d5e2547`; documentação no commit seguinte) |
+| Branch principal | `main` (Fases 1, 2 e 3 publicadas; Fase 3 mesclada por fast-forward até `806c2e8`, seguida deste commit de documentação) |
+| Branch de trabalho | nenhuma ativa; `feat/phase-3-equation-balancer` mesclada e publicada (Fase 4 a planejar) |
 | Demo | ainda não publicada |
 
 ## Fase em andamento
 
-**Fase 3 — Balanceador de equações concluída na branch `feat/phase-3-equation-balancer`, aguardando revisão do usuário antes do merge na `main`.**
+**Fase 3 — Balanceador de equações concluída, revisada pelo usuário e mesclada na `main`.**
 
-> As Fases 0, 1 e 2 estão publicadas na `main`. A Fase 3 adiciona o balanceador de equações com frações exatas, tratamento de equações impossíveis ou com múltiplas soluções e interface própria abaixo da calculadora.
+> As Fases 0, 1, 2 e 3 estão publicadas na `main`. A Fase 3 adiciona o balanceador de equações com frações exatas, tratamento de equações impossíveis ou com múltiplas soluções e interface própria abaixo da calculadora. A próxima etapa é a Fase 4 — Quiz, que precisa ser planejada e aprovada antes de qualquer edição.
 
 ## Checklist de fases
 
@@ -78,11 +78,11 @@
 | 2026-10-23 | Fase 3 — Etapa 1: lógica | Criados o parser de equações e o balanceador em `src/lib/balancer.ts`. A matriz de composição é reduzida por eliminação de Gauss com frações exatas (`bigint`); o espaço nulo é escalado para os menores inteiros com MMC/MDC. Erros com código para equação vazia, seta ausente/múltipla, lado vazio, coeficiente inválido, fórmula inválida, equação impossível, múltiplas soluções, coeficiente zero e solução sem coeficientes positivos. Criados 31 testes em `tests/balancer.test.ts`. Commit `a33db2d`. |
 | 2026-10-23 | Fase 3 — Etapa 2: interface | Criada a seção do balanceador em `src/ui/balancer.ts`, com exemplos clicáveis, resultado, mensagens de erro acessíveis e layout responsivo em `src/styles/balancer.css`. Integrada abaixo da calculadora em `src/main.ts`; subtítulo atualizado. Commit `d5e2547`. |
 | 2026-10-23 | Fase 3 — Etapa 3: validação e documentação | README, `PROJECT_STATE.md`, `docs/CLAUDE_HANDOFF.md` e checklist do `AGENTS.md` atualizados. Checks finais: 87 testes, build e lint sem erros. |
+| 2026-10-23 | Fase 3 — revisão e merge | Usuário aprovou o balanceador. Branch `feat/phase-3-equation-balancer` publicada e mesclada por fast-forward na `main` (até `806c2e8`). Checks repetidos na `main`: 87 testes, build e lint sem erros. |
 
 ## Pendências
 
-- Revisar a branch `feat/phase-3-equation-balancer` no GitHub e testar o balanceador localmente.
-- Após aprovação, fazer o merge da Fase 3 na `main` e publicar.
+- Planejar e aprovar a Fase 4 — Quiz antes de editar arquivos.
 - Remover as branches de trabalho já mescladas (`feat/phase-1-periodic-table`, `feat/phase-2-molar-mass`, `feat/phase-3-equation-balancer` e `test/phase-0-bootstrap`) quando o usuário quiser.
 
 ## Decisões importantes
@@ -138,6 +138,7 @@
 | 2026-10-23 | Fase 3 — Etapa 1 (lógica) | 3 arquivos, 87 testes passaram (1,18 s) | sucesso: 17 módulos, 335 ms; CSS 8,93 kB / JS 43,69 kB | sem erros |
 | 2026-10-23 | Fase 3 — Etapa 2 (interface) | 3 arquivos, 87 testes passaram (792 ms) | sucesso: 20 módulos, 249 ms; CSS 10,98 kB / JS 50,68 kB | sem erros |
 | 2026-10-23 | Fase 3 — Etapa 3 (documentação) | 3 arquivos, 87 testes passaram (784 ms) | sucesso: 20 módulos, 237 ms; CSS 10,98 kB / JS 50,68 kB | sem erros |
+| 2026-10-23 | Fase 3 — validação na `main` | 3 arquivos, 87 testes passaram (693 ms) | sucesso: 20 módulos, 302 ms; `index.html` 0,65 kB, CSS 10,98 kB / JS 50,68 kB | sem erros |
 
 ## Problemas conhecidos, limitações e dúvidas
 
@@ -148,7 +149,7 @@
 - As massas de elementos sem massa padrão da IUPAC usam o número de massa do isótopo mais estável e aparecem entre colchetes na tabela; na calculadora, o resultado recebe um aviso de valor aproximado.
 - O GitHub Pages ainda não está configurado; o deploy é da Fase 5 e deverá usar `base: '/projeto/'`.
 - A branch `test/phase-0-bootstrap` continua no remoto; pode ser removida depois, se o usuário quiser.
-- A branch `feat/phase-3-equation-balancer` será publicada para revisão; a `main` permanece em `5516132` até a aprovação.
+- A branch `feat/phase-3-equation-balancer` foi mesclada e publicada; a `main` contém a Fase 3.
 - O balanceador não trata cargas iônicas nem equações redox com íons (ex.: `Fe2+`); o escopo atual cobre fórmulas neutras.
 - Coeficientes digitados pelo usuário são ignorados no cálculo; o resultado sempre usa os menores inteiros. Equações com coeficiente zero, múltiplas soluções ou sem solução positiva são rejeitadas com mensagem clara.
 - A pasta do projeto contém espaços no caminho (`meus projetos\projeto 1`); isso funciona, mas comandos manuais no terminal podem exigir aspas.
@@ -156,4 +157,4 @@
 
 ## Próximo passo
 
-Enviar `feat/phase-3-equation-balancer` ao GitHub e pedir ao usuário para revisar o balanceador e o diff. Após aprovação, fazer o merge na `main` e só então planejar a Fase 4 — Quiz.
+Apresentar o plano da Fase 4 — Quiz e aguardar o "ok" do usuário antes de criar a branch e editar arquivos.
