@@ -14,7 +14,7 @@
 | Publicação | GitHub Pages via GitHub Actions (planejado para a Fase 5) |
 | Repositório | https://github.com/wenderson-hgs/projeto (nome do repositório: `projeto`) |
 | Branch principal | `main` (Fase 0 publicada, commit `d4eed51`) |
-| Branch de trabalho | `feat/phase-1-periodic-table` (Fase 1, commit `6c311ad`) |
+| Branch de trabalho | `feat/phase-1-periodic-table` (Fase 1, publicada no `origin`, commit final `a5462b8`) |
 | Demo | ainda não publicada |
 
 ## Fase em andamento
@@ -73,7 +73,7 @@
 
 ## Pendências
 
-- Enviar a branch `feat/phase-1-periodic-table` ao GitHub e pedir revisão do usuário.
+- Aguardar a revisão do usuário na branch `feat/phase-1-periodic-table` (GitHub e teste local).
 - Após aprovação, fazer merge da Fase 1 na `main` e publicar.
 - Apresentar o plano da Fase 2 — Massa molar e aguardar aprovação.
 
@@ -118,10 +118,10 @@
 - As massas de elementos sem massa padrão da IUPAC usam o número de massa do isótopo mais estável e aparecem entre colchetes na interface.
 - O GitHub Pages ainda não está configurado; o deploy é da Fase 5 e deverá usar `base: '/projeto/'`.
 - A branch `test/phase-0-bootstrap` continua no remoto; pode ser removida depois, se o usuário quiser.
-- A branch `feat/phase-1-periodic-table` ainda não foi enviada ao `origin` no momento desta atualização.
+- A branch `feat/phase-1-periodic-table` foi publicada no `origin` e aguarda revisão; a `main` continua em `d4eed51`.
 - A pasta do projeto contém espaços no caminho (`read me\projeto 1`); isso funciona, mas comandos manuais no terminal podem exigir aspas.
 - A tabela usa rolagem horizontal em telas estreitas, com dica visível; a legenda e a barra de filtros se reorganizam em uma coluna.
 
 ## Próximo passo
 
-Enviar `feat/phase-1-periodic-table` ao GitHub, pedir ao usuário para revisar localmente (`npm run dev`, http://localhost:5173/) e no diff do repositório. Após aprovação, fazer o merge na `main` e só então planejar a Fase 2.
+Aguardar a revisão do usuário na branch `feat/phase-1-periodic-table` (GitHub e teste local em `npm run dev`). Após aprovação, fazer o merge na `main` e só então planejar a Fase 2.

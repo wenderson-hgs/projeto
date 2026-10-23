@@ -193,7 +193,7 @@ Etapas anteriores: Etapa 1 com 18 testes e build de 194 ms; Etapa 2 com 18 teste
 - **Licença dos dados:** `elements.json` é CC BY-SA 3.0 e o código é MIT. A atribuição está no README, no rodapé e em `src/data/README.md`. Há algo a melhorar nessa separação?
 - **`tests/smoke.test.ts`** ainda é temporário e deve ser removido/substituído na Fase 2.
 - **GitHub Pages** ainda não configurado; na Fase 5 o `base` do Vite deve ser `/projeto/`.
-- **Branch não publicada:** no momento desta atualização, `feat/phase-1-periodic-table` ainda não foi enviada ao `origin`; a `main` continua em `d4eed51`.
+- **Branch publicada:** `feat/phase-1-periodic-table` está no `origin` e aguarda revisão; a `main` continua em `d4eed51`.
 
 ## 7. Como usar este documento
 
