@@ -8,10 +8,12 @@ Tabela periódica interativa e ferramentas de química, feitas com HTML, CSS e T
 
 - [x] Tabela periódica interativa com os 118 elementos
 - [x] Calculadora de massa molar (ex.: `Ca(OH)2`, `CuSO4·5H2O`)
-- [ ] Balanceador de equações químicas (ex.: `Fe + O2 -> Fe2O3`)
+- [x] Balanceador de equações químicas (ex.: `Fe + O2 -> Fe2O3`)
 - [ ] Quiz de símbolos, nomes e categorias
 
 A calculadora aceita fórmulas simples, parênteses e colchetes aninhados (`K4[Fe(CN)6]`) e hidratos com `·`, `.` ou `*` (`CuSO4·5H2O`). O resultado inclui a massa molar total e a composição percentual por elemento.
+
+O balanceador aceita `->`, `=` ou `→` entre reagentes e produtos. Ele usa frações exatas para encontrar os menores coeficientes inteiros, sem arredondamentos de ponto flutuante. Coeficientes digitados são opcionais; a equação é sempre balanceada do zero.
 
 ## Como rodar
 

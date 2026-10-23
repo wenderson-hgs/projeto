@@ -78,10 +78,10 @@ Mantenha a lógica de química em `src/lib/` **separada da interface**, para tes
 - [x] Testes unitários com os casos da seção 6
 
 ### Fase 3 — Balanceador de equações
-- [ ] Entrada como `Fe + O2 -> Fe2O3` (aceitar `->`, `=` e `→`)
-- [ ] Algoritmo: montar a matriz de composição e achar o espaço nulo com **frações exatas** (sem ponto flutuante), depois escalar para os menores inteiros
-- [ ] Tratar casos sem solução ou com infinitas soluções, com mensagem clara
-- [ ] Testes unitários com os casos da seção 6
+- [x] Entrada como `Fe + O2 -> Fe2O3` (aceitar `->`, `=` e `→`)
+- [x] Algoritmo: montar a matriz de composição e achar o espaço nulo com **frações exatas** (sem ponto flutuante), depois escalar para os menores inteiros
+- [x] Tratar casos sem solução ou com infinitas soluções, com mensagem clara
+- [x] Testes unitários com os casos da seção 6
 
 ### Fase 4 — Quiz
 - [ ] Modos: símbolo → nome, nome → símbolo e categoria do elemento

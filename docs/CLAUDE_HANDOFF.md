@@ -6,15 +6,15 @@
 
 ## Situação atual
 
-- **Etapa:** Fase 2 — Massa molar concluída, revisada pelo usuário e mesclada na `main` por fast-forward até `f195c1f`.
+- **Etapa:** Fase 3 — Balanceador de equações concluída na branch `feat/phase-3-equation-balancer` (commits `a33db2d` e `d5e2547`), aguardando revisão do usuário antes do merge na `main`.
 - **Repositório:** https://github.com/wenderson-hgs/projeto
-- **`main`:** contém as Fases 0, 1 e 2.
+- **`main`:** commit `5516132` (Fases 0, 1 e 2 publicadas).
 - **Projeto:** chem-toolkit, site estático (Vite + TypeScript, sem framework) com tabela periódica interativa, calculadora de massa molar, balanceador de equações e quiz.
-- **Próxima fase:** Fase 3 — Balanceador de equações (plano a ser apresentado e aprovado antes de editar arquivos).
+- **Próxima fase:** Fase 4 — Quiz (ainda não planejada/aprovada).
 
 ## 1. Objetivo da etapa e o que foi implementado
 
-A Fase 2 adicionou a calculadora de massa molar. O parser aceita fórmulas simples (`H2O`), parênteses e colchetes aninhados (`Ca(OH)2`, `Fe2(SO4)3`, `K4[Fe(CN)6]`) e hidratos com `·`, `.` ou `*` (`CuSO4·5H2O`). O resultado traz a massa molar total, a composição percentual por elemento e um aviso quando algum elemento usa massa atômica aproximada. A interface fica abaixo da tabela periódica, com exemplos clicáveis, mensagens de erro acessíveis e tabela responsiva. Foram adicionados 32 testes de fórmula, além dos 24 testes de elementos (56 no total), e o teste temporário `tests/smoke.test.ts` foi removido.
+A Fase 3 adicionou o balanceador de equações. A entrada aceita `->`, `=` ou `→` entre reagentes e produtos, com termos separados por `+`. Cada composto é validado pelo mesmo parser de fórmulas da calculadora, então grupos (`Ca(OH)2`), colchetes aninhados (`K4[Fe(CN)6]`) e hidratos (`CuSO4·5H2O`) funcionam. O algoritmo monta a matriz de composição (elementos × compostos), calcula o espaço nulo com frações exatas usando `bigint` (sem ponto flutuante) e escala o vetor para os menores coeficientes inteiros. Casos impossíveis, com múltiplas soluções, com coeficiente zero ou sem solução positiva geram mensagens claras. A interface fica abaixo da calculadora, com exemplos clicáveis e resultado acessível. Foram adicionados 31 testes de balanceamento, totalizando 87 testes no projeto.
 
 ## 2. Arquivos principais
 
@@ -38,28 +38,32 @@ projeto 1/
 ├─ public/
 │  └─ favicon.svg
 ├─ src/
-│  ├─ main.ts                     (composição e estado da aplicação)
+│  ├─ main.ts                     (composição da aplicação)
 │  ├─ data/
 │  │  ├─ elements.json            (118 elementos — CC BY-SA 3.0)
 │  │  └─ README.md                (fonte, licença e alterações)
 │  ├─ lib/
 │  │  ├─ elements.ts              (tipos, dataset e helpers)
-│  │  └─ molar-mass.ts            (parser + massa molar)
+│  │  ├─ molar-mass.ts            (parser + massa molar)
+│  │  └─ balancer.ts              (parser de equações + balanceador exato)
 │  ├─ ui/
 │  │  ├─ periodic-table.ts        (grade + legenda)
 │  │  ├─ details-panel.ts         (painel de detalhes)
 │  │  ├─ search-filter.ts         (busca + select de categoria)
 │  │  ├─ keyboard-navigation.ts   (setas entre células)
-│  │  └─ molar-mass.ts            (seção da calculadora)
+│  │  ├─ molar-mass.ts            (seção da calculadora)
+│  │  └─ balancer.ts              (seção do balanceador)
 │  └─ styles/
 │     ├─ base.css                 (tema claro, layout, legenda, rodapé)
 │     ├─ table.css                (CSS Grid, cores, seleção, filtro)
 │     ├─ controls.css             (barra de busca/filtro)
 │     ├─ details.css              (painel e bottom sheet)
-│     └─ calculator.css           (calculadora e tabela de composição)
+│     ├─ calculator.css           (calculadora e tabela de composição)
+│     └─ balancer.css             (balanceador e equação balanceada)
 └─ tests/
    ├─ elements.test.ts            (24 testes)
-   └─ molar-mass.test.ts          (32 testes)
+   ├─ molar-mass.test.ts          (32 testes)
+   └─ balancer.test.ts            (31 testes)
 ```
 
 ## 3. Implementações e assinaturas
@@ -73,7 +77,7 @@ function getElementBySymbol(symbol: string): Element | undefined;
 - `elementsBySymbol` é um `Map<string, Element>` criado uma vez a partir do dataset.
 - A busca é case-sensitive: `Fe` funciona, `fe` não. Isso é intencional, pois símbolos químicos diferenciam maiúsculas e minúsculas (`Co` ≠ `CO`).
 
-### Parser e cálculo (`src/lib/molar-mass.ts`)
+### Parser e cálculo de massa molar (`src/lib/molar-mass.ts`)
 
 ```ts
 type FormulaErrorCode =
@@ -110,7 +114,7 @@ function parseFormula(input: string): ParsedFormula;
 function calculateMolarMass(input: string): MolarMassResult;
 ```
 
-**Funcionamento do parser:**
+**Funcionamento do parser de fórmulas:**
 
 1. Remove todos os espaços da entrada.
 2. Divide a fórmula em segmentos de hidrato nos separadores de nível superior (`·`, `.`, `*`), respeitando parênteses/colchetes.
@@ -120,26 +124,62 @@ function calculateMolarMass(input: string): MolarMassResult;
 6. Símbolos são validados contra o dataset via `getElementBySymbol`.
 7. Contagens precisam ser inteiros positivos; grupos vazios, fechamentos sem abertura e caracteres inválidos geram `FormulaError`.
 
-**Cálculo:**
+**Cálculo:** massa de cada elemento = `atomicMass × count`; massa molar = soma; percentual = massa do elemento / massa total × 100; `isApproximate` fica `true` se qualquer elemento tiver `atomicMassIsApproximate`.
 
-- Massa de cada elemento = `atomicMass × count`.
-- Massa molar total = soma das massas.
-- Percentual = `massa do elemento / massa total × 100`.
-- `isApproximate` fica `true` se qualquer elemento tiver `atomicMassIsApproximate`.
-
-### Interface (`src/ui/molar-mass.ts`)
+### Balanceador (`src/lib/balancer.ts`)
 
 ```ts
-function createMolarMassCalculator(): HTMLElement;
+type BalanceErrorCode =
+  | 'empty-equation' | 'missing-arrow' | 'multiple-arrows'
+  | 'empty-side' | 'empty-term' | 'invalid-coefficient'
+  | 'invalid-formula' | 'no-solution' | 'multiple-solutions'
+  | 'zero-coefficient' | 'no-positive-solution'
+  | 'coefficient-too-large';
+
+class BalanceError extends Error {
+  readonly code: BalanceErrorCode;
+}
+
+interface BalancedTerm {
+  coefficient: number;
+  formula: string;
+}
+
+interface BalancedEquation {
+  reactants: BalancedTerm[];
+  products: BalancedTerm[];
+}
+
+function balanceEquation(input: string): BalancedEquation;
+function formatBalancedEquation(equation: BalancedEquation, arrow = '→'): string;
 ```
 
-- Formulário com `label`, campo de texto e botão **Calcular**; Enter também envia.
-- Botões de exemplo: `H2O`, `Ca(OH)2`, `Fe2(SO4)3`, `K4[Fe(CN)6]`, `CuSO4·5H2O`.
+**Funcionamento do balanceamento:**
+
+1. A entrada é aparada e precisa conter exatamente uma seta (`->`, `=` ou `→`). Nenhuma seta gera `missing-arrow`; mais de uma gera `multiple-arrows`.
+2. Cada lado é dividido por `+`. Lado vazio gera `empty-side`; termo vazio (ex.: `H2 + + O2`) gera `empty-term`.
+3. Em cada termo, um coeficiente inteiro positivo opcional é validado, mas **ignorado** — o balanceador sempre calcula os menores inteiros. O restante é a fórmula, com espaços removidos e validada por `parseFormula()`; erros de fórmula viram `BalanceError` com a mensagem original.
+4. A matriz tem uma linha por elemento e uma coluna por composto: reagentes entram com sinal positivo, produtos com sinal negativo.
+5. A matriz é reduzida à forma escalonada reduzida por linhas (RREF) com uma classe `Fraction` interna, baseada em `bigint` e normalizada por MDC. Não há ponto flutuante em nenhuma etapa.
+6. As colunas sem pivô formam o espaço nulo:
+   - 0 colunas livres → `no-solution` (equação impossível, como `H2 -> O2`);
+   - mais de 1 → `multiple-solutions` (ex.: composto repetido dos dois lados).
+7. Com uma coluna livre, o vetor é montado com a variável livre valendo 1 e as variáveis pivô resolvidas pelas linhas da RREF.
+8. O vetor é multiplicado pelo MMC dos denominadores e dividido pelo MDC dos numeradores, produzindo os menores inteiros.
+9. Coeficiente 0 em qualquer composto gera `zero-coefficient` (o composto não participaria); coeficientes de sinais mistos geram `no-positive-solution` (não há solução com todos positivos).
+10. O resultado mantém a ordem de entrada e inclui o coeficiente em cada termo.
+
+### Interface do balanceador (`src/ui/balancer.ts`)
+
+```ts
+function createEquationBalancer(): HTMLElement;
+```
+
+- Formulário com `label`, campo de texto e botão **Balancear**; Enter também envia.
+- Botões de exemplo: `H2 + O2 -> H2O`, `Fe + O2 -> Fe2O3`, `C3H8 + O2 -> CO2 + H2O` e `KMnO4 + HCl -> KCl + MnCl2 + H2O + Cl2`.
 - Erros em `role="alert"`, com `aria-invalid` e `aria-errormessage` no campo.
-- Resultado em região `aria-live="polite"`.
-- Tabela de composição com símbolo, nome, quantidade, massa e percentual.
-- Aviso de resultado aproximado quando necessário.
-- Layout em card, responsivo; a tabela de composição tem rolagem horizontal no celular.
+- Resultado em região `aria-live="polite"`, exibido como `2 H2 + O2 → 2 H2O`.
+- Layout em card, responsivo; botão e campo empilham no celular.
 
 ## 4. Decisões de arquitetura e justificativas
 
@@ -149,55 +189,62 @@ function createMolarMassCalculator(): HTMLElement;
 | Espaços internos ignorados | Facilita colar fórmulas com espaços (`Ca (OH) 2`). |
 | `·`, `.` e `*` como separadores de hidrato | Atende aos três formatos pedidos no `AGENTS.md`. |
 | Coeficiente de hidrato aplicado à molécula inteira | `CuSO4·5H2O` soma 5 × (H2O) ao sulfato de cobre. |
-| Coeficiente no início da fórmula rejeitado | `2H2O` representa quantidade de matéria, não a fórmula de um composto; a calculadora recebe apenas a fórmula. |
+| Coeficiente no início da fórmula rejeitado na calculadora | `2H2O` representa quantidade de matéria, não a fórmula de um composto; a calculadora recebe apenas a fórmula. |
 | `FormulaError` com `code` e mensagem em português | Permite testar os códigos e exibir mensagens claras diretamente na interface. |
 | `getElementBySymbol()` com `Map` | O parser consulta símbolos com frequência; evita busca linear no array de 118 elementos. |
-| Calculadora abaixo da tabela, sem abas | Mantém a navegação simples e o layout existente. |
+| Balanceador usa frações exatas com `bigint` e eliminação de Gauss | Evita erros de arredondamento de ponto flutuante e garante os menores coeficientes inteiros; a matriz é pequena. |
+| Coeficientes digitados na equação são validados, mas ignorados | O balanceador sempre recalcula os menores inteiros; isso corrige coeficientes errados e mantém a entrada simples. |
+| Equações com coeficiente zero ou múltiplas soluções geram erro | Coeficiente zero indica composto que não participa; múltiplas soluções tornam o resultado ambíguo. |
+| Fórmulas de cada termo são validadas por `parseFormula()` | Reaproveita grupos, colchetes aninhados e hidratos, além de validar símbolos contra o dataset. |
+| `BalanceError` com código e mensagem em português | Consistente com `FormulaError`; permite testar os casos e exibir mensagens diretas na interface. |
+| Calculadora e balanceador abaixo da tabela, sem abas | Mantém a navegação simples e o layout existente. |
 | Valores com ponto decimal | Consistência com a tabela periódica e com as massas do dataset. |
-| Nenhuma dependência nova | Requisito do `AGENTS.md`; o parser foi implementado do zero. |
+| Nenhuma dependência nova | Requisito do `AGENTS.md`; parser e balanceador foram implementados do zero. |
 
 ## 5. Resultado real de `npm test`, `npm run build` e `npm run lint`
 
-Executados em 2026-10-23, na `main`, após o merge da Fase 2:
+Executados em 2026-10-23, na branch `feat/phase-3-equation-balancer`, após a interface:
 
 ```text
 $ npm test
 RUN  v5.0.5 C:/Users/wende/OneDrive/Desktop/wenderson/projetos/SaaS/meus projetos/projeto 1
-Test Files  2 passed (2)
-     Tests  56 passed (56)
-  Duration  763ms
+Test Files  3 passed (3)
+     Tests  87 passed (87)
+  Duration  792ms
 
 $ npm run build
 tsc && vite build
 vite v8.3.5 building client environment for production...
-✓ 17 modules transformed.
-dist/index.html                  0.65 kB │ gzip: 0.40 kB
-dist/assets/index-uva6E6jb.css   8.93 kB │ gzip: 2.56 kB
-dist/assets/index-BYOXClAd.js   43.69 kB │ gzip: 9.79 kB
-✓ built in 293ms
+✓ 20 modules transformed.
+dist/index.html                  0.65 kB │ gzip:  0.40 kB
+dist/assets/index-CWb9NivL.css  10.98 kB │ gzip:  2.76 kB
+dist/assets/index-I2_NsqV6.js   50.68 kB │ gzip: 11.73 kB
+✓ built in 249ms
 
 $ npm run lint
 eslint .
 (sem erros)
 ```
 
-Na branch, após a interface, os resultados foram: 56 testes em 752 ms e build de 307 ms. Na Etapa 1 (somente lógica, sem a interface integrada), 56 testes em 879 ms e build de 312 ms com 14 módulos. Nenhum resultado foi declarado sem execução real.
+Na Etapa 1 (somente lógica, ainda sem a interface integrada): 87 testes em 1,18 s, build de 335 ms com 17 módulos e lint sem erros. Nenhum resultado foi declarado sem execução real.
 
 ## 6. Problemas conhecidos, limitações e dúvidas para revisão
 
-- **Sem testes de navegador:** a calculadora foi validada por `tsc`, build, lint e testes unitários da lógica; não há jsdom/Playwright. O usuário precisa testar o formulário no `npm run dev`.
-- **Limitações do parser:** não aceita coeficientes no início (`2H2O`), quantidades decimais nem separadores de hidrato diferentes de `·`, `.` e `*`.
-- **Precisão dos dados:** `Fe2(SO4)3` resulta em 399,858 g/mol com as massas do dataset. Está dentro da tolerância de ±0,05 do `AGENTS.md` (399,88), mas difere do valor convencional arredondado. Vale manter ou documentar melhor?
+- **Sem testes de navegador:** tabela, calculadora e balanceador foram validados por `tsc`, build, lint e testes unitários da lógica; não há jsdom/Playwright. O usuário precisa testar os formulários no `npm run dev`.
+- **Cargas iônicas não são suportadas:** o balanceador trabalha com fórmulas neutras. Equações redox com íons (`Fe2+`, `MnO4-`) ficam para uma fase futura, se houver interesse.
+- **Coeficientes digitados são ignorados:** `6 H2 + 3 O2 -> 6 H2O` retorna `2 H2 + O2 -> 2 H2O`. O comportamento é intencional, mas pode surpreender; vale explicar melhor na interface?
+- **Múltiplas soluções geram erro:** equações com compostos repetidos ou subdeterminadas não escolhem uma solução arbitrária.
+- **Coeficiente zero gera erro:** um composto que não participa da reação (ex.: `N2` em `H2 + O2 -> H2O + N2`) é rejeitado em vez de removido silenciosamente.
+- **Precisão dos dados:** `Fe2(SO4)3` resulta em 399,858 g/mol com as massas do dataset. Está dentro da tolerância de ±0,05 do `AGENTS.md` (399,88), mas difere do valor convencional arredondado.
 - **Massas aproximadas:** elementos sem padrão IUPAC usam o número de massa do isótopo mais estável; a UI avisa, mas o valor não é uma massa atômica padrão.
-- **`aria-live` no resultado inteiro:** a região inclui a tabela de composição. Isso pode ser verboso em leitores de tela; vale anunciar só a massa total?
-- **Reuso na Fase 3:** o balanceador precisará aceitar coeficientes estequiométricos (`2 H2 + O2 -> 2 H2O`). Vale extrair um tokenizador/AST compartilhado agora ou criar um parser separado para equações?
-- **Branch mesclada:** `feat/phase-2-molar-mass` foi revisada pelo usuário, mesclada por fast-forward na `main` e publicada.
+- **`aria-live` no resultado da calculadora:** a região inclui a tabela de composição. Isso pode ser verboso em leitores de tela; vale anunciar só a massa total?
+- **Branch ainda não mesclada:** `feat/phase-3-equation-balancer` aguarda revisão; a `main` continua em `5516132`.
 - **GitHub Pages** ainda não configurado; na Fase 5 o `base` do Vite deve ser `/projeto/`.
 - **Dúvidas para o Claude:**
-  1. A separação `elements.ts` / `molar-mass.ts` / `ui/molar-mass.ts` está adequada para evoluir para o balanceador, ou seria melhor introduzir um módulo de parsing compartilhado?
-  2. Lançar `FormulaError` é a melhor escolha para a UI, ou um retorno discriminado (`{ ok: true } | { ok: false, error }`) seria mais testável?
-  3. O tratamento de hidratos por split de nível superior cobre os casos reais, ou há armadilhas (por exemplo, hidratos com grupos e múltiplos separadores)?
-  4. Alguma sugestão de acessibilidade para o resultado e a tabela de composição?
+  1. O uso de RREF com `bigint` e espaço nulo é adequado para o escopo, ou há uma abordagem mais simples e igualmente exata para equações químicas?
+  2. O tratamento de coeficiente zero e de múltiplas soluções como erro é a melhor escolha de UX, ou seria melhor explicar/omitir compostos?
+  3. Vale extrair o tokenizador de fórmulas para um módulo compartilhado antes da Fase 4, ou o reuso atual via `parseFormula()` é suficiente?
+  4. Alguma sugestão de acessibilidade para o resultado da equação balanceada?
 
 ## 7. Como usar este documento
 

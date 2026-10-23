@@ -13,15 +13,15 @@
 | Stack | Node.js 24 (LTS) + npm 11, Vite 8 + TypeScript 6 (sem framework), Vitest 5, ESLint 10 + Prettier 3 |
 | Publicação | GitHub Pages via GitHub Actions (planejado para a Fase 5) |
 | Repositório | https://github.com/wenderson-hgs/projeto (nome do repositório: `projeto`) |
-| Branch principal | `main` (Fases 1 e 2 publicadas; Fase 2 mesclada por fast-forward até `f195c1f`, seguida deste commit de documentação) |
-| Branch de trabalho | nenhuma ativa; `feat/phase-2-molar-mass` mesclada e publicada (Fase 3 a planejar) |
+| Branch principal | `main` (Fases 1 e 2 publicadas; último commit `5516132`) |
+| Branch de trabalho | `feat/phase-3-equation-balancer` (Fase 3; commits `a33db2d` e `d5e2547`; documentação no commit seguinte) |
 | Demo | ainda não publicada |
 
 ## Fase em andamento
 
-**Fase 2 — Massa molar concluída, revisada pelo usuário e mesclada na `main`.**
+**Fase 3 — Balanceador de equações concluída na branch `feat/phase-3-equation-balancer`, aguardando revisão do usuário antes do merge na `main`.**
 
-> As Fases 0, 1 e 2 estão publicadas na `main`. A Fase 2 adiciona o parser de fórmulas, o cálculo de massa molar e a composição percentual. A próxima etapa é a Fase 3 — Balanceador de equações, que precisa ser planejada e aprovada antes de qualquer edição.
+> As Fases 0, 1 e 2 estão publicadas na `main`. A Fase 3 adiciona o balanceador de equações com frações exatas, tratamento de equações impossíveis ou com múltiplas soluções e interface própria abaixo da calculadora.
 
 ## Checklist de fases
 
@@ -45,10 +45,10 @@
 - [x] Testes unitários com os casos da seção 6
 
 ### Fase 3 — Balanceador de equações
-- [ ] Entrada como `Fe + O2 -> Fe2O3` (aceitar `->`, `=` e `→`)
-- [ ] Algoritmo: montar a matriz de composição e achar o espaço nulo com **frações exatas** (sem ponto flutuante), depois escalar para os menores inteiros
-- [ ] Tratar casos sem solução ou com infinitas soluções, com mensagem clara
-- [ ] Testes unitários com os casos da seção 6
+- [x] Entrada como `Fe + O2 -> Fe2O3` (aceitar `->`, `=` e `→`)
+- [x] Algoritmo: montar a matriz de composição e achar o espaço nulo com **frações exatas** (sem ponto flutuante), depois escalar para os menores inteiros
+- [x] Tratar casos sem solução ou com infinitas soluções, com mensagem clara
+- [x] Testes unitários com os casos da seção 6
 
 ### Fase 4 — Quiz
 - [ ] Modos: símbolo → nome, nome → símbolo e categoria do elemento
@@ -75,11 +75,15 @@
 | 2026-10-23 | Fase 2 — Etapa 2: interface | Criada a seção da calculadora em `src/ui/molar-mass.ts`, com exemplos clicáveis, resultado, composição percentual, aviso de massa aproximada e mensagens de erro. Integrada abaixo da tabela em `src/main.ts`, com estilos em `src/styles/calculator.css`. Commit `c3e471e`. |
 | 2026-10-23 | Fase 2 — Etapa 3: validação e documentação | README, `PROJECT_STATE.md`, `docs/CLAUDE_HANDOFF.md` e checklist do `AGENTS.md` atualizados. Checks finais: 56 testes, build e lint sem erros. |
 | 2026-10-23 | Fase 2 — revisão e merge | Usuário testou e aprovou a calculadora. Branch `feat/phase-2-molar-mass` publicada e mesclada por fast-forward na `main` (até `f195c1f`). Checks repetidos na `main`: 56 testes, build e lint sem erros. |
+| 2026-10-23 | Fase 3 — Etapa 1: lógica | Criados o parser de equações e o balanceador em `src/lib/balancer.ts`. A matriz de composição é reduzida por eliminação de Gauss com frações exatas (`bigint`); o espaço nulo é escalado para os menores inteiros com MMC/MDC. Erros com código para equação vazia, seta ausente/múltipla, lado vazio, coeficiente inválido, fórmula inválida, equação impossível, múltiplas soluções, coeficiente zero e solução sem coeficientes positivos. Criados 31 testes em `tests/balancer.test.ts`. Commit `a33db2d`. |
+| 2026-10-23 | Fase 3 — Etapa 2: interface | Criada a seção do balanceador em `src/ui/balancer.ts`, com exemplos clicáveis, resultado, mensagens de erro acessíveis e layout responsivo em `src/styles/balancer.css`. Integrada abaixo da calculadora em `src/main.ts`; subtítulo atualizado. Commit `d5e2547`. |
+| 2026-10-23 | Fase 3 — Etapa 3: validação e documentação | README, `PROJECT_STATE.md`, `docs/CLAUDE_HANDOFF.md` e checklist do `AGENTS.md` atualizados. Checks finais: 87 testes, build e lint sem erros. |
 
 ## Pendências
 
-- Planejar e aprovar a Fase 3 — Balanceador de equações antes de editar arquivos.
-- Remover as branches de trabalho já mescladas (`feat/phase-1-periodic-table`, `feat/phase-2-molar-mass` e `test/phase-0-bootstrap`) quando o usuário quiser.
+- Revisar a branch `feat/phase-3-equation-balancer` no GitHub e testar o balanceador localmente.
+- Após aprovação, fazer o merge da Fase 3 na `main` e publicar.
+- Remover as branches de trabalho já mescladas (`feat/phase-1-periodic-table`, `feat/phase-2-molar-mass`, `feat/phase-3-equation-balancer` e `test/phase-0-bootstrap`) quando o usuário quiser.
 
 ## Decisões importantes
 
@@ -111,6 +115,12 @@
 | 2026-10-23 | Calculadora fica abaixo da tabela, na mesma página | Mantém a navegação simples, sem abas ou rotas, e reaproveita o layout existente. |
 | 2026-10-23 | `getElementBySymbol()` usa um `Map` | O parser consulta símbolos com frequência; a busca deixa de ser linear. |
 | 2026-10-23 | Valores exibidos com ponto decimal | Mantém consistência com a tabela periódica e com as massas do dataset. |
+| 2026-10-23 | Balanceador usa frações exatas com `bigint` e eliminação de Gauss | Evita erros de arredondamento de ponto flutuante e garante os menores coeficientes inteiros. A matriz é pequena, então o custo é irrelevante. |
+| 2026-10-23 | Coeficientes digitados na equação são validados, mas ignorados | O balanceador sempre recalcula os menores inteiros; isso corrige coeficientes errados e mantém a entrada simples. |
+| 2026-10-23 | Equações com coeficiente zero ou com múltiplas soluções geram erro | Um coeficiente zero indica composto que não participa; múltiplas soluções tornam o resultado ambíguo. Mensagens claras evitam resultados enganosos. |
+| 2026-10-23 | `BalanceError` com código e mensagem em português | Consistente com `FormulaError`; permite testar os casos e exibir mensagens diretas na interface. |
+| 2026-10-23 | Fórmulas de cada termo são validadas por `parseFormula()` | Reaproveita grupos, colchetes aninhados e hidratos, além de validar símbolos contra o dataset. |
+| 2026-10-23 | Balanceador fica abaixo da calculadora, na mesma página | Mantém a navegação simples, sem abas ou rotas, seguindo o padrão da Fase 2. |
 
 ## Resultados de testes e build
 
@@ -125,20 +135,25 @@
 | 2026-10-23 | Fase 2 — Etapa 1 (lógica) | 2 arquivos, 56 testes passaram (879 ms) | sucesso: 14 módulos, 312 ms; CSS 6,14 kB / JS 36,27 kB | sem erros |
 | 2026-10-23 | Fase 2 — Etapa 2 (interface) | 2 arquivos, 56 testes passaram (752 ms) | sucesso: 17 módulos, 307 ms; CSS 8,93 kB / JS 43,69 kB | sem erros |
 | 2026-10-23 | Fase 2 — validação na `main` | 2 arquivos, 56 testes passaram (763 ms) | sucesso: 17 módulos, 293 ms; `index.html` 0,65 kB, CSS 8,93 kB / JS 43,69 kB | sem erros |
+| 2026-10-23 | Fase 3 — Etapa 1 (lógica) | 3 arquivos, 87 testes passaram (1,18 s) | sucesso: 17 módulos, 335 ms; CSS 8,93 kB / JS 43,69 kB | sem erros |
+| 2026-10-23 | Fase 3 — Etapa 2 (interface) | 3 arquivos, 87 testes passaram (792 ms) | sucesso: 20 módulos, 249 ms; CSS 10,98 kB / JS 50,68 kB | sem erros |
+| 2026-10-23 | Fase 3 — Etapa 3 (documentação) | 3 arquivos, 87 testes passaram (784 ms) | sucesso: 20 módulos, 237 ms; CSS 10,98 kB / JS 50,68 kB | sem erros |
 
 ## Problemas conhecidos, limitações e dúvidas
 
-- A interface (tabela e calculadora) foi validada por `tsc`, build e lint, mas **não tem testes automatizados de navegador** (não há jsdom nem Playwright). A revisão manual no `npm run dev` é necessária.
+- A interface (tabela, calculadora e balanceador) foi validada por `tsc`, build e lint, mas **não tem testes automatizados de navegador** (não há jsdom nem Playwright). A revisão manual no `npm run dev` é necessária.
 - O parser não aceita coeficientes estequiométricos no início (`2H2O`) nem quantidades decimais. Coeficientes são aceitos apenas em hidratos, depois de `·`, `.` ou `*`.
 - As massas vêm do dataset; por isso `Fe2(SO4)3` resulta em 399,858 g/mol (dentro da tolerância de ±0,05 do `AGENTS.md`, mas diferente do valor arredondado 399,88). Pequenas diferenças em relação a massas convencionais arredondadas são esperadas.
 - `src/data/elements.json` é derivado de dataset CC BY-SA 3.0 e continua sob essa licença; o código do projeto é MIT. A distinção está em `src/data/README.md` e no `README.md`.
 - As massas de elementos sem massa padrão da IUPAC usam o número de massa do isótopo mais estável e aparecem entre colchetes na tabela; na calculadora, o resultado recebe um aviso de valor aproximado.
 - O GitHub Pages ainda não está configurado; o deploy é da Fase 5 e deverá usar `base: '/projeto/'`.
 - A branch `test/phase-0-bootstrap` continua no remoto; pode ser removida depois, se o usuário quiser.
-- A branch `feat/phase-2-molar-mass` foi mesclada e publicada; a `main` contém a Fase 2.
+- A branch `feat/phase-3-equation-balancer` será publicada para revisão; a `main` permanece em `5516132` até a aprovação.
+- O balanceador não trata cargas iônicas nem equações redox com íons (ex.: `Fe2+`); o escopo atual cobre fórmulas neutras.
+- Coeficientes digitados pelo usuário são ignorados no cálculo; o resultado sempre usa os menores inteiros. Equações com coeficiente zero, múltiplas soluções ou sem solução positiva são rejeitadas com mensagem clara.
 - A pasta do projeto contém espaços no caminho (`meus projetos\projeto 1`); isso funciona, mas comandos manuais no terminal podem exigir aspas.
-- A tabela usa rolagem horizontal em telas estreitas, com dica visível; a legenda, a barra de filtros e a calculadora se reorganizam em uma coluna.
+- A tabela usa rolagem horizontal em telas estreitas, com dica visível; a legenda, a barra de filtros, a calculadora e o balanceador se reorganizam em uma coluna.
 
 ## Próximo passo
 
-Apresentar o plano da Fase 3 — Balanceador de equações e aguardar o "ok" do usuário antes de criar a branch e editar arquivos.
+Enviar `feat/phase-3-equation-balancer` ao GitHub e pedir ao usuário para revisar o balanceador e o diff. Após aprovação, fazer o merge na `main` e só então planejar a Fase 4 — Quiz.
