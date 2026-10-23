@@ -6,11 +6,11 @@
 
 ## Situação atual
 
-- **Etapa:** Fase 2 — Massa molar concluída na branch `feat/phase-2-molar-mass` (commits `fa29aca` e `c3e471e`), aguardando revisão do usuário antes do merge na `main`.
+- **Etapa:** Fase 2 — Massa molar concluída, revisada pelo usuário e mesclada na `main` por fast-forward até `f195c1f`.
 - **Repositório:** https://github.com/wenderson-hgs/projeto
-- **`main`:** commit `9d0def0` (Fase 1 publicada).
+- **`main`:** contém as Fases 0, 1 e 2.
 - **Projeto:** chem-toolkit, site estático (Vite + TypeScript, sem framework) com tabela periódica interativa, calculadora de massa molar, balanceador de equações e quiz.
-- **Próxima fase:** Fase 3 — Balanceador de equações (ainda não planejada/aprovada).
+- **Próxima fase:** Fase 3 — Balanceador de equações (plano a ser apresentado e aprovado antes de editar arquivos).
 
 ## 1. Objetivo da etapa e o que foi implementado
 
@@ -158,14 +158,14 @@ function createMolarMassCalculator(): HTMLElement;
 
 ## 5. Resultado real de `npm test`, `npm run build` e `npm run lint`
 
-Executados em 2026-10-23, na branch `feat/phase-2-molar-mass`, após a interface:
+Executados em 2026-10-23, na `main`, após o merge da Fase 2:
 
 ```text
 $ npm test
 RUN  v5.0.5 C:/Users/wende/OneDrive/Desktop/wenderson/projetos/SaaS/meus projetos/projeto 1
 Test Files  2 passed (2)
      Tests  56 passed (56)
-  Duration  752ms
+  Duration  763ms
 
 $ npm run build
 tsc && vite build
@@ -174,14 +174,14 @@ vite v8.3.5 building client environment for production...
 dist/index.html                  0.65 kB │ gzip: 0.40 kB
 dist/assets/index-uva6E6jb.css   8.93 kB │ gzip: 2.56 kB
 dist/assets/index-BYOXClAd.js   43.69 kB │ gzip: 9.79 kB
-✓ built in 307ms
+✓ built in 293ms
 
 $ npm run lint
 eslint .
 (sem erros)
 ```
 
-Na Etapa 1 (somente lógica, sem a interface integrada), os resultados foram: 56 testes em 879 ms e build de 312 ms com 14 módulos. Nenhum resultado foi declarado sem execução real.
+Na branch, após a interface, os resultados foram: 56 testes em 752 ms e build de 307 ms. Na Etapa 1 (somente lógica, sem a interface integrada), 56 testes em 879 ms e build de 312 ms com 14 módulos. Nenhum resultado foi declarado sem execução real.
 
 ## 6. Problemas conhecidos, limitações e dúvidas para revisão
 
@@ -191,7 +191,7 @@ Na Etapa 1 (somente lógica, sem a interface integrada), os resultados foram: 56
 - **Massas aproximadas:** elementos sem padrão IUPAC usam o número de massa do isótopo mais estável; a UI avisa, mas o valor não é uma massa atômica padrão.
 - **`aria-live` no resultado inteiro:** a região inclui a tabela de composição. Isso pode ser verboso em leitores de tela; vale anunciar só a massa total?
 - **Reuso na Fase 3:** o balanceador precisará aceitar coeficientes estequiométricos (`2 H2 + O2 -> 2 H2O`). Vale extrair um tokenizador/AST compartilhado agora ou criar um parser separado para equações?
-- **Branch ainda não mesclada:** `feat/phase-2-molar-mass` aguarda revisão; a `main` continua em `9d0def0`.
+- **Branch mesclada:** `feat/phase-2-molar-mass` foi revisada pelo usuário, mesclada por fast-forward na `main` e publicada.
 - **GitHub Pages** ainda não configurado; na Fase 5 o `base` do Vite deve ser `/projeto/`.
 - **Dúvidas para o Claude:**
   1. A separação `elements.ts` / `molar-mass.ts` / `ui/molar-mass.ts` está adequada para evoluir para o balanceador, ou seria melhor introduzir um módulo de parsing compartilhado?

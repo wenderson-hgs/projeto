@@ -13,15 +13,15 @@
 | Stack | Node.js 24 (LTS) + npm 11, Vite 8 + TypeScript 6 (sem framework), Vitest 5, ESLint 10 + Prettier 3 |
 | Publicação | GitHub Pages via GitHub Actions (planejado para a Fase 5) |
 | Repositório | https://github.com/wenderson-hgs/projeto (nome do repositório: `projeto`) |
-| Branch principal | `main` (Fase 1 publicada, commit `9d0def0`) |
-| Branch de trabalho | `feat/phase-2-molar-mass` (Fase 2; commits `fa29aca` e `c3e471e`; documentação no commit seguinte) |
+| Branch principal | `main` (Fases 1 e 2 publicadas; Fase 2 mesclada por fast-forward até `f195c1f`, seguida deste commit de documentação) |
+| Branch de trabalho | nenhuma ativa; `feat/phase-2-molar-mass` mesclada e publicada (Fase 3 a planejar) |
 | Demo | ainda não publicada |
 
 ## Fase em andamento
 
-**Fase 2 — Massa molar concluída na branch `feat/phase-2-molar-mass`, aguardando revisão do usuário antes do merge na `main`.**
+**Fase 2 — Massa molar concluída, revisada pelo usuário e mesclada na `main`.**
 
-> As Fases 0 e 1 estão publicadas na `main`. A Fase 2 adiciona o parser de fórmulas, o cálculo de massa molar e a composição percentual.
+> As Fases 0, 1 e 2 estão publicadas na `main`. A Fase 2 adiciona o parser de fórmulas, o cálculo de massa molar e a composição percentual. A próxima etapa é a Fase 3 — Balanceador de equações, que precisa ser planejada e aprovada antes de qualquer edição.
 
 ## Checklist de fases
 
@@ -74,11 +74,11 @@
 | 2026-10-23 | Fase 2 — Etapa 1: lógica | Criados o parser recursivo de fórmulas e o cálculo de massa molar/composição em `src/lib/molar-mass.ts`. Adicionado `getElementBySymbol()` com `Map` em `src/lib/elements.ts`. Removido o teste temporário `tests/smoke.test.ts`. Testes ampliados para 56 casos. Commit `fa29aca`. |
 | 2026-10-23 | Fase 2 — Etapa 2: interface | Criada a seção da calculadora em `src/ui/molar-mass.ts`, com exemplos clicáveis, resultado, composição percentual, aviso de massa aproximada e mensagens de erro. Integrada abaixo da tabela em `src/main.ts`, com estilos em `src/styles/calculator.css`. Commit `c3e471e`. |
 | 2026-10-23 | Fase 2 — Etapa 3: validação e documentação | README, `PROJECT_STATE.md`, `docs/CLAUDE_HANDOFF.md` e checklist do `AGENTS.md` atualizados. Checks finais: 56 testes, build e lint sem erros. |
+| 2026-10-23 | Fase 2 — revisão e merge | Usuário testou e aprovou a calculadora. Branch `feat/phase-2-molar-mass` publicada e mesclada por fast-forward na `main` (até `f195c1f`). Checks repetidos na `main`: 56 testes, build e lint sem erros. |
 
 ## Pendências
 
-- Revisar a branch `feat/phase-2-molar-mass` no GitHub e testar a calculadora localmente.
-- Após aprovação, fazer o merge da Fase 2 na `main` e publicar.
+- Planejar e aprovar a Fase 3 — Balanceador de equações antes de editar arquivos.
 - Remover as branches de trabalho já mescladas (`feat/phase-1-periodic-table`, `feat/phase-2-molar-mass` e `test/phase-0-bootstrap`) quando o usuário quiser.
 
 ## Decisões importantes
@@ -124,6 +124,7 @@
 | 2026-10-23 | Fase 1 — validação na `main` | 2 arquivos, 23 testes passaram (825 ms) | sucesso: 14 módulos, 327 ms; `index.html` 0,65 kB, CSS 6,14 kB / JS 36,23 kB | sem erros |
 | 2026-10-23 | Fase 2 — Etapa 1 (lógica) | 2 arquivos, 56 testes passaram (879 ms) | sucesso: 14 módulos, 312 ms; CSS 6,14 kB / JS 36,27 kB | sem erros |
 | 2026-10-23 | Fase 2 — Etapa 2 (interface) | 2 arquivos, 56 testes passaram (752 ms) | sucesso: 17 módulos, 307 ms; CSS 8,93 kB / JS 43,69 kB | sem erros |
+| 2026-10-23 | Fase 2 — validação na `main` | 2 arquivos, 56 testes passaram (763 ms) | sucesso: 17 módulos, 293 ms; `index.html` 0,65 kB, CSS 8,93 kB / JS 43,69 kB | sem erros |
 
 ## Problemas conhecidos, limitações e dúvidas
 
@@ -134,10 +135,10 @@
 - As massas de elementos sem massa padrão da IUPAC usam o número de massa do isótopo mais estável e aparecem entre colchetes na tabela; na calculadora, o resultado recebe um aviso de valor aproximado.
 - O GitHub Pages ainda não está configurado; o deploy é da Fase 5 e deverá usar `base: '/projeto/'`.
 - A branch `test/phase-0-bootstrap` continua no remoto; pode ser removida depois, se o usuário quiser.
-- A branch `feat/phase-2-molar-mass` será publicada para revisão; a `main` permanece em `9d0def0` até a aprovação.
+- A branch `feat/phase-2-molar-mass` foi mesclada e publicada; a `main` contém a Fase 2.
 - A pasta do projeto contém espaços no caminho (`meus projetos\projeto 1`); isso funciona, mas comandos manuais no terminal podem exigir aspas.
 - A tabela usa rolagem horizontal em telas estreitas, com dica visível; a legenda, a barra de filtros e a calculadora se reorganizam em uma coluna.
 
 ## Próximo passo
 
-Aguardar a revisão da branch `feat/phase-2-molar-mass` (GitHub e teste local em `npm run dev`). Após aprovação, fazer o merge na `main` e só então planejar a Fase 3 — Balanceador de equações.
+Apresentar o plano da Fase 3 — Balanceador de equações e aguardar o "ok" do usuário antes de criar a branch e editar arquivos.
