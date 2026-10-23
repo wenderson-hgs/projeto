@@ -65,11 +65,11 @@ Mantenha a lógica de química em `src/lib/` **separada da interface**, para tes
 - [ ] `git init`, primeiro commit, criar o repositório no GitHub e fazer o primeiro push (com a minha confirmação)
 
 ### Fase 1 — Tabela periódica (MVP)
-- [ ] `src/data/elements.json` com os 118 elementos: número atômico, símbolo, nome em português e em inglês, massa atômica, categoria, grupo, período e posição (linha/coluna) no layout
-- [ ] Renderizar a tabela em CSS Grid, com cores por categoria e legenda
-- [ ] Clicar em um elemento abre um painel com os detalhes
-- [ ] Busca por nome, símbolo ou número e filtro por categoria
-- [ ] Navegação por teclado e layout responsivo (celular)
+- [x] `src/data/elements.json` com os 118 elementos: número atômico, símbolo, nome em português e em inglês, massa atômica, categoria, grupo, período e posição (linha/coluna) no layout
+- [x] Renderizar a tabela em CSS Grid, com cores por categoria e legenda
+- [x] Clicar em um elemento abre um painel com os detalhes
+- [x] Busca por nome, símbolo ou número e filtro por categoria
+- [x] Navegação por teclado e layout responsivo (celular)
 
 ### Fase 2 — Massa molar
 - [ ] Parser de fórmulas: `H2O`, `Ca(OH)2`, `Fe2(SO4)3`, `K4[Fe(CN)6]` (parênteses e colchetes aninhados) e hidratos como `CuSO4·5H2O` (aceitar `·`, `.` e `*`)
