@@ -6,22 +6,22 @@
 
 ## Visão geral
 
-| Campo              | Valor                                                                                                                 |
-| ------------------ | --------------------------------------------------------------------------------------------------------------------- |
-| Projeto            | chem-toolkit — Tabela Periódica Interativa e Ferramentas de Química                                                   |
-| Versão             | 1.0.0                                                                                                                 |
-| Stack              | Node.js 24 (LTS) + npm 11, Vite 8 + TypeScript 6 (sem framework), Vitest 5, ESLint 10 + Prettier 3                    |
-| Publicação         | GitHub Pages via GitHub Actions (workflow pronto; primeiro deploy pendente)                                           |
-| Repositório        | https://github.com/wenderson-hgs/projeto (nome do repositório: `projeto`)                                             |
-| Branch principal   | `main` (Fases 1, 2, 3 e 4 publicadas; último commit `00020b7`)                                                        |
-| Branch de trabalho | `feat/phase-5-polish-and-deploy` (Fase 5; commits `4cdc1f7`, `af49d50` e `dcb2d8d`, seguidos da preparação da v1.0.0) |
-| Demo               | https://wenderson-hgs.github.io/projeto/ (disponível após o primeiro deploy)                                          |
+| Campo              | Valor                                                                                               |
+| ------------------ | --------------------------------------------------------------------------------------------------- |
+| Projeto            | chem-toolkit — Tabela Periódica Interativa e Ferramentas de Química                                 |
+| Versão             | 1.0.0                                                                                               |
+| Stack              | Node.js 24 (LTS) + npm 11, Vite 8 + TypeScript 6 (sem framework), Vitest 5, ESLint 10 + Prettier 3  |
+| Publicação         | GitHub Pages via GitHub Actions — https://wenderson-hgs.github.io/projeto/ (no ar desde 2026-10-24) |
+| Repositório        | https://github.com/wenderson-hgs/projeto (nome do repositório: `projeto`)                           |
+| Branch principal   | `main` (Fases 1 a 5 publicadas; merge fast-forward até `d13d1c2`)                                   |
+| Branch de trabalho | nenhuma ativa; `feat/phase-5-polish-and-deploy` mesclada e publicada                                |
+| Demo               | https://wenderson-hgs.github.io/projeto/ (verificada em 2026-10-24)                                 |
 
 ## Fase em andamento
 
-**Fase 5 — Polimento e publicação implementada na branch `feat/phase-5-polish-and-deploy`, aguardando revisão e deploy.**
+**Fase 5 — Polimento e publicação concluída e no ar; resta apenas a tag/release `v1.0.0`.**
 
-> A Fase 5 adiciona tema claro/escuro com preferência salva, melhorias de acessibilidade, README completo com capturas reais, configuração do GitHub Pages com `base: '/projeto/'`, workflow de deploy e versão `1.0.0` com changelog. O deploy e a tag `v1.0.0` só acontecem depois da revisão e do merge na `main`.
+> A Fase 5 adicionou tema claro/escuro com preferência salva, melhorias de acessibilidade, README completo com capturas reais, configuração do GitHub Pages com `base: '/projeto/'`, workflow de deploy e versão `1.0.0` com changelog. O repositório foi tornado público, o Pages foi habilitado com publicação via workflow e o primeiro deploy terminou com sucesso em 2026-10-24. A demo foi verificada e a tag/release `v1.0.0` é o último item pendente.
 
 ## Checklist de fases
 
@@ -63,7 +63,7 @@
 
 - [x] Tema claro/escuro e acessibilidade básica (contraste, foco visível, `aria-label`)
 - [x] README completo: descrição, prints ou GIF, como rodar, fonte e licença dos dados
-- [ ] Deploy no GitHub Pages com GitHub Actions (atenção: o `base` do Vite precisa ser `/projeto/`, pois esse é o nome do repositório)
+- [x] Deploy no GitHub Pages com GitHub Actions (atenção: o `base` do Vite precisa ser `/projeto/`, pois esse é o nome do repositório) — publicado em 2026-10-24; run `40096907344` com build e deploy bem-sucedidos
 - [ ] Tag e release `v1.0.0`
 
 ## Histórico de etapas concluídas
@@ -93,12 +93,11 @@
 | 2026-10-23 | Fase 5 — Etapa 2: README e capturas        | README reescrito com descrição, funcionalidades, capturas reais (claro/escuro, calculadora, balanceador e quiz), instruções, estrutura, deploy, dados, licenças e limitações. Capturas geradas com Microsoft Edge em modo headless e salvas em `docs/screenshots/`. Commit `af49d50`.                                                                                                                                                                                                                          |
 | 2026-10-23 | Fase 5 — Etapa 3: GitHub Pages             | Criado `vite.config.ts` com `base: '/projeto/'` e `.github/workflows/deploy.yml` com `npm ci`, lint, testes, build e deploy usando as actions oficiais do Pages. Build de produção validado com `npm run preview` em `/projeto/`; favicon e assets reescritos corretamente. Commit `dcb2d8d`.                                                                                                                                                                                                                  |
 | 2026-10-23 | Fase 5 — Etapa 4: versão 1.0.0             | `package.json` e `package-lock.json` atualizados para `1.0.0`; criado `CHANGELOG.md`; checklist da Fase 5 e documentos de estado atualizados. Tag e release ficam pendentes do merge e do primeiro deploy.                                                                                                                                                                                                                                                                                                     |
+| 2026-10-24 | Fase 5 — deploy e publicação               | Branch publicada e mesclada por fast-forward na `main` (`d13d1c2`); `main` enviada. Repositório tornado público; Pages habilitado com publicação via workflow; run `40096907344` concluído com sucesso (build e deploy). Demo verificada em `https://wenderson-hgs.github.io/projeto/` (HTML, JS, CSS e favicon respondendo 200). Descrição e homepage do repositório atualizadas com o link da demo.                                                                                                          |
 
 ## Pendências
 
-- Revisar a branch `feat/phase-5-polish-and-deploy`, testar o tema e o layout no navegador e aprovar o README.
-- Após aprovação: fazer o merge na `main`, configurar **Settings → Pages → Source: GitHub Actions**, publicar e acompanhar o primeiro deploy.
-- Confirmar a demo em `https://wenderson-hgs.github.io/projeto/` e criar a tag/release `v1.0.0`.
+- Criar a tag anotada `v1.0.0` no commit de documentação final e publicar a release no GitHub.
 - Remover as branches de trabalho já mescladas (`feat/phase-1-periodic-table`, `feat/phase-2-molar-mass`, `feat/phase-3-equation-balancer`, `feat/phase-4-quiz`, `feat/phase-5-polish-and-deploy` e `test/phase-0-bootstrap`) quando o usuário quiser.
 
 ## Decisões importantes
@@ -182,14 +181,15 @@
 - As massas vêm do dataset; por isso `Fe2(SO4)3` resulta em 399,858 g/mol (dentro da tolerância de ±0,05 do `AGENTS.md`, mas diferente do valor arredondado 399,88). Pequenas diferenças em relação a massas convencionais arredondadas são esperadas.
 - `src/data/elements.json` é derivado de dataset CC BY-SA 3.0 e continua sob essa licença; o código do projeto é MIT. A distinção está em `src/data/README.md` e no `README.md`.
 - As massas de elementos sem massa padrão da IUPAC usam o número de massa do isótopo mais estável e aparecem entre colchetes na tabela; na calculadora, o resultado recebe um aviso de valor aproximado.
-- O GitHub Pages ainda não foi publicado: o workflow está pronto, mas o primeiro deploy depende do merge na `main` e de **Settings → Pages → Source: GitHub Actions**.
+- O GitHub Pages está no ar em `https://wenderson-hgs.github.io/projeto/`; o deploy é automático a cada push na `main`, com lint, testes e build antes da publicação.
+- O repositório precisou ser tornado público em 2026-10-24 porque o GitHub Pages em repositório privado exige plano pago.
 - A branch `test/phase-0-bootstrap` continua no remoto; pode ser removida depois, se o usuário quiser.
 - A branch `feat/phase-4-quiz` foi mesclada e publicada; a `main` contém a Fase 4.
-- A branch `feat/phase-5-polish-and-deploy` contém a Fase 5 e aguarda revisão; a `main` ainda está em `00020b7`.
+- A branch `feat/phase-5-polish-and-deploy` foi mesclada por fast-forward e publicada; a `main` contém a Fase 5.
 - A preferência de tema fica no `localStorage`; em navegação privada ou com armazenamento bloqueado, o tema funciona, mas volta ao padrão do sistema na próxima visita.
 - As capturas do README foram geradas com Edge headless em 1280 px; telas muito estreitas ainda precisam de revisão manual.
-- A demo em `https://wenderson-hgs.github.io/projeto/` só responderá depois do primeiro deploy; até lá, o link do README fica pendente.
-- A tag `v1.0.0` ainda não foi criada; ela deve ser anotada depois que o deploy estiver confirmado.
+- A demo respondeu 200 para o HTML, o JS, o CSS e o favicon; uma captura com Edge headless confirmou o carregamento da tabela e o tema escuro.
+- A tag `v1.0.0` ainda não foi criada; ela deve ser anotada no commit de documentação final, agora que o deploy está confirmado.
 - O balanceador não trata cargas iônicas nem equações redox com íons (ex.: `Fe2+`); o escopo atual cobre fórmulas neutras.
 - Coeficientes digitados pelo usuário são ignorados no cálculo; o resultado sempre usa os menores inteiros. Equações com coeficiente zero, múltiplas soluções ou sem solução positiva são rejeitadas com mensagem clara.
 - O quiz usa 10 perguntas por rodada e 4 alternativas; não há níveis de dificuldade nem limite de tempo.
@@ -199,4 +199,4 @@
 
 ## Próximo passo
 
-Enviar `feat/phase-5-polish-and-deploy` para revisão, testar o tema e o layout no navegador e, após aprovação, fazer o merge na `main`, configurar o GitHub Pages, confirmar a demo e criar a tag/release `v1.0.0`.
+Criar a tag anotada `v1.0.0` no commit de documentação final, enviá-la e publicar a release no GitHub com as notas do `CHANGELOG.md`.

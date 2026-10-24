@@ -6,12 +6,13 @@
 
 ## Situação atual
 
-- **Etapa:** Fase 5 — Polimento e publicação implementada na branch `feat/phase-5-polish-and-deploy` (commits `4cdc1f7`, `af49d50`, `dcb2d8d` e a preparação da v1.0.0), aguardando revisão e deploy.
-- **Repositório:** https://github.com/wenderson-hgs/projeto
-- **`main`:** commit `00020b7` (Fases 0, 1, 2, 3 e 4 publicadas).
-- **Versão:** 1.0.0 no `package.json`; tag e release pendentes do merge e do primeiro deploy.
+- **Etapa:** Fase 5 — Polimento e publicação concluída, mesclada na `main` e publicada no GitHub Pages em 2026-10-24.
+- **Repositório:** https://github.com/wenderson-hgs/projeto (público desde 2026-10-24)
+- **`main`:** merge fast-forward até `d13d1c2` (Fases 1 a 5 publicadas).
+- **Versão:** 1.0.0 no `package.json`; tag e release `v1.0.0` são o último item pendente.
+- **Demo:** https://wenderson-hgs.github.io/projeto/ (verificada em 2026-10-24)
 - **Projeto:** chem-toolkit, site estático (Vite + TypeScript, sem framework) com tabela periódica interativa, calculadora de massa molar, balanceador de equações, quiz e tema claro/escuro.
-- **Próximo passo:** revisar a branch, configurar **Settings → Pages → Source: GitHub Actions**, fazer o merge, confirmar a demo em `https://wenderson-hgs.github.io/projeto/` e criar a tag/release `v1.0.0`.
+- **Próximo passo:** criar a tag anotada `v1.0.0`, enviá-la e publicar a release no GitHub.
 
 ## 1. Objetivo da etapa e o que foi implementado
 
@@ -285,7 +286,7 @@ function createThemeToggle(): HTMLButtonElement;
 
 ## 5. Resultado real de `npm test`, `npm run build` e `npm run lint`
 
-Executados em 2026-10-23, na branch `feat/phase-5-polish-and-deploy`, após a configuração do GitHub Pages:
+Executados em 2026-10-23, na branch `feat/phase-5-polish-and-deploy`, após a configuração do GitHub Pages, e repetidos na `main` em 2026-10-24 (115 testes, build e lint sem erros):
 
 ```text
 $ npm test
@@ -308,25 +309,27 @@ eslint .
 (sem erros)
 ```
 
-Na Etapa 1 (tema), os mesmos 115 testes passaram em 1,12 s e o build de 26 módulos levou 741 ms. O `dist/index.html` foi conferido: favicon e assets apontam para `/projeto/`. O `npm run preview` serviu a aplicação em `http://localhost:4173/projeto/`, e uma captura com Edge headless confirmou o carregamento dos assets e o tema escuro. Nenhum resultado foi declarado sem execução real.
+Na Etapa 1 (tema), os mesmos 115 testes passaram em 1,12 s e o build de 26 módulos levou 741 ms. O `dist/index.html` foi conferido: favicon e assets apontam para `/projeto/`. O `npm run preview` serviu a aplicação em `http://localhost:4173/projeto/`, e uma captura com Edge headless confirmou o carregamento dos assets e o tema escuro.
+
+No GitHub Actions (run `40096907344`, 2026-10-24), todos os passos passaram: checkout, setup do Node 24, `npm ci`, lint, testes, build, configuração do Pages, upload do artefato e deploy. A demo publicada foi verificada com requisições reais (HTML, JS, CSS e favicon retornando 200) e com captura do Edge headless. Nenhum resultado foi declarado sem execução real.
 
 ## 6. Problemas conhecidos, limitações e dúvidas para revisão
 
 - **Sem testes de navegador automatizados:** a interface foi validada por `tsc`, build, lint, testes unitários e capturas com Edge headless, mas não há jsdom/Playwright. Ainda é necessário revisar manualmente o tema, o layout responsivo e o quiz no `npm run dev`.
-- **Deploy ainda não executado:** o workflow está pronto, mas o primeiro deploy depende do merge na `main` e de **Settings → Pages → Source: GitHub Actions**. Se essa opção estiver em "Deploy from a branch", o workflow não publica.
-- **Link da demo:** o README aponta para `https://wenderson-hgs.github.io/projeto/`, que só responderá depois do primeiro deploy.
+- **Deploy executado em 2026-10-24:** o repositório foi tornado público (Pages em repositório privado exige plano pago), o Pages foi habilitado com publicação via workflow e o run `40096907344` publicou `dist`. A demo responde 200 para HTML, JS, CSS e favicon.
+- **Link da demo:** `https://wenderson-hgs.github.io/projeto/` está no ar e no topo do README; o deploy é automático a cada push na `main`.
 - **`base` fixo:** `base: '/projeto/'` atende ao nome atual do repositório; se o repositório for renomeado, o caminho precisa ser atualizado.
 - **Tema persistido:** a preferência fica no `localStorage`; em navegação privada ou com armazenamento bloqueado, o tema funciona, mas não persiste. Mudanças do sistema só são seguidas enquanto não houver escolha salva.
 - **Custo do script inline:** a lógica de tema aparece duplicada no `index.html` (antes da pintura) e em `src/lib/theme.ts`; a chave `chem-toolkit.theme` precisa ser mantida em sincronia.
 - **Capturas:** são PNGs gerados em 1280 px, sem versão mobile e sem GIF. O README não tem teste automatizado que detecte imagens desatualizadas.
 - **Acessibilidade:** contraste e foco foram revisados manualmente, mas não houve auditoria automatizada (axe/Lighthouse) nem teste com leitor de tela real.
-- **Versão/tag:** `package.json` já está em `1.0.0` e há `CHANGELOG.md`; a tag anotada `v1.0.0` e a release no GitHub ainda não foram criadas.
+- **Versão/tag:** `package.json` está em `1.0.0` e há `CHANGELOG.md`; a tag anotada `v1.0.0` e a release no GitHub são o próximo e último passo.
 - **Dúvidas para o Claude:**
   1. O botão de tema com rótulo de ação ("Tema escuro"/"Tema claro") e `aria-label` é suficientemente claro, ou vale usar `aria-pressed`/um switch?
   2. `base: '/projeto/'` fixo é aceitável para este projeto, ou vale ler uma variável de ambiente para permitir outros repositórios?
   3. Vale rodar Lighthouse/axe antes da release, mesmo sem adicionar dependências ao projeto (por exemplo, usando o Edge/Chrome instalado)?
   4. As capturas em PNG são suficientes para o README, ou vale a pena gerar um GIF curto da interação?
-  5. Criar a tag `v1.0.0` somente depois de confirmar o deploy é o fluxo mais seguro, ou há vantagem em taggear antes?
+  5. A tag `v1.0.0` será criada agora que o deploy foi confirmado; há algum cuidado extra recomendado para a release (notas, artefatos, assinatura)?
 - **Dúvidas da Fase 4 ainda em aberto:** excluir elementos com categoria prevista do quiz ou apenas sinalizar a ressalva; e se o formato `{ last, best }` por modo deve ser versionado para evoluções futuras.
 
 ## 7. Como usar este documento
