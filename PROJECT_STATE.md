@@ -13,15 +13,15 @@
 | Stack              | Node.js 24 (LTS) + npm 11, Vite 8 + TypeScript 6 (sem framework), Vitest 5, ESLint 10 + Prettier 3  |
 | Publicação         | GitHub Pages via GitHub Actions — https://wenderson-hgs.github.io/projeto/ (no ar desde 2026-10-24) |
 | Repositório        | https://github.com/wenderson-hgs/projeto (nome do repositório: `projeto`)                           |
-| Branch principal   | `main` (Fases 1 a 5 publicadas; merge fast-forward até `d13d1c2`)                                   |
+| Branch principal   | `main` (Fases 1 a 5 publicadas; release `v1.0.0` no commit `d44845e`)                               |
 | Branch de trabalho | nenhuma ativa; `feat/phase-5-polish-and-deploy` mesclada e publicada                                |
 | Demo               | https://wenderson-hgs.github.io/projeto/ (verificada em 2026-10-24)                                 |
 
 ## Fase em andamento
 
-**Fase 5 — Polimento e publicação concluída e no ar; resta apenas a tag/release `v1.0.0`.**
+**Fase 5 — Polimento e publicação concluída; v1.0.0 publicada em 2026-10-24.**
 
-> A Fase 5 adicionou tema claro/escuro com preferência salva, melhorias de acessibilidade, README completo com capturas reais, configuração do GitHub Pages com `base: '/projeto/'`, workflow de deploy e versão `1.0.0` com changelog. O repositório foi tornado público, o Pages foi habilitado com publicação via workflow e o primeiro deploy terminou com sucesso em 2026-10-24. A demo foi verificada e a tag/release `v1.0.0` é o último item pendente.
+> A Fase 5 adicionou tema claro/escuro com preferência salva, melhorias de acessibilidade, README completo com capturas reais, configuração do GitHub Pages com `base: '/projeto/'`, workflow de deploy e versão `1.0.0` com changelog. O repositório foi tornado público, o Pages foi habilitado com publicação via workflow, o deploy terminou com sucesso e a demo foi verificada. A tag anotada `v1.0.0` e a release no GitHub foram publicadas; não há pendências para a v1.0.
 
 ## Checklist de fases
 
@@ -64,7 +64,7 @@
 - [x] Tema claro/escuro e acessibilidade básica (contraste, foco visível, `aria-label`)
 - [x] README completo: descrição, prints ou GIF, como rodar, fonte e licença dos dados
 - [x] Deploy no GitHub Pages com GitHub Actions (atenção: o `base` do Vite precisa ser `/projeto/`, pois esse é o nome do repositório) — publicado em 2026-10-24; run `40096907344` com build e deploy bem-sucedidos
-- [ ] Tag e release `v1.0.0`
+- [x] Tag e release `v1.0.0`
 
 ## Histórico de etapas concluídas
 
@@ -94,11 +94,12 @@
 | 2026-10-23 | Fase 5 — Etapa 3: GitHub Pages             | Criado `vite.config.ts` com `base: '/projeto/'` e `.github/workflows/deploy.yml` com `npm ci`, lint, testes, build e deploy usando as actions oficiais do Pages. Build de produção validado com `npm run preview` em `/projeto/`; favicon e assets reescritos corretamente. Commit `dcb2d8d`.                                                                                                                                                                                                                  |
 | 2026-10-23 | Fase 5 — Etapa 4: versão 1.0.0             | `package.json` e `package-lock.json` atualizados para `1.0.0`; criado `CHANGELOG.md`; checklist da Fase 5 e documentos de estado atualizados. Tag e release ficam pendentes do merge e do primeiro deploy.                                                                                                                                                                                                                                                                                                     |
 | 2026-10-24 | Fase 5 — deploy e publicação               | Branch publicada e mesclada por fast-forward na `main` (`d13d1c2`); `main` enviada. Repositório tornado público; Pages habilitado com publicação via workflow; run `40096907344` concluído com sucesso (build e deploy). Demo verificada em `https://wenderson-hgs.github.io/projeto/` (HTML, JS, CSS e favicon respondendo 200). Descrição e homepage do repositório atualizadas com o link da demo.                                                                                                          |
+| 2026-10-24 | Release v1.0.0                             | Commit de documentação `d44845e` enviado; tag anotada `v1.0.0` criada e enviada; release "v1.0.0 — Primeira versão" publicada em `https://github.com/wenderson-hgs/projeto/releases/tag/v1.0.0` com as notas do `CHANGELOG.md`. Deploy do commit de docs concluído com sucesso (run `40098865461`). Fase 5 encerrada.                                                                                                                                                                                          |
 
 ## Pendências
 
-- Criar a tag anotada `v1.0.0` no commit de documentação final e publicar a release no GitHub.
 - Remover as branches de trabalho já mescladas (`feat/phase-1-periodic-table`, `feat/phase-2-molar-mass`, `feat/phase-3-equation-balancer`, `feat/phase-4-quiz`, `feat/phase-5-polish-and-deploy` e `test/phase-0-bootstrap`) quando o usuário quiser.
+- Opcionais pós-v1.0 (somente se o usuário pedir): expor `src/lib/` como servidor MCP, versão PWA/offline, README em inglês e novas ferramentas (estequiometria, pH, conversão de unidades).
 
 ## Decisões importantes
 
@@ -189,7 +190,7 @@
 - A preferência de tema fica no `localStorage`; em navegação privada ou com armazenamento bloqueado, o tema funciona, mas volta ao padrão do sistema na próxima visita.
 - As capturas do README foram geradas com Edge headless em 1280 px; telas muito estreitas ainda precisam de revisão manual.
 - A demo respondeu 200 para o HTML, o JS, o CSS e o favicon; uma captura com Edge headless confirmou o carregamento da tabela e o tema escuro.
-- A tag `v1.0.0` ainda não foi criada; ela deve ser anotada no commit de documentação final, agora que o deploy está confirmado.
+- A tag anotada `v1.0.0` e a release foram publicadas em 2026-10-24; o deploy do commit de documentação também passou (run `40098865461`).
 - O balanceador não trata cargas iônicas nem equações redox com íons (ex.: `Fe2+`); o escopo atual cobre fórmulas neutras.
 - Coeficientes digitados pelo usuário são ignorados no cálculo; o resultado sempre usa os menores inteiros. Equações com coeficiente zero, múltiplas soluções ou sem solução positiva são rejeitadas com mensagem clara.
 - O quiz usa 10 perguntas por rodada e 4 alternativas; não há níveis de dificuldade nem limite de tempo.
@@ -199,4 +200,4 @@
 
 ## Próximo passo
 
-Criar a tag anotada `v1.0.0` no commit de documentação final, enviá-la e publicar a release no GitHub com as notas do `CHANGELOG.md`.
+A v1.0.0 está publicada e não há pendências obrigatórias. Se quiser continuar, os próximos passos opcionais estão na seção 9 do `AGENTS.md` (MCP, PWA/offline, README em inglês, novas ferramentas). As branches de trabalho já mescladas podem ser removidas quando você autorizar.

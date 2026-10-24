@@ -6,13 +6,13 @@
 
 ## Situação atual
 
-- **Etapa:** Fase 5 — Polimento e publicação concluída, mesclada na `main` e publicada no GitHub Pages em 2026-10-24.
+- **Etapa:** Fase 5 — Polimento e publicação concluída; v1.0.0 publicada no GitHub Pages e no GitHub em 2026-10-24.
 - **Repositório:** https://github.com/wenderson-hgs/projeto (público desde 2026-10-24)
-- **`main`:** merge fast-forward até `d13d1c2` (Fases 1 a 5 publicadas).
-- **Versão:** 1.0.0 no `package.json`; tag e release `v1.0.0` são o último item pendente.
+- **`main`:** Fases 1 a 5 publicadas; release `v1.0.0` no commit `d44845e`.
+- **Versão:** 1.0.0 publicada; tag anotada e release disponíveis em https://github.com/wenderson-hgs/projeto/releases/tag/v1.0.0.
 - **Demo:** https://wenderson-hgs.github.io/projeto/ (verificada em 2026-10-24)
 - **Projeto:** chem-toolkit, site estático (Vite + TypeScript, sem framework) com tabela periódica interativa, calculadora de massa molar, balanceador de equações, quiz e tema claro/escuro.
-- **Próximo passo:** criar a tag anotada `v1.0.0`, enviá-la e publicar a release no GitHub.
+- **Próximo passo:** nenhum pendente para a v1.0; os opcionais estão na seção 9 do `AGENTS.md` e dependem de pedido do usuário.
 
 ## 1. Objetivo da etapa e o que foi implementado
 
@@ -323,13 +323,13 @@ No GitHub Actions (run `40096907344`, 2026-10-24), todos os passos passaram: che
 - **Custo do script inline:** a lógica de tema aparece duplicada no `index.html` (antes da pintura) e em `src/lib/theme.ts`; a chave `chem-toolkit.theme` precisa ser mantida em sincronia.
 - **Capturas:** são PNGs gerados em 1280 px, sem versão mobile e sem GIF. O README não tem teste automatizado que detecte imagens desatualizadas.
 - **Acessibilidade:** contraste e foco foram revisados manualmente, mas não houve auditoria automatizada (axe/Lighthouse) nem teste com leitor de tela real.
-- **Versão/tag:** `package.json` está em `1.0.0` e há `CHANGELOG.md`; a tag anotada `v1.0.0` e a release no GitHub são o próximo e último passo.
+- **Versão/tag:** `package.json` está em `1.0.0`; a tag anotada `v1.0.0` e a release no GitHub foram publicadas em 2026-10-24 com as notas do `CHANGELOG.md`.
 - **Dúvidas para o Claude:**
   1. O botão de tema com rótulo de ação ("Tema escuro"/"Tema claro") e `aria-label` é suficientemente claro, ou vale usar `aria-pressed`/um switch?
   2. `base: '/projeto/'` fixo é aceitável para este projeto, ou vale ler uma variável de ambiente para permitir outros repositórios?
   3. Vale rodar Lighthouse/axe antes da release, mesmo sem adicionar dependências ao projeto (por exemplo, usando o Edge/Chrome instalado)?
   4. As capturas em PNG são suficientes para o README, ou vale a pena gerar um GIF curto da interação?
-  5. A tag `v1.0.0` será criada agora que o deploy foi confirmado; há algum cuidado extra recomendado para a release (notas, artefatos, assinatura)?
+  5. A v1.0.0 foi publicada com tag anotada e release; há algo a revisar no fluxo de versionamento ou nas notas da release?
 - **Dúvidas da Fase 4 ainda em aberto:** excluir elementos com categoria prevista do quiz ou apenas sinalizar a ressalva; e se o formato `{ last, best }` por modo deve ser versionado para evoluções futuras.
 
 ## 7. Como usar este documento

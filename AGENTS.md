@@ -97,7 +97,7 @@ Mantenha a lógica de química em `src/lib/` **separada da interface**, para tes
 - [x] Tema claro/escuro e acessibilidade básica (contraste, foco visível, `aria-label`)
 - [x] README completo: descrição, prints ou GIF, como rodar, fonte e licença dos dados
 - [x] Deploy no GitHub Pages com GitHub Actions (atenção: o `base` do Vite precisa ser `/projeto/`, pois esse é o nome do repositório)
-- [ ] Tag e release `v1.0.0`
+- [x] Tag e release `v1.0.0`
 
 ## 6. Dados e casos de teste
 
