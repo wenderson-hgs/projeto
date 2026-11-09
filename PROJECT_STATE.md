@@ -6,16 +6,16 @@
 
 ## Visão geral
 
-| Campo              | Valor                                                                                                                                                                  |
-| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Projeto            | chem-toolkit — Tabela Periódica Interativa e Ferramentas de Química                                                                                                    |
-| Versão             | 1.3.0                                                                                                                                                                  |
-| Stack              | Node.js 24 (LTS) + npm 11, Vite 8 + TypeScript 6 (sem framework), Vitest 5, ESLint 10 + Prettier 3                                                                     |
-| Publicação         | GitHub Pages via GitHub Actions — https://wenderson-hgs.github.io/projeto/ (no ar desde 2026-10-24)                                                                    |
-| Repositório        | https://github.com/wenderson-hgs/projeto (nome do repositório: `projeto`)                                                                                              |
-| Branch principal   | `main` (Fases 1 a 5 publicadas; release `v1.0.0` no commit `d44845e`)                                                                                                  |
+| Campo              | Valor                                                                                                                                                                   |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Projeto            | chem-toolkit — Tabela Periódica Interativa e Ferramentas de Química                                                                                                     |
+| Versão             | 1.3.0                                                                                                                                                                   |
+| Stack              | Node.js 24 (LTS) + npm 11, Vite 8 + TypeScript 6 (sem framework), Vitest 5, ESLint 10 + Prettier 3                                                                      |
+| Publicação         | GitHub Pages via GitHub Actions — https://wenderson-hgs.github.io/projeto/ (no ar desde 2026-10-24)                                                                     |
+| Repositório        | https://github.com/wenderson-hgs/projeto (nome do repositório: `projeto`)                                                                                               |
+| Branch principal   | `main` (Fases 1 a 5 publicadas; release `v1.0.0` no commit `d44845e`)                                                                                                   |
 | Branch de trabalho | `feat/v1.1-confidence` (A1+A2 enviados; PR pendente), `feat/v1.2-rich-table` (B enviado; PR pendente) e `feat/v1.3-stoichiometry` (estequiometria enviada; PR pendente) |
-| Demo               | https://wenderson-hgs.github.io/projeto/ (verificada em 2026-10-24)                                                                                                    |
+| Demo               | https://wenderson-hgs.github.io/projeto/ (verificada em 2026-10-24)                                                                                                     |
 
 ## Fase em andamento
 
