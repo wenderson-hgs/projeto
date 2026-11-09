@@ -19,7 +19,7 @@
 
 ## Fase em andamento
 
-**Pós-v1.0 — B (tabela rica e quiz educativo) implementado e documentado na branch `feat/v1.2-rich-table`, aguardando revisão (commits locais criados, sem push). O A1 e o A2 estão na branch `feat/v1.1-confidence`, já enviada ao GitHub, com pull request pendente de abertura manual.**
+**Pós-v1.0 — B (tabela rica e quiz educativo) implementado e documentado na branch `feat/v1.2-rich-table`, já enviada ao GitHub, aguardando revisão e abertura do pull request. O A1 e o A2 estão na branch `feat/v1.1-confidence`, também enviada, com pull request pendente de abertura manual.**
 
 > O B enriquece o painel de detalhes com estado físico, configuração eletrônica, eletronegatividade, pontos de fusão/ebulição, densidade e bloco, usando os campos do mesmo `PeriodicTableJSON.json` (CC BY-SA 3.0). Também adiciona rótulos de grupo/período, revisão dos erros do quiz e corrige os nomes de Rf (`Ruterfórdio`) e Nh (`Nihônio`). O A1 corrigiu a formatação numérica para pt-BR, as mensagens do balanceador e a normalização de subscritos/estados físicos; o A2 adicionou roving tabindex, foco gerenciado no painel, metadados sociais/SEO e um workflow de CI para pull requests. As tags e releases `v1.1.0`/`v1.2.0` continuam pendentes de aprovação.
 
@@ -102,7 +102,7 @@
 ## Pendências
 
 - Abrir manualmente o pull request do A1/A2: https://github.com/wenderson-hgs/projeto/pull/new/feat/v1.1-confidence (o `gh` não está instalado).
-- Revisar o B e confirmar o push da branch `feat/v1.2-rich-table`; o PR dela fica empilhado no do A1/A2.
+- Revisar o B e abrir o pull request da branch `feat/v1.2-rich-table`; o PR dela fica empilhado no do A1/A2.
 - Remover as branches de trabalho já mescladas (`feat/phase-1-periodic-table`, `feat/phase-2-molar-mass`, `feat/phase-3-equation-balancer`, `feat/phase-4-quiz`, `feat/phase-5-polish-and-deploy`, `test/phase-0-bootstrap`, `feat/v1.1-confidence` e `feat/v1.2-rich-table`) quando o usuário quiser.
 - Pacote C (novas ferramentas), quando o usuário aprovar.
 - Opcionais pós-v1.0 (somente se o usuário pedir): expor `src/lib/` como servidor MCP, versão PWA/offline, README em inglês e novas ferramentas (estequiometria, pH, conversão de unidades).
@@ -207,7 +207,7 @@
 - O GitHub Pages está no ar em `https://wenderson-hgs.github.io/projeto/`; o deploy é automático a cada push na `main`, com lint, testes e build antes da publicação.
 - O repositório precisou ser tornado público em 2026-10-24 porque o GitHub Pages em repositório privado exige plano pago.
 - A branch `test/phase-0-bootstrap` continua no remoto; pode ser removida depois, se o usuário quiser.
-- A branch `feat/v1.1-confidence` foi enviada ao `origin` com 9 commits e aguarda a abertura manual do pull request; a `feat/v1.2-rich-table` contém o B implementado e será enviada após a revisão.
+- A branch `feat/v1.1-confidence` foi enviada ao `origin` com 9 commits e aguarda a abertura manual do pull request; a `feat/v1.2-rich-table` foi enviada com os 5 commits do B e também aguarda o pull request.
 - A branch `feat/phase-4-quiz` foi mesclada e publicada; a `main` contém a Fase 4.
 - A branch `feat/phase-5-polish-and-deploy` foi mesclada por fast-forward e publicada; a `main` contém a Fase 5.
 - A preferência de tema fica no `localStorage`; em navegação privada ou com armazenamento bloqueado, o tema funciona, mas volta ao padrão do sistema na próxima visita.
@@ -223,4 +223,4 @@
 
 ## Próximo passo
 
-O A1 e o A2 estão na branch `feat/v1.1-confidence`, enviada ao GitHub; falta abrir o pull request manualmente (o `gh` não está instalado): https://github.com/wenderson-hgs/projeto/pull/new/feat/v1.1-confidence. O B está implementado e documentado na branch `feat/v1.2-rich-table`, com commits locais criados, aguardando revisão e confirmação para push. O pacote C (novas ferramentas) depende de nova aprovação.
+O A1 e o A2 estão na branch `feat/v1.1-confidence`, enviada ao GitHub; falta abrir o pull request manualmente (o `gh` não está instalado): https://github.com/wenderson-hgs/projeto/pull/new/feat/v1.1-confidence. O B está implementado e documentado na branch `feat/v1.2-rich-table`, já enviada ao GitHub, aguardando revisão e abertura do PR. O pacote C (novas ferramentas) depende de nova aprovação.
