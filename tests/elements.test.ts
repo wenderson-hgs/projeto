@@ -38,7 +38,48 @@ describe('elements data', () => {
       expect(element.ypos).toBeGreaterThanOrEqual(1);
       expect(element.ypos).toBeLessThanOrEqual(10);
       expect(CATEGORY_LABELS[element.category]).toBeTruthy();
+      expect(['solid', 'liquid', 'gas']).toContain(element.phase);
+      expect(['s', 'p', 'd', 'f']).toContain(element.block);
+      expect(element.electronConfiguration).toBeTruthy();
     }
+  });
+
+  it('keeps physical properties consistent', () => {
+    for (const element of elements) {
+      if (element.density === null) {
+        expect(element.densityUnit).toBeNull();
+        continue;
+      }
+
+      expect(element.density).toBeGreaterThan(0);
+      expect(element.densityUnit).toBe(element.phase === 'gas' ? 'g/L' : 'g/cm3');
+
+      if (element.meltingPointK !== null && element.boilingPointK !== null) {
+        expect(element.meltingPointK).toBeLessThan(element.boilingPointK);
+      }
+    }
+  });
+
+  it('matches known physical properties', () => {
+    const hydrogen = getElementBySymbol('H')!;
+    expect(hydrogen.phase).toBe('gas');
+    expect(hydrogen.electronegativity).toBeCloseTo(2.2, 2);
+    expect(hydrogen.meltingPointK).toBeCloseTo(13.99, 2);
+    expect(hydrogen.boilingPointK).toBeCloseTo(20.271, 3);
+
+    const iron = getElementBySymbol('Fe')!;
+    expect(iron.phase).toBe('solid');
+    expect(iron.block).toBe('d');
+    expect(iron.electronConfiguration).toBe('[Ar] 3d6 4s2');
+    expect(iron.meltingPointK).toBeCloseTo(1811, 0);
+    expect(iron.boilingPointK).toBeCloseTo(3134, 0);
+    expect(iron.density).toBeCloseTo(7.874, 3);
+    expect(iron.densityUnit).toBe('g/cm3');
+
+    expect(getElementBySymbol('He')?.electronegativity).toBeNull();
+    expect(getElementBySymbol('C')?.boilingPointK).toBeNull();
+    expect(getElementBySymbol('Db')?.meltingPointK).toBeNull();
+    expect(getElementBySymbol('Fm')?.density).toBeNull();
   });
 
   it('matches known atomic masses', () => {
@@ -64,6 +105,9 @@ describe('elements data', () => {
     expect(bySymbol.get('O')?.namePt).toBe('Oxigênio');
     expect(bySymbol.get('Fe')?.namePt).toBe('Ferro');
     expect(bySymbol.get('Au')?.namePt).toBe('Ouro');
+    expect(bySymbol.get('Rf')?.namePt).toBe('Ruterfórdio');
+    expect(bySymbol.get('Nh')?.namePt).toBe('Nihônio');
+    expect(bySymbol.get('Ho')?.namePt).toBe('Hôlmio');
   });
 
   it('marks approximate masses', () => {
@@ -85,6 +129,11 @@ describe('searchElements', () => {
   it('finds by Portuguese name without accents', () => {
     const result = searchElements('hidrogenio');
     expect(result.map((element) => element.symbol)).toContain('H');
+  });
+
+  it('finds the corrected Brazilian names without accents', () => {
+    expect(searchElements('ruterfordio').map((element) => element.symbol)).toContain('Rf');
+    expect(searchElements('nihonio').map((element) => element.symbol)).toContain('Nh');
   });
 
   it('finds by English name', () => {

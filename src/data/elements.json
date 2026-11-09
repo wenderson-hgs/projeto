@@ -11,7 +11,15 @@
     "group": 1,
     "period": 1,
     "xpos": 1,
-    "ypos": 1
+    "ypos": 1,
+    "phase": "gas",
+    "electronConfiguration": "1s1",
+    "electronegativity": 2.2,
+    "meltingPointK": 13.99,
+    "boilingPointK": 20.271,
+    "density": 0.08988,
+    "densityUnit": "g/L",
+    "block": "s"
   },
   {
     "atomicNumber": 2,
@@ -25,7 +33,15 @@
     "group": 18,
     "period": 1,
     "xpos": 18,
-    "ypos": 1
+    "ypos": 1,
+    "phase": "gas",
+    "electronConfiguration": "1s2",
+    "electronegativity": null,
+    "meltingPointK": 0.95,
+    "boilingPointK": 4.222,
+    "density": 0.1786,
+    "densityUnit": "g/L",
+    "block": "s"
   },
   {
     "atomicNumber": 3,
@@ -39,7 +55,15 @@
     "group": 1,
     "period": 2,
     "xpos": 1,
-    "ypos": 2
+    "ypos": 2,
+    "phase": "solid",
+    "electronConfiguration": "[He] 2s1",
+    "electronegativity": 0.98,
+    "meltingPointK": 453.65,
+    "boilingPointK": 1603,
+    "density": 0.534,
+    "densityUnit": "g/cm3",
+    "block": "s"
   },
   {
     "atomicNumber": 4,
@@ -53,7 +77,15 @@
     "group": 2,
     "period": 2,
     "xpos": 2,
-    "ypos": 2
+    "ypos": 2,
+    "phase": "solid",
+    "electronConfiguration": "[He] 2s2",
+    "electronegativity": 1.57,
+    "meltingPointK": 1560,
+    "boilingPointK": 2742,
+    "density": 1.85,
+    "densityUnit": "g/cm3",
+    "block": "s"
   },
   {
     "atomicNumber": 5,
@@ -67,7 +99,15 @@
     "group": 13,
     "period": 2,
     "xpos": 13,
-    "ypos": 2
+    "ypos": 2,
+    "phase": "solid",
+    "electronConfiguration": "[He] 2s2 2p1",
+    "electronegativity": 2.04,
+    "meltingPointK": 2349,
+    "boilingPointK": 4200,
+    "density": 2.08,
+    "densityUnit": "g/cm3",
+    "block": "p"
   },
   {
     "atomicNumber": 6,
@@ -81,7 +121,15 @@
     "group": 14,
     "period": 2,
     "xpos": 14,
-    "ypos": 2
+    "ypos": 2,
+    "phase": "solid",
+    "electronConfiguration": "[He] 2s2 2p2",
+    "electronegativity": 2.55,
+    "meltingPointK": 4600,
+    "boilingPointK": null,
+    "density": 1.821,
+    "densityUnit": "g/cm3",
+    "block": "p"
   },
   {
     "atomicNumber": 7,
@@ -95,7 +143,15 @@
     "group": 15,
     "period": 2,
     "xpos": 15,
-    "ypos": 2
+    "ypos": 2,
+    "phase": "gas",
+    "electronConfiguration": "[He] 2s2 2p3",
+    "electronegativity": 3.04,
+    "meltingPointK": 63.15,
+    "boilingPointK": 77.355,
+    "density": 1.251,
+    "densityUnit": "g/L",
+    "block": "p"
   },
   {
     "atomicNumber": 8,
@@ -109,7 +165,15 @@
     "group": 16,
     "period": 2,
     "xpos": 16,
-    "ypos": 2
+    "ypos": 2,
+    "phase": "gas",
+    "electronConfiguration": "[He] 2s2 2p4",
+    "electronegativity": 3.44,
+    "meltingPointK": 54.36,
+    "boilingPointK": 90.188,
+    "density": 1.429,
+    "densityUnit": "g/L",
+    "block": "p"
   },
   {
     "atomicNumber": 9,
@@ -123,7 +187,15 @@
     "group": 17,
     "period": 2,
     "xpos": 17,
-    "ypos": 2
+    "ypos": 2,
+    "phase": "gas",
+    "electronConfiguration": "[He] 2s2 2p5",
+    "electronegativity": 3.98,
+    "meltingPointK": 53.48,
+    "boilingPointK": 85.03,
+    "density": 1.696,
+    "densityUnit": "g/L",
+    "block": "p"
   },
   {
     "atomicNumber": 10,
@@ -137,7 +209,15 @@
     "group": 18,
     "period": 2,
     "xpos": 18,
-    "ypos": 2
+    "ypos": 2,
+    "phase": "gas",
+    "electronConfiguration": "[He] 2s2 2p6",
+    "electronegativity": null,
+    "meltingPointK": 24.56,
+    "boilingPointK": 27.104,
+    "density": 0.9002,
+    "densityUnit": "g/L",
+    "block": "p"
   },
   {
     "atomicNumber": 11,
@@ -151,7 +231,15 @@
     "group": 1,
     "period": 3,
     "xpos": 1,
-    "ypos": 3
+    "ypos": 3,
+    "phase": "solid",
+    "electronConfiguration": "[Ne] 3s1",
+    "electronegativity": 0.93,
+    "meltingPointK": 370.944,
+    "boilingPointK": 1156.09,
+    "density": 0.968,
+    "densityUnit": "g/cm3",
+    "block": "s"
   },
   {
     "atomicNumber": 12,
@@ -165,7 +253,15 @@
     "group": 2,
     "period": 3,
     "xpos": 2,
-    "ypos": 3
+    "ypos": 3,
+    "phase": "solid",
+    "electronConfiguration": "[Ne] 3s2",
+    "electronegativity": 1.31,
+    "meltingPointK": 923,
+    "boilingPointK": 1363,
+    "density": 1.738,
+    "densityUnit": "g/cm3",
+    "block": "s"
   },
   {
     "atomicNumber": 13,
@@ -179,7 +275,15 @@
     "group": 13,
     "period": 3,
     "xpos": 13,
-    "ypos": 3
+    "ypos": 3,
+    "phase": "solid",
+    "electronConfiguration": "[Ne] 3s2 3p1",
+    "electronegativity": 1.61,
+    "meltingPointK": 933.47,
+    "boilingPointK": 2743,
+    "density": 2.7,
+    "densityUnit": "g/cm3",
+    "block": "p"
   },
   {
     "atomicNumber": 14,
@@ -193,7 +297,15 @@
     "group": 14,
     "period": 3,
     "xpos": 14,
-    "ypos": 3
+    "ypos": 3,
+    "phase": "solid",
+    "electronConfiguration": "[Ne] 3s2 3p2",
+    "electronegativity": 1.9,
+    "meltingPointK": 1687,
+    "boilingPointK": 3538,
+    "density": 2.329,
+    "densityUnit": "g/cm3",
+    "block": "p"
   },
   {
     "atomicNumber": 15,
@@ -207,7 +319,15 @@
     "group": 15,
     "period": 3,
     "xpos": 15,
-    "ypos": 3
+    "ypos": 3,
+    "phase": "solid",
+    "electronConfiguration": "[Ne] 3s2 3p3",
+    "electronegativity": 2.19,
+    "meltingPointK": 317.3,
+    "boilingPointK": null,
+    "density": 1.823,
+    "densityUnit": "g/cm3",
+    "block": "p"
   },
   {
     "atomicNumber": 16,
@@ -221,7 +341,15 @@
     "group": 16,
     "period": 3,
     "xpos": 16,
-    "ypos": 3
+    "ypos": 3,
+    "phase": "solid",
+    "electronConfiguration": "[Ne] 3s2 3p4",
+    "electronegativity": 2.58,
+    "meltingPointK": 388.36,
+    "boilingPointK": 717.8,
+    "density": 2.07,
+    "densityUnit": "g/cm3",
+    "block": "p"
   },
   {
     "atomicNumber": 17,
@@ -235,7 +363,15 @@
     "group": 17,
     "period": 3,
     "xpos": 17,
-    "ypos": 3
+    "ypos": 3,
+    "phase": "gas",
+    "electronConfiguration": "[Ne] 3s2 3p5",
+    "electronegativity": 3.16,
+    "meltingPointK": 171.6,
+    "boilingPointK": 239.11,
+    "density": 3.2,
+    "densityUnit": "g/L",
+    "block": "p"
   },
   {
     "atomicNumber": 18,
@@ -249,7 +385,15 @@
     "group": 18,
     "period": 3,
     "xpos": 18,
-    "ypos": 3
+    "ypos": 3,
+    "phase": "gas",
+    "electronConfiguration": "[Ne] 3s2 3p6",
+    "electronegativity": null,
+    "meltingPointK": 83.81,
+    "boilingPointK": 87.302,
+    "density": 1.784,
+    "densityUnit": "g/L",
+    "block": "p"
   },
   {
     "atomicNumber": 19,
@@ -263,7 +407,15 @@
     "group": 1,
     "period": 4,
     "xpos": 1,
-    "ypos": 4
+    "ypos": 4,
+    "phase": "solid",
+    "electronConfiguration": "[Ar] 4s1",
+    "electronegativity": 0.82,
+    "meltingPointK": 336.7,
+    "boilingPointK": 1032,
+    "density": 0.862,
+    "densityUnit": "g/cm3",
+    "block": "s"
   },
   {
     "atomicNumber": 20,
@@ -277,7 +429,15 @@
     "group": 2,
     "period": 4,
     "xpos": 2,
-    "ypos": 4
+    "ypos": 4,
+    "phase": "solid",
+    "electronConfiguration": "[Ar] 4s2",
+    "electronegativity": 1,
+    "meltingPointK": 1115,
+    "boilingPointK": 1757,
+    "density": 1.55,
+    "densityUnit": "g/cm3",
+    "block": "s"
   },
   {
     "atomicNumber": 21,
@@ -291,7 +451,15 @@
     "group": 3,
     "period": 4,
     "xpos": 3,
-    "ypos": 4
+    "ypos": 4,
+    "phase": "solid",
+    "electronConfiguration": "[Ar] 3d1 4s2",
+    "electronegativity": 1.36,
+    "meltingPointK": 1814,
+    "boilingPointK": 3109,
+    "density": 2.985,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 22,
@@ -305,7 +473,15 @@
     "group": 4,
     "period": 4,
     "xpos": 4,
-    "ypos": 4
+    "ypos": 4,
+    "phase": "solid",
+    "electronConfiguration": "[Ar] 3d2 4s2",
+    "electronegativity": 1.54,
+    "meltingPointK": 1941,
+    "boilingPointK": 3560,
+    "density": 4.506,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 23,
@@ -319,7 +495,15 @@
     "group": 5,
     "period": 4,
     "xpos": 5,
-    "ypos": 4
+    "ypos": 4,
+    "phase": "solid",
+    "electronConfiguration": "[Ar] 3d3 4s2",
+    "electronegativity": 1.63,
+    "meltingPointK": 2183,
+    "boilingPointK": 3680,
+    "density": 6,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 24,
@@ -333,7 +517,15 @@
     "group": 6,
     "period": 4,
     "xpos": 6,
-    "ypos": 4
+    "ypos": 4,
+    "phase": "solid",
+    "electronConfiguration": "[Ar] 3d5 4s1",
+    "electronegativity": 1.66,
+    "meltingPointK": 2180,
+    "boilingPointK": 2944,
+    "density": 7.19,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 25,
@@ -347,7 +539,15 @@
     "group": 7,
     "period": 4,
     "xpos": 7,
-    "ypos": 4
+    "ypos": 4,
+    "phase": "solid",
+    "electronConfiguration": "[Ar] 3d5 4s2",
+    "electronegativity": 1.55,
+    "meltingPointK": 1519,
+    "boilingPointK": 2334,
+    "density": 7.21,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 26,
@@ -361,7 +561,15 @@
     "group": 8,
     "period": 4,
     "xpos": 8,
-    "ypos": 4
+    "ypos": 4,
+    "phase": "solid",
+    "electronConfiguration": "[Ar] 3d6 4s2",
+    "electronegativity": 1.83,
+    "meltingPointK": 1811,
+    "boilingPointK": 3134,
+    "density": 7.874,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 27,
@@ -375,7 +583,15 @@
     "group": 9,
     "period": 4,
     "xpos": 9,
-    "ypos": 4
+    "ypos": 4,
+    "phase": "solid",
+    "electronConfiguration": "[Ar] 3d7 4s2",
+    "electronegativity": 1.88,
+    "meltingPointK": 1768,
+    "boilingPointK": 3200,
+    "density": 8.9,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 28,
@@ -389,7 +605,15 @@
     "group": 10,
     "period": 4,
     "xpos": 10,
-    "ypos": 4
+    "ypos": 4,
+    "phase": "solid",
+    "electronConfiguration": "[Ar] 3d8 4s2",
+    "electronegativity": 1.91,
+    "meltingPointK": 1728,
+    "boilingPointK": 3003,
+    "density": 8.908,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 29,
@@ -403,7 +627,15 @@
     "group": 11,
     "period": 4,
     "xpos": 11,
-    "ypos": 4
+    "ypos": 4,
+    "phase": "solid",
+    "electronConfiguration": "[Ar] 3d10 4s1",
+    "electronegativity": 1.9,
+    "meltingPointK": 1357.77,
+    "boilingPointK": 2835,
+    "density": 8.96,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 30,
@@ -417,7 +649,15 @@
     "group": 12,
     "period": 4,
     "xpos": 12,
-    "ypos": 4
+    "ypos": 4,
+    "phase": "solid",
+    "electronConfiguration": "[Ar] 3d10 4s2",
+    "electronegativity": 1.65,
+    "meltingPointK": 692.68,
+    "boilingPointK": 1180,
+    "density": 7.14,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 31,
@@ -431,7 +671,15 @@
     "group": 13,
     "period": 4,
     "xpos": 13,
-    "ypos": 4
+    "ypos": 4,
+    "phase": "solid",
+    "electronConfiguration": "[Ar] 3d10 4s2 4p1",
+    "electronegativity": 1.81,
+    "meltingPointK": 302.9146,
+    "boilingPointK": 2673,
+    "density": 5.91,
+    "densityUnit": "g/cm3",
+    "block": "p"
   },
   {
     "atomicNumber": 32,
@@ -445,7 +693,15 @@
     "group": 14,
     "period": 4,
     "xpos": 14,
-    "ypos": 4
+    "ypos": 4,
+    "phase": "solid",
+    "electronConfiguration": "[Ar] 3d10 4s2 4p2",
+    "electronegativity": 2.01,
+    "meltingPointK": 1211.4,
+    "boilingPointK": 3106,
+    "density": 5.323,
+    "densityUnit": "g/cm3",
+    "block": "p"
   },
   {
     "atomicNumber": 33,
@@ -459,7 +715,15 @@
     "group": 15,
     "period": 4,
     "xpos": 15,
-    "ypos": 4
+    "ypos": 4,
+    "phase": "solid",
+    "electronConfiguration": "[Ar] 3d10 4s2 4p3",
+    "electronegativity": 2.18,
+    "meltingPointK": 1090,
+    "boilingPointK": null,
+    "density": 5.727,
+    "densityUnit": "g/cm3",
+    "block": "p"
   },
   {
     "atomicNumber": 34,
@@ -473,7 +737,15 @@
     "group": 16,
     "period": 4,
     "xpos": 16,
-    "ypos": 4
+    "ypos": 4,
+    "phase": "solid",
+    "electronConfiguration": "[Ar] 3d10 4s2 4p4",
+    "electronegativity": 2.55,
+    "meltingPointK": 494,
+    "boilingPointK": 958,
+    "density": 4.81,
+    "densityUnit": "g/cm3",
+    "block": "p"
   },
   {
     "atomicNumber": 35,
@@ -487,7 +759,15 @@
     "group": 17,
     "period": 4,
     "xpos": 17,
-    "ypos": 4
+    "ypos": 4,
+    "phase": "liquid",
+    "electronConfiguration": "[Ar] 3d10 4s2 4p5",
+    "electronegativity": 2.96,
+    "meltingPointK": 265.8,
+    "boilingPointK": 332,
+    "density": 3.1028,
+    "densityUnit": "g/cm3",
+    "block": "p"
   },
   {
     "atomicNumber": 36,
@@ -501,7 +781,15 @@
     "group": 18,
     "period": 4,
     "xpos": 18,
-    "ypos": 4
+    "ypos": 4,
+    "phase": "gas",
+    "electronConfiguration": "[Ar] 3d10 4s2 4p6",
+    "electronegativity": 3,
+    "meltingPointK": 115.78,
+    "boilingPointK": 119.93,
+    "density": 3.749,
+    "densityUnit": "g/L",
+    "block": "p"
   },
   {
     "atomicNumber": 37,
@@ -515,7 +803,15 @@
     "group": 1,
     "period": 5,
     "xpos": 1,
-    "ypos": 5
+    "ypos": 5,
+    "phase": "solid",
+    "electronConfiguration": "[Kr] 5s1",
+    "electronegativity": 0.82,
+    "meltingPointK": 312.45,
+    "boilingPointK": 961,
+    "density": 1.532,
+    "densityUnit": "g/cm3",
+    "block": "s"
   },
   {
     "atomicNumber": 38,
@@ -529,7 +825,15 @@
     "group": 2,
     "period": 5,
     "xpos": 2,
-    "ypos": 5
+    "ypos": 5,
+    "phase": "solid",
+    "electronConfiguration": "[Kr] 5s2",
+    "electronegativity": 0.95,
+    "meltingPointK": 1050,
+    "boilingPointK": 1650,
+    "density": 2.64,
+    "densityUnit": "g/cm3",
+    "block": "s"
   },
   {
     "atomicNumber": 39,
@@ -543,7 +847,15 @@
     "group": 3,
     "period": 5,
     "xpos": 3,
-    "ypos": 5
+    "ypos": 5,
+    "phase": "solid",
+    "electronConfiguration": "[Kr] 4d1 5s2",
+    "electronegativity": 1.22,
+    "meltingPointK": 1799,
+    "boilingPointK": 3203,
+    "density": 4.472,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 40,
@@ -557,7 +869,15 @@
     "group": 4,
     "period": 5,
     "xpos": 4,
-    "ypos": 5
+    "ypos": 5,
+    "phase": "solid",
+    "electronConfiguration": "[Kr] 4d2 5s2",
+    "electronegativity": 1.33,
+    "meltingPointK": 2128,
+    "boilingPointK": 4650,
+    "density": 6.52,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 41,
@@ -571,7 +891,15 @@
     "group": 5,
     "period": 5,
     "xpos": 5,
-    "ypos": 5
+    "ypos": 5,
+    "phase": "solid",
+    "electronConfiguration": "[Kr] 4d4 5s1",
+    "electronegativity": 1.6,
+    "meltingPointK": 2750,
+    "boilingPointK": 5017,
+    "density": 8.57,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 42,
@@ -585,7 +913,15 @@
     "group": 6,
     "period": 5,
     "xpos": 6,
-    "ypos": 5
+    "ypos": 5,
+    "phase": "solid",
+    "electronConfiguration": "[Kr] 4d5 5s1",
+    "electronegativity": 2.16,
+    "meltingPointK": 2896,
+    "boilingPointK": 4912,
+    "density": 10.28,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 43,
@@ -599,7 +935,15 @@
     "group": 7,
     "period": 5,
     "xpos": 7,
-    "ypos": 5
+    "ypos": 5,
+    "phase": "solid",
+    "electronConfiguration": "[Kr] 4d5 5s2",
+    "electronegativity": 1.9,
+    "meltingPointK": 2430,
+    "boilingPointK": 4538,
+    "density": 11,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 44,
@@ -613,7 +957,15 @@
     "group": 8,
     "period": 5,
     "xpos": 8,
-    "ypos": 5
+    "ypos": 5,
+    "phase": "solid",
+    "electronConfiguration": "[Kr] 4d7 5s1",
+    "electronegativity": 2.2,
+    "meltingPointK": 2607,
+    "boilingPointK": 4423,
+    "density": 12.45,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 45,
@@ -627,7 +979,15 @@
     "group": 9,
     "period": 5,
     "xpos": 9,
-    "ypos": 5
+    "ypos": 5,
+    "phase": "solid",
+    "electronConfiguration": "[Kr] 4d8 5s1",
+    "electronegativity": 2.28,
+    "meltingPointK": 2237,
+    "boilingPointK": 3968,
+    "density": 12.41,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 46,
@@ -641,7 +1001,15 @@
     "group": 10,
     "period": 5,
     "xpos": 10,
-    "ypos": 5
+    "ypos": 5,
+    "phase": "solid",
+    "electronConfiguration": "[Kr] 4d10",
+    "electronegativity": 2.2,
+    "meltingPointK": 1828.05,
+    "boilingPointK": 3236,
+    "density": 12.023,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 47,
@@ -655,7 +1023,15 @@
     "group": 11,
     "period": 5,
     "xpos": 11,
-    "ypos": 5
+    "ypos": 5,
+    "phase": "solid",
+    "electronConfiguration": "[Kr] 4d10 5s1",
+    "electronegativity": 1.93,
+    "meltingPointK": 1234.93,
+    "boilingPointK": 2435,
+    "density": 10.49,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 48,
@@ -669,7 +1045,15 @@
     "group": 12,
     "period": 5,
     "xpos": 12,
-    "ypos": 5
+    "ypos": 5,
+    "phase": "solid",
+    "electronConfiguration": "[Kr] 4d10 5s2",
+    "electronegativity": 1.69,
+    "meltingPointK": 594.22,
+    "boilingPointK": 1040,
+    "density": 8.65,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 49,
@@ -683,7 +1067,15 @@
     "group": 13,
     "period": 5,
     "xpos": 13,
-    "ypos": 5
+    "ypos": 5,
+    "phase": "solid",
+    "electronConfiguration": "[Kr] 4d10 5s2 5p1",
+    "electronegativity": 1.78,
+    "meltingPointK": 429.7485,
+    "boilingPointK": 2345,
+    "density": 7.31,
+    "densityUnit": "g/cm3",
+    "block": "p"
   },
   {
     "atomicNumber": 50,
@@ -697,7 +1089,15 @@
     "group": 14,
     "period": 5,
     "xpos": 14,
-    "ypos": 5
+    "ypos": 5,
+    "phase": "solid",
+    "electronConfiguration": "[Kr] 4d10 5s2 5p2",
+    "electronegativity": 1.96,
+    "meltingPointK": 505.08,
+    "boilingPointK": 2875,
+    "density": 7.365,
+    "densityUnit": "g/cm3",
+    "block": "p"
   },
   {
     "atomicNumber": 51,
@@ -711,7 +1111,15 @@
     "group": 15,
     "period": 5,
     "xpos": 15,
-    "ypos": 5
+    "ypos": 5,
+    "phase": "solid",
+    "electronConfiguration": "[Kr] 4d10 5s2 5p3",
+    "electronegativity": 2.05,
+    "meltingPointK": 903.78,
+    "boilingPointK": 1908,
+    "density": 6.697,
+    "densityUnit": "g/cm3",
+    "block": "p"
   },
   {
     "atomicNumber": 52,
@@ -725,7 +1133,15 @@
     "group": 16,
     "period": 5,
     "xpos": 16,
-    "ypos": 5
+    "ypos": 5,
+    "phase": "solid",
+    "electronConfiguration": "[Kr] 4d10 5s2 5p4",
+    "electronegativity": 2.1,
+    "meltingPointK": 722.66,
+    "boilingPointK": 1261,
+    "density": 6.24,
+    "densityUnit": "g/cm3",
+    "block": "p"
   },
   {
     "atomicNumber": 53,
@@ -739,7 +1155,15 @@
     "group": 17,
     "period": 5,
     "xpos": 17,
-    "ypos": 5
+    "ypos": 5,
+    "phase": "solid",
+    "electronConfiguration": "[Kr] 4d10 5s2 5p5",
+    "electronegativity": 2.66,
+    "meltingPointK": 386.85,
+    "boilingPointK": 457.4,
+    "density": 4.933,
+    "densityUnit": "g/cm3",
+    "block": "p"
   },
   {
     "atomicNumber": 54,
@@ -753,7 +1177,15 @@
     "group": 18,
     "period": 5,
     "xpos": 18,
-    "ypos": 5
+    "ypos": 5,
+    "phase": "gas",
+    "electronConfiguration": "[Kr] 4d10 5s2 5p6",
+    "electronegativity": 2.6,
+    "meltingPointK": 161.4,
+    "boilingPointK": 165.051,
+    "density": 5.894,
+    "densityUnit": "g/L",
+    "block": "p"
   },
   {
     "atomicNumber": 55,
@@ -767,7 +1199,15 @@
     "group": 1,
     "period": 6,
     "xpos": 1,
-    "ypos": 6
+    "ypos": 6,
+    "phase": "solid",
+    "electronConfiguration": "[Xe] 6s1",
+    "electronegativity": 0.79,
+    "meltingPointK": 301.7,
+    "boilingPointK": 944,
+    "density": 1.93,
+    "densityUnit": "g/cm3",
+    "block": "s"
   },
   {
     "atomicNumber": 56,
@@ -781,7 +1221,15 @@
     "group": 2,
     "period": 6,
     "xpos": 2,
-    "ypos": 6
+    "ypos": 6,
+    "phase": "solid",
+    "electronConfiguration": "[Xe] 6s2",
+    "electronegativity": 0.89,
+    "meltingPointK": 1000,
+    "boilingPointK": 2118,
+    "density": 3.51,
+    "densityUnit": "g/cm3",
+    "block": "s"
   },
   {
     "atomicNumber": 57,
@@ -795,7 +1243,15 @@
     "group": 3,
     "period": 6,
     "xpos": 3,
-    "ypos": 9
+    "ypos": 9,
+    "phase": "solid",
+    "electronConfiguration": "[Xe] 5d1 6s2",
+    "electronegativity": 1.1,
+    "meltingPointK": 1193,
+    "boilingPointK": 3737,
+    "density": 6.162,
+    "densityUnit": "g/cm3",
+    "block": "f"
   },
   {
     "atomicNumber": 58,
@@ -809,7 +1265,15 @@
     "group": 3,
     "period": 6,
     "xpos": 4,
-    "ypos": 9
+    "ypos": 9,
+    "phase": "solid",
+    "electronConfiguration": "[Xe] 4f1 5d1 6s2",
+    "electronegativity": 1.12,
+    "meltingPointK": 1068,
+    "boilingPointK": 3716,
+    "density": 6.77,
+    "densityUnit": "g/cm3",
+    "block": "f"
   },
   {
     "atomicNumber": 59,
@@ -823,7 +1287,15 @@
     "group": 3,
     "period": 6,
     "xpos": 5,
-    "ypos": 9
+    "ypos": 9,
+    "phase": "solid",
+    "electronConfiguration": "[Xe] 4f3 6s2",
+    "electronegativity": 1.13,
+    "meltingPointK": 1208,
+    "boilingPointK": 3403,
+    "density": 6.77,
+    "densityUnit": "g/cm3",
+    "block": "f"
   },
   {
     "atomicNumber": 60,
@@ -837,7 +1309,15 @@
     "group": 3,
     "period": 6,
     "xpos": 6,
-    "ypos": 9
+    "ypos": 9,
+    "phase": "solid",
+    "electronConfiguration": "[Xe] 4f4 6s2",
+    "electronegativity": 1.14,
+    "meltingPointK": 1297,
+    "boilingPointK": 3347,
+    "density": 7.01,
+    "densityUnit": "g/cm3",
+    "block": "f"
   },
   {
     "atomicNumber": 61,
@@ -851,7 +1331,15 @@
     "group": 3,
     "period": 6,
     "xpos": 7,
-    "ypos": 9
+    "ypos": 9,
+    "phase": "solid",
+    "electronConfiguration": "[Xe] 4f5 6s2",
+    "electronegativity": 1.13,
+    "meltingPointK": 1315,
+    "boilingPointK": 3273,
+    "density": 7.26,
+    "densityUnit": "g/cm3",
+    "block": "f"
   },
   {
     "atomicNumber": 62,
@@ -865,7 +1353,15 @@
     "group": 3,
     "period": 6,
     "xpos": 8,
-    "ypos": 9
+    "ypos": 9,
+    "phase": "solid",
+    "electronConfiguration": "[Xe] 4f6 6s2",
+    "electronegativity": 1.17,
+    "meltingPointK": 1345,
+    "boilingPointK": 2173,
+    "density": 7.52,
+    "densityUnit": "g/cm3",
+    "block": "f"
   },
   {
     "atomicNumber": 63,
@@ -879,7 +1375,15 @@
     "group": 3,
     "period": 6,
     "xpos": 9,
-    "ypos": 9
+    "ypos": 9,
+    "phase": "solid",
+    "electronConfiguration": "[Xe] 4f7 6s2",
+    "electronegativity": 1.2,
+    "meltingPointK": 1099,
+    "boilingPointK": 1802,
+    "density": 5.264,
+    "densityUnit": "g/cm3",
+    "block": "f"
   },
   {
     "atomicNumber": 64,
@@ -893,7 +1397,15 @@
     "group": 3,
     "period": 6,
     "xpos": 10,
-    "ypos": 9
+    "ypos": 9,
+    "phase": "solid",
+    "electronConfiguration": "[Xe] 4f7 5d1 6s2",
+    "electronegativity": 1.2,
+    "meltingPointK": 1585,
+    "boilingPointK": 3273,
+    "density": 7.9,
+    "densityUnit": "g/cm3",
+    "block": "f"
   },
   {
     "atomicNumber": 65,
@@ -907,7 +1419,15 @@
     "group": 3,
     "period": 6,
     "xpos": 11,
-    "ypos": 9
+    "ypos": 9,
+    "phase": "solid",
+    "electronConfiguration": "[Xe] 4f9 6s2",
+    "electronegativity": 1.1,
+    "meltingPointK": 1629,
+    "boilingPointK": 3396,
+    "density": 8.23,
+    "densityUnit": "g/cm3",
+    "block": "f"
   },
   {
     "atomicNumber": 66,
@@ -921,7 +1441,15 @@
     "group": 3,
     "period": 6,
     "xpos": 12,
-    "ypos": 9
+    "ypos": 9,
+    "phase": "solid",
+    "electronConfiguration": "[Xe] 4f10 6s2",
+    "electronegativity": 1.22,
+    "meltingPointK": 1680,
+    "boilingPointK": 2840,
+    "density": 8.54,
+    "densityUnit": "g/cm3",
+    "block": "f"
   },
   {
     "atomicNumber": 67,
@@ -935,7 +1463,15 @@
     "group": 3,
     "period": 6,
     "xpos": 13,
-    "ypos": 9
+    "ypos": 9,
+    "phase": "solid",
+    "electronConfiguration": "[Xe] 4f11 6s2",
+    "electronegativity": 1.23,
+    "meltingPointK": 1734,
+    "boilingPointK": 2873,
+    "density": 8.79,
+    "densityUnit": "g/cm3",
+    "block": "f"
   },
   {
     "atomicNumber": 68,
@@ -949,7 +1485,15 @@
     "group": 3,
     "period": 6,
     "xpos": 14,
-    "ypos": 9
+    "ypos": 9,
+    "phase": "solid",
+    "electronConfiguration": "[Xe] 4f12 6s2",
+    "electronegativity": 1.24,
+    "meltingPointK": 1802,
+    "boilingPointK": 3141,
+    "density": 9.066,
+    "densityUnit": "g/cm3",
+    "block": "f"
   },
   {
     "atomicNumber": 69,
@@ -963,7 +1507,15 @@
     "group": 3,
     "period": 6,
     "xpos": 15,
-    "ypos": 9
+    "ypos": 9,
+    "phase": "solid",
+    "electronConfiguration": "[Xe] 4f13 6s2",
+    "electronegativity": 1.25,
+    "meltingPointK": 1818,
+    "boilingPointK": 2223,
+    "density": 9.32,
+    "densityUnit": "g/cm3",
+    "block": "f"
   },
   {
     "atomicNumber": 70,
@@ -977,7 +1529,15 @@
     "group": 3,
     "period": 6,
     "xpos": 16,
-    "ypos": 9
+    "ypos": 9,
+    "phase": "solid",
+    "electronConfiguration": "[Xe] 4f14 6s2",
+    "electronegativity": 1.1,
+    "meltingPointK": 1097,
+    "boilingPointK": 1469,
+    "density": 6.9,
+    "densityUnit": "g/cm3",
+    "block": "f"
   },
   {
     "atomicNumber": 71,
@@ -991,7 +1551,15 @@
     "group": 3,
     "period": 6,
     "xpos": 17,
-    "ypos": 9
+    "ypos": 9,
+    "phase": "solid",
+    "electronConfiguration": "[Xe] 4f14 5d1 6s2",
+    "electronegativity": 1.27,
+    "meltingPointK": 1925,
+    "boilingPointK": 3675,
+    "density": 9.841,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 72,
@@ -1005,7 +1573,15 @@
     "group": 4,
     "period": 6,
     "xpos": 4,
-    "ypos": 6
+    "ypos": 6,
+    "phase": "solid",
+    "electronConfiguration": "[Xe] 4f14 5d2 6s2",
+    "electronegativity": 1.3,
+    "meltingPointK": 2506,
+    "boilingPointK": 4876,
+    "density": 13.31,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 73,
@@ -1019,7 +1595,15 @@
     "group": 5,
     "period": 6,
     "xpos": 5,
-    "ypos": 6
+    "ypos": 6,
+    "phase": "solid",
+    "electronConfiguration": "[Xe] 4f14 5d3 6s2",
+    "electronegativity": 1.5,
+    "meltingPointK": 3290,
+    "boilingPointK": 5731,
+    "density": 16.69,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 74,
@@ -1033,7 +1617,15 @@
     "group": 6,
     "period": 6,
     "xpos": 6,
-    "ypos": 6
+    "ypos": 6,
+    "phase": "solid",
+    "electronConfiguration": "[Xe] 4f14 5d4 6s2",
+    "electronegativity": 2.36,
+    "meltingPointK": 3695,
+    "boilingPointK": 6203,
+    "density": 19.25,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 75,
@@ -1047,7 +1639,15 @@
     "group": 7,
     "period": 6,
     "xpos": 7,
-    "ypos": 6
+    "ypos": 6,
+    "phase": "solid",
+    "electronConfiguration": "[Xe] 4f14 5d5 6s2",
+    "electronegativity": 1.9,
+    "meltingPointK": 3459,
+    "boilingPointK": 5869,
+    "density": 21.02,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 76,
@@ -1061,7 +1661,15 @@
     "group": 8,
     "period": 6,
     "xpos": 8,
-    "ypos": 6
+    "ypos": 6,
+    "phase": "solid",
+    "electronConfiguration": "[Xe] 4f14 5d6 6s2",
+    "electronegativity": 2.2,
+    "meltingPointK": 3306,
+    "boilingPointK": 5285,
+    "density": 22.59,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 77,
@@ -1075,7 +1683,15 @@
     "group": 9,
     "period": 6,
     "xpos": 9,
-    "ypos": 6
+    "ypos": 6,
+    "phase": "solid",
+    "electronConfiguration": "[Xe] 4f14 5d7 6s2",
+    "electronegativity": 2.2,
+    "meltingPointK": 2719,
+    "boilingPointK": 4403,
+    "density": 22.56,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 78,
@@ -1089,7 +1705,15 @@
     "group": 10,
     "period": 6,
     "xpos": 10,
-    "ypos": 6
+    "ypos": 6,
+    "phase": "solid",
+    "electronConfiguration": "[Xe] 4f14 5d9 6s1",
+    "electronegativity": 2.28,
+    "meltingPointK": 2041.4,
+    "boilingPointK": 4098,
+    "density": 21.45,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 79,
@@ -1103,7 +1727,15 @@
     "group": 11,
     "period": 6,
     "xpos": 11,
-    "ypos": 6
+    "ypos": 6,
+    "phase": "solid",
+    "electronConfiguration": "[Xe] 4f14 5d10 6s1",
+    "electronegativity": 2.54,
+    "meltingPointK": 1337.33,
+    "boilingPointK": 3243,
+    "density": 19.3,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 80,
@@ -1117,7 +1749,15 @@
     "group": 12,
     "period": 6,
     "xpos": 12,
-    "ypos": 6
+    "ypos": 6,
+    "phase": "liquid",
+    "electronConfiguration": "[Xe] 4f14 5d10 6s2",
+    "electronegativity": 2,
+    "meltingPointK": 234.321,
+    "boilingPointK": 629.88,
+    "density": 13.534,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 81,
@@ -1131,7 +1771,15 @@
     "group": 13,
     "period": 6,
     "xpos": 13,
-    "ypos": 6
+    "ypos": 6,
+    "phase": "solid",
+    "electronConfiguration": "[Xe] 4f14 5d10 6s2 6p1",
+    "electronegativity": 1.62,
+    "meltingPointK": 577,
+    "boilingPointK": 1746,
+    "density": 11.85,
+    "densityUnit": "g/cm3",
+    "block": "p"
   },
   {
     "atomicNumber": 82,
@@ -1145,7 +1793,15 @@
     "group": 14,
     "period": 6,
     "xpos": 14,
-    "ypos": 6
+    "ypos": 6,
+    "phase": "solid",
+    "electronConfiguration": "[Xe] 4f14 5d10 6s2 6p2",
+    "electronegativity": 1.87,
+    "meltingPointK": 600.61,
+    "boilingPointK": 2022,
+    "density": 11.34,
+    "densityUnit": "g/cm3",
+    "block": "p"
   },
   {
     "atomicNumber": 83,
@@ -1159,7 +1815,15 @@
     "group": 15,
     "period": 6,
     "xpos": 15,
-    "ypos": 6
+    "ypos": 6,
+    "phase": "solid",
+    "electronConfiguration": "[Xe] 4f14 5d10 6s2 6p3",
+    "electronegativity": 2.02,
+    "meltingPointK": 544.7,
+    "boilingPointK": 1837,
+    "density": 9.78,
+    "densityUnit": "g/cm3",
+    "block": "p"
   },
   {
     "atomicNumber": 84,
@@ -1173,7 +1837,15 @@
     "group": 16,
     "period": 6,
     "xpos": 16,
-    "ypos": 6
+    "ypos": 6,
+    "phase": "solid",
+    "electronConfiguration": "[Xe] 4f14 5d10 6s2 6p4",
+    "electronegativity": 2,
+    "meltingPointK": 527,
+    "boilingPointK": 1235,
+    "density": 9.196,
+    "densityUnit": "g/cm3",
+    "block": "p"
   },
   {
     "atomicNumber": 85,
@@ -1187,7 +1859,15 @@
     "group": 17,
     "period": 6,
     "xpos": 17,
-    "ypos": 6
+    "ypos": 6,
+    "phase": "solid",
+    "electronConfiguration": "[Xe] 4f14 5d10 6s2 6p5",
+    "electronegativity": 2.2,
+    "meltingPointK": 575,
+    "boilingPointK": 610,
+    "density": 6.35,
+    "densityUnit": "g/cm3",
+    "block": "p"
   },
   {
     "atomicNumber": 86,
@@ -1201,7 +1881,15 @@
     "group": 18,
     "period": 6,
     "xpos": 18,
-    "ypos": 6
+    "ypos": 6,
+    "phase": "gas",
+    "electronConfiguration": "[Xe] 4f14 5d10 6s2 6p6",
+    "electronegativity": 2.2,
+    "meltingPointK": 202,
+    "boilingPointK": 211.5,
+    "density": 9.73,
+    "densityUnit": "g/L",
+    "block": "p"
   },
   {
     "atomicNumber": 87,
@@ -1215,7 +1903,15 @@
     "group": 1,
     "period": 7,
     "xpos": 1,
-    "ypos": 7
+    "ypos": 7,
+    "phase": "solid",
+    "electronConfiguration": "[Rn] 7s1",
+    "electronegativity": 0.79,
+    "meltingPointK": 300,
+    "boilingPointK": 950,
+    "density": 1.87,
+    "densityUnit": "g/cm3",
+    "block": "s"
   },
   {
     "atomicNumber": 88,
@@ -1229,7 +1925,15 @@
     "group": 2,
     "period": 7,
     "xpos": 2,
-    "ypos": 7
+    "ypos": 7,
+    "phase": "solid",
+    "electronConfiguration": "[Rn] 7s2",
+    "electronegativity": 0.9,
+    "meltingPointK": 1233,
+    "boilingPointK": 2010,
+    "density": 5.5,
+    "densityUnit": "g/cm3",
+    "block": "s"
   },
   {
     "atomicNumber": 89,
@@ -1243,7 +1947,15 @@
     "group": 3,
     "period": 7,
     "xpos": 3,
-    "ypos": 10
+    "ypos": 10,
+    "phase": "solid",
+    "electronConfiguration": "[Rn] 6d1 7s2",
+    "electronegativity": 1.1,
+    "meltingPointK": 1500,
+    "boilingPointK": 3500,
+    "density": 10,
+    "densityUnit": "g/cm3",
+    "block": "f"
   },
   {
     "atomicNumber": 90,
@@ -1257,7 +1969,15 @@
     "group": 3,
     "period": 7,
     "xpos": 4,
-    "ypos": 10
+    "ypos": 10,
+    "phase": "solid",
+    "electronConfiguration": "[Rn] 6d2 7s2",
+    "electronegativity": 1.3,
+    "meltingPointK": 2023,
+    "boilingPointK": 5061,
+    "density": 11.724,
+    "densityUnit": "g/cm3",
+    "block": "f"
   },
   {
     "atomicNumber": 91,
@@ -1271,7 +1991,15 @@
     "group": 3,
     "period": 7,
     "xpos": 5,
-    "ypos": 10
+    "ypos": 10,
+    "phase": "solid",
+    "electronConfiguration": "[Rn] 5f2 6d1 7s2",
+    "electronegativity": 1.5,
+    "meltingPointK": 1841,
+    "boilingPointK": 4300,
+    "density": 15.37,
+    "densityUnit": "g/cm3",
+    "block": "f"
   },
   {
     "atomicNumber": 92,
@@ -1285,7 +2013,15 @@
     "group": 3,
     "period": 7,
     "xpos": 6,
-    "ypos": 10
+    "ypos": 10,
+    "phase": "solid",
+    "electronConfiguration": "[Rn] 5f3 6d1 7s2",
+    "electronegativity": 1.38,
+    "meltingPointK": 1405.3,
+    "boilingPointK": 4404,
+    "density": 19.1,
+    "densityUnit": "g/cm3",
+    "block": "f"
   },
   {
     "atomicNumber": 93,
@@ -1299,7 +2035,15 @@
     "group": 3,
     "period": 7,
     "xpos": 7,
-    "ypos": 10
+    "ypos": 10,
+    "phase": "solid",
+    "electronConfiguration": "[Rn] 5f4 6d1 7s2",
+    "electronegativity": 1.36,
+    "meltingPointK": 912,
+    "boilingPointK": 4447,
+    "density": 20.45,
+    "densityUnit": "g/cm3",
+    "block": "f"
   },
   {
     "atomicNumber": 94,
@@ -1313,7 +2057,15 @@
     "group": 3,
     "period": 7,
     "xpos": 8,
-    "ypos": 10
+    "ypos": 10,
+    "phase": "solid",
+    "electronConfiguration": "[Rn] 5f6 7s2",
+    "electronegativity": 1.28,
+    "meltingPointK": 912.5,
+    "boilingPointK": 3505,
+    "density": 19.816,
+    "densityUnit": "g/cm3",
+    "block": "f"
   },
   {
     "atomicNumber": 95,
@@ -1327,7 +2079,15 @@
     "group": 3,
     "period": 7,
     "xpos": 9,
-    "ypos": 10
+    "ypos": 10,
+    "phase": "solid",
+    "electronConfiguration": "[Rn] 5f7 7s2",
+    "electronegativity": 1.13,
+    "meltingPointK": 1449,
+    "boilingPointK": 2880,
+    "density": 12,
+    "densityUnit": "g/cm3",
+    "block": "f"
   },
   {
     "atomicNumber": 96,
@@ -1341,7 +2101,15 @@
     "group": 3,
     "period": 7,
     "xpos": 10,
-    "ypos": 10
+    "ypos": 10,
+    "phase": "solid",
+    "electronConfiguration": "[Rn] 5f7 6d1 7s2",
+    "electronegativity": 1.28,
+    "meltingPointK": 1613,
+    "boilingPointK": 3383,
+    "density": 13.51,
+    "densityUnit": "g/cm3",
+    "block": "f"
   },
   {
     "atomicNumber": 97,
@@ -1355,7 +2123,15 @@
     "group": 3,
     "period": 7,
     "xpos": 11,
-    "ypos": 10
+    "ypos": 10,
+    "phase": "solid",
+    "electronConfiguration": "[Rn] 5f9 7s2",
+    "electronegativity": 1.3,
+    "meltingPointK": 1259,
+    "boilingPointK": 2900,
+    "density": 14.78,
+    "densityUnit": "g/cm3",
+    "block": "f"
   },
   {
     "atomicNumber": 98,
@@ -1369,7 +2145,15 @@
     "group": 3,
     "period": 7,
     "xpos": 12,
-    "ypos": 10
+    "ypos": 10,
+    "phase": "solid",
+    "electronConfiguration": "[Rn] 5f10 7s2",
+    "electronegativity": 1.3,
+    "meltingPointK": 1173,
+    "boilingPointK": 1743,
+    "density": 15.1,
+    "densityUnit": "g/cm3",
+    "block": "f"
   },
   {
     "atomicNumber": 99,
@@ -1383,7 +2167,15 @@
     "group": 3,
     "period": 7,
     "xpos": 13,
-    "ypos": 10
+    "ypos": 10,
+    "phase": "solid",
+    "electronConfiguration": "[Rn] 5f11 7s2",
+    "electronegativity": 1.3,
+    "meltingPointK": 1133,
+    "boilingPointK": 1269,
+    "density": 8.84,
+    "densityUnit": "g/cm3",
+    "block": "f"
   },
   {
     "atomicNumber": 100,
@@ -1397,7 +2189,15 @@
     "group": 3,
     "period": 7,
     "xpos": 14,
-    "ypos": 10
+    "ypos": 10,
+    "phase": "solid",
+    "electronConfiguration": "[Rn] 5f12 7s2",
+    "electronegativity": 1.3,
+    "meltingPointK": 1800,
+    "boilingPointK": null,
+    "density": null,
+    "densityUnit": null,
+    "block": "f"
   },
   {
     "atomicNumber": 101,
@@ -1411,7 +2211,15 @@
     "group": 3,
     "period": 7,
     "xpos": 15,
-    "ypos": 10
+    "ypos": 10,
+    "phase": "solid",
+    "electronConfiguration": "[Rn] 5f13 7s2",
+    "electronegativity": 1.3,
+    "meltingPointK": 1100,
+    "boilingPointK": null,
+    "density": null,
+    "densityUnit": null,
+    "block": "f"
   },
   {
     "atomicNumber": 102,
@@ -1425,7 +2233,15 @@
     "group": 3,
     "period": 7,
     "xpos": 16,
-    "ypos": 10
+    "ypos": 10,
+    "phase": "solid",
+    "electronConfiguration": "[Rn] 5f14 7s2",
+    "electronegativity": 1.3,
+    "meltingPointK": 1100,
+    "boilingPointK": null,
+    "density": null,
+    "densityUnit": null,
+    "block": "f"
   },
   {
     "atomicNumber": 103,
@@ -1439,12 +2255,20 @@
     "group": 3,
     "period": 7,
     "xpos": 17,
-    "ypos": 10
+    "ypos": 10,
+    "phase": "solid",
+    "electronConfiguration": "[Rn] 5f14 7s2 7p1",
+    "electronegativity": 1.3,
+    "meltingPointK": 1900,
+    "boilingPointK": null,
+    "density": null,
+    "densityUnit": null,
+    "block": "d"
   },
   {
     "atomicNumber": 104,
     "symbol": "Rf",
-    "namePt": "Rutherfórdio",
+    "namePt": "Ruterfórdio",
     "nameEn": "Rutherfordium",
     "atomicMass": 267,
     "atomicMassIsApproximate": true,
@@ -1453,7 +2277,15 @@
     "group": 4,
     "period": 7,
     "xpos": 4,
-    "ypos": 7
+    "ypos": 7,
+    "phase": "solid",
+    "electronConfiguration": "[Rn] 5f14 6d2 7s2",
+    "electronegativity": null,
+    "meltingPointK": 2400,
+    "boilingPointK": 5800,
+    "density": 23.2,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 105,
@@ -1467,7 +2299,15 @@
     "group": 5,
     "period": 7,
     "xpos": 5,
-    "ypos": 7
+    "ypos": 7,
+    "phase": "solid",
+    "electronConfiguration": "*[Rn] 5f14 6d3 7s2",
+    "electronegativity": null,
+    "meltingPointK": null,
+    "boilingPointK": null,
+    "density": 29.3,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 106,
@@ -1481,7 +2321,15 @@
     "group": 6,
     "period": 7,
     "xpos": 6,
-    "ypos": 7
+    "ypos": 7,
+    "phase": "solid",
+    "electronConfiguration": "*[Rn] 5f14 6d4 7s2",
+    "electronegativity": null,
+    "meltingPointK": null,
+    "boilingPointK": null,
+    "density": 35,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 107,
@@ -1495,7 +2343,15 @@
     "group": 7,
     "period": 7,
     "xpos": 7,
-    "ypos": 7
+    "ypos": 7,
+    "phase": "solid",
+    "electronConfiguration": "*[Rn] 5f14 6d5 7s2",
+    "electronegativity": null,
+    "meltingPointK": null,
+    "boilingPointK": null,
+    "density": 37.1,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 108,
@@ -1509,7 +2365,15 @@
     "group": 8,
     "period": 7,
     "xpos": 8,
-    "ypos": 7
+    "ypos": 7,
+    "phase": "solid",
+    "electronConfiguration": "*[Rn] 5f14 6d6 7s2",
+    "electronegativity": null,
+    "meltingPointK": null,
+    "boilingPointK": null,
+    "density": 40.7,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 109,
@@ -1523,7 +2387,15 @@
     "group": 9,
     "period": 7,
     "xpos": 9,
-    "ypos": 7
+    "ypos": 7,
+    "phase": "solid",
+    "electronConfiguration": "*[Rn] 5f14 6d7 7s2",
+    "electronegativity": null,
+    "meltingPointK": null,
+    "boilingPointK": null,
+    "density": 37.4,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 110,
@@ -1537,7 +2409,15 @@
     "group": 10,
     "period": 7,
     "xpos": 10,
-    "ypos": 7
+    "ypos": 7,
+    "phase": "solid",
+    "electronConfiguration": "*[Rn] 5f14 6d9 7s1",
+    "electronegativity": null,
+    "meltingPointK": null,
+    "boilingPointK": null,
+    "density": 34.8,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 111,
@@ -1551,7 +2431,15 @@
     "group": 11,
     "period": 7,
     "xpos": 11,
-    "ypos": 7
+    "ypos": 7,
+    "phase": "solid",
+    "electronConfiguration": "*[Rn] 5f14 6d10 7s1",
+    "electronegativity": null,
+    "meltingPointK": null,
+    "boilingPointK": null,
+    "density": 28.7,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 112,
@@ -1565,12 +2453,20 @@
     "group": 12,
     "period": 7,
     "xpos": 12,
-    "ypos": 7
+    "ypos": 7,
+    "phase": "liquid",
+    "electronConfiguration": "*[Rn] 5f14 6d10 7s2",
+    "electronegativity": null,
+    "meltingPointK": 283,
+    "boilingPointK": 340,
+    "density": 14,
+    "densityUnit": "g/cm3",
+    "block": "d"
   },
   {
     "atomicNumber": 113,
     "symbol": "Nh",
-    "namePt": "Niônio",
+    "namePt": "Nihônio",
     "nameEn": "Nihonium",
     "atomicMass": 286,
     "atomicMassIsApproximate": true,
@@ -1579,7 +2475,15 @@
     "group": 13,
     "period": 7,
     "xpos": 13,
-    "ypos": 7
+    "ypos": 7,
+    "phase": "solid",
+    "electronConfiguration": "*[Rn] 5f14 6d10 7s2 7p1",
+    "electronegativity": null,
+    "meltingPointK": 700,
+    "boilingPointK": 1430,
+    "density": 16,
+    "densityUnit": "g/cm3",
+    "block": "p"
   },
   {
     "atomicNumber": 114,
@@ -1593,7 +2497,15 @@
     "group": 14,
     "period": 7,
     "xpos": 14,
-    "ypos": 7
+    "ypos": 7,
+    "phase": "solid",
+    "electronConfiguration": "*[Rn] 5f14 6d10 7s2 7p2",
+    "electronegativity": null,
+    "meltingPointK": 340,
+    "boilingPointK": 420,
+    "density": 14,
+    "densityUnit": "g/cm3",
+    "block": "p"
   },
   {
     "atomicNumber": 115,
@@ -1607,7 +2519,15 @@
     "group": 15,
     "period": 7,
     "xpos": 15,
-    "ypos": 7
+    "ypos": 7,
+    "phase": "solid",
+    "electronConfiguration": "*[Rn] 5f14 6d10 7s2 7p3",
+    "electronegativity": null,
+    "meltingPointK": 670,
+    "boilingPointK": 1400,
+    "density": 13.5,
+    "densityUnit": "g/cm3",
+    "block": "p"
   },
   {
     "atomicNumber": 116,
@@ -1621,7 +2541,15 @@
     "group": 16,
     "period": 7,
     "xpos": 16,
-    "ypos": 7
+    "ypos": 7,
+    "phase": "solid",
+    "electronConfiguration": "*[Rn] 5f14 6d10 7s2 7p4",
+    "electronegativity": null,
+    "meltingPointK": 709,
+    "boilingPointK": 1085,
+    "density": 12.9,
+    "densityUnit": "g/cm3",
+    "block": "p"
   },
   {
     "atomicNumber": 117,
@@ -1635,7 +2563,15 @@
     "group": 17,
     "period": 7,
     "xpos": 17,
-    "ypos": 7
+    "ypos": 7,
+    "phase": "solid",
+    "electronConfiguration": "*[Rn] 5f14 6d10 7s2 7p5",
+    "electronegativity": null,
+    "meltingPointK": 723,
+    "boilingPointK": 883,
+    "density": 7.17,
+    "densityUnit": "g/cm3",
+    "block": "p"
   },
   {
     "atomicNumber": 118,
@@ -1649,6 +2585,14 @@
     "group": 18,
     "period": 7,
     "xpos": 18,
-    "ypos": 7
+    "ypos": 7,
+    "phase": "solid",
+    "electronConfiguration": "*[Rn] 5f14 6d10 7s2 7p6",
+    "electronegativity": null,
+    "meltingPointK": null,
+    "boilingPointK": 350,
+    "density": 4.95,
+    "densityUnit": "g/cm3",
+    "block": "p"
   }
 ]

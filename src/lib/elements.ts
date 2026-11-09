@@ -12,6 +12,10 @@ export type ElementCategory =
   | 'lanthanide'
   | 'actinide';
 
+export type ElementPhase = 'solid' | 'liquid' | 'gas';
+export type ElementBlock = 's' | 'p' | 'd' | 'f';
+export type DensityUnit = 'g/L' | 'g/cm3';
+
 export interface Element {
   atomicNumber: number;
   symbol: string;
@@ -25,6 +29,14 @@ export interface Element {
   period: number;
   xpos: number;
   ypos: number;
+  phase: ElementPhase;
+  electronConfiguration: string;
+  electronegativity: number | null;
+  meltingPointK: number | null;
+  boilingPointK: number | null;
+  density: number | null;
+  densityUnit: DensityUnit | null;
+  block: ElementBlock;
 }
 
 export const elements = rawElements as Element[];
