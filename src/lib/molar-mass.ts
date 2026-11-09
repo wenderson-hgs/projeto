@@ -44,8 +44,24 @@ export interface MolarMassResult {
 
 const HYDRATE_SEPARATORS = new Set(['·', '.', '*']);
 
+const SUBSCRIPT_DIGITS: Record<string, string> = {
+  '₀': '0',
+  '₁': '1',
+  '₂': '2',
+  '₃': '3',
+  '₄': '4',
+  '₅': '5',
+  '₆': '6',
+  '₇': '7',
+  '₈': '8',
+  '₉': '9',
+};
+
+// Estados físicos são sempre minúsculos; (S) maiúsculo pode ser um grupo de enxofre.
+const PHYSICAL_STATE_PATTERN = /\((s|l|g|aq)\)(?=$|[·.*])/g;
+
 export function parseFormula(input: string): ParsedFormula {
-  const formula = removeSpaces(input);
+  const formula = normalizeFormulaInput(input);
 
   if (formula === '') {
     throw new FormulaError('empty-formula', 'Digite uma fórmula química.');
@@ -97,7 +113,8 @@ export function parseFormula(input: string): ParsedFormula {
 }
 
 export function calculateMolarMass(input: string): MolarMassResult {
-  const parsed = parseFormula(input);
+  const formula = normalizeFormulaInput(input);
+  const parsed = parseFormula(formula);
   const composition = Object.entries(parsed.counts).map(([symbol, count]) => {
     const element = getElementBySymbol(symbol);
 
@@ -117,7 +134,7 @@ export function calculateMolarMass(input: string): MolarMassResult {
   const molarMass = composition.reduce((total, entry) => total + entry.mass, 0);
 
   return {
-    formula: removeSpaces(input),
+    formula,
     molarMass,
     composition: composition.map((entry) => ({
       ...entry,
@@ -125,6 +142,12 @@ export function calculateMolarMass(input: string): MolarMassResult {
     })),
     isApproximate: composition.some((entry) => entry.isApproximate),
   };
+}
+
+function normalizeFormulaInput(input: string): string {
+  return removeSpaces(input)
+    .replace(/[₀-₉]/g, (digit) => SUBSCRIPT_DIGITS[digit] ?? digit)
+    .replace(PHYSICAL_STATE_PATTERN, '');
 }
 
 function splitHydrateSegments(formula: string): string[] {

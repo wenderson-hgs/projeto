@@ -8,6 +8,8 @@ const molarMassCases: Array<[string, number]> = [
   ['C6H12O6', 180.16],
   ['Fe2(SO4)3', 399.88],
   ['CuSO4·5H2O', 249.68],
+  ['H₂O', 18.015],
+  ['CuSO₄·5H₂O', 249.68],
 ];
 
 function getFormulaError(formula: string): FormulaError {
@@ -67,6 +69,15 @@ describe('calculateMolarMass', () => {
     );
   });
 
+  it('accepts physical state labels at the end of the formula', () => {
+    for (const state of ['s', 'l', 'g', 'aq']) {
+      const result = calculateMolarMass(`H2O(${state})`);
+
+      expect(result.molarMass).toBeCloseTo(18.015, 3);
+      expect(result.formula).toBe('H2O');
+    }
+  });
+
   it('flags results that use approximate atomic masses', () => {
     expect(calculateMolarMass('Tc2O7').isApproximate).toBe(true);
     expect(calculateMolarMass('H2O').isApproximate).toBe(false);
@@ -99,6 +110,21 @@ describe('parseFormula', () => {
   it('accepts coefficients of one in hydrates', () => {
     expect(parseFormula('CuSO4·H2O').counts).toEqual({ Cu: 1, S: 1, O: 5, H: 2 });
   });
+
+  it('normalizes Unicode subscript digits', () => {
+    expect(parseFormula('H₂O').counts).toEqual({ H: 2, O: 1 });
+    expect(parseFormula('CuSO₄·5H₂O').counts).toEqual({ Cu: 1, S: 1, O: 9, H: 10 });
+  });
+
+  it('removes state labels at the end of each hydrate segment', () => {
+    expect(parseFormula('CuSO4(s)·5H2O').counts).toEqual({ Cu: 1, S: 1, O: 9, H: 10 });
+    expect(parseFormula('CuSO4·5H2O(l)').counts).toEqual({ Cu: 1, S: 1, O: 9, H: 10 });
+    expect(parseFormula('H2O(aq)').hasHydrate).toBe(false);
+  });
+
+  it('does not confuse an uppercase (S) group with a physical state', () => {
+    expect(parseFormula('H2O(S)').counts).toEqual({ H: 2, O: 1, S: 1 });
+  });
 });
 
 describe('formula errors', () => {
@@ -115,6 +141,8 @@ describe('formula errors', () => {
     ['2H2O', 'leading-coefficient'],
     ['H2O@', 'invalid-character'],
     ['h2o', 'invalid-character'],
+    ['Fe2+', 'invalid-character'],
+    ['SO4^2-', 'invalid-character'],
     ['CuSO4·', 'empty-hydrate'],
     ['CuSO4·5', 'empty-hydrate'],
     ['()', 'empty-group'],
