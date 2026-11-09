@@ -1,4 +1,15 @@
 import { CATEGORY_LABELS, formatAtomicMass, type Element } from '../lib/elements';
+import {
+  formatBlock,
+  formatBoilingPoint,
+  formatDensity,
+  formatElectronConfiguration,
+  formatElectronegativity,
+  formatGroup,
+  formatMeltingPoint,
+  formatPeriod,
+  formatPhase,
+} from '../lib/element-properties';
 
 export interface DetailsPanel {
   element: HTMLElement;
@@ -49,6 +60,13 @@ export function createDetailsPanel(onClose: () => void): DetailsPanel {
     category: createRow('Categoria'),
     group: createRow('Grupo'),
     period: createRow('Período'),
+    phase: createRow('Estado físico'),
+    electronConfiguration: createRow('Configuração eletrônica'),
+    electronegativity: createRow('Eletronegatividade (Pauling)'),
+    meltingPoint: createRow('Ponto de fusão'),
+    boilingPoint: createRow('Ponto de ebulição'),
+    density: createRow('Densidade'),
+    block: createRow('Bloco'),
   };
 
   for (const row of Object.values(rows)) {
@@ -69,11 +87,15 @@ export function createDetailsPanel(onClose: () => void): DetailsPanel {
       (element.atomicMassIsApproximate ? ' (isótopo mais estável)' : '');
     rows.category.description.textContent =
       CATEGORY_LABELS[element.category] + (element.categoryIsPredicted ? ' (prevista)' : '');
-    rows.group.description.textContent =
-      element.category === 'lanthanide' || element.category === 'actinide'
-        ? '—'
-        : String(element.group);
-    rows.period.description.textContent = String(element.period);
+    rows.group.description.textContent = formatGroup(element);
+    rows.period.description.textContent = formatPeriod(element);
+    rows.phase.description.textContent = formatPhase(element);
+    rows.electronConfiguration.description.textContent = formatElectronConfiguration(element);
+    rows.electronegativity.description.textContent = formatElectronegativity(element);
+    rows.meltingPoint.description.textContent = formatMeltingPoint(element);
+    rows.boilingPoint.description.textContent = formatBoilingPoint(element);
+    rows.density.description.textContent = formatDensity(element);
+    rows.block.description.textContent = formatBlock(element);
     panel.setAttribute('aria-label', `Detalhes de ${element.namePt}`);
 
     panel.hidden = false;

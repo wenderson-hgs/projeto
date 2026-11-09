@@ -90,6 +90,7 @@
 .details-list dd {
   margin: 0;
   font-size: 0.85rem;
+  overflow-wrap: anywhere;
 }
 
 @media (max-width: 720px) {

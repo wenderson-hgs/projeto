@@ -10,3 +10,7 @@ export function formatDecimal(value: number, fractionDigits: number): string {
 export function formatPercent(value: number, fractionDigits = 2): string {
   return `${formatDecimal(value, fractionDigits)}%`;
 }
+
+export function formatNumber(value: number, maximumFractionDigits = 2): string {
+  return new Intl.NumberFormat(LOCALE, { maximumFractionDigits }).format(value);
+}

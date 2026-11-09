@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { formatDecimal, formatPercent } from '../src/lib/format';
+import { formatDecimal, formatNumber, formatPercent } from '../src/lib/format';
 
 describe('formatDecimal', () => {
   it('uses a comma as the decimal separator', () => {
@@ -26,5 +26,18 @@ describe('formatPercent', () => {
 
   it('accepts a custom number of decimals', () => {
     expect(formatPercent(100, 1)).toBe('100,0%');
+  });
+});
+
+describe('formatNumber', () => {
+  it('omits trailing zeros', () => {
+    expect(formatNumber(7.874, 5)).toBe('7,874');
+    expect(formatNumber(2.2, 2)).toBe('2,2');
+    expect(formatNumber(18, 1)).toBe('18');
+  });
+
+  it('rounds to the maximum number of decimals', () => {
+    expect(formatNumber(1537.85, 1)).toBe('1.537,9');
+    expect(formatNumber(0.08988, 5)).toBe('0,08988');
   });
 });
