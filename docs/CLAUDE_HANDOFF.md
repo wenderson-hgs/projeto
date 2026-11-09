@@ -9,7 +9,7 @@
 - **Etapa:** pós-v1.0. A1/A2 (confiança), B (tabela rica e quiz educativo) e C1 (estequiometria) estão implementados em branches empilhadas.
 - **Repositório:** https://github.com/wenderson-hgs/projeto (público desde 2026-10-24)
 - **`main`:** Fases 1 a 5 publicadas; release `v1.0.0` no commit `d44845e`.
-- **Branches:** `feat/v1.1-confidence` (A1+A2, enviada), `feat/v1.2-rich-table` (B, enviada) e `feat/v1.3-stoichiometry` (C1, aguardando revisão e confirmação para push).
+- **Branches:** `feat/v1.1-confidence` (A1+A2, enviada), `feat/v1.2-rich-table` (B, enviada) e `feat/v1.3-stoichiometry` (C1, enviada; PR pendente).
 - **Versão de desenvolvimento:** `1.3.0` na branch do C1; as tags/releases `v1.1.0`, `v1.2.0` e `v1.3.0` ainda não foram criadas.
 - **Demo:** https://wenderson-hgs.github.io/projeto/ (publicada com a v1.0.0)
 - **Projeto:** site estático (Vite + TypeScript, sem framework) com tabela periódica interativa, calculadora de massa molar, balanceador de equações, estequiometria, quiz e tema claro/escuro.

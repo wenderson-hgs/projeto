@@ -14,12 +14,12 @@
 | Publicação         | GitHub Pages via GitHub Actions — https://wenderson-hgs.github.io/projeto/ (no ar desde 2026-10-24)                                                                    |
 | Repositório        | https://github.com/wenderson-hgs/projeto (nome do repositório: `projeto`)                                                                                              |
 | Branch principal   | `main` (Fases 1 a 5 publicadas; release `v1.0.0` no commit `d44845e`)                                                                                                  |
-| Branch de trabalho | `feat/v1.1-confidence` (A1+A2 enviados; PR pendente), `feat/v1.2-rich-table` (B enviado; PR pendente) e `feat/v1.3-stoichiometry` (estequiometria pronta para revisão) |
+| Branch de trabalho | `feat/v1.1-confidence` (A1+A2 enviados; PR pendente), `feat/v1.2-rich-table` (B enviado; PR pendente) e `feat/v1.3-stoichiometry` (estequiometria enviada; PR pendente) |
 | Demo               | https://wenderson-hgs.github.io/projeto/ (verificada em 2026-10-24)                                                                                                    |
 
 ## Fase em andamento
 
-**Pós-v1.0 — C1 (estequiometria) implementado, testado e documentado na branch `feat/v1.3-stoichiometry`, empilhada em `feat/v1.2-rich-table`, aguardando revisão e confirmação para push. O B está na `feat/v1.2-rich-table` e o A1/A2 na `feat/v1.1-confidence`, ambas enviadas ao GitHub com pull requests pendentes de abertura manual.**
+**Pós-v1.0 — C1 (estequiometria) implementado, testado e documentado na branch `feat/v1.3-stoichiometry`, empilhada em `feat/v1.2-rich-table`, já enviada ao GitHub, aguardando revisão e abertura do pull request. O B está na `feat/v1.2-rich-table` e o A1/A2 na `feat/v1.1-confidence`, ambas enviadas ao GitHub com pull requests pendentes de abertura manual.**
 
 > O C1 adiciona uma ferramenta de estequiometria que balanceia a equação com `balanceEquation()` e calcula massas molares com `calculateMolarMass()`. O usuário informa as quantidades dos reagentes em gramas ou mol, escolhe o produto e opcionalmente a massa obtida; o resultado traz reagente limitante, rendimento teórico em mol/gramas/partículas, excesso e rendimento percentual. A lógica fica em `src/lib/stoichiometry.ts`, separada da interface em `src/ui/stoichiometry.ts`. As tags e releases `v1.1.0`, `v1.2.0` e `v1.3.0` continuam pendentes de aprovação.
 
@@ -104,7 +104,7 @@
 
 - Abrir manualmente o pull request do A1/A2: https://github.com/wenderson-hgs/projeto/pull/new/feat/v1.1-confidence (o `gh` não está instalado).
 - Revisar o B e abrir o pull request da branch `feat/v1.2-rich-table`; o PR dela fica empilhado no do A1/A2.
-- Revisar o C1 e confirmar o push da branch `feat/v1.3-stoichiometry`; o PR dela fica empilhado no do B.
+- Revisar o C1 e abrir o pull request da branch `feat/v1.3-stoichiometry`; o PR dela fica empilhado no do B.
 - Remover as branches de trabalho já mescladas (`feat/phase-1-periodic-table`, `feat/phase-2-molar-mass`, `feat/phase-3-equation-balancer`, `feat/phase-4-quiz`, `feat/phase-5-polish-and-deploy`, `test/phase-0-bootstrap`, `feat/v1.1-confidence`, `feat/v1.2-rich-table` e `feat/v1.3-stoichiometry`) quando o usuário quiser.
 - Continuar o pacote C quando o usuário aprovar: pH e soluções, conversão de unidades, PWA/idioma e servidor MCP.
 - Opcionais pós-v1.0 (somente se o usuário pedir): expor `src/lib/` como servidor MCP, versão PWA/offline, README em inglês e novas ferramentas (pH, conversão de unidades).
@@ -214,7 +214,7 @@
 - O GitHub Pages está no ar em `https://wenderson-hgs.github.io/projeto/`; o deploy é automático a cada push na `main`, com lint, testes e build antes da publicação.
 - O repositório precisou ser tornado público em 2026-10-24 porque o GitHub Pages em repositório privado exige plano pago.
 - A branch `test/phase-0-bootstrap` continua no remoto; pode ser removida depois, se o usuário quiser.
-- A branch `feat/v1.1-confidence` foi enviada ao `origin` com 9 commits e aguarda a abertura manual do pull request; a `feat/v1.2-rich-table` foi enviada com os 6 commits do B; a `feat/v1.3-stoichiometry` contém o C1 e aguarda revisão e confirmação para push.
+- A branch `feat/v1.1-confidence` foi enviada ao `origin` com 9 commits e aguarda a abertura manual do pull request; a `feat/v1.2-rich-table` foi enviada com os 6 commits do B; a `feat/v1.3-stoichiometry` foi enviada com os 5 commits do C1 e também aguarda o pull request.
 - A branch `feat/phase-4-quiz` foi mesclada e publicada; a `main` contém a Fase 4.
 - A branch `feat/phase-5-polish-and-deploy` foi mesclada por fast-forward e publicada; a `main` contém a Fase 5.
 - A preferência de tema fica no `localStorage`; em navegação privada ou com armazenamento bloqueado, o tema funciona, mas volta ao padrão do sistema na próxima visita.
@@ -232,4 +232,4 @@
 
 ## Próximo passo
 
-O C1 está implementado e documentado na branch `feat/v1.3-stoichiometry`, aguardando revisão e confirmação para push; o PR dela fica empilhado no do B. Antes disso, ainda faltam abrir manualmente o PR do A1/A2 (https://github.com/wenderson-hgs/projeto/pull/new/feat/v1.1-confidence) e o do B (https://github.com/wenderson-hgs/projeto/compare/feat/v1.1-confidence...feat/v1.2-rich-table?expand=1). Depois do C1, a sequência recomendada do pacote C é pH e soluções, conversão de unidades, passe de qualidade/UX e PWA/idioma/MCP, cada uma com aprovação.
+O C1 está implementado, documentado e enviado na branch `feat/v1.3-stoichiometry`; falta abrir o pull request dela, empilhado no do B: https://github.com/wenderson-hgs/projeto/pull/new/feat/v1.3-stoichiometry. Antes disso, ainda faltam abrir manualmente o PR do A1/A2 (https://github.com/wenderson-hgs/projeto/pull/new/feat/v1.1-confidence) e o do B (https://github.com/wenderson-hgs/projeto/compare/feat/v1.1-confidence...feat/v1.2-rich-table?expand=1). Depois do C1, a sequência recomendada do pacote C é pH e soluções, conversão de unidades, passe de qualidade/UX e PWA/idioma/MCP, cada uma com aprovação.
