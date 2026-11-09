@@ -114,6 +114,20 @@ describe('balance errors', () => {
     expect(getBalanceError('H2 -> O2').message).toContain('impossível');
   });
 
+  it('distinguishes an indeterminate equation from a repeated formula', () => {
+    const error = getBalanceError('C + O2 -> CO + CO2');
+
+    expect(error.code).toBe('multiple-solutions');
+    expect(error.message).toContain('mais de uma solução');
+    expect(error.message).toContain('sistema indeterminado');
+    expect(error.message).not.toContain('repetid');
+  });
+
+  it('mentions repeated formulas when there are duplicates', () => {
+    expect(getBalanceError('H2 + O2 -> H2O + H2O').message).toContain('fórmulas repetidas');
+    expect(getBalanceError('H2 + O2 -> H2O + O2').message).toContain('fórmulas repetidas');
+  });
+
   it('mentions the invalid formula', () => {
     expect(getBalanceError('Xx2 -> Xx2').message).toContain('Xx2');
   });

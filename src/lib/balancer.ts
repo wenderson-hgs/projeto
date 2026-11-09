@@ -72,6 +72,8 @@ export function balanceEquation(input: string): BalancedEquation {
   const reactants = parseSide(leftSide, 'reagentes');
   const products = parseSide(rightSide, 'produtos');
   const allTerms = [...reactants, ...products];
+  const formulas = allTerms.map((term) => term.formula);
+  const hasDuplicateFormulas = new Set(formulas).size !== formulas.length;
 
   const elements: string[] = [];
 
@@ -102,7 +104,9 @@ export function balanceEquation(input: string): BalancedEquation {
   if (freeColumns.length > 1) {
     throw new BalanceError(
       'multiple-solutions',
-      'Essa equação tem mais de uma solução. Verifique se algum composto aparece repetido.',
+      hasDuplicateFormulas
+        ? 'Há fórmulas repetidas na equação. Junte os termos iguais antes de balancear.'
+        : 'Essa equação tem mais de uma solução (sistema indeterminado). Informe produtos diferentes ou uma equação com solução única.',
     );
   }
 
