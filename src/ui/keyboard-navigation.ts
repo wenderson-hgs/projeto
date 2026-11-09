@@ -1,4 +1,8 @@
-export function enableGridKeyboardNavigation(table: HTMLElement): void {
+export interface GridKeyboardNavigation {
+  refresh(): void;
+}
+
+export function enableGridKeyboardNavigation(table: HTMLElement): GridKeyboardNavigation {
   const cells = Array.from(table.querySelectorAll<HTMLButtonElement>('.element-cell'));
   const byPosition = new Map<string, HTMLButtonElement>();
 
@@ -7,6 +11,26 @@ export function enableGridKeyboardNavigation(table: HTMLElement): void {
     const y = cell.style.getPropertyValue('--y');
     byPosition.set(`${x},${y}`, cell);
   }
+
+  // Roving tabindex: só uma célula participa da ordem de Tab; as setas movem o foco.
+  for (const cell of cells) {
+    cell.tabIndex = -1;
+  }
+
+  let tabStop: HTMLButtonElement | null = null;
+  setTabStop(cells.find((cell) => !cell.disabled) ?? null);
+
+  table.addEventListener('focusin', (event) => {
+    if (!(event.target instanceof Element)) {
+      return;
+    }
+
+    const cell = event.target.closest<HTMLButtonElement>('.element-cell');
+
+    if (cell) {
+      setTabStop(cell);
+    }
+  });
 
   table.addEventListener('keydown', (event) => {
     if (!(event.target instanceof HTMLElement)) {
@@ -57,4 +81,26 @@ export function enableGridKeyboardNavigation(table: HTMLElement): void {
       nextY += dy;
     }
   });
+
+  function refresh(): void {
+    if (tabStop && !tabStop.disabled) {
+      return;
+    }
+
+    setTabStop(cells.find((cell) => !cell.disabled) ?? null);
+  }
+
+  function setTabStop(cell: HTMLButtonElement | null): void {
+    if (tabStop && tabStop !== cell) {
+      tabStop.tabIndex = -1;
+    }
+
+    tabStop = cell;
+
+    if (cell) {
+      cell.tabIndex = 0;
+    }
+  }
+
+  return { refresh };
 }

@@ -2,7 +2,7 @@ import { CATEGORY_LABELS, formatAtomicMass, type Element } from '../lib/elements
 
 export interface DetailsPanel {
   element: HTMLElement;
-  show(element: Element): void;
+  show(element: Element, options?: { focus?: boolean }): void;
   hide(): void;
   isOpen(): boolean;
 }
@@ -12,6 +12,7 @@ export function createDetailsPanel(onClose: () => void): DetailsPanel {
   panel.id = 'element-details';
   panel.className = 'details-panel';
   panel.hidden = true;
+  panel.tabIndex = -1;
   panel.setAttribute('aria-live', 'polite');
   panel.setAttribute('aria-label', 'Detalhes do elemento');
 
@@ -56,7 +57,7 @@ export function createDetailsPanel(onClose: () => void): DetailsPanel {
 
   panel.append(header, list);
 
-  function show(element: Element): void {
+  function show(element: Element, options: { focus?: boolean } = {}): void {
     symbol.textContent = element.symbol;
     symbol.className = `details-symbol category-${element.category}`;
     namePt.textContent = element.namePt;
@@ -73,8 +74,13 @@ export function createDetailsPanel(onClose: () => void): DetailsPanel {
         ? '—'
         : String(element.group);
     rows.period.description.textContent = String(element.period);
+    panel.setAttribute('aria-label', `Detalhes de ${element.namePt}`);
 
     panel.hidden = false;
+
+    if (options.focus) {
+      panel.focus({ preventScroll: true });
+    }
   }
 
   function hide(): void {

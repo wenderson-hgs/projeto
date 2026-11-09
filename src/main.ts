@@ -103,7 +103,7 @@ footer.append(
 app.append(skipLink, header, main, detailsPanel.element, footer);
 
 table.addEventListener('click', handleTableClick);
-enableGridKeyboardNavigation(table);
+const gridNavigation = enableGridKeyboardNavigation(table);
 document.addEventListener('keydown', handleGlobalKeydown);
 applyFilters('', 'all');
 
@@ -129,10 +129,10 @@ function handleTableClick(event: MouseEvent): void {
     return;
   }
 
-  showDetails(element, cell);
+  showDetails(element, cell, event.detail === 0);
 }
 
-function showDetails(element: ChemicalElement, cell: HTMLButtonElement): void {
+function showDetails(element: ChemicalElement, cell: HTMLButtonElement, moveFocus: boolean): void {
   if (selectedAtomicNumber !== null) {
     const previousCell = findCell(selectedAtomicNumber);
     previousCell?.classList.remove('is-selected');
@@ -142,7 +142,7 @@ function showDetails(element: ChemicalElement, cell: HTMLButtonElement): void {
   selectedAtomicNumber = element.atomicNumber;
   cell.classList.add('is-selected');
   cell.setAttribute('aria-expanded', 'true');
-  detailsPanel.show(element);
+  detailsPanel.show(element, { focus: moveFocus });
 }
 
 function closeDetails(restoreFocus = true): void {
@@ -184,6 +184,8 @@ function applyFilters(query: string, category: CategoryFilter): void {
     const isMatch = matchedNumbers.has(Number(cell.dataset.atomicNumber));
     cell.disabled = !isMatch;
   }
+
+  gridNavigation.refresh();
 
   if (selectedAtomicNumber !== null && !matchedNumbers.has(selectedAtomicNumber)) {
     closeDetails(false);
