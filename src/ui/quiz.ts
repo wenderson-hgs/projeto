@@ -5,12 +5,14 @@ import {
   type ScoreStorage,
 } from '../lib/quiz-storage';
 import {
+  buildQuizReview,
   createQuizRound,
   QUESTIONS_PER_ROUND,
   QUIZ_MODE_LABELS,
   QUIZ_MODES,
   type QuizMode,
   type QuizQuestion,
+  type QuizReviewItem,
 } from '../lib/quiz';
 
 export function createQuiz(): HTMLElement {
@@ -134,12 +136,27 @@ export function createQuiz(): HTMLElement {
   const resultRecord = document.createElement('p');
   resultRecord.className = 'quiz-result-record';
 
+  const review = document.createElement('div');
+  review.className = 'quiz-review';
+  review.hidden = true;
+
+  const reviewTitle = document.createElement('h4');
+  reviewTitle.textContent = 'Revisão dos erros';
+
+  const reviewSummary = document.createElement('p');
+  reviewSummary.className = 'quiz-review-summary';
+
+  const reviewList = document.createElement('ul');
+  reviewList.className = 'quiz-review-list';
+
+  review.append(reviewTitle, reviewSummary, reviewList);
+
   const againButton = document.createElement('button');
   againButton.type = 'button';
   againButton.className = 'quiz-again';
   againButton.textContent = 'Jogar novamente';
 
-  result.append(resultTitle, resultText, resultRecord, againButton);
+  result.append(resultTitle, resultText, resultRecord, review, againButton);
 
   card.append(title, description, setup, play, result);
   section.append(card);
@@ -152,6 +169,7 @@ export function createQuiz(): HTMLElement {
   let currentIndex = 0;
   let currentScore = 0;
   let answered = false;
+  let selectedAnswers: Array<number | null> = [];
 
   updateBestLine();
 
@@ -189,6 +207,8 @@ export function createQuiz(): HTMLElement {
     currentIndex = 0;
     currentScore = 0;
     answered = false;
+    selectedAnswers = [];
+    review.hidden = true;
 
     modesFieldset.disabled = true;
     startButton.hidden = true;
@@ -238,6 +258,7 @@ export function createQuiz(): HTMLElement {
     }
 
     answered = true;
+    selectedAnswers[currentIndex] = selectedIndex;
 
     const question = round[currentIndex];
     const isCorrect = selectedIndex === question.correctIndex;
@@ -277,9 +298,48 @@ export function createQuiz(): HTMLElement {
     result.hidden = false;
     resultText.textContent = `Você acertou ${currentScore} de ${round.length}.`;
     resultRecord.textContent = formatScores(updated, round.length);
+    renderReview(buildQuizReview(round, selectedAnswers));
     modesFieldset.disabled = false;
     updateBestLine();
     resultText.focus();
+  }
+
+  function renderReview(items: QuizReviewItem[]): void {
+    reviewList.replaceChildren();
+    review.hidden = false;
+
+    if (items.length === 0) {
+      reviewTitle.textContent = 'Revisão';
+      reviewSummary.textContent = 'Você acertou todas as perguntas desta rodada.';
+      return;
+    }
+
+    reviewTitle.textContent = 'Revisão dos erros';
+    reviewSummary.textContent =
+      items.length === 1
+        ? '1 pergunta para revisar.'
+        : `${items.length} perguntas para revisar.`;
+
+    for (const item of items) {
+      const listItem = document.createElement('li');
+      listItem.className = 'quiz-review-item';
+
+      const prompt = document.createElement('p');
+      prompt.className = 'quiz-review-prompt';
+      prompt.textContent = item.prompt;
+
+      const answer = document.createElement('p');
+      answer.className = 'quiz-review-answer';
+      answer.append(
+        document.createTextNode('Sua resposta: '),
+        createStrong(item.selectedAnswer, 'quiz-review-wrong'),
+        document.createTextNode(' · Correta: '),
+        createStrong(item.correctAnswer, 'quiz-review-right'),
+      );
+
+      listItem.append(prompt, answer);
+      reviewList.append(listItem);
+    }
   }
 
   function updateBestLine(): void {
@@ -298,6 +358,13 @@ export function createQuiz(): HTMLElement {
 
 function formatScores(score: QuizScore, total: number): string {
   return `Última pontuação: ${score.last}/${total} · Recorde: ${score.best}/${total}`;
+}
+
+function createStrong(text: string, className: string): HTMLElement {
+  const strong = document.createElement('strong');
+  strong.className = className;
+  strong.textContent = text;
+  return strong;
 }
 
 function getStorage(): ScoreStorage | undefined {

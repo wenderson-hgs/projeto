@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { CATEGORY_LABELS, getElementByAtomicNumber } from '../src/lib/elements';
 import {
+  buildQuizReview,
   createQuizRound,
   OPTIONS_PER_QUESTION,
   QUESTIONS_PER_ROUND,
@@ -135,6 +136,38 @@ describe('createQuizRound', () => {
     for (const mode of QUIZ_MODES) {
       expect(QUIZ_MODE_LABELS[mode].length).toBeGreaterThan(0);
     }
+  });
+});
+
+describe('buildQuizReview', () => {
+  it('returns only wrong answers with the selected and correct options', () => {
+    const questions = createQuizRound('symbol-to-name', 3, createRandom(42));
+    const selected = questions.map((question) => question.correctIndex);
+    selected[1] = (questions[1].correctIndex + 1) % questions[1].options.length;
+
+    expect(buildQuizReview(questions, selected)).toEqual([
+      {
+        atomicNumber: questions[1].atomicNumber,
+        prompt: questions[1].prompt,
+        selectedAnswer: questions[1].options[selected[1]],
+        correctAnswer: questions[1].options[questions[1].correctIndex],
+      },
+    ]);
+  });
+
+  it('returns an empty review when every answer is correct', () => {
+    const questions = createQuizRound('element-category', 4, createRandom(7));
+
+    expect(buildQuizReview(questions, questions.map((question) => question.correctIndex))).toEqual(
+      [],
+    );
+  });
+
+  it('ignores unanswered questions and invalid indexes', () => {
+    const questions = createQuizRound('name-to-symbol', 2, createRandom(3));
+
+    expect(buildQuizReview(questions, [null, null])).toEqual([]);
+    expect(buildQuizReview(questions, [-1, 99])).toEqual([]);
   });
 });
 

@@ -27,6 +27,13 @@ export interface QuizQuestion {
   correctIndex: number;
 }
 
+export interface QuizReviewItem {
+  atomicNumber: number;
+  prompt: string;
+  selectedAnswer: string;
+  correctAnswer: string;
+}
+
 const QUESTION_TEXTS: Record<QuizMode, string> = {
   'symbol-to-name': 'Qual é o nome deste elemento?',
   'name-to-symbol': 'Qual é o símbolo deste elemento?',
@@ -41,6 +48,39 @@ export function createQuizRound(
   const targets = shuffle(elements, random).slice(0, Math.min(count, elements.length));
 
   return targets.map((element) => buildQuestion(mode, element, random));
+}
+
+export function buildQuizReview(
+  questions: QuizQuestion[],
+  selectedIndexes: Array<number | null>,
+): QuizReviewItem[] {
+  return questions.flatMap((question, index) => {
+    const selectedIndex = selectedIndexes[index];
+
+    if (selectedIndex === null || selectedIndex === undefined) {
+      return [];
+    }
+
+    if (selectedIndex === question.correctIndex) {
+      return [];
+    }
+
+    const selectedAnswer = question.options[selectedIndex];
+    const correctAnswer = question.options[question.correctIndex];
+
+    if (selectedAnswer === undefined || correctAnswer === undefined) {
+      return [];
+    }
+
+    return [
+      {
+        atomicNumber: question.atomicNumber,
+        prompt: question.prompt,
+        selectedAnswer,
+        correctAnswer,
+      },
+    ];
+  });
 }
 
 function buildQuestion(mode: QuizMode, element: Element, random: () => number): QuizQuestion {
