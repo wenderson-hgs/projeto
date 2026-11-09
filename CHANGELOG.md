@@ -2,6 +2,27 @@
 
 Todas as mudanças relevantes deste projeto são registradas aqui.
 
+## [1.2.0] — 2026-11-09
+
+### Adicionado
+
+- Painel de detalhes com estado físico, configuração eletrônica, eletronegatividade de Pauling, pontos de fusão e ebulição (convertidos de kelvin para °C), densidade com a unidade de origem e bloco.
+- Rótulos de grupo e período no painel (por exemplo, "Grupo 8 — metais de transição"), com tratamento próprio para o hidrogênio e para lantanídeos/actinídeos.
+- Revisão dos erros ao final do quiz, mostrando a pergunta, a resposta escolhida e a resposta correta. Quando todas as respostas estão certas, aparece uma mensagem positiva.
+
+### Corrigido
+
+- Nomes em português de Rf e Nh: `Ruterfórdio` e `Nihônio`.
+
+### Dados
+
+- Novos campos em `elements.json`: `phase`, `electronConfiguration`, `electronegativity`, `meltingPointK`, `boilingPointK`, `density`, `densityUnit` e `block`, derivados do Periodic-Table-JSON (CC BY-SA 3.0).
+- Valores ausentes são gravados como `null` e exibidos como `—` na interface.
+
+### Testes
+
+- Cobertura para propriedades físicas, rótulos de grupo/período, nomes corrigidos, busca sem acentos e revisão de erros do quiz.
+
 ## [1.1.0] — 2026-11-09
 
 ### Corrigido

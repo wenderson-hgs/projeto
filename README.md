@@ -11,15 +11,16 @@ Tabela periódica interativa e ferramentas de química feitas com HTML, CSS e Ty
 ## Funcionalidades
 
 - **Tabela periódica interativa** com os 118 elementos, cores por categoria e legenda.
+- **Painel de detalhes** com grupo e período rotulados, estado físico, configuração eletrônica, eletronegatividade, pontos de fusão e ebulição, densidade e bloco.
 - **Calculadora de massa molar** com composição percentual por elemento.
 - **Balanceador de equações** com frações exatas e menores coeficientes inteiros.
-- **Quiz** com três modos, rodadas de 10 perguntas e recorde salvo no navegador.
+- **Quiz** com três modos, rodadas de 10 perguntas, recorde salvo no navegador e revisão dos erros ao final.
 - **Tema claro e escuro**, com preferência salva no `localStorage`.
 - **Acessibilidade**: navegação por teclado na tabela com um único ponto de Tab, setas para percorrer os elementos, foco gerenciado no painel de detalhes, foco visível, `aria-label`, link para pular ao conteúdo e layout responsivo.
 
 ### Tabela periódica
 
-Busque por nome, símbolo ou número atômico, filtre por categoria e clique em um elemento para ver os detalhes. As setas do teclado navegam entre as células; `Enter` abre os detalhes; `Esc` fecha o painel e devolve o foco à célula.
+Busque por nome, símbolo ou número atômico, filtre por categoria e clique em um elemento para ver os detalhes: massa atômica, categoria, grupo e período rotulados, estado físico, configuração eletrônica, eletronegatividade de Pauling, pontos de fusão e ebulição (em °C), densidade e bloco. Valores não disponíveis na fonte aparecem como `—`. As setas do teclado navegam entre as células; `Enter` abre os detalhes; `Esc` fecha o painel e devolve o foco à célula.
 
 ### Calculadora de massa molar
 
@@ -31,7 +32,7 @@ Aceita `->`, `=` ou `→` entre reagentes e produtos, por exemplo `Fe + O2 -> Fe
 
 ### Quiz
 
-Três modos: símbolo → nome, nome → símbolo e categoria do elemento. Cada rodada tem 10 perguntas com 4 alternativas, feedback imediato e pontuação. A última pontuação e o recorde de cada modo ficam salvos no `localStorage` do navegador.
+Três modos: símbolo → nome, nome → símbolo e categoria do elemento. Cada rodada tem 10 perguntas com 4 alternativas, feedback imediato e pontuação. Ao final, a revisão dos erros mostra a pergunta, a resposta escolhida e a resposta correta; se todas estiverem certas, aparece uma mensagem positiva. A última pontuação e o recorde de cada modo ficam salvos no `localStorage` do navegador.
 
 ## Capturas de tela
 
@@ -76,9 +77,10 @@ O servidor de desenvolvimento fica em `http://localhost:5173/projeto/`, porque o
 Os testes unitários usam [Vitest](https://vitest.dev/) e cobrem:
 
 - integridade dos 118 elementos e das categorias;
+- propriedades físicas, rótulos de grupo/período e exibição de valores ausentes;
 - parser de fórmulas, massas molares e casos de erro;
 - balanceamento com frações exatas, equações impossíveis e múltiplas soluções;
-- geração de perguntas, alternativas e armazenamento de pontuação;
+- geração de perguntas, alternativas, revisão de erros e armazenamento de pontuação;
 - leitura e gravação do tema claro/escuro.
 
 A interface é verificada manualmente com `npm run dev`; o projeto não usa testes de navegador.
@@ -99,7 +101,7 @@ A interface é verificada manualmente com `npm run dev`; o projeto não usa test
 │  └─ social-card.png         # imagem 1200×630 para Open Graph e Twitter Card
 ├─ src/
 │  ├─ data/
-│  │  ├─ elements.json        # 118 elementos (CC BY-SA 3.0)
+│  │  ├─ elements.json        # 118 elementos com propriedades físicas (CC BY-SA 3.0)
 │  │  └─ README.md            # fonte, licença e alterações dos dados
 │  ├─ lib/                    # lógica de química, quiz, tema e tipos
 │  ├─ ui/                     # tabela, painel, calculadora, balanceador, quiz e tema
@@ -126,8 +128,8 @@ Os dados dos 118 elementos estão em [`src/data/elements.json`](src/data/element
 
 Resumo:
 
-- estrutura, massas, categorias e posições derivadas do [Periodic-Table-JSON](https://github.com/Bowserinator/Periodic-Table-JSON) (CC BY-SA 3.0);
-- nomes em português do Brasil obtidos do [Wikidata](https://www.wikidata.org/) (CC0);
+- estrutura, massas, categorias, posições e propriedades físicas derivadas do [Periodic-Table-JSON](https://github.com/Bowserinator/Periodic-Table-JSON) (CC BY-SA 3.0);
+- nomes em português do Brasil obtidos do [Wikidata](https://www.wikidata.org/) (CC0), com revisão manual da nomenclatura brasileira;
 - massas atômicas convencionais da IUPAC, exibidas com 3 casas decimais e separador decimal brasileiro (vírgula).
 
 O arquivo de dados é distribuído sob **CC BY-SA 3.0**. O código do projeto é distribuído sob a **licença MIT** — veja [LICENSE](LICENSE).
@@ -138,6 +140,8 @@ O arquivo de dados é distribuído sob **CC BY-SA 3.0**. O código do projeto é
 - A calculadora aceita subscritos e estados físicos, mas não cargas iônicas (`Fe2+`, `SO4^2-`) nem coeficientes estequiométricos no início da fórmula (`2H2O`).
 - A pontuação e o recorde do quiz ficam no navegador: limpar os dados do site ou trocar de dispositivo zera o histórico. Em navegação privada, o recorde pode não persistir.
 - Elementos sem massa atômica padrão da IUPAC usam o número de massa do isótopo mais estável; a calculadora exibe um aviso de valor aproximado.
+- Alguns elementos superpesados não têm eletronegatividade, ponto de fusão, ponto de ebulição ou densidade na fonte; esses campos aparecem como `—` no painel.
+- As temperaturas são armazenadas em kelvin e convertidas para graus Celsius na interface; pequenas diferenças de arredondamento em relação a tabelas impressas são esperadas.
 - Não há backend: todas as contas são feitas no navegador.
 
 ## Créditos

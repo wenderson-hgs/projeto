@@ -9,19 +9,19 @@
 | Campo              | Valor                                                                                               |
 | ------------------ | --------------------------------------------------------------------------------------------------- |
 | Projeto            | chem-toolkit — Tabela Periódica Interativa e Ferramentas de Química                                 |
-| Versão             | 1.1.0                                                                                               |
+| Versão             | 1.2.0                                                                                               |
 | Stack              | Node.js 24 (LTS) + npm 11, Vite 8 + TypeScript 6 (sem framework), Vitest 5, ESLint 10 + Prettier 3  |
 | Publicação         | GitHub Pages via GitHub Actions — https://wenderson-hgs.github.io/projeto/ (no ar desde 2026-10-24) |
 | Repositório        | https://github.com/wenderson-hgs/projeto (nome do repositório: `projeto`)                           |
 | Branch principal   | `main` (Fases 1 a 5 publicadas; release `v1.0.0` no commit `d44845e`)                               |
-| Branch de trabalho | `feat/v1.1-confidence` (A1 aprovado + A2 implementado; em revisão)                                  |
+| Branch de trabalho | `feat/v1.1-confidence` (A1+A2 enviados; PR pendente) e `feat/v1.2-rich-table` (B em revisão)        |
 | Demo               | https://wenderson-hgs.github.io/projeto/ (verificada em 2026-10-24)                                 |
 
 ## Fase em andamento
 
-**Pós-v1.0 — A2 (acessibilidade e SEO) implementado na branch `feat/v1.1-confidence`, aguardando revisão. O A1 foi aprovado pelo usuário.**
+**Pós-v1.0 — B (tabela rica e quiz educativo) implementado e documentado na branch `feat/v1.2-rich-table`, aguardando revisão (commits locais criados, sem push). O A1 e o A2 estão na branch `feat/v1.1-confidence`, já enviada ao GitHub, com pull request pendente de abertura manual.**
 
-> O A1 corrigiu a formatação numérica para pt-BR, separou as mensagens de múltiplas soluções do balanceador, aceitou subscritos Unicode e estados físicos na calculadora e preparou a versão 1.1.0. O A2 adiciona roving tabindex e foco gerenciado no painel de detalhes, metadados sociais/SEO com imagem 1200×630 e um workflow de CI para pull requests. A tag e a release `v1.1.0` continuam pendentes de aprovação.
+> O B enriquece o painel de detalhes com estado físico, configuração eletrônica, eletronegatividade, pontos de fusão/ebulição, densidade e bloco, usando os campos do mesmo `PeriodicTableJSON.json` (CC BY-SA 3.0). Também adiciona rótulos de grupo/período, revisão dos erros do quiz e corrige os nomes de Rf (`Ruterfórdio`) e Nh (`Nihônio`). O A1 corrigiu a formatação numérica para pt-BR, as mensagens do balanceador e a normalização de subscritos/estados físicos; o A2 adicionou roving tabindex, foco gerenciado no painel, metadados sociais/SEO e um workflow de CI para pull requests. As tags e releases `v1.1.0`/`v1.2.0` continuam pendentes de aprovação.
 
 ## Checklist de fases
 
@@ -97,11 +97,14 @@
 | 2026-10-24 | Release v1.0.0                             | Commit de documentação `d44845e` enviado; tag anotada `v1.0.0` criada e enviada; release "v1.0.0 — Primeira versão" publicada em `https://github.com/wenderson-hgs/projeto/releases/tag/v1.0.0` com as notas do `CHANGELOG.md`. Deploy do commit de docs concluído com sucesso (run `40098865461`). Fase 5 encerrada.                                                                                                                                                                                          |
 | 2026-11-09 | Pós-v1.0 — A1: correções de confiança | Formatação numérica pt-BR centralizada em `src/lib/format.ts`; mensagens do balanceador separadas entre fórmulas repetidas e sistema indeterminado; parser normaliza subscritos Unicode e estados físicos (`s`, `l`, `g`, `aq`), mantendo cargas e coeficiente inicial como erros; README, CHANGELOG e estado atualizados. 130 testes, build e lint sem erros. |
 | 2026-11-09 | Pós-v1.0 — A2: acessibilidade e SEO | Roving tabindex em `src/ui/keyboard-navigation.ts` (um ponto de Tab, setas e atualização após filtros); painel de detalhes com `tabindex="-1"`, rótulo dinâmico e foco ao abrir pelo teclado, com `Esc` devolvendo o foco à célula; canonical, Open Graph, Twitter Card e JSON-LD em `index.html`; imagem social 1200×630 em `public/social-card.png`; workflow `CI` para pull requests. |
+| 2026-11-09 | Pós-v1.0 — B: tabela rica e quiz educativo | `elements.json` enriquecido com `phase`, `electronConfiguration`, `electronegativity`, `meltingPointK`, `boilingPointK`, `density`, `densityUnit` e `block`, derivados do Periodic-Table-JSON (CC BY-SA 3.0). Criado `src/lib/element-properties.ts` com rótulos de grupo/período e formatadores de propriedades; painel de detalhes exibe os novos campos; nomes de Rf e Nh corrigidos; quiz guarda a alternativa escolhida e mostra a revisão dos erros com `buildQuizReview()`. Verificado no navegador com Fe, H, La, Db, Fm e uma rodada de quiz. 149 testes, build e lint sem erros. |
 
 ## Pendências
 
-- Remover as branches de trabalho já mescladas (`feat/phase-1-periodic-table`, `feat/phase-2-molar-mass`, `feat/phase-3-equation-balancer`, `feat/phase-4-quiz`, `feat/phase-5-polish-and-deploy` e `test/phase-0-bootstrap`) quando o usuário quiser.
-- Pacotes B (tabela rica/quiz educativo) e C (novas ferramentas), quando o usuário aprovar.
+- Abrir manualmente o pull request do A1/A2: https://github.com/wenderson-hgs/projeto/pull/new/feat/v1.1-confidence (o `gh` não está instalado).
+- Revisar o B e confirmar o push da branch `feat/v1.2-rich-table`; o PR dela fica empilhado no do A1/A2.
+- Remover as branches de trabalho já mescladas (`feat/phase-1-periodic-table`, `feat/phase-2-molar-mass`, `feat/phase-3-equation-balancer`, `feat/phase-4-quiz`, `feat/phase-5-polish-and-deploy`, `test/phase-0-bootstrap`, `feat/v1.1-confidence` e `feat/v1.2-rich-table`) quando o usuário quiser.
+- Pacote C (novas ferramentas), quando o usuário aprovar.
 - Opcionais pós-v1.0 (somente se o usuário pedir): expor `src/lib/` como servidor MCP, versão PWA/offline, README em inglês e novas ferramentas (estequiometria, pH, conversão de unidades).
 
 ## Decisões importantes
@@ -139,6 +142,12 @@
 | 2026-11-09 | Tabela com roving tabindex e foco gerenciado no painel                             | 118 pontos de Tab tornavam a página lenta para quem usa teclado; um único ponto de Tab resolve isso sem perder as setas. Abrir os detalhes pelo teclado leva o foco ao painel para leitores de tela; abrir com mouse mantém o foco na célula. |
 | 2026-11-09 | Imagem social gerada do próprio app e salva em `public/`                           | Evita uma imagem falsa ou desatualizada e garante que o arquivo entre no build do GitHub Pages; 1200×630 é o formato recomendado para Open Graph e Twitter Card.                          |
 | 2026-11-09 | Workflow `CI` separado do `deploy.yml`                                             | Pull requests precisam de lint, testes e build sem permissão de publicação; o deploy continua restrito à `main`.                                                                           |
+| 2026-11-09 | Propriedades físicas vêm do mesmo dataset, sem valores inventados                  | Mantém a fonte única e a licença CC BY-SA 3.0; campos ausentes ficam `null` e aparecem como `—`, sem estimativas.                                                                         |
+| 2026-11-09 | Temperaturas armazenadas em kelvin e convertidas para °C na interface               | Preserva a precisão da fonte e evita conversões repetidas no código; a interface mostra a unidade usual no Brasil.                                                                        |
+| 2026-11-09 | Densidade mantém a unidade da fonte (`g/L` para gases, `g/cm³` para os demais)      | Evita conversões que perderiam precisão e deixa explícita a diferença entre gases e sólidos/líquidos.                                                                                      |
+| 2026-11-09 | Grupo e período exibidos como rótulos, com tratamento próprio para H e f-block      | "Grupo 1 — hidrogênio" evita classificá-lo como metal alcalino; lantanídeos/actinídeos não têm grupo único no layout e recebem `—`.                                                      |
+| 2026-11-09 | Nomes Rf e Nh corrigidos; `Hôlmio` mantido                                          | Revisão da nomenclatura brasileira (Livro Verde da SBQ e fontes de ensino); a busca sem acentos continua funcionando para as formas corrigidas.                                            |
+| 2026-11-09 | Quiz guarda a alternativa escolhida e mostra a revisão dos erros                   | Fecha o ciclo de aprendizagem; `buildQuizReview()` é puro e testável, sem duplicar a lógica na interface.                                                                                 |
 | 2026-10-23 | Balanceador usa frações exatas com `bigint` e eliminação de Gauss                  | Evita erros de arredondamento de ponto flutuante e garante os menores coeficientes inteiros. A matriz é pequena, então o custo é irrelevante.                                               |
 | 2026-10-23 | Coeficientes digitados na equação são validados, mas ignorados                     | O balanceador sempre recalcula os menores inteiros; isso corrige coeficientes errados e mantém a entrada simples.                                                                           |
 | 2026-10-23 | Equações com coeficiente zero ou com múltiplas soluções geram erro                 | Um coeficiente zero indica composto que não participa; múltiplas soluções tornam o resultado ambíguo. Mensagens claras evitam resultados enganosos.                                         |
@@ -184,6 +193,7 @@
 | 2026-10-23 | Fase 5 — Etapa 3 (Pages)             | 5 arquivos, 115 testes passaram (926 ms)         | sucesso: 26 módulos, 306 ms; `index.html` 1,35 kB, CSS 17,38 kB / JS 58,56 kB | sem erros                 |
 | 2026-11-09 | A1 — correções de confiança          | 6 arquivos, 130 testes passaram (529 ms)         | sucesso: 27 módulos, 110 ms; CSS 17,38 kB / JS 59,05 kB                      | sem erros                 |
 | 2026-11-09 | A2 — acessibilidade e SEO            | 6 arquivos, 130 testes passaram (574 ms)         | sucesso: 27 módulos, 170 ms; `index.html` 3,99 kB, CSS 17,38 kB / JS 59,55 kB | sem erros                 |
+| 2026-11-09 | B — tabela rica e quiz educativo     | 7 arquivos, 149 testes passaram (624 ms)         | sucesso: 28 módulos, 121 ms; `index.html` 3,99 kB, CSS 18,00 kB / JS 83,23 kB | sem erros                 |
 
 ## Problemas conhecidos, limitações e dúvidas
 
@@ -193,9 +203,11 @@
 - As massas vêm do dataset; por isso `Fe2(SO4)3` resulta em 399,858 g/mol (dentro da tolerância de ±0,05 do `AGENTS.md`, mas diferente do valor arredondado 399,88). Pequenas diferenças em relação a massas convencionais arredondadas são esperadas.
 - `src/data/elements.json` é derivado de dataset CC BY-SA 3.0 e continua sob essa licença; o código do projeto é MIT. A distinção está em `src/data/README.md` e no `README.md`.
 - As massas de elementos sem massa padrão da IUPAC usam o número de massa do isótopo mais estável e aparecem entre colchetes na tabela; na calculadora, o resultado recebe um aviso de valor aproximado.
+- Alguns elementos superpesados não têm eletronegatividade, ponto de fusão, ponto de ebulição ou densidade na fonte; o painel mostra `—` nesses casos. As temperaturas são convertidas de kelvin para °C na interface.
 - O GitHub Pages está no ar em `https://wenderson-hgs.github.io/projeto/`; o deploy é automático a cada push na `main`, com lint, testes e build antes da publicação.
 - O repositório precisou ser tornado público em 2026-10-24 porque o GitHub Pages em repositório privado exige plano pago.
 - A branch `test/phase-0-bootstrap` continua no remoto; pode ser removida depois, se o usuário quiser.
+- A branch `feat/v1.1-confidence` foi enviada ao `origin` com 9 commits e aguarda a abertura manual do pull request; a `feat/v1.2-rich-table` contém o B implementado e será enviada após a revisão.
 - A branch `feat/phase-4-quiz` foi mesclada e publicada; a `main` contém a Fase 4.
 - A branch `feat/phase-5-polish-and-deploy` foi mesclada por fast-forward e publicada; a `main` contém a Fase 5.
 - A preferência de tema fica no `localStorage`; em navegação privada ou com armazenamento bloqueado, o tema funciona, mas volta ao padrão do sistema na próxima visita.
@@ -211,4 +223,4 @@
 
 ## Próximo passo
 
-O A2 está implementado e em revisão na branch `feat/v1.1-confidence`, junto com o A1 aprovado. Depois da aprovação, o próximo passo é decidir sobre push, merge na `main` e tag/release `v1.1.0`. Os pacotes B (tabela rica/quiz educativo) e C (novas ferramentas) dependem de nova aprovação.
+O A1 e o A2 estão na branch `feat/v1.1-confidence`, enviada ao GitHub; falta abrir o pull request manualmente (o `gh` não está instalado): https://github.com/wenderson-hgs/projeto/pull/new/feat/v1.1-confidence. O B está implementado e documentado na branch `feat/v1.2-rich-table`, com commits locais criados, aguardando revisão e confirmação para push. O pacote C (novas ferramentas) depende de nova aprovação.
