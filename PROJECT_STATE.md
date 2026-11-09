@@ -9,19 +9,19 @@
 | Campo              | Valor                                                                                               |
 | ------------------ | --------------------------------------------------------------------------------------------------- |
 | Projeto            | chem-toolkit — Tabela Periódica Interativa e Ferramentas de Química                                 |
-| Versão             | 1.0.0                                                                                               |
+| Versão             | 1.1.0                                                                                               |
 | Stack              | Node.js 24 (LTS) + npm 11, Vite 8 + TypeScript 6 (sem framework), Vitest 5, ESLint 10 + Prettier 3  |
 | Publicação         | GitHub Pages via GitHub Actions — https://wenderson-hgs.github.io/projeto/ (no ar desde 2026-10-24) |
 | Repositório        | https://github.com/wenderson-hgs/projeto (nome do repositório: `projeto`)                           |
 | Branch principal   | `main` (Fases 1 a 5 publicadas; release `v1.0.0` no commit `d44845e`)                               |
-| Branch de trabalho | nenhuma ativa; `feat/phase-5-polish-and-deploy` mesclada e publicada                                |
+| Branch de trabalho | `feat/v1.1-confidence` (A1 — correções de confiança; em revisão)                                      |
 | Demo               | https://wenderson-hgs.github.io/projeto/ (verificada em 2026-10-24)                                 |
 
 ## Fase em andamento
 
-**Fase 5 — Polimento e publicação concluída; v1.0.0 publicada em 2026-10-24.**
+**Pós-v1.0 — A1 (correções de confiança) em revisão na branch `feat/v1.1-confidence`.**
 
-> A Fase 5 adicionou tema claro/escuro com preferência salva, melhorias de acessibilidade, README completo com capturas reais, configuração do GitHub Pages com `base: '/projeto/'`, workflow de deploy e versão `1.0.0` com changelog. O repositório foi tornado público, o Pages foi habilitado com publicação via workflow, o deploy terminou com sucesso e a demo foi verificada. A tag anotada `v1.0.0` e a release no GitHub foram publicadas; não há pendências para a v1.0.
+> O A1 corrige a formatação numérica para pt-BR, separa as mensagens de múltiplas soluções do balanceador, aceita subscritos Unicode e estados físicos na calculadora e prepara a versão 1.1.0. Cargas iônicas, coeficiente inicial, foco/teclado e metadados ficam para o A2.
 
 ## Checklist de fases
 
@@ -95,10 +95,12 @@
 | 2026-10-23 | Fase 5 — Etapa 4: versão 1.0.0             | `package.json` e `package-lock.json` atualizados para `1.0.0`; criado `CHANGELOG.md`; checklist da Fase 5 e documentos de estado atualizados. Tag e release ficam pendentes do merge e do primeiro deploy.                                                                                                                                                                                                                                                                                                     |
 | 2026-10-24 | Fase 5 — deploy e publicação               | Branch publicada e mesclada por fast-forward na `main` (`d13d1c2`); `main` enviada. Repositório tornado público; Pages habilitado com publicação via workflow; run `40096907344` concluído com sucesso (build e deploy). Demo verificada em `https://wenderson-hgs.github.io/projeto/` (HTML, JS, CSS e favicon respondendo 200). Descrição e homepage do repositório atualizadas com o link da demo.                                                                                                          |
 | 2026-10-24 | Release v1.0.0                             | Commit de documentação `d44845e` enviado; tag anotada `v1.0.0` criada e enviada; release "v1.0.0 — Primeira versão" publicada em `https://github.com/wenderson-hgs/projeto/releases/tag/v1.0.0` com as notas do `CHANGELOG.md`. Deploy do commit de docs concluído com sucesso (run `40098865461`). Fase 5 encerrada.                                                                                                                                                                                          |
+| 2026-11-09 | Pós-v1.0 — A1: correções de confiança | Formatação numérica pt-BR centralizada em `src/lib/format.ts`; mensagens do balanceador separadas entre fórmulas repetidas e sistema indeterminado; parser normaliza subscritos Unicode e estados físicos (`s`, `l`, `g`, `aq`), mantendo cargas e coeficiente inicial como erros; README, CHANGELOG e estado atualizados. 130 testes, build e lint sem erros. |
 
 ## Pendências
 
 - Remover as branches de trabalho já mescladas (`feat/phase-1-periodic-table`, `feat/phase-2-molar-mass`, `feat/phase-3-equation-balancer`, `feat/phase-4-quiz`, `feat/phase-5-polish-and-deploy` e `test/phase-0-bootstrap`) quando o usuário quiser.
+- A2 (acessibilidade e SEO) e os demais pacotes da revisão, quando o usuário aprovar.
 - Opcionais pós-v1.0 (somente se o usuário pedir): expor `src/lib/` como servidor MCP, versão PWA/offline, README em inglês e novas ferramentas (estequiometria, pH, conversão de unidades).
 
 ## Decisões importantes
@@ -130,7 +132,9 @@
 | 2026-10-23 | Resultado mostra composição percentual e aviso de massa aproximada                 | Transparência sobre a origem das massas e sobre elementos sem massa padrão da IUPAC.                                                                                                        |
 | 2026-10-23 | Calculadora fica abaixo da tabela, na mesma página                                 | Mantém a navegação simples, sem abas ou rotas, e reaproveita o layout existente.                                                                                                            |
 | 2026-10-23 | `getElementBySymbol()` usa um `Map`                                                | O parser consulta símbolos com frequência; a busca deixa de ser linear.                                                                                                                     |
-| 2026-10-23 | Valores exibidos com ponto decimal                                                 | Mantém consistência com a tabela periódica e com as massas do dataset.                                                                                                                      |
+| 2026-11-09 | Valores exibidos com vírgula decimal (pt-BR)                                       | A interface é em português; a vírgula evita a leitura ambígua de `74.092` como setenta e quatro mil. Esta decisão substitui a de 2026-10-23, que usava ponto decimal.                       |
+| 2026-11-09 | Subscritos Unicode e estados físicos são normalizados na entrada                    | Aceita fórmulas copiadas de livros/sites (`H₂O`, `H2O(s)`) sem abrir o escopo de cargas iônicas; estados são case-sensitive para não confundir `(S)` com enxofre.                          |
+| 2026-11-09 | Balanceador separa fórmula repetida de sistema indeterminado                       | A mensagem anterior mandava procurar repetição mesmo quando o problema era o sistema ter mais de uma solução; agora cada causa tem uma orientação própria.                                 |
 | 2026-10-23 | Balanceador usa frações exatas com `bigint` e eliminação de Gauss                  | Evita erros de arredondamento de ponto flutuante e garante os menores coeficientes inteiros. A matriz é pequena, então o custo é irrelevante.                                               |
 | 2026-10-23 | Coeficientes digitados na equação são validados, mas ignorados                     | O balanceador sempre recalcula os menores inteiros; isso corrige coeficientes errados e mantém a entrada simples.                                                                           |
 | 2026-10-23 | Equações com coeficiente zero ou com múltiplas soluções geram erro                 | Um coeficiente zero indica composto que não participa; múltiplas soluções tornam o resultado ambíguo. Mensagens claras evitam resultados enganosos.                                         |
@@ -174,11 +178,12 @@
 | 2026-10-23 | Fase 4 — validação na `main`         | 4 arquivos, 102 testes passaram (970 ms)         | sucesso: 24 módulos, 336 ms; `index.html` 0,65 kB, CSS 14,08 kB / JS 56,91 kB | sem erros                 |
 | 2026-10-23 | Fase 5 — Etapa 1 (tema)              | 5 arquivos, 115 testes passaram (1,12 s)         | sucesso: 26 módulos, 741 ms; CSS 17,38 kB / JS 58,56 kB                       | sem erros                 |
 | 2026-10-23 | Fase 5 — Etapa 3 (Pages)             | 5 arquivos, 115 testes passaram (926 ms)         | sucesso: 26 módulos, 306 ms; `index.html` 1,35 kB, CSS 17,38 kB / JS 58,56 kB | sem erros                 |
+| 2026-11-09 | A1 — correções de confiança          | 6 arquivos, 130 testes passaram (529 ms)         | sucesso: 27 módulos, 110 ms; CSS 17,38 kB / JS 59,05 kB                      | sem erros                 |
 
 ## Problemas conhecidos, limitações e dúvidas
 
 - A interface (tabela, calculadora, balanceador e quiz) foi validada por `tsc`, build e lint, mas **não tem testes automatizados de navegador** (não há jsdom nem Playwright). A revisão manual no `npm run dev` é necessária.
-- O parser não aceita coeficientes estequiométricos no início (`2H2O`) nem quantidades decimais. Coeficientes são aceitos apenas em hidratos, depois de `·`, `.` ou `*`.
+- O parser aceita subscritos Unicode (`H₂O`) e estados físicos (`H2O(s)`, `H2O(l)`, `H2O(g)`, `H2O(aq)`), mas não aceita cargas iônicas (`Fe2+`, `SO4^2-`) nem coeficientes estequiométricos no início (`2H2O`). Coeficientes são aceitos apenas em hidratos, depois de `·`, `.` ou `*`.
 - As massas vêm do dataset; por isso `Fe2(SO4)3` resulta em 399,858 g/mol (dentro da tolerância de ±0,05 do `AGENTS.md`, mas diferente do valor arredondado 399,88). Pequenas diferenças em relação a massas convencionais arredondadas são esperadas.
 - `src/data/elements.json` é derivado de dataset CC BY-SA 3.0 e continua sob essa licença; o código do projeto é MIT. A distinção está em `src/data/README.md` e no `README.md`.
 - As massas de elementos sem massa padrão da IUPAC usam o número de massa do isótopo mais estável e aparecem entre colchetes na tabela; na calculadora, o resultado recebe um aviso de valor aproximado.
@@ -200,4 +205,4 @@
 
 ## Próximo passo
 
-A v1.0.0 está publicada e não há pendências obrigatórias. Se quiser continuar, os próximos passos opcionais estão na seção 9 do `AGENTS.md` (MCP, PWA/offline, README em inglês, novas ferramentas). As branches de trabalho já mescladas podem ser removidas quando você autorizar.
+O A1 está implementado e em revisão na branch `feat/v1.1-confidence`. Depois da aprovação, o próximo pacote é o A2 (foco do painel, roving tabindex, metadados sociais/SEO e CI em PR). A tag e a release `v1.1.0` ficam pendentes de aprovação e do merge na `main`.

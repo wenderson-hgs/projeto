@@ -2,6 +2,21 @@
 
 Todas as mudanças relevantes deste projeto são registradas aqui.
 
+## [1.1.0] — 2026-11-09
+
+### Corrigido
+
+- Números exibidos com vírgula decimal (pt-BR) no painel de detalhes, na calculadora e nos percentuais.
+- Mensagem do balanceador agora distingue fórmulas repetidas de equações com mais de uma solução (sistema indeterminado).
+
+### Adicionado
+
+- A calculadora aceita subscritos Unicode (`H₂O`) e estados físicos no fim da fórmula (`H2O(s)`, `H2O(l)`, `H2O(g)`, `H2O(aq)`).
+
+### Testes
+
+- Cobertura para formatação numérica pt-BR, normalização de subscritos/estados e mensagens do balanceador.
+
 ## [1.0.0] — 2026-10-23
 
 Primeira versão publicada.

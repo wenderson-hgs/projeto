@@ -21,7 +21,7 @@ Busque por nome, símbolo ou número atômico, filtre por categoria e clique em 
 
 ### Calculadora de massa molar
 
-Aceita fórmulas simples (`H2O`), parênteses e colchetes aninhados (`K4[Fe(CN)6]`) e hidratos com `·`, `.` ou `*` (`CuSO4·5H2O`). O resultado mostra a massa molar total e a composição percentual de cada elemento.
+Aceita fórmulas simples (`H2O`), parênteses e colchetes aninhados (`K4[Fe(CN)6]`), hidratos com `·`, `.` ou `*` (`CuSO4·5H2O`), subscritos Unicode (`H₂O`) e estados físicos no fim da fórmula (`H2O(s)`, `H2O(l)`, `H2O(g)`, `H2O(aq)`). O resultado mostra a massa molar total e a composição percentual de cada elemento.
 
 ### Balanceador de equações
 
@@ -124,14 +124,14 @@ Resumo:
 
 - estrutura, massas, categorias e posições derivadas do [Periodic-Table-JSON](https://github.com/Bowserinator/Periodic-Table-JSON) (CC BY-SA 3.0);
 - nomes em português do Brasil obtidos do [Wikidata](https://www.wikidata.org/) (CC0);
-- massas atômicas convencionais da IUPAC, exibidas com 3 casas decimais.
+- massas atômicas convencionais da IUPAC, exibidas com 3 casas decimais e separador decimal brasileiro (vírgula).
 
 O arquivo de dados é distribuído sob **CC BY-SA 3.0**. O código do projeto é distribuído sob a **licença MIT** — veja [LICENSE](LICENSE).
 
 ## Limitações conhecidas
 
 - O balanceador cobre fórmulas neutras; não trata cargas iônicas nem equações redox com íons (por exemplo, `Fe2+`).
-- A calculadora não aceita coeficientes estequiométricos no início da fórmula (`2H2O`).
+- A calculadora aceita subscritos e estados físicos, mas não cargas iônicas (`Fe2+`, `SO4^2-`) nem coeficientes estequiométricos no início da fórmula (`2H2O`).
 - A pontuação e o recorde do quiz ficam no navegador: limpar os dados do site ou trocar de dispositivo zera o histórico. Em navegação privada, o recorde pode não persistir.
 - Elementos sem massa atômica padrão da IUPAC usam o número de massa do isótopo mais estável; a calculadora exibe um aviso de valor aproximado.
 - Não há backend: todas as contas são feitas no navegador.
