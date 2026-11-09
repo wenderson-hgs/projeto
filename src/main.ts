@@ -4,6 +4,7 @@ import './styles/controls.css';
 import './styles/details.css';
 import './styles/calculator.css';
 import './styles/balancer.css';
+import './styles/stoichiometry.css';
 import './styles/quiz.css';
 import {
   elements,
@@ -19,6 +20,7 @@ import { createMolarMassCalculator } from './ui/molar-mass';
 import { createLegend, createPeriodicTable } from './ui/periodic-table';
 import { createSearchFilter, type CategoryFilter } from './ui/search-filter';
 import { createQuiz } from './ui/quiz';
+import { createStoichiometry } from './ui/stoichiometry';
 import { createThemeToggle } from './ui/theme-toggle';
 
 const app = document.querySelector<HTMLDivElement>('#app');
@@ -87,7 +89,13 @@ const detailsPanel = createDetailsPanel(closeDetails);
 let selectedAtomicNumber: number | null = null;
 
 section.append(sectionTitle, scrollHint, filterBar, status, tableWrapper, createLegend());
-main.append(section, createMolarMassCalculator(), createEquationBalancer(), createQuiz());
+main.append(
+  section,
+  createMolarMassCalculator(),
+  createEquationBalancer(),
+  createStoichiometry(),
+  createQuiz(),
+);
 
 const footer = document.createElement('footer');
 footer.className = 'site-footer';

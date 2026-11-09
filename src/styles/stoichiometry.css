@@ -1,0 +1,316 @@
+.stoichiometry-section {
+  margin-top: 28px;
+}
+
+.stoichiometry-card {
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.stoichiometry-card h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  letter-spacing: -0.01em;
+}
+
+.stoichiometry-description {
+  margin: 6px 0 16px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.stoichiometry-form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.stoichiometry-form label,
+.stoichiometry-field-row label {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.stoichiometry-equation-row {
+  display: flex;
+  gap: 10px;
+}
+
+.stoichiometry-equation-row input {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 1rem;
+}
+
+.stoichiometry-equation-row input:focus-visible,
+.stoichiometry-primary:focus-visible,
+.stoichiometry-reactant-row input:focus-visible,
+.stoichiometry-reactant-row select:focus-visible,
+.stoichiometry-field-row input:focus-visible,
+.stoichiometry-field-row select:focus-visible,
+.stoichiometry-examples .example-button:focus-visible,
+.stoichiometry-result h3:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 1px;
+}
+
+.stoichiometry-equation-row input[aria-invalid='true'],
+.stoichiometry-reactant-row input[aria-invalid='true'],
+.stoichiometry-field-row input[aria-invalid='true'] {
+  border-color: var(--danger-strong);
+}
+
+.stoichiometry-primary {
+  flex: 0 0 auto;
+  padding: 10px 18px;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  background: var(--accent);
+  color: #ffffff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.stoichiometry-primary:hover {
+  background: var(--accent-hover);
+}
+
+.stoichiometry-hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.stoichiometry-examples {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.stoichiometry-error {
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--danger-border);
+  border-radius: 8px;
+  background: var(--danger-bg);
+  color: var(--danger-text);
+  font-size: 0.88rem;
+}
+
+.stoichiometry-setup {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.stoichiometry-balanced-label {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.stoichiometry-balanced-equation {
+  margin: 4px 0 0;
+  padding: 12px 14px;
+  border: 1px solid var(--success-border);
+  border-radius: 8px;
+  background: var(--success-bg);
+  color: var(--success-text);
+  font-size: 1.1rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.stoichiometry-calculation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.stoichiometry-reactants {
+  margin: 0;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.stoichiometry-reactants legend {
+  padding: 0 6px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.stoichiometry-reactant-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.stoichiometry-reactant-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 110px 80px;
+  gap: 8px;
+  align-items: center;
+}
+
+.stoichiometry-reactant-row label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.stoichiometry-reactant-row label span:last-child {
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.stoichiometry-reactant-row input,
+.stoichiometry-reactant-row select,
+.stoichiometry-field-row input,
+.stoichiometry-field-row select {
+  min-width: 0;
+  padding: 9px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.9rem;
+}
+
+.stoichiometry-reactant-row select,
+.stoichiometry-field-row select {
+  cursor: pointer;
+}
+
+.stoichiometry-field-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.stoichiometry-field-row input,
+.stoichiometry-field-row select {
+  width: 100%;
+  font-size: 1rem;
+}
+
+.stoichiometry-result {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.stoichiometry-result h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.stoichiometry-result h3:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.stoichiometry-highlight {
+  margin: 0 0 8px;
+  padding: 10px 12px;
+  border: 1px solid var(--success-border);
+  border-radius: 8px;
+  background: var(--success-bg);
+  color: var(--success-text);
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
+}
+
+.stoichiometry-excess {
+  margin: 0 0 8px;
+  padding-left: 20px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.stoichiometry-excess li + li {
+  margin-top: 4px;
+}
+
+.stoichiometry-notes {
+  display: grid;
+  gap: 6px;
+  margin: 10px 0;
+}
+
+.stoichiometry-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.stoichiometry-table-wrapper {
+  overflow-x: auto;
+  margin-top: 10px;
+}
+
+.stoichiometry-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.stoichiometry-table th,
+.stoichiometry-table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+.stoichiometry-table thead th {
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.stoichiometry-table .numeric {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 720px) {
+  .stoichiometry-card {
+    padding: 16px;
+  }
+
+  .stoichiometry-equation-row {
+    flex-direction: column;
+  }
+
+  .stoichiometry-primary {
+    width: 100%;
+  }
+
+  .stoichiometry-reactant-row {
+    grid-template-columns: minmax(0, 1fr) 90px;
+  }
+
+  .stoichiometry-reactant-row label {
+    grid-column: 1 / -1;
+  }
+}
