@@ -2,6 +2,23 @@
 
 Todas as mudanças relevantes deste projeto são registradas aqui.
 
+## [1.3.0] — 2026-11-09
+
+### Adicionado
+
+- Ferramenta de estequiometria: a equação é balanceada automaticamente e o cálculo mostra reagente limitante, rendimento teórico em mol, gramas e partículas, excesso de reagentes e rendimento percentual opcional.
+- Quantidades dos reagentes aceitas em gramas ou mol, com vírgula ou ponto decimal.
+- Avisos para reagentes sem quantidade informada e para compostos com massa atômica aproximada.
+- `formatScientific()` em `src/lib/format.ts`, usado para exibir partículas em notação científica.
+- Lógica pura em `src/lib/stoichiometry.ts`, reaproveitando `balanceEquation()` e `calculateMolarMass()`.
+- Seção de estequiometria entre o balanceador e o quiz, com estilos próprios e layout responsivo.
+- Captura da nova seção no README.
+
+### Testes
+
+- 12 testes para preparação da equação, reagente limitante, excesso, rendimento percentual e erros de entrada.
+- Novos testes de `formatScientific`; o projeto passou a ter 166 testes em 8 arquivos.
+
 ## [1.2.0] — 2026-11-09
 
 ### Adicionado
