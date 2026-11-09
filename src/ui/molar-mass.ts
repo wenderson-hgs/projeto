@@ -1,3 +1,4 @@
+import { formatDecimal, formatPercent } from '../lib/format';
 import { calculateMolarMass, FormulaError, type MolarMassResult } from '../lib/molar-mass';
 
 const EXAMPLES = ['H2O', 'Ca(OH)2', 'Fe2(SO4)3', 'K4[Fe(CN)6]', 'CuSO4·5H2O'];
@@ -195,7 +196,7 @@ export function createMolarMassCalculator(): HTMLElement {
 
   function showResult(calculation: MolarMassResult): void {
     resultFormulaValue.textContent = calculation.formula;
-    resultTotalValue.textContent = `${formatMass(calculation.molarMass)} g/mol`;
+    resultTotalValue.textContent = `${formatDecimal(calculation.molarMass, 3)} g/mol`;
     warning.hidden = !calculation.isApproximate;
     caption.textContent = `Composição percentual de ${calculation.formula}`;
 
@@ -219,7 +220,7 @@ export function createMolarMassCalculator(): HTMLElement {
       tableRow.append(
         elementCell,
         createCell(String(entry.count), 'numeric'),
-        createCell(formatMass(entry.mass), 'numeric'),
+        createCell(formatDecimal(entry.mass, 3), 'numeric'),
         createCell(formatPercent(entry.percent), 'numeric'),
       );
 
@@ -239,12 +240,4 @@ function createCell(text: string, className: string): HTMLTableCellElement {
   cell.className = className;
   cell.textContent = text;
   return cell;
-}
-
-function formatMass(value: number): string {
-  return value.toFixed(3);
-}
-
-function formatPercent(value: number): string {
-  return `${value.toFixed(2)}%`;
 }

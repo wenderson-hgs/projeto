@@ -1,4 +1,5 @@
 import rawElements from '../data/elements.json';
+import { formatDecimal } from './format';
 
 export type ElementCategory =
   | 'alkali-metal'
@@ -102,5 +103,5 @@ export function formatAtomicMass(element: Element): string {
     return `[${element.atomicMass}]`;
   }
 
-  return element.atomicMass.toFixed(3);
+  return formatDecimal(element.atomicMass, 3);
 }

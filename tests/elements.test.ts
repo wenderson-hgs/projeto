@@ -172,7 +172,7 @@ describe('getElementBySymbol', () => {
 describe('formatAtomicMass', () => {
   it('formats standard masses with 3 decimals', () => {
     const hydrogen = elements.find((element) => element.symbol === 'H')!;
-    expect(formatAtomicMass(hydrogen)).toBe('1.008');
+    expect(formatAtomicMass(hydrogen)).toBe('1,008');
   });
 
   it('formats approximate masses in brackets', () => {
