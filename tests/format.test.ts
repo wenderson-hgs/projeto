@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { formatDecimal, formatNumber, formatPercent } from '../src/lib/format';
+import { formatDecimal, formatNumber, formatPercent, formatScientific } from '../src/lib/format';
 
 describe('formatDecimal', () => {
   it('uses a comma as the decimal separator', () => {
@@ -39,5 +39,30 @@ describe('formatNumber', () => {
   it('rounds to the maximum number of decimals', () => {
     expect(formatNumber(1537.85, 1)).toBe('1.537,9');
     expect(formatNumber(0.08988, 5)).toBe('0,08988');
+  });
+});
+
+describe('formatScientific', () => {
+  it('formats large values with a comma decimal separator and superscript exponent', () => {
+    expect(formatScientific(6.02214076e23)).toBe('6,02 × 10²³');
+    expect(formatScientific(1.1949e24)).toBe('1,19 × 10²⁴');
+  });
+
+  it('formats negative exponents and zero', () => {
+    expect(formatScientific(1e-3)).toBe('1 × 10⁻³');
+    expect(formatScientific(0)).toBe('0');
+  });
+
+  it('accepts a custom number of significant digits', () => {
+    expect(formatScientific(12.34, 4)).toBe('1,234 × 10¹');
+  });
+
+  it('normalizes a mantissa that rounds up to 10', () => {
+    expect(formatScientific(9.999e23)).toBe('1 × 10²⁴');
+    expect(formatScientific(-9.999e23)).toBe('-1 × 10²⁴');
+  });
+
+  it('uses a dash for non-finite values', () => {
+    expect(formatScientific(Number.NaN)).toBe('—');
   });
 });
