@@ -14,14 +14,14 @@
 | Publicação         | GitHub Pages via GitHub Actions — https://wenderson-hgs.github.io/projeto/ (no ar desde 2026-10-24) |
 | Repositório        | https://github.com/wenderson-hgs/projeto (nome do repositório: `projeto`)                           |
 | Branch principal   | `main` (Fases 1 a 5 publicadas; release `v1.0.0` no commit `d44845e`)                               |
-| Branch de trabalho | `feat/v1.1-confidence` (A1 — correções de confiança; em revisão)                                      |
+| Branch de trabalho | `feat/v1.1-confidence` (A1 aprovado + A2 implementado; em revisão)                                  |
 | Demo               | https://wenderson-hgs.github.io/projeto/ (verificada em 2026-10-24)                                 |
 
 ## Fase em andamento
 
-**Pós-v1.0 — A1 (correções de confiança) em revisão na branch `feat/v1.1-confidence`.**
+**Pós-v1.0 — A2 (acessibilidade e SEO) implementado na branch `feat/v1.1-confidence`, aguardando revisão. O A1 foi aprovado pelo usuário.**
 
-> O A1 corrige a formatação numérica para pt-BR, separa as mensagens de múltiplas soluções do balanceador, aceita subscritos Unicode e estados físicos na calculadora e prepara a versão 1.1.0. Cargas iônicas, coeficiente inicial, foco/teclado e metadados ficam para o A2.
+> O A1 corrigiu a formatação numérica para pt-BR, separou as mensagens de múltiplas soluções do balanceador, aceitou subscritos Unicode e estados físicos na calculadora e preparou a versão 1.1.0. O A2 adiciona roving tabindex e foco gerenciado no painel de detalhes, metadados sociais/SEO com imagem 1200×630 e um workflow de CI para pull requests. A tag e a release `v1.1.0` continuam pendentes de aprovação.
 
 ## Checklist de fases
 
@@ -96,11 +96,12 @@
 | 2026-10-24 | Fase 5 — deploy e publicação               | Branch publicada e mesclada por fast-forward na `main` (`d13d1c2`); `main` enviada. Repositório tornado público; Pages habilitado com publicação via workflow; run `40096907344` concluído com sucesso (build e deploy). Demo verificada em `https://wenderson-hgs.github.io/projeto/` (HTML, JS, CSS e favicon respondendo 200). Descrição e homepage do repositório atualizadas com o link da demo.                                                                                                          |
 | 2026-10-24 | Release v1.0.0                             | Commit de documentação `d44845e` enviado; tag anotada `v1.0.0` criada e enviada; release "v1.0.0 — Primeira versão" publicada em `https://github.com/wenderson-hgs/projeto/releases/tag/v1.0.0` com as notas do `CHANGELOG.md`. Deploy do commit de docs concluído com sucesso (run `40098865461`). Fase 5 encerrada.                                                                                                                                                                                          |
 | 2026-11-09 | Pós-v1.0 — A1: correções de confiança | Formatação numérica pt-BR centralizada em `src/lib/format.ts`; mensagens do balanceador separadas entre fórmulas repetidas e sistema indeterminado; parser normaliza subscritos Unicode e estados físicos (`s`, `l`, `g`, `aq`), mantendo cargas e coeficiente inicial como erros; README, CHANGELOG e estado atualizados. 130 testes, build e lint sem erros. |
+| 2026-11-09 | Pós-v1.0 — A2: acessibilidade e SEO | Roving tabindex em `src/ui/keyboard-navigation.ts` (um ponto de Tab, setas e atualização após filtros); painel de detalhes com `tabindex="-1"`, rótulo dinâmico e foco ao abrir pelo teclado, com `Esc` devolvendo o foco à célula; canonical, Open Graph, Twitter Card e JSON-LD em `index.html`; imagem social 1200×630 em `public/social-card.png`; workflow `CI` para pull requests. |
 
 ## Pendências
 
 - Remover as branches de trabalho já mescladas (`feat/phase-1-periodic-table`, `feat/phase-2-molar-mass`, `feat/phase-3-equation-balancer`, `feat/phase-4-quiz`, `feat/phase-5-polish-and-deploy` e `test/phase-0-bootstrap`) quando o usuário quiser.
-- A2 (acessibilidade e SEO) e os demais pacotes da revisão, quando o usuário aprovar.
+- Pacotes B (tabela rica/quiz educativo) e C (novas ferramentas), quando o usuário aprovar.
 - Opcionais pós-v1.0 (somente se o usuário pedir): expor `src/lib/` como servidor MCP, versão PWA/offline, README em inglês e novas ferramentas (estequiometria, pH, conversão de unidades).
 
 ## Decisões importantes
@@ -135,6 +136,9 @@
 | 2026-11-09 | Valores exibidos com vírgula decimal (pt-BR)                                       | A interface é em português; a vírgula evita a leitura ambígua de `74.092` como setenta e quatro mil. Esta decisão substitui a de 2026-10-23, que usava ponto decimal.                       |
 | 2026-11-09 | Subscritos Unicode e estados físicos são normalizados na entrada                    | Aceita fórmulas copiadas de livros/sites (`H₂O`, `H2O(s)`) sem abrir o escopo de cargas iônicas; estados são case-sensitive para não confundir `(S)` com enxofre.                          |
 | 2026-11-09 | Balanceador separa fórmula repetida de sistema indeterminado                       | A mensagem anterior mandava procurar repetição mesmo quando o problema era o sistema ter mais de uma solução; agora cada causa tem uma orientação própria.                                 |
+| 2026-11-09 | Tabela com roving tabindex e foco gerenciado no painel                             | 118 pontos de Tab tornavam a página lenta para quem usa teclado; um único ponto de Tab resolve isso sem perder as setas. Abrir os detalhes pelo teclado leva o foco ao painel para leitores de tela; abrir com mouse mantém o foco na célula. |
+| 2026-11-09 | Imagem social gerada do próprio app e salva em `public/`                           | Evita uma imagem falsa ou desatualizada e garante que o arquivo entre no build do GitHub Pages; 1200×630 é o formato recomendado para Open Graph e Twitter Card.                          |
+| 2026-11-09 | Workflow `CI` separado do `deploy.yml`                                             | Pull requests precisam de lint, testes e build sem permissão de publicação; o deploy continua restrito à `main`.                                                                           |
 | 2026-10-23 | Balanceador usa frações exatas com `bigint` e eliminação de Gauss                  | Evita erros de arredondamento de ponto flutuante e garante os menores coeficientes inteiros. A matriz é pequena, então o custo é irrelevante.                                               |
 | 2026-10-23 | Coeficientes digitados na equação são validados, mas ignorados                     | O balanceador sempre recalcula os menores inteiros; isso corrige coeficientes errados e mantém a entrada simples.                                                                           |
 | 2026-10-23 | Equações com coeficiente zero ou com múltiplas soluções geram erro                 | Um coeficiente zero indica composto que não participa; múltiplas soluções tornam o resultado ambíguo. Mensagens claras evitam resultados enganosos.                                         |
@@ -179,10 +183,12 @@
 | 2026-10-23 | Fase 5 — Etapa 1 (tema)              | 5 arquivos, 115 testes passaram (1,12 s)         | sucesso: 26 módulos, 741 ms; CSS 17,38 kB / JS 58,56 kB                       | sem erros                 |
 | 2026-10-23 | Fase 5 — Etapa 3 (Pages)             | 5 arquivos, 115 testes passaram (926 ms)         | sucesso: 26 módulos, 306 ms; `index.html` 1,35 kB, CSS 17,38 kB / JS 58,56 kB | sem erros                 |
 | 2026-11-09 | A1 — correções de confiança          | 6 arquivos, 130 testes passaram (529 ms)         | sucesso: 27 módulos, 110 ms; CSS 17,38 kB / JS 59,05 kB                      | sem erros                 |
+| 2026-11-09 | A2 — acessibilidade e SEO            | 6 arquivos, 130 testes passaram (574 ms)         | sucesso: 27 módulos, 170 ms; `index.html` 3,99 kB, CSS 17,38 kB / JS 59,55 kB | sem erros                 |
 
 ## Problemas conhecidos, limitações e dúvidas
 
-- A interface (tabela, calculadora, balanceador e quiz) foi validada por `tsc`, build e lint, mas **não tem testes automatizados de navegador** (não há jsdom nem Playwright). A revisão manual no `npm run dev` é necessária.
+- A interface (tabela, calculadora, balanceador e quiz) foi validada por `tsc`, build, lint e verificação manual com Edge headless, mas **não tem testes automatizados de navegador** (não há jsdom nem Playwright). A revisão manual no `npm run dev` continua necessária.
+- O roving tabindex foi verificado no navegador: um único ponto de Tab, setas movendo o foco, filtros reposicionando o ponto e painel recebendo foco ao abrir pelo teclado. Não há teste unitário de DOM para isso.
 - O parser aceita subscritos Unicode (`H₂O`) e estados físicos (`H2O(s)`, `H2O(l)`, `H2O(g)`, `H2O(aq)`), mas não aceita cargas iônicas (`Fe2+`, `SO4^2-`) nem coeficientes estequiométricos no início (`2H2O`). Coeficientes são aceitos apenas em hidratos, depois de `·`, `.` ou `*`.
 - As massas vêm do dataset; por isso `Fe2(SO4)3` resulta em 399,858 g/mol (dentro da tolerância de ±0,05 do `AGENTS.md`, mas diferente do valor arredondado 399,88). Pequenas diferenças em relação a massas convencionais arredondadas são esperadas.
 - `src/data/elements.json` é derivado de dataset CC BY-SA 3.0 e continua sob essa licença; o código do projeto é MIT. A distinção está em `src/data/README.md` e no `README.md`.
@@ -205,4 +211,4 @@
 
 ## Próximo passo
 
-O A1 está implementado e em revisão na branch `feat/v1.1-confidence`. Depois da aprovação, o próximo pacote é o A2 (foco do painel, roving tabindex, metadados sociais/SEO e CI em PR). A tag e a release `v1.1.0` ficam pendentes de aprovação e do merge na `main`.
+O A2 está implementado e em revisão na branch `feat/v1.1-confidence`, junto com o A1 aprovado. Depois da aprovação, o próximo passo é decidir sobre push, merge na `main` e tag/release `v1.1.0`. Os pacotes B (tabela rica/quiz educativo) e C (novas ferramentas) dependem de nova aprovação.

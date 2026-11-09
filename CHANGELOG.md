@@ -12,6 +12,9 @@ Todas as mudanças relevantes deste projeto são registradas aqui.
 ### Adicionado
 
 - A calculadora aceita subscritos Unicode (`H₂O`) e estados físicos no fim da fórmula (`H2O(s)`, `H2O(l)`, `H2O(g)`, `H2O(aq)`).
+- A tabela usa roving tabindex: um único ponto de Tab, setas para navegar e foco gerenciado no painel de detalhes (abrir pelo teclado leva o foco ao painel; `Esc` devolve à célula).
+- Metadados de SEO e compartilhamento (canonical, Open Graph, Twitter Card e JSON-LD), com imagem social 1200×630.
+- Workflow `CI` que roda lint, testes e build em pull requests.
 
 ### Testes
 

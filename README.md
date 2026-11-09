@@ -1,5 +1,7 @@
 # chem-toolkit
 
+[![CI](https://github.com/wenderson-hgs/projeto/actions/workflows/ci.yml/badge.svg)](https://github.com/wenderson-hgs/projeto/actions/workflows/ci.yml)
+
 Tabela periódica interativa e ferramentas de química feitas com HTML, CSS e TypeScript puros — sem framework e sem backend.
 
 > **Demo online:** [wenderson-hgs.github.io/projeto](https://wenderson-hgs.github.io/projeto/)
@@ -13,11 +15,11 @@ Tabela periódica interativa e ferramentas de química feitas com HTML, CSS e Ty
 - **Balanceador de equações** com frações exatas e menores coeficientes inteiros.
 - **Quiz** com três modos, rodadas de 10 perguntas e recorde salvo no navegador.
 - **Tema claro e escuro**, com preferência salva no `localStorage`.
-- **Acessibilidade**: navegação por teclado na tabela, foco visível, `aria-label`, link para pular ao conteúdo e layout responsivo.
+- **Acessibilidade**: navegação por teclado na tabela com um único ponto de Tab, setas para percorrer os elementos, foco gerenciado no painel de detalhes, foco visível, `aria-label`, link para pular ao conteúdo e layout responsivo.
 
 ### Tabela periódica
 
-Busque por nome, símbolo ou número atômico, filtre por categoria e clique em um elemento para ver os detalhes. As setas do teclado navegam entre as células; `Esc` fecha o painel.
+Busque por nome, símbolo ou número atômico, filtre por categoria e clique em um elemento para ver os detalhes. As setas do teclado navegam entre as células; `Enter` abre os detalhes; `Esc` fecha o painel e devolve o foco à célula.
 
 ### Calculadora de massa molar
 
@@ -87,12 +89,14 @@ A interface é verificada manualmente com `npm run dev`; o projeto não usa test
 .
 ├─ .github/
 │  └─ workflows/
+│     ├─ ci.yml               # lint, testes e build em pull requests
 │     └─ deploy.yml           # testes, build e deploy no GitHub Pages
 ├─ docs/
 │  ├─ CLAUDE_HANDOFF.md
 │  └─ screenshots/
 ├─ public/
-│  └─ favicon.svg
+│  ├─ favicon.svg
+│  └─ social-card.png         # imagem 1200×630 para Open Graph e Twitter Card
 ├─ src/
 │  ├─ data/
 │  │  ├─ elements.json        # 118 elementos (CC BY-SA 3.0)
@@ -112,7 +116,7 @@ A lógica de química fica em `src/lib/`, separada da interface, para poder ser 
 
 ## Deploy
 
-O deploy é automático: todo push na branch `main` roda testes, lint e build no GitHub Actions e publica a pasta `dist` no GitHub Pages.
+O deploy é automático: todo push na branch `main` roda testes, lint e build no GitHub Actions e publica a pasta `dist` no GitHub Pages. Pull requests também passam por lint, testes e build no workflow `CI`, sem publicar nada.
 
 No repositório, em **Settings → Pages → Source**, a opção precisa estar em **GitHub Actions**.
 
